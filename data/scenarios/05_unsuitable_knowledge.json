@@ -1,0 +1,24 @@
+{
+  "description": "No-knowledge client proposed complex derivative \u2014 R1+R7 fail, score 55 CONDITIONAL",
+  "client": {
+    "name": "Pedro Nunes",
+    "age": 28,
+    "financial_knowledge": "none",
+    "risk_tolerance_score": 6,
+    "investment_horizon": 2,
+    "liquid_assets": 15000.0,
+    "income": 30000.0,
+    "investment_amount": 10000,
+    "can_afford_total_loss": true,
+    "financial_vulnerability": "LOW",
+    "portfolio_concentration_pct": 5,
+    "investment_objective": "speculation"
+  },
+  "product_file": "equity_derivative.json",
+  "expected_decision": "CONDITIONAL",
+  "expected_escalate": false,
+  "expected_rules_failed": [
+    "R1",
+    "R7"
+  ]
+}

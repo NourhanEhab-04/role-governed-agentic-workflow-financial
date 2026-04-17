@@ -1,28 +1,14 @@
+from schemas.client_profile import REQUIRED_CLIENT_KEYS
+from schemas.product_profile import REQUIRED_PRODUCT_KEYS as _ALL_PRODUCT_KEYS
+
+# Rule engine only needs the fields it evaluates — product_name is metadata
+REQUIRED_PRODUCT_KEYS = _ALL_PRODUCT_KEYS - {"product_name"}
+
 KNOWLEDGE_LEVELS = {
     "none": 1,
     "basic": 3,
     "moderate": 6,
     "advanced": 9,
-}
-
-REQUIRED_CLIENT_KEYS = {
-    "financial_knowledge",
-    "risk_tolerance_score",
-    "investment_horizon",
-    "liquid_assets",
-    "income",
-    "investment_amount",
-    "can_afford_total_loss",
-    "financial_vulnerability",
-}
-
-REQUIRED_PRODUCT_KEYS = {
-    "risk_class",
-    "complexity_tier",
-    "requires_knowledge_level",
-    "minimum_horizon",
-    "potential_loss",
-    "leverage",
 }
 
 
@@ -114,6 +100,28 @@ def _r5_vulnerability(client: dict, product: dict) -> dict:
     }
 
 
+COMPLEX_MIN_KNOWLEDGE = {"moderate", "advanced"}
+
+
+def _r7_complexity(client: dict, product: dict) -> dict:
+    passed = not (
+        product["complexity_tier"] == "COMPLEX"
+        and client["financial_knowledge"] not in COMPLEX_MIN_KNOWLEDGE
+    )
+    return {
+        "rule": "R7",
+        "pass": passed,
+        "penalty": 0 if passed else -20,
+        "detail": (
+            f"product complexity_tier='{product['complexity_tier']}' or "
+            f"client knowledge '{client['financial_knowledge']}' meets COMPLEX threshold"
+            if passed else
+            f"product is COMPLEX but client knowledge '{client['financial_knowledge']}' "
+            f"is below moderate"
+        ),
+    }
+
+
 def _r6_leverage(client: dict, product: dict) -> dict:
     tolerance = client["risk_tolerance_score"]
     passed = not (product["leverage"] is True and tolerance < 7)
@@ -147,6 +155,7 @@ def evaluate_suitability(client: dict, product: dict) -> dict:
         _r4_affordability(client, product),
         _r5_vulnerability(client, product),
         _r6_leverage(client, product),
+        _r7_complexity(client, product),
     ]
 
     score = 100 + sum(r["penalty"] for r in rules)

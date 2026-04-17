@@ -1,0 +1,10 @@
+{
+  "name": "3x Leveraged S&P500 ETF",
+  "description": "A leveraged ETP providing 3x daily exposure to the S&P 500 index.",
+  "risk_class": 7,
+  "complexity_tier": "COMPLEX",
+  "leverage": true,
+  "potential_loss": "total",
+  "minimum_horizon": 1,
+  "requires_knowledge_level": "advanced"
+}

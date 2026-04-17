@@ -1,0 +1,10 @@
+{
+  "name": "German 10-Year Bund",
+  "description": "A sovereign bond issued by the German federal government.",
+  "risk_class": 2,
+  "complexity_tier": "NON-COMPLEX",
+  "leverage": false,
+  "potential_loss": "partial",
+  "minimum_horizon": 3,
+  "requires_knowledge_level": "basic"
+}

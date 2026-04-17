@@ -1,0 +1,21 @@
+{
+  "description": "Conservative retired client matched to money market fund — all rules pass",
+  "client": {
+    "name": "Maria Santos",
+    "age": 67,
+    "financial_knowledge": "basic",
+    "risk_tolerance_score": 2,
+    "investment_horizon": 2,
+    "liquid_assets": 80000.0,
+    "income": 25000.0,
+    "investment_amount": 50000,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "LOW",
+    "portfolio_concentration_pct": 10,
+    "investment_objective": "capital preservation"
+  },
+  "product_file": "money_market_fund.json",
+  "expected_decision": "SUITABLE",
+  "expected_escalate": false,
+  "expected_rules_failed": []
+}

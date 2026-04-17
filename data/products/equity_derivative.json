@@ -1,0 +1,10 @@
+{
+  "name": "Single-Stock Call Option",
+  "description": "A complex derivative giving the right to buy a single stock at a fixed price.",
+  "risk_class": 6,
+  "complexity_tier": "COMPLEX",
+  "leverage": false,
+  "potential_loss": "total",
+  "minimum_horizon": 1,
+  "requires_knowledge_level": "advanced"
+}

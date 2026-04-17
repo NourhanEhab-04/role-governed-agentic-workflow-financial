@@ -1,0 +1,24 @@
+{
+  "description": "HIGH vulnerability client proposed complex derivative \u2014 R1+R5 fail, score 50 CONDITIONAL",
+  "client": {
+    "name": "Yusuf Osman",
+    "age": 82,
+    "financial_knowledge": "moderate",
+    "risk_tolerance_score": 5,
+    "investment_horizon": 5,
+    "liquid_assets": 70000.0,
+    "income": 20000.0,
+    "investment_amount": 40000,
+    "can_afford_total_loss": true,
+    "financial_vulnerability": "HIGH",
+    "portfolio_concentration_pct": 10,
+    "investment_objective": "income"
+  },
+  "product_file": "equity_derivative.json",
+  "expected_decision": "CONDITIONAL",
+  "expected_escalate": false,
+  "expected_rules_failed": [
+    "R1",
+    "R5"
+  ]
+}

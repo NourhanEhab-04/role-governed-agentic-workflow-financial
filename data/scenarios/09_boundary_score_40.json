@@ -1,0 +1,23 @@
+{
+  "description": "Client horizon (4yr) below ETF minimum (5yr) \u2014 R3 fails, score 80 SUITABLE",
+  "client": {
+    "name": "Sara Lindqvist",
+    "age": 40,
+    "financial_knowledge": "basic",
+    "risk_tolerance_score": 4,
+    "investment_horizon": 4,
+    "liquid_assets": 25000.0,
+    "income": 40000.0,
+    "investment_amount": 15000,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "LOW",
+    "portfolio_concentration_pct": 10,
+    "investment_objective": "moderate growth"
+  },
+  "product_file": "global_equity_etf.json",
+  "expected_decision": "SUITABLE",
+  "expected_escalate": false,
+  "expected_rules_failed": [
+    "R3"
+  ]
+}

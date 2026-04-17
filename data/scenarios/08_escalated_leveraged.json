@@ -1,0 +1,27 @@
+{
+  "description": "HIGH vulnerability + concentration >40% + multiple rule failures \u2192 escalation; R1, R2, R4, R5, R6 fail",
+  "client": {
+    "name": "Bogdan Popescu",
+    "age": 45,
+    "financial_knowledge": "moderate",
+    "risk_tolerance_score": 4,
+    "investment_horizon": 3,
+    "liquid_assets": 100000.0,
+    "income": 70000.0,
+    "investment_amount": 80000,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "HIGH",
+    "portfolio_concentration_pct": 55,
+    "investment_objective": "aggressive growth"
+  },
+  "product_file": "leveraged_etf_3x.json",
+  "expected_decision": "ESCALATED",
+  "expected_escalate": true,
+  "expected_rules_failed": [
+    "R1",
+    "R2",
+    "R4",
+    "R5",
+    "R6"
+  ]
+}

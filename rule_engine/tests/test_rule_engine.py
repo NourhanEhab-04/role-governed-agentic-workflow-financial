@@ -277,7 +277,7 @@ def test_conditional_r1_r5_fail(client, product):
 # ---------------------------------------------------------------------------
 
 def test_all_rules_fail(client, product):
-    # 100 - 25 - 30 - 20 - 35 - 25 - 30 = -65
+    # 100 - 25 - 30 - 20 - 35 - 25 - 30 - 20 = -85
     r = evaluate_suitability(
         {
             **client,
@@ -294,8 +294,105 @@ def test_all_rules_fail(client, product):
             "minimum_horizon": 24,
             "potential_loss": "total",
             "leverage": True,
+            "complexity_tier": "COMPLEX",
         },
     )
-    assert r["score"] == -65
+    assert r["score"] == -85
     assert r["decision"] == "UNSUITABLE"
     assert all(rule["pass"] is False for rule in r["rules"])
+
+
+# ---------------------------------------------------------------------------
+# R7 — Complexity (isolated: all other rules pass in every case)
+# ---------------------------------------------------------------------------
+# requires_knowledge_level="none" ensures R1 never fails independently here.
+
+R7_CLIENT = {
+    "financial_knowledge": "moderate",  # overridden per test
+    "risk_tolerance_score": 5,
+    "investment_horizon": 5,
+    "liquid_assets": 20000,
+    "income": 60000,
+    "investment_amount": 3000,
+    "can_afford_total_loss": True,
+    "financial_vulnerability": "LOW",
+}
+
+R7_PRODUCT = {
+    "risk_class": 4,
+    "complexity_tier": "NON-COMPLEX",   # overridden per test
+    "requires_knowledge_level": "none", # keeps R1 passing for all knowledge levels
+    "minimum_horizon": 2,
+    "potential_loss": "partial",
+    "leverage": False,
+}
+
+
+def test_r7_noncomplex_any_knowledge_passes():
+    # NON-COMPLEX product: R7 never fires regardless of knowledge level
+    r = evaluate_suitability(
+        {**R7_CLIENT, "financial_knowledge": "none"},
+        {**R7_PRODUCT, "complexity_tier": "NON-COMPLEX"},
+    )
+    assert get_rule(r["rules"], "R7")["pass"] is True
+    assert get_rule(r["rules"], "R7")["penalty"] == 0
+    assert r["score"] == 100
+
+
+def test_r7_complex_none_knowledge_fails():
+    # COMPLEX + none: below moderate threshold  →  R7 FAIL, 100 - 20 = 80
+    r = evaluate_suitability(
+        {**R7_CLIENT, "financial_knowledge": "none"},
+        {**R7_PRODUCT, "complexity_tier": "COMPLEX"},
+    )
+    assert get_rule(r["rules"], "R7")["pass"] is False
+    assert get_rule(r["rules"], "R7")["penalty"] == -20
+    assert r["score"] == 80
+    assert r["decision"] == "SUITABLE"  # 80 >= 70
+
+
+def test_r7_complex_basic_knowledge_fails():
+    # COMPLEX + basic: still below moderate threshold  →  R7 FAIL, 100 - 20 = 80
+    r = evaluate_suitability(
+        {**R7_CLIENT, "financial_knowledge": "basic"},
+        {**R7_PRODUCT, "complexity_tier": "COMPLEX"},
+    )
+    assert get_rule(r["rules"], "R7")["pass"] is False
+    assert get_rule(r["rules"], "R7")["penalty"] == -20
+    assert r["score"] == 80
+
+
+def test_r7_complex_moderate_knowledge_passes():
+    # COMPLEX + moderate: meets threshold exactly  →  R7 PASS
+    r = evaluate_suitability(
+        {**R7_CLIENT, "financial_knowledge": "moderate"},
+        {**R7_PRODUCT, "complexity_tier": "COMPLEX"},
+    )
+    assert get_rule(r["rules"], "R7")["pass"] is True
+    assert get_rule(r["rules"], "R7")["penalty"] == 0
+    assert r["score"] == 100
+
+
+def test_r7_complex_advanced_knowledge_passes():
+    # COMPLEX + advanced: above threshold  →  R7 PASS
+    r = evaluate_suitability(
+        {**R7_CLIENT, "financial_knowledge": "advanced"},
+        {**R7_PRODUCT, "complexity_tier": "COMPLEX"},
+    )
+    assert get_rule(r["rules"], "R7")["pass"] is True
+    assert get_rule(r["rules"], "R7")["penalty"] == 0
+    assert r["score"] == 100
+
+
+def test_r7_and_r1_fail_simultaneously():
+    # COMPLEX product requiring moderate knowledge, client has none:
+    # R1 fails (none < moderate) and R7 fails (COMPLEX + none) independently
+    # 100 - 25 (R1) - 20 (R7) = 55  →  CONDITIONAL
+    r = evaluate_suitability(
+        {**R7_CLIENT, "financial_knowledge": "none"},
+        {**R7_PRODUCT, "complexity_tier": "COMPLEX", "requires_knowledge_level": "moderate"},
+    )
+    assert get_rule(r["rules"], "R1")["pass"] is False
+    assert get_rule(r["rules"], "R7")["pass"] is False
+    assert r["score"] == 55
+    assert r["decision"] == "CONDITIONAL"

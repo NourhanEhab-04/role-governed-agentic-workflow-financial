@@ -1,0 +1,27 @@
+{
+  "description": "Multiple rule failures \u2014 R1, R2, R4, R6, R7 all fail, score -40 UNSUITABLE",
+  "client": {
+    "name": "Chen Wei",
+    "age": 23,
+    "financial_knowledge": "none",
+    "risk_tolerance_score": 2,
+    "investment_horizon": 1,
+    "liquid_assets": 8000.0,
+    "income": 20000.0,
+    "investment_amount": 5000,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "LOW",
+    "portfolio_concentration_pct": 5,
+    "investment_objective": "speculation"
+  },
+  "product_file": "leveraged_etf_3x.json",
+  "expected_decision": "UNSUITABLE",
+  "expected_escalate": false,
+  "expected_rules_failed": [
+    "R1",
+    "R2",
+    "R4",
+    "R6",
+    "R7"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "description": "Basic-knowledge client with partial-loss ETF \u2014 no rules fail, score 100 SUITABLE",
+  "client": {
+    "name": "Amina Diallo",
+    "age": 35,
+    "financial_knowledge": "basic",
+    "risk_tolerance_score": 4,
+    "investment_horizon": 5,
+    "liquid_assets": 30000.0,
+    "income": 45000.0,
+    "investment_amount": 20000,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "LOW",
+    "portfolio_concentration_pct": 20,
+    "investment_objective": "moderate growth"
+  },
+  "product_file": "global_equity_etf.json",
+  "expected_decision": "SUITABLE",
+  "expected_escalate": false,
+  "expected_rules_failed": []
+}

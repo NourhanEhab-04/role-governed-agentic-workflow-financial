@@ -1,0 +1,21 @@
+{
+  "description": "HIGH vulnerability elderly client gets SUITABLE verdict \u2014 contradiction forces escalation",
+  "client": {
+    "name": "Elena Rossi",
+    "age": 78,
+    "financial_knowledge": "advanced",
+    "risk_tolerance_score": 6,
+    "investment_horizon": 8,
+    "liquid_assets": 300000.0,
+    "income": 40000.0,
+    "investment_amount": 200000,
+    "can_afford_total_loss": true,
+    "financial_vulnerability": "HIGH",
+    "portfolio_concentration_pct": 10,
+    "investment_objective": "income"
+  },
+  "product_file": "global_equity_etf.json",
+  "expected_decision": "ESCALATED",
+  "expected_escalate": true,
+  "expected_rules_failed": []
+}

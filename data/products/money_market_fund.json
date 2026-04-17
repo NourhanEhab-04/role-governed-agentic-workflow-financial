@@ -1,0 +1,10 @@
+{
+  "name": "Euro Money Market Fund",
+  "description": "A low-risk fund investing in short-term eurozone government instruments.",
+  "risk_class": 1,
+  "complexity_tier": "NON-COMPLEX",
+  "leverage": false,
+  "potential_loss": "partial",
+  "minimum_horizon": 1,
+  "requires_knowledge_level": "none"
+}

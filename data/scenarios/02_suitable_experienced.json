@@ -1,0 +1,21 @@
+{
+  "description": "Experienced investor matched to global equity ETF \u2014 all rules pass",
+  "client": {
+    "name": "Lars Eriksson",
+    "age": 42,
+    "financial_knowledge": "advanced",
+    "risk_tolerance_score": 7,
+    "investment_horizon": 10,
+    "liquid_assets": 150000.0,
+    "income": 90000.0,
+    "investment_amount": 100000,
+    "can_afford_total_loss": true,
+    "financial_vulnerability": "LOW",
+    "portfolio_concentration_pct": 15,
+    "investment_objective": "long-term growth"
+  },
+  "product_file": "global_equity_etf.json",
+  "expected_decision": "SUITABLE",
+  "expected_escalate": false,
+  "expected_rules_failed": []
+}

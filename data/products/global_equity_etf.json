@@ -1,0 +1,10 @@
+{
+  "name": "Global Equity ETF",
+  "description": "A passively managed ETF tracking the MSCI World index.",
+  "risk_class": 4,
+  "complexity_tier": "NON-COMPLEX",
+  "leverage": false,
+  "potential_loss": "partial",
+  "minimum_horizon": 5,
+  "requires_knowledge_level": "basic"
+}
