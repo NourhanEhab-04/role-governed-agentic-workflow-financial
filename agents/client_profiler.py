@@ -76,6 +76,14 @@ def parse_client_profile(raw_text: str) -> dict:
     if missing:
         raise ValueError(f"client_profile missing required keys: {missing}")
 
+    # Step 3b: validate that numeric/boolean fields are not null
+    null_fields = [k for k in REQUIRED_CLIENT_KEYS if profile.get(k) is None]
+    if null_fields:
+        raise ValueError(
+            f"client_profile has null values for required fields: {null_fields}. "
+            "These must be extractable from the client description."
+        )
+
     # Step 4: validate enum values
     valid_knowledge = {"none", "basic", "moderate", "advanced"}
     if profile["financial_knowledge"] not in valid_knowledge:

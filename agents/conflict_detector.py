@@ -185,7 +185,7 @@ def check_rule_engine_agreement(
     """
     A4's independent rule engine call — the third point of contact.
     Re-runs evaluate_suitability and compares decision + failed rules to A3's verdict.
-    
+
     Returns:
         {
             "agreed": bool,
@@ -196,12 +196,28 @@ def check_rule_engine_agreement(
             "detail": str,
         }
     """
+    # Reverse map: A3 stores rules with descriptive IDs, rule engine uses R1..R7
+    _REVERSE_MAP = {
+        "R1_knowledge": "R1",
+        "R2_risk":      "R2",
+        "R3_horizon":   "R3",
+        "R4_afford":    "R4",
+        "R5_vuln":      "R5",
+        "R6_leverage":  "R6",
+        "R7_complexity":"R7",
+    }
+
     a4_result = evaluate_suitability(client_profile, product_profile)
     a4_decision = a4_result["decision"]
     a4_failed = sorted(r["rule"] for r in a4_result["rules"] if not r["pass"])
 
     a3_decision = a3_verdict.get("decision", "UNKNOWN")
-    a3_failed = sorted(a3_verdict.get("failed_rules", []))
+    # A3 stores rules as {"R1_knowledge": "PASS"/"FAIL", ...} — derive failed list
+    a3_rules = a3_verdict.get("rules", {})
+    if isinstance(a3_rules, dict):
+        a3_failed = sorted(_REVERSE_MAP.get(k, k) for k, v in a3_rules.items() if v == "FAIL")
+    else:
+        a3_failed = sorted(a3_verdict.get("failed_rules", []))
 
     agreed = (a4_decision == a3_decision) and (a4_failed == a3_failed)
 

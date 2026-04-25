@@ -1,4 +1,5 @@
 import { useState } from 'react'
+
 export default function InputPanel({ onRun, isLoading }) {
   const [clientInput, setClientInput] = useState('')
   const [productInput, setProductInput] = useState('')
@@ -7,7 +8,7 @@ export default function InputPanel({ onRun, isLoading }) {
 
   return (
     <div className="w-96 min-w-80 bg-white border-r border-gray-200 p-6 flex flex-col gap-4 shrink-0">
-      
+
       <h1 className="text-lg font-semibold text-gray-800">
         MiFID II Suitability Assessment
       </h1>
@@ -18,7 +19,7 @@ export default function InputPanel({ onRun, isLoading }) {
         </label>
         <textarea
           className="w-full h-40 p-3 text-sm border border-gray-200 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-700 placeholder-gray-300"
-          placeholder="e.g. John is a 45-year-old conservative investor with basic knowledge of equities, a 5-year investment horizon, and €50,000 available to invest. He cannot afford a total loss."
+          placeholder="e.g. John is a 45-year-old conservative investor with basic knowledge of equities, a 5-year investment horizon, €50,000 liquid assets, €60,000 annual income, investing €10,000. He cannot afford a total loss."
           value={clientInput}
           onChange={e => setClientInput(e.target.value)}
           disabled={isLoading}

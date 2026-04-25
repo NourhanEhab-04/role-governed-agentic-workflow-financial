@@ -95,8 +95,23 @@ function ScoreBar({ score }) {
 }
 
 // rules: List[RuleResult] where each is { rule, pass_, penalty, detail }
+// Also handles legacy dict shape: { R1: { passed, penalty, detail }, ... }
+function normalizeRules(rules) {
+  if (Array.isArray(rules)) return rules;
+  if (rules && typeof rules === 'object') {
+    return Object.entries(rules).map(([id, r]) => ({
+      rule: id,
+      pass_: typeof r === 'string' ? r === 'PASS' : (r.pass_ ?? r.passed ?? r.pass ?? false),
+      penalty: typeof r === 'object' ? (r.penalty ?? 0) : 0,
+      detail: typeof r === 'object' ? (r.detail ?? '') : '',
+    }));
+  }
+  return [];
+}
+
 function RuleChecklist({ rules }) {
-  if (!rules || rules.length === 0) return null;
+  const normalized = normalizeRules(rules);
+  if (!normalized.length) return null;
 
   return (
     <div>
@@ -104,9 +119,9 @@ function RuleChecklist({ rules }) {
         Rule Breakdown
       </div>
       <div className="space-y-1">
-        {rules.map((r) => {
+        {normalized.map((r) => {
           const label = RULE_LABELS[r.rule] ?? r.rule;
-          const passed = r.pass_;
+          const passed = r.pass_ ?? r.pass ?? r.passed;
           return (
             <div
               key={r.rule}
@@ -149,7 +164,7 @@ export default function SummaryStrip({ state }) {
     );
   }
 
-  const preVerdict = state.pre_check_verdict ?? null;
+  const preVerdict = state.pre_check_verdict?.decision ?? state.pre_check_verdict ?? null;
   const ruleVerdict = state.rule_verdict ?? null;          // RuleVerdict object
   const overallRuleVerdict = ruleVerdict?.decision ?? null; // Decision enum value
   const auditVerdict = state.audit_verdict ?? null;
@@ -212,13 +227,27 @@ export default function SummaryStrip({ state }) {
         {/* Rule checklist — from rule_verdict.rules */}
         {ruleVerdict?.rules && <RuleChecklist rules={ruleVerdict.rules} />}
 
-        {/* A5 explanation — suitability_report is a plain string */}
+        {/* A5 explanation — suitability_report is an object */}
         {explanation && (
           <div>
             <div className="text-xs font-semibold uppercase tracking-wide text-gray-400 mb-1">
               A5 Disclosure
             </div>
-            <p className="text-sm text-gray-700 leading-relaxed">{explanation}</p>
+            {typeof explanation === 'string' ? (
+              <p className="text-sm text-gray-700 leading-relaxed">{explanation}</p>
+            ) : (
+              <div className="space-y-1 text-sm text-gray-700">
+                {explanation.client_facing_summary && (
+                  <p className="leading-relaxed">{explanation.client_facing_summary}</p>
+                )}
+                {explanation.summary && explanation.summary !== explanation.client_facing_summary && (
+                  <p className="leading-relaxed text-gray-500">{explanation.summary}</p>
+                )}
+                {explanation.regulatory_basis && (
+                  <p className="text-xs text-gray-400 italic">{explanation.regulatory_basis}</p>
+                )}
+              </div>
+            )}
           </div>
         )}
 
