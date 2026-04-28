@@ -7,12 +7,20 @@ Three-point rule engine architecture:
   state["rule_verdict"]       ← run_rule_engine_agent()        A3 stage
   state["audit_verdict"]      ← check_rule_engine_agreement()  inside A4 stage
 
+Validation layer (after A1 and A2):
+  state["a1_consistency_issues"]   ← check_a1_consistency()    after A1
+  state["a1_verification"]         ← run_verifier_on_a1()      after A1 (if flagged or sampled)
+  state["a2_consistency_issues"]   ← check_a2_consistency()    after A2
+  state["a2_verification"]         ← run_verifier_on_a2()      after A2 (if flagged or sampled)
+  state["cross_consistency_issues"]← check_a1_a2_cross()       before pre_check
+
 All other behaviour (run_stage, retry logic, rate-limit guard,
 portfolio_concentration_pct injection, return tuple) is unchanged.
 """
 
 import datetime
 import json
+import random
 import openai
 
 from orchestrator.validators import (
@@ -24,6 +32,15 @@ from orchestrator.validators import (
 )
 from orchestrator.audit import build_audit_log
 from orchestrator.pre_check_tool import run_pre_check
+from orchestrator.consistency_checks import (
+    check_a1_consistency,
+    check_a2_consistency,
+    check_a1_a2_cross,
+)
+
+# The verifier always runs after A1 and A2 (rate = 1.0).
+# Set to 0.0 to disable (verifier only runs when consistency issues are found).
+_VERIFIER_SAMPLE_RATE = 1.0
 
 
 async def run_pipeline(
@@ -48,6 +65,10 @@ async def run_pipeline(
     from agents.rule_engine_agent import run_rule_engine_agent
     from agents.conflict_detector import run_conflict_detector, check_rule_engine_agreement
     from agents.disclosure_agent import run_disclosure_agent
+    from agents.verifier_agent import (
+        run_verifier_on_a1, run_verifier_on_a2,
+        run_corrector_on_a1, run_corrector_on_a2,
+    )
 
     state: dict = {}
     retries: dict = {}
@@ -101,6 +122,72 @@ async def run_pipeline(
     if not ok:
         return state, build_audit_log(state, retries, outputs, validations)
 
+    # ── A1 validation layer ──────────────────────────────────────────────────
+    # Layer 1: deterministic consistency check (always runs, zero cost)
+    a1_issues = check_a1_consistency(state["client_profile"])
+    state["a1_consistency_issues"] = a1_issues
+
+    # Layer 2: LLM verifier (runs based on sample rate or consistency issues)
+    if a1_issues or random.random() < _VERIFIER_SAMPLE_RATE:
+        try:
+            a1_verification = await run_verifier_on_a1(
+                client_input,
+                state["client_profile"],
+                model_client=model_client,
+            )
+            state["a1_verification"] = a1_verification
+
+            # Layer 3: Corrector — runs once if verifier failed
+            if a1_verification.get("passed") is False:
+                try:
+                    corrected_profile = await run_corrector_on_a1(
+                        client_input,
+                        state["client_profile"],
+                        a1_verification,
+                        model_client=model_client,
+                    )
+                    state["a1_correction"] = {
+                        "original": state["client_profile"],
+                        "corrected": corrected_profile,
+                        "fields_fixed": [
+                            f for f, c in a1_verification.get("field_checks", {}).items()
+                            if c.get("supported") is False
+                        ],
+                    }
+                    # Replace profile with corrected version
+                    state["client_profile"] = corrected_profile
+                    # Re-verify the corrected output
+                    try:
+                        state["a1_final_verification"] = await run_verifier_on_a1(
+                            client_input,
+                            corrected_profile,
+                            model_client=model_client,
+                        )
+                    except Exception as exc:
+                        state["a1_final_verification"] = {
+                            "passed": None,
+                            "confidence": None,
+                            "issues": [f"Re-verify error: {exc}"],
+                            "field_checks": {},
+                        }
+                except Exception as exc:
+                    # Corrector failure is non-fatal — keep original profile
+                    state["a1_correction"] = {
+                        "original": state["client_profile"],
+                        "corrected": None,
+                        "fields_fixed": [],
+                        "error": str(exc),
+                    }
+
+        except Exception as exc:
+            # Verifier failure is non-fatal: record it and continue
+            state["a1_verification"] = {
+                "passed": None,
+                "confidence": None,
+                "issues": [f"Verifier error: {exc}"],
+                "field_checks": {},
+            }
+
     # Inject portfolio_concentration_pct — not in REQUIRED_CLIENT_KEYS
     # so A1 strips it, but the conflict detector needs it downstream.
     try:
@@ -121,6 +208,75 @@ async def run_pipeline(
     )
     if not ok:
         return state, build_audit_log(state, retries, outputs, validations)
+
+    # ── A2 validation layer ──────────────────────────────────────────────────
+    # Layer 1: deterministic consistency check
+    a2_issues = check_a2_consistency(state["product_profile"])
+    state["a2_consistency_issues"] = a2_issues
+
+    # Layer 2: LLM verifier
+    if a2_issues or random.random() < _VERIFIER_SAMPLE_RATE:
+        try:
+            a2_verification = await run_verifier_on_a2(
+                product_input,
+                state["product_profile"],
+                model_client=model_client,
+            )
+            state["a2_verification"] = a2_verification
+
+            # Layer 3: Corrector — runs once if verifier failed
+            if a2_verification.get("passed") is False:
+                try:
+                    corrected_product = await run_corrector_on_a2(
+                        product_input,
+                        state["product_profile"],
+                        a2_verification,
+                        model_client=model_client,
+                    )
+                    state["a2_correction"] = {
+                        "original": state["product_profile"],
+                        "corrected": corrected_product,
+                        "fields_fixed": [
+                            f for f, c in a2_verification.get("field_checks", {}).items()
+                            if c.get("supported") is False
+                        ],
+                    }
+                    # Replace profile with corrected version
+                    state["product_profile"] = corrected_product
+                    # Re-verify the corrected output
+                    try:
+                        state["a2_final_verification"] = await run_verifier_on_a2(
+                            product_input,
+                            corrected_product,
+                            model_client=model_client,
+                        )
+                    except Exception as exc:
+                        state["a2_final_verification"] = {
+                            "passed": None,
+                            "confidence": None,
+                            "issues": [f"Re-verify error: {exc}"],
+                            "field_checks": {},
+                        }
+                except Exception as exc:
+                    # Corrector failure is non-fatal — keep original profile
+                    state["a2_correction"] = {
+                        "original": state["product_profile"],
+                        "corrected": None,
+                        "fields_fixed": [],
+                        "error": str(exc),
+                    }
+
+        except Exception as exc:
+            state["a2_verification"] = {
+                "passed": None,
+                "confidence": None,
+                "issues": [f"Verifier error: {exc}"],
+                "field_checks": {},
+            }
+
+    # ── A1 × A2 cross-consistency check ─────────────────────────────────────
+    cross_issues = check_a1_a2_cross(state["client_profile"], state["product_profile"])
+    state["cross_consistency_issues"] = cross_issues
 
     # ── Pre-check (A0 role) ──────────────────────────────────────────────────
     # First of three independent rule engine contacts.

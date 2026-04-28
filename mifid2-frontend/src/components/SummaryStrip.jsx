@@ -155,6 +155,180 @@ function RuleChecklist({ rules }) {
   );
 }
 
+// ── VerificationPanel ────────────────────────────────────────────────────────
+
+function ConfidenceBar({ confidence }) {
+  if (confidence == null) return null
+  const pct = Math.round(confidence * 100)
+  const color = confidence >= 0.8 ? 'bg-green-400' : confidence >= 0.6 ? 'bg-amber-400' : 'bg-red-400'
+  return (
+    <div className="flex items-center gap-2">
+      <span className="text-xs text-gray-400 w-20 flex-shrink-0">Confidence</span>
+      <div className="flex-1 h-1.5 rounded-full bg-gray-100 overflow-hidden">
+        <div className={`h-full rounded-full ${color}`} style={{ width: `${pct}%` }} />
+      </div>
+      <span className="text-xs text-gray-500 w-8 text-right flex-shrink-0">{pct}%</span>
+    </div>
+  )
+}
+
+function VerificationRow({ label, consistencyIssues, verification, correction, finalVerification }) {
+  const hasConsistency   = consistencyIssues && consistencyIssues.length > 0
+  const hasVerification  = verification !== undefined && verification !== null
+  const hasCorrection    = correction   !== undefined && correction   !== null
+  const hasFinalVerify   = finalVerification !== undefined && finalVerification !== null
+  const correctionOk     = hasCorrection && correction.corrected && !correction.error
+
+  // Determine overall status — final verification wins if present
+  const effectiveVerification = hasFinalVerify ? finalVerification : verification
+  let statusColor, statusDot, statusText
+  if (!hasVerification && !hasConsistency) {
+    statusColor = 'text-gray-400'; statusDot = 'bg-gray-300'; statusText = 'Not sampled'
+  } else if (effectiveVerification?.passed === null) {
+    statusColor = 'text-gray-500'; statusDot = 'bg-gray-400'; statusText = 'Verifier error'
+  } else if (effectiveVerification?.passed === false || hasConsistency) {
+    statusColor = 'text-amber-700'; statusDot = 'bg-amber-400'
+    statusText = effectiveVerification?.passed === false ? 'Issues found' : 'Consistency flags'
+  } else {
+    statusColor = 'text-green-700'; statusDot = 'bg-green-500'
+    statusText = correctionOk ? 'Corrected ✓' : 'Verified'
+  }
+
+  return (
+    <div className="space-y-1">
+      {/* Header */}
+      <div className="flex items-center justify-between">
+        <span className="text-xs font-medium text-gray-600">{label}</span>
+        <div className="flex items-center gap-1.5">
+          <span className={`w-2 h-2 rounded-full flex-shrink-0 ${statusDot}`} />
+          <span className={`text-xs font-medium ${statusColor}`}>{statusText}</span>
+        </div>
+      </div>
+
+      {/* Consistency issues */}
+      {hasConsistency && (
+        <div className="space-y-0.5 pl-2">
+          {consistencyIssues.slice(0, 3).map((issue, i) => (
+            <div key={i} className="text-xs text-orange-700 bg-orange-50 rounded px-2 py-0.5 leading-snug">{issue}</div>
+          ))}
+          {consistencyIssues.length > 3 && (
+            <div className="text-xs text-orange-500 pl-2">+{consistencyIssues.length - 3} more</div>
+          )}
+        </div>
+      )}
+
+      {/* First verifier result */}
+      {hasVerification && verification.passed !== null && (
+        <div className="pl-2 space-y-0.5">
+          <ConfidenceBar confidence={verification.confidence} />
+          {verification.issues?.slice(0, 2).map((issue, i) => (
+            <div key={i} className="text-xs text-amber-700 bg-amber-50 rounded px-2 py-0.5 leading-snug">{issue}</div>
+          ))}
+          {verification.issues?.length > 2 && (
+            <div className="text-xs text-amber-500 pl-2">+{verification.issues.length - 2} more</div>
+          )}
+        </div>
+      )}
+
+      {/* Correction block */}
+      {hasCorrection && (
+        <div className="pl-2 space-y-0.5">
+          {correction.error ? (
+            <div className="text-xs text-red-700 bg-red-50 rounded px-2 py-0.5">
+              Corrector error: {correction.error}
+            </div>
+          ) : correctionOk ? (
+            <div className="text-xs text-teal-700 bg-teal-50 rounded px-2 py-1 space-y-0.5">
+              <div className="font-medium">✎ Correction applied</div>
+              {correction.fields_fixed?.length > 0 && (
+                <div className="opacity-80">Fixed: {correction.fields_fixed.join(', ')}</div>
+              )}
+            </div>
+          ) : null}
+        </div>
+      )}
+
+      {/* Re-verification result after correction */}
+      {hasFinalVerify && finalVerification.passed !== null && (
+        <div className="pl-2 space-y-0.5">
+          <div className="text-xs text-gray-400 font-medium">Re-verify after correction</div>
+          <ConfidenceBar confidence={finalVerification.confidence} />
+          {finalVerification.issues?.slice(0, 2).map((issue, i) => (
+            <div key={i} className="text-xs text-amber-700 bg-amber-50 rounded px-2 py-0.5 leading-snug">{issue}</div>
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
+
+function VerificationPanel({ state }) {
+  const hasAny =
+    state.a1_consistency_issues?.length > 0 ||
+    state.a1_verification != null ||
+    state.a2_consistency_issues?.length > 0 ||
+    state.a2_verification != null ||
+    state.cross_consistency_issues?.length > 0
+
+  return (
+    <div className="space-y-3">
+      <div className="text-xs font-semibold uppercase tracking-wide text-gray-400">
+        Verification Layer
+      </div>
+
+      {!hasAny ? (
+        <div className="text-xs text-gray-400 italic">
+          No consistency issues detected. Verifier not sampled.
+        </div>
+      ) : (
+        <div className="space-y-3">
+          <VerificationRow
+            label="A1 — Client Profile"
+            consistencyIssues={state.a1_consistency_issues}
+            verification={state.a1_verification}
+            correction={state.a1_correction}
+            finalVerification={state.a1_final_verification}
+          />
+          <VerificationRow
+            label="A2 — Product Profile"
+            consistencyIssues={state.a2_consistency_issues}
+            verification={state.a2_verification}
+            correction={state.a2_correction}
+            finalVerification={state.a2_final_verification}
+          />
+
+          {/* Cross-check issues */}
+          {state.cross_consistency_issues?.length > 0 && (
+            <div className="space-y-1">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-medium text-gray-600">A1×A2 Cross-check</span>
+                <div className="flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full flex-shrink-0 bg-amber-400" />
+                  <span className="text-xs font-medium text-amber-700">
+                    {state.cross_consistency_issues.length} flag(s)
+                  </span>
+                </div>
+              </div>
+              <div className="space-y-0.5 pl-2">
+                {state.cross_consistency_issues.slice(0, 3).map((issue, i) => (
+                  <div key={i} className="text-xs text-amber-700 bg-amber-50 rounded px-2 py-0.5 leading-snug">
+                    {issue}
+                  </div>
+                ))}
+                {state.cross_consistency_issues.length > 3 && (
+                  <div className="text-xs text-amber-500 pl-2">
+                    +{state.cross_consistency_issues.length - 3} more
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  )
+}
+
 export default function SummaryStrip({ state }) {
   if (!state) {
     return (
@@ -167,7 +341,7 @@ export default function SummaryStrip({ state }) {
   const preVerdict = state.pre_check_verdict?.decision ?? state.pre_check_verdict ?? null;
   const ruleVerdict = state.rule_verdict ?? null;          // RuleVerdict object
   const overallRuleVerdict = ruleVerdict?.decision ?? null; // Decision enum value
-  const auditVerdict = state.audit_verdict ?? null;
+  const auditVerdict = state.audit_verdict?.a4_decision ?? null;
   const explanation = state.suitability_report ?? null;    // A5 free text string
 
   const finalVerdict = state.halt
@@ -226,6 +400,9 @@ export default function SummaryStrip({ state }) {
 
         {/* Rule checklist — from rule_verdict.rules */}
         {ruleVerdict?.rules && <RuleChecklist rules={ruleVerdict.rules} />}
+
+        {/* Verification layer — AV results */}
+        <VerificationPanel state={state} />
 
         {/* A5 explanation — suitability_report is an object */}
         {explanation && (

@@ -1,11 +1,13 @@
 import { useState } from 'react'
 const AGENT_CONFIG = {
-  A0: { label: 'A0 — Orchestrator',      color: 'bg-gray-100 border-gray-200',   dot: 'bg-gray-400',   text: 'text-gray-500'  },
-  A1: { label: 'A1 — Client Profiler',   color: 'bg-blue-50 border-blue-100',    dot: 'bg-blue-400',   text: 'text-blue-600'  },
-  A2: { label: 'A2 — Product Classifier',color: 'bg-purple-50 border-purple-100',dot: 'bg-purple-400', text: 'text-purple-600'},
-  A3: { label: 'A3 — Rule Engine Agent', color: 'bg-orange-50 border-orange-100',dot: 'bg-orange-400', text: 'text-orange-600'},
-  A4: { label: 'A4 — Conflict Detector', color: 'bg-red-50 border-red-100',      dot: 'bg-red-400',    text: 'text-red-600'   },
-  A5: { label: 'A5 — Disclosure Agent',  color: 'bg-green-50 border-green-100',  dot: 'bg-green-400',  text: 'text-green-600' },
+  A0: { label: 'A0 — Orchestrator',      color: 'bg-gray-100 border-gray-200',     dot: 'bg-gray-400',    text: 'text-gray-500'   },
+  A1: { label: 'A1 — Client Profiler',   color: 'bg-blue-50 border-blue-100',      dot: 'bg-blue-400',    text: 'text-blue-600'   },
+  A2: { label: 'A2 — Product Classifier',color: 'bg-purple-50 border-purple-100',  dot: 'bg-purple-400',  text: 'text-purple-600' },
+  AV: { label: 'AV — Verifier',          color: 'bg-indigo-50 border-indigo-100',  dot: 'bg-indigo-400',  text: 'text-indigo-600' },
+  AC: { label: 'AC — Corrector',         color: 'bg-teal-50 border-teal-100',      dot: 'bg-teal-400',    text: 'text-teal-600'   },
+  A3: { label: 'A3 — Rule Engine Agent', color: 'bg-orange-50 border-orange-100',  dot: 'bg-orange-400',  text: 'text-orange-600' },
+  A4: { label: 'A4 — Conflict Detector', color: 'bg-red-50 border-red-100',        dot: 'bg-red-400',     text: 'text-red-600'    },
+  A5: { label: 'A5 — Disclosure Agent',  color: 'bg-green-50 border-green-100',    dot: 'bg-green-400',   text: 'text-green-600'  },
 }
 
 export default function MessageBubble({ agentId, content, structuredOutput, stepNumber }) {
