@@ -1,13 +1,17 @@
 # tests/test_corrector_wiring.py
 """
-Tests for the corrector wiring inside orchestrator/orchestrator.py.
+Tests for the feedback-loop wiring inside orchestrator/orchestrator.py.
+
+After the corrector→feedback-loop refactor, corrections are driven by
+run_client_profiler_with_feedback / run_product_classifier_with_feedback
+instead of the old run_corrector_on_a1 / run_corrector_on_a2.
 
 Covers:
-  1. When AV passes → corrector never runs, no correction keys in state
-  2. When AV fails  → corrector runs, a1_correction / a2_correction set
-  3. When correction succeeds → a1_final_verification set, client_profile replaced
-  4. When correction fails    → non-fatal, original profile kept, error recorded
-  5. When re-verification fails after correction → non-fatal, error recorded
+  1. When AV passes → feedback never runs, no correction keys in state
+  2. When AV fails  → feedback runs, a1_correction / a2_correction set
+  3. When feedback succeeds → a1_final_verification set, client_profile replaced
+  4. When feedback fails    → non-fatal, original profile kept, error recorded
+  5. When re-verification fails after feedback → non-fatal, error recorded
   6. a2_correction mirrors the same logic for A2
   7. fields_fixed list is populated correctly from verifier field_checks
 All LLM agents mocked — no API calls.
@@ -116,30 +120,22 @@ async def _run(
     a2_ver_raises=None, a2_corrector_raises=None, a2_reverify_raises=None,
     sample_rate=1.0,
 ):
-    a1_ver     = a1_ver     or _ver_pass()
-    a2_ver     = a2_ver     or _ver_pass()
+    a1_ver      = a1_ver      or _ver_pass()
+    a2_ver      = a2_ver      or _ver_pass()
     a1_reverify = a1_reverify or _ver_pass()
     a2_reverify = a2_reverify or _ver_pass()
 
-    def _make_ver_mock(result, raises):
-        if raises:
-            return AsyncMock(side_effect=raises)
-        return AsyncMock(return_value=result)
-
-    def _make_corr_mock(result, raises):
+    def _make_fb_mock(result, raises):
         if raises:
             return AsyncMock(side_effect=raises)
         return AsyncMock(return_value=result)
 
     # run_verifier_on_a1 is called up to twice (first verify + re-verify)
-    # We need separate side_effect values for each call
     if a1_ver_raises:
         a1_ver_mock = AsyncMock(side_effect=a1_ver_raises)
     elif a1_reverify_raises:
-        # First call returns a1_ver, second call (re-verify) raises
         a1_ver_mock = AsyncMock(side_effect=[a1_ver, a1_reverify_raises])
     else:
-        # First call returns a1_ver, second call (re-verify) returns a1_reverify
         a1_ver_mock = AsyncMock(side_effect=[a1_ver, a1_reverify])
 
     if a2_ver_raises:
@@ -149,8 +145,9 @@ async def _run(
     else:
         a2_ver_mock = AsyncMock(side_effect=[a2_ver, a2_reverify])
 
-    a1_corr_mock = _make_corr_mock(a1_corrector or _corrected_client(), a1_corrector_raises)
-    a2_corr_mock = _make_corr_mock(a2_corrector or _corrected_product(), a2_corrector_raises)
+    # Feedback mocks replace the old corrector mocks
+    a1_fb_mock = _make_fb_mock(a1_corrector or _corrected_client(), a1_corrector_raises)
+    a2_fb_mock = _make_fb_mock(a2_corrector or _corrected_product(), a2_corrector_raises)
 
     with (
         patch("agents.client_profiler.run_client_profiler",     new=AsyncMock(return_value=_good_client())),
@@ -161,10 +158,10 @@ async def _run(
         patch("agents.disclosure_agent.run_disclosure_agent",    new=AsyncMock(return_value=_good_suitability())),
         patch("orchestrator.pre_check_tool.run_pre_check",       new=MagicMock(return_value={"decision": "SUITABLE", "triggered_rules": []})),
         patch("orchestrator.orchestrator._VERIFIER_SAMPLE_RATE", sample_rate),
-        patch("agents.verifier_agent.run_verifier_on_a1", new=a1_ver_mock),
-        patch("agents.verifier_agent.run_verifier_on_a2", new=a2_ver_mock),
-        patch("agents.verifier_agent.run_corrector_on_a1", new=a1_corr_mock),
-        patch("agents.verifier_agent.run_corrector_on_a2", new=a2_corr_mock),
+        patch("agents.verifier_agent.run_verifier_on_a1",                          new=a1_ver_mock),
+        patch("agents.verifier_agent.run_verifier_on_a2",                          new=a2_ver_mock),
+        patch("agents.client_profiler.run_client_profiler_with_feedback",           new=a1_fb_mock),
+        patch("agents.product_classifier.run_product_classifier_with_feedback",    new=a2_fb_mock),
     ):
         from orchestrator.orchestrator import run_pipeline
         return await run_pipeline(
@@ -174,7 +171,7 @@ async def _run(
         )
 
 
-# ── Tests: corrector not triggered when AV passes ─────────────────────────────
+# ── Tests: feedback not triggered when AV passes ─────────────────────────────
 
 @pytest.mark.asyncio
 async def test_no_correction_when_a1_passes():
@@ -192,7 +189,7 @@ async def test_no_final_verification_when_a1_passes():
     assert "a1_final_verification" not in state
 
 
-# ── Tests: corrector triggered when AV fails ──────────────────────────────────
+# ── Tests: feedback triggered when AV fails ──────────────────────────────────
 
 @pytest.mark.asyncio
 async def test_a1_correction_set_when_av_fails():
@@ -241,11 +238,11 @@ async def test_fields_fixed_populated_from_failed_field_checks():
     assert "financial_knowledge" not in state["a1_correction"]["fields_fixed"]
 
 
-# ── Tests: corrector failure is non-fatal ────────────────────────────────────
+# ── Tests: feedback failure is non-fatal ─────────────────────────────────────
 
 @pytest.mark.asyncio
-async def test_corrector_failure_is_non_fatal():
-    """Corrector crash must not halt the pipeline."""
+async def test_feedback_failure_is_non_fatal():
+    """Feedback crash must not halt the pipeline."""
     state, _ = await _run(
         a1_ver=_ver_fail(),
         a1_corrector_raises=RuntimeError("LLM timeout"),
@@ -254,7 +251,7 @@ async def test_corrector_failure_is_non_fatal():
     assert state.get("halt") is not True
 
 @pytest.mark.asyncio
-async def test_corrector_failure_records_error():
+async def test_feedback_failure_records_error():
     state, _ = await _run(
         a1_ver=_ver_fail(),
         a1_corrector_raises=RuntimeError("LLM timeout"),
@@ -263,8 +260,8 @@ async def test_corrector_failure_records_error():
     assert "LLM timeout" in state["a1_correction"]["error"]
 
 @pytest.mark.asyncio
-async def test_corrector_failure_keeps_original_profile():
-    """When corrector fails, original profile must remain in state."""
+async def test_feedback_failure_keeps_original_profile():
+    """When feedback fails, original profile must remain in state."""
     state, _ = await _run(
         a1_ver=_ver_fail(),
         a1_corrector_raises=RuntimeError("timeout"),
@@ -272,7 +269,7 @@ async def test_corrector_failure_keeps_original_profile():
     assert state["client_profile"]["risk_tolerance_score"] == 5  # original value
 
 @pytest.mark.asyncio
-async def test_corrector_failure_corrected_field_is_none():
+async def test_feedback_failure_corrected_field_is_none():
     state, _ = await _run(
         a1_ver=_ver_fail(),
         a1_corrector_raises=ValueError("bad output"),
@@ -284,7 +281,7 @@ async def test_corrector_failure_corrected_field_is_none():
 
 @pytest.mark.asyncio
 async def test_reverify_failure_is_non_fatal():
-    """Re-verify crash after correction must not halt pipeline."""
+    """Re-verify crash after feedback must not halt pipeline."""
     state, _ = await _run(
         a1_ver=_ver_fail(),
         a1_reverify_raises=RuntimeError("re-verify timeout"),

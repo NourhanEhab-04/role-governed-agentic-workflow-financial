@@ -1,13 +1,13 @@
 // src/components/SummaryStrip.jsx
 
 const RULE_LABELS = {
-  R1_knowledge: "Knowledge & Experience",
-  R2_risk: "Risk Tolerance",
-  R3_horizon: "Investment Horizon",
-  R4_afford: "Affordability",
-  R5_vuln: "Vulnerability",
-  R6_leverage: "Leverage",
-  R7_complexity: "Product Complexity",
+  R1: "Knowledge & Experience",
+  R2: "Risk Tolerance",
+  R3: "Investment Horizon",
+  R4: "Affordability",
+  R5: "Vulnerability",
+  R6: "Leverage",
+  R7: "Product Complexity",
 };
 
 // Normalize any verdict string to a display-safe lowercase key
@@ -177,7 +177,7 @@ function VerificationRow({ label, consistencyIssues, verification, correction, f
   const hasVerification  = verification !== undefined && verification !== null
   const hasCorrection    = correction   !== undefined && correction   !== null
   const hasFinalVerify   = finalVerification !== undefined && finalVerification !== null
-  const correctionOk     = hasCorrection && correction.corrected && !correction.error
+  const correctionOk     = hasCorrection && correction.corrected != null && !correction.error
 
   // Determine overall status — final verification wins if present
   const effectiveVerification = hasFinalVerify ? finalVerification : verification
@@ -266,8 +266,10 @@ function VerificationPanel({ state }) {
   const hasAny =
     state.a1_consistency_issues?.length > 0 ||
     state.a1_verification != null ||
+    state.a1_correction != null ||
     state.a2_consistency_issues?.length > 0 ||
     state.a2_verification != null ||
+    state.a2_correction != null ||
     state.cross_consistency_issues?.length > 0
 
   return (
@@ -398,8 +400,11 @@ export default function SummaryStrip({ state }) {
         {/* Score bar — from rule_verdict.score */}
         {ruleVerdict?.score != null && <ScoreBar score={ruleVerdict.score} />}
 
-        {/* Rule checklist — from rule_verdict.rules */}
-        {ruleVerdict?.rules && <RuleChecklist rules={ruleVerdict.rules} />}
+        {/* Rule checklist — prefer pre_check_verdict.rules (full objects with penalty+detail);
+            fall back to rule_verdict.rules (A3 LLM strings) when deterministic engine didn't run */}
+        {(state.pre_check_verdict?.rules ?? ruleVerdict?.rules) && (
+          <RuleChecklist rules={state.pre_check_verdict?.rules ?? ruleVerdict?.rules} />
+        )}
 
         {/* Verification layer — AV results */}
         <VerificationPanel state={state} />

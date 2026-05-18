@@ -37,14 +37,14 @@ const SYSTEM_CONFIG = {
     color: 'text-orange-500',
     bg: 'bg-orange-50 border-orange-100',
   },
-  // Corrector successfully applied fixes
-  correction_applied: {
-    icon: '✎',
-    color: 'text-teal-600',
-    bg: 'bg-teal-50 border-teal-100',
+  // Agent successfully retried with verifier feedback
+  retry_applied: {
+    icon: '↺',
+    color: 'text-amber-600',
+    bg: 'bg-amber-50 border-amber-100',
   },
-  // Corrector errored or produced no output
-  correction_error: {
+  // Agent retry errored or produced no output
+  retry_error: {
     icon: '✖',
     color: 'text-red-500',
     bg: 'bg-red-50 border-red-100',

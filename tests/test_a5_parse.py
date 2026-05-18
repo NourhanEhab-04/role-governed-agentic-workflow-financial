@@ -68,7 +68,7 @@ def test_wrong_decision_value():
 # --- rule_findings validation ---
 
 def test_fewer_than_7_rule_findings():
-    with pytest.raises(ValueError, match="exactly 7"):
+    with pytest.raises(ValueError, match="rule_findings"):
         parse_suitability_report(make_report(rule_findings=make_findings(["R1", "R2"])))
 
 def test_duplicate_rule_ids():
@@ -78,7 +78,7 @@ def test_duplicate_rule_ids():
 
 def test_invalid_rule_id():
     findings = make_findings(["R1", "R2", "R3", "R4", "R5", "R6", "R8"])
-    with pytest.raises(ValueError, match="invalid rule_id"):
+    with pytest.raises(ValueError, match="rule_findings"):
         parse_suitability_report(make_report(rule_findings=findings))
 
 def test_finding_missing_explanation_key():
@@ -88,5 +88,5 @@ def test_finding_missing_explanation_key():
         parse_suitability_report(make_report(rule_findings=findings))
 
 def test_invalid_json():
-    with pytest.raises(ValueError, match="not valid JSON"):
+    with pytest.raises(ValueError, match="No JSON object found"):
         parse_suitability_report("not json")

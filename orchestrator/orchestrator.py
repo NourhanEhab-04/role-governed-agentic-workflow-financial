@@ -18,9 +18,9 @@ All other behaviour (run_stage, retry logic, rate-limit guard,
 portfolio_concentration_pct injection, return tuple) is unchanged.
 """
 
+import asyncio
 import datetime
 import json
-import random
 import openai
 
 from orchestrator.validators import (
@@ -36,17 +36,21 @@ from orchestrator.consistency_checks import (
     check_a1_consistency,
     check_a2_consistency,
     check_a1_a2_cross,
+    enforce_a1_consistency,
+    enforce_a2_consistency,
 )
+from orchestrator.feedback_loops import run_a1_feedback_loop, run_a2_feedback_loop
 
-# The verifier always runs after A1 and A2 (rate = 1.0).
-# Set to 0.0 to disable (verifier only runs when consistency issues are found).
-_VERIFIER_SAMPLE_RATE = 1.0
+# Verifier always runs on every A1/A2 output using a stronger independent model.
+# The feedback loop exits early as soon as the verifier passes, so the common
+# case (correct output on the first try) costs only one extra API call.
 
 
 async def run_pipeline(
     client_input: str,
     product_input: str,
     model_client,
+    on_event=None,
 ) -> tuple:
     """
     Run the full MiFID II suitability pipeline.
@@ -58,6 +62,9 @@ async def run_pipeline(
       - validate_after_a3 cross-checks it against rule_verdict
       - audit_verdict is written inside the A4 stage
       - validate_after_a4 enforces that disagreement implies escalation
+
+    on_event: optional async callable(event_type: str, state_snapshot: dict)
+              called after each major pipeline stage with a shallow copy of state.
     """
     # Agent imports deferred inside function to prevent circular imports
     from agents.client_profiler import run_client_profiler
@@ -65,11 +72,9 @@ async def run_pipeline(
     from agents.rule_engine_agent import run_rule_engine_agent
     from agents.conflict_detector import run_conflict_detector, check_rule_engine_agreement
     from agents.disclosure_agent import run_disclosure_agent
-    from agents.verifier_agent import (
-        run_verifier_on_a1, run_verifier_on_a2,
-        run_corrector_on_a1, run_corrector_on_a2,
-    )
-
+    from config.llm_config import get_verifier_client
+    # Separate stronger model for the verifier — created once per pipeline run.
+    verifier_client = get_verifier_client()
     state: dict = {}
     retries: dict = {}
     outputs: dict = {}
@@ -78,6 +83,10 @@ async def run_pipeline(
     def halt(reason: str):
         state["halt"] = True
         state["halt_reason"] = reason
+
+    async def emit(event_type: str):
+        if on_event:
+            await on_event(event_type, dict(state))
 
     async def run_stage(stage_id, coro, validator, state_key):
         """
@@ -112,75 +121,43 @@ async def run_pipeline(
         )
         return False
 
-    # ── A1 ───────────────────────────────────────────────────────────────────
-    ok = await run_stage(
-        "A1",
-        lambda: run_client_profiler(client_input, model_client=model_client),
-        validate_after_a1,
-        "client_profile",
-    )
-    if not ok:
-        return state, build_audit_log(state, retries, outputs, validations)
+    # ── A1 + A2 run concurrently ─────────────────────────────────────────────
+    # Both agents and their verification loops are fully independent, so we
+    # run them in parallel to halve wall-clock time for the profiling phase.
 
-    # ── A1 validation layer ──────────────────────────────────────────────────
-    # Layer 1: deterministic consistency check (always runs, zero cost)
-    a1_issues = check_a1_consistency(state["client_profile"])
-    state["a1_consistency_issues"] = a1_issues
+    async def _run_a1() -> bool:
+        ok = await run_stage(
+            "A1",
+            lambda: run_client_profiler(client_input, model_client=model_client),
+            validate_after_a1,
+            "client_profile",
+        )
+        if not ok:
+            return False
 
-    # Layer 2: LLM verifier (runs based on sample rate or consistency issues)
-    if a1_issues or random.random() < _VERIFIER_SAMPLE_RATE:
+        a1_issues = check_a1_consistency(state["client_profile"])
+        state["a1_consistency_issues"] = a1_issues
+        await emit("a1_profiled")
+
+        # Verification always runs — the loop exits immediately when the verifier
+        # passes, so a correct first-pass costs only one extra API call.
+        state["a1_initial_profile"] = dict(state["client_profile"])
         try:
-            a1_verification = await run_verifier_on_a1(
+            final_profile, loop_state = await run_a1_feedback_loop(
                 client_input,
                 state["client_profile"],
                 model_client=model_client,
+                verifier_client=verifier_client,
+                consistency_issues=a1_issues or None,
             )
-            state["a1_verification"] = a1_verification
-
-            # Layer 3: Corrector — runs once if verifier failed
-            if a1_verification.get("passed") is False:
-                try:
-                    corrected_profile = await run_corrector_on_a1(
-                        client_input,
-                        state["client_profile"],
-                        a1_verification,
-                        model_client=model_client,
-                    )
-                    state["a1_correction"] = {
-                        "original": state["client_profile"],
-                        "corrected": corrected_profile,
-                        "fields_fixed": [
-                            f for f, c in a1_verification.get("field_checks", {}).items()
-                            if c.get("supported") is False
-                        ],
-                    }
-                    # Replace profile with corrected version
-                    state["client_profile"] = corrected_profile
-                    # Re-verify the corrected output
-                    try:
-                        state["a1_final_verification"] = await run_verifier_on_a1(
-                            client_input,
-                            corrected_profile,
-                            model_client=model_client,
-                        )
-                    except Exception as exc:
-                        state["a1_final_verification"] = {
-                            "passed": None,
-                            "confidence": None,
-                            "issues": [f"Re-verify error: {exc}"],
-                            "field_checks": {},
-                        }
-                except Exception as exc:
-                    # Corrector failure is non-fatal — keep original profile
-                    state["a1_correction"] = {
-                        "original": state["client_profile"],
-                        "corrected": None,
-                        "fields_fixed": [],
-                        "error": str(exc),
-                    }
-
+            state["client_profile"] = final_profile
+            if "verification" in loop_state:
+                state["a1_verification"] = loop_state["verification"]
+            if "correction" in loop_state:
+                state["a1_correction"] = loop_state["correction"]
+            if "final_verification" in loop_state:
+                state["a1_final_verification"] = loop_state["final_verification"]
         except Exception as exc:
-            # Verifier failure is non-fatal: record it and continue
             state["a1_verification"] = {
                 "passed": None,
                 "confidence": None,
@@ -188,84 +165,56 @@ async def run_pipeline(
                 "field_checks": {},
             }
 
-    # Inject portfolio_concentration_pct — not in REQUIRED_CLIENT_KEYS
-    # so A1 strips it, but the conflict detector needs it downstream.
-    try:
-        raw_client = json.loads(client_input)
-        if "portfolio_concentration_pct" in raw_client:
-            state["client_profile"]["portfolio_concentration_pct"] = (
-                raw_client["portfolio_concentration_pct"]
-            )
-    except (json.JSONDecodeError, KeyError):
-        pass
+        # Deterministic overrides — applied after all LLM attempts.
+        # These rules are unambiguous (age > 70 → HIGH, class 7 → leverage, etc.)
+        # and must hold regardless of what the LLM produced.
+        state["client_profile"] = enforce_a1_consistency(state["client_profile"])
 
-    # ── A2 ───────────────────────────────────────────────────────────────────
-    ok = await run_stage(
-        "A2",
-        lambda: run_product_classifier(product_input, model_client=model_client),
-        validate_after_a2,
-        "product_profile",
-    )
-    if not ok:
-        return state, build_audit_log(state, retries, outputs, validations)
-
-    # ── A2 validation layer ──────────────────────────────────────────────────
-    # Layer 1: deterministic consistency check
-    a2_issues = check_a2_consistency(state["product_profile"])
-    state["a2_consistency_issues"] = a2_issues
-
-    # Layer 2: LLM verifier
-    if a2_issues or random.random() < _VERIFIER_SAMPLE_RATE:
+        # Inject portfolio_concentration_pct — not in REQUIRED_CLIENT_KEYS
+        # so A1 strips it, but the conflict detector needs it downstream.
         try:
-            a2_verification = await run_verifier_on_a2(
+            raw_client = json.loads(client_input)
+            if "portfolio_concentration_pct" in raw_client:
+                state["client_profile"]["portfolio_concentration_pct"] = (
+                    raw_client["portfolio_concentration_pct"]
+                )
+        except (json.JSONDecodeError, KeyError):
+            pass
+
+        await emit("a1_validated")
+        return True
+
+    async def _run_a2() -> bool:
+        ok = await run_stage(
+            "A2",
+            lambda: run_product_classifier(product_input, model_client=model_client),
+            validate_after_a2,
+            "product_profile",
+        )
+        if not ok:
+            return False
+
+        a2_issues = check_a2_consistency(state["product_profile"])
+        state["a2_consistency_issues"] = a2_issues
+        await emit("a2_profiled")
+
+        # Verification always runs — same rationale as A1 above.
+        state["a2_initial_profile"] = dict(state["product_profile"])
+        try:
+            final_profile, loop_state = await run_a2_feedback_loop(
                 product_input,
                 state["product_profile"],
                 model_client=model_client,
+                verifier_client=verifier_client,
+                consistency_issues=a2_issues or None,
             )
-            state["a2_verification"] = a2_verification
-
-            # Layer 3: Corrector — runs once if verifier failed
-            if a2_verification.get("passed") is False:
-                try:
-                    corrected_product = await run_corrector_on_a2(
-                        product_input,
-                        state["product_profile"],
-                        a2_verification,
-                        model_client=model_client,
-                    )
-                    state["a2_correction"] = {
-                        "original": state["product_profile"],
-                        "corrected": corrected_product,
-                        "fields_fixed": [
-                            f for f, c in a2_verification.get("field_checks", {}).items()
-                            if c.get("supported") is False
-                        ],
-                    }
-                    # Replace profile with corrected version
-                    state["product_profile"] = corrected_product
-                    # Re-verify the corrected output
-                    try:
-                        state["a2_final_verification"] = await run_verifier_on_a2(
-                            product_input,
-                            corrected_product,
-                            model_client=model_client,
-                        )
-                    except Exception as exc:
-                        state["a2_final_verification"] = {
-                            "passed": None,
-                            "confidence": None,
-                            "issues": [f"Re-verify error: {exc}"],
-                            "field_checks": {},
-                        }
-                except Exception as exc:
-                    # Corrector failure is non-fatal — keep original profile
-                    state["a2_correction"] = {
-                        "original": state["product_profile"],
-                        "corrected": None,
-                        "fields_fixed": [],
-                        "error": str(exc),
-                    }
-
+            state["product_profile"] = final_profile
+            if "verification" in loop_state:
+                state["a2_verification"] = loop_state["verification"]
+            if "correction" in loop_state:
+                state["a2_correction"] = loop_state["correction"]
+            if "final_verification" in loop_state:
+                state["a2_final_verification"] = loop_state["final_verification"]
         except Exception as exc:
             state["a2_verification"] = {
                 "passed": None,
@@ -274,9 +223,21 @@ async def run_pipeline(
                 "field_checks": {},
             }
 
+        # Deterministic overrides for ESMA rules that must always hold.
+        state["product_profile"] = enforce_a2_consistency(state["product_profile"])
+
+        await emit("a2_validated")
+        return True
+
+    a1_ok, a2_ok = await asyncio.gather(_run_a1(), _run_a2())
+    if not a1_ok or not a2_ok:
+        await emit("halt")
+        return state, build_audit_log(state, retries, outputs, validations)
+
     # ── A1 × A2 cross-consistency check ─────────────────────────────────────
     cross_issues = check_a1_a2_cross(state["client_profile"], state["product_profile"])
     state["cross_consistency_issues"] = cross_issues
+    await emit("cross_checked")  # cross_consistency_issues now in state
 
     # ── Pre-check (A0 role) ──────────────────────────────────────────────────
     # First of three independent rule engine contacts.
@@ -287,8 +248,10 @@ async def run_pipeline(
             state["client_profile"],
             state["product_profile"],
         )
+        await emit("precheck_done")  # pre_check_verdict now in state
     except Exception as exc:
         halt(f"pre_check failed: {exc}")
+        await emit("halt")
         return state, build_audit_log(state, retries, outputs, validations)
 
     # ── A3 ───────────────────────────────────────────────────────────────────
@@ -304,7 +267,9 @@ async def run_pipeline(
         "rule_verdict",
     )
     if not ok:
+        await emit("halt")
         return state, build_audit_log(state, retries, outputs, validations)
+    await emit("a3_done")  # rule_verdict now in state
 
     # ── A4 ───────────────────────────────────────────────────────────────────
     # Before calling the LLM agent, run the third independent rule engine
@@ -316,8 +281,10 @@ async def run_pipeline(
             state["product_profile"],
             state["rule_verdict"],
         )
+        await emit("audit_done")  # audit_verdict now in state
     except Exception as exc:
         halt(f"audit pre-check failed: {exc}")
+        await emit("halt")
         return state, build_audit_log(state, retries, outputs, validations)
 
     ok = await run_stage(
@@ -332,12 +299,14 @@ async def run_pipeline(
         "conflict_report",
     )
     if not ok:
+        await emit("halt")
         return state, build_audit_log(state, retries, outputs, validations)
 
     # Escalation flag — set before A5 so A5 writes the correct report type.
     if state.get("conflict_report", {}).get("escalate") is True:
         state["escalated"] = True
         state["halt_reason"] = "Escalation flagged by conflict detector."
+    await emit("a4_done")  # conflict_report + escalated now in state
 
     # ── A5 — always runs, even on escalation ─────────────────────────────────
     await run_stage(
@@ -352,5 +321,6 @@ async def run_pipeline(
         validate_after_a5,
         "suitability_report",
     )
+    await emit("a5_done")  # suitability_report now in state
 
     return state, build_audit_log(state, retries, outputs, validations)

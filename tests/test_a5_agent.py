@@ -145,7 +145,7 @@ async def test_malformed_json_raises_value_error():
         new_callable=AsyncMock,
         return_value=bad_msg,
     ):
-        with pytest.raises(ValueError, match="not valid JSON"):
+        with pytest.raises(ValueError, match="No JSON object found"):
             await run_disclosure_agent(
                 CLIENT, PRODUCT, VERDICT_SUITABLE, CONFLICT_CLEAN, MagicMock()
             )

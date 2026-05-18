@@ -11,10 +11,12 @@ It returns a structured verification_result dict (see schemas/verification_resul
 Two entry points:
   run_verifier_on_a1(original_input, client_profile, model_client) -> dict
   run_verifier_on_a2(original_input, product_profile, model_client) -> dict
+
+When verification fails, the orchestrator feeds the verifier's issues back to
+the original A1/A2 agent so it can retry — there is no separate corrector.
 """
 
 import json
-import re
 
 from autogen_agentchat.agents import AssistantAgent
 from autogen_agentchat.messages import TextMessage
@@ -25,122 +27,212 @@ from schemas.verification_result import CONFIDENCE_THRESHOLD
 # ── System prompts ────────────────────────────────────────────────────────────
 
 VERIFIER_SYSTEM_PROMPT_A1 = """
-You are AV, the Verifier Agent for A1 (Client Profiler) in a MiFID II pipeline.
+You are AV, a STRICT VERIFIER for the Client Profiler (A1).
 
 You will receive:
-  ORIGINAL_INPUT — the raw text description the client profiler received.
-  PARSED_OUTPUT  — the JSON the client profiler returned.
+- ORIGINAL_INPUT (raw client text)
+- PARSED_OUTPUT (JSON produced by A1)
 
-Your job: re-apply the EXACT SAME rules the client profiler uses (listed below)
-to check whether each field in PARSED_OUTPUT is the correct value for the given
-ORIGINAL_INPUT. If the correct value by these rules differs from what was output,
-mark that field unsupported.
+Your ONLY job:
+→ Check whether PARSED_OUTPUT correctly follows the Client Profiler rules below.
 
-════════════════════════════════════════
-CLIENT PROFILER FIELD RULES (same rules A1 uses — apply them here)
-════════════════════════════════════════
-
-── financial_knowledge ──────────────────────────────────────────────────────
-Map ONLY to one of: none | basic | moderate | advanced
-
-  none     → client has NO investing experience at all, or explicitly states
-             they have never invested, don't understand financial products,
-             or are a complete beginner. Phrases like "no experience",
-             "never invested", "don't know much", "first time" → none.
-
-  basic    → client has experience ONLY with bank deposits, savings accounts,
-             fixed-term deposits, or government savings bonds. No stocks, no
-             funds, no anything beyond plain bank products.
-
-  moderate → client has bought or sold individual stocks, mutual funds, ETFs,
-             REITs, or similar listed instruments. Acknowledges understanding
-             of market risk.
-
-  advanced → client has experience with derivatives (options, futures, CFDs,
-             structured products, leveraged instruments, or alternatives).
-
-  DEFAULT RULE: When in doubt, assign the LOWER category. Do NOT upgrade a
-  client's knowledge level based on vocabulary alone — only on described
-  instruments or explicit self-declaration.
-
-── risk_tolerance_score ─────────────────────────────────────────────────────
-Integer 1-10. Verbal mapping:
-  1=no risk/capital preservation, 2=conservative, 3=cautious/very low,
-  4=moderately cautious, 5=balanced/moderate, 6=moderately growth-oriented,
-  7=growth/willing to accept significant losses, 8=high risk/aggressive-leaning,
-  9=aggressive, 10=maximum risk/speculative.
-  If client gives a numeric score directly, use it verbatim (clamp 1–10).
-  Mixed descriptions → average mapped values, round down.
-
-── investment_horizon ───────────────────────────────────────────────────────
-Output in YEARS as an integer. Conversion rules:
-  "X months" → floor(X/12). "X weeks" → floor(X/52). "X years" → X.
-  "short-term" → 1. "medium-term" → 5. "long-term" → 10.
-  Range given → use LOWER bound.
-
-── liquid_assets ────────────────────────────────────────────────────────────
-Total immediately accessible cash/savings in EUR (float). Exclude illiquid
-assets (real estate, pension, locked deposits). Sum multiple accounts.
-
-── income ───────────────────────────────────────────────────────────────────
-Gross annual income in EUR (float).
-  Monthly → multiply by 12. Net/take-home → gross up by ~1.3.
-  Zero income (unemployed, retired with no pension stated) → 0.0.
-
-── investment_amount ────────────────────────────────────────────────────────
-Amount client wants to invest NOW, in EUR (positive float).
-If expressed as % of savings, compute absolute amount.
-
-── can_afford_total_loss ────────────────────────────────────────────────────
-true  → ONLY if client EXPLICITLY states they can lose the entire amount,
-        OR clearly implies it ("purely speculative money", "won't miss it").
-false → ANY other case, including silence, vague language, or uncertainty.
-        Default is false.
-
-── financial_vulnerability ──────────────────────────────────────────────────
-HIGH   → ANY of: over age 70; heavily in debt relative to income; unemployed
-         (income=0 and not retired with pension); money needed for essential
-         expenses (rent, medical, education, living costs); serious health
-         issues affecting finances.
-MEDIUM → ANY of: within 5 years of stated retirement age; irregular income
-         (freelance, commission, seasonal); significant upcoming expenses but
-         investment_amount does not deplete liquid_assets entirely.
-LOW    → None of the above.
-Apply top-down, stop at FIRST match.
+You are NOT allowed to fix, improve, reinterpret, or regenerate values.
 
 ════════════════════════════════════════
-REQUIRED OUTPUT FORMAT
+🚫 CRITICAL VERIFICATION MODE (READ FIRST)
 ════════════════════════════════════════
-Output ONLY a single JSON object — no preamble, no markdown fences.
+
+You are NOT a profiler. You are NOT generating values.
+
+DO:
+✔ Check if each field is supported by the input + rules  
+✔ Compare values EXACTLY  
+✔ Use explicit evidence  
+
+DO NOT:
+✘ Recompute everything from scratch  
+✘ Override explicit numbers  
+✘ Infer missing data  
+✘ “Improve” outputs  
+
+If a value is acceptable under the rules → supported = true  
+If it contradicts rules or input → supported = false  
+
+════════════════════════════════════════
+🔥 PRIORITY RULE (VERY IMPORTANT)
+════════════════════════════════════════
+
+EXPLICIT INPUT ALWAYS WINS.
+
+If ORIGINAL_INPUT explicitly states:
+- a number (e.g. 7, 5 years, €10,000)
+→ that exact value MUST appear in PARSED_OUTPUT.
+
+If it does not match exactly → supported = false
+
+DO NOT reinterpret explicit numbers. EVER.
+
+════════════════════════════════════════
+📏 CLIENT PROFILER RULES (REFERENCE ONLY — DO NOT RE-GENERATE)
+════════════════════════════════════════
+
+Use these ONLY to verify correctness — not to recompute freely.
+
+── financial_knowledge ─────────────────
+none → no experience  
+basic → only deposits/bonds  
+moderate → stocks/ETFs/funds  
+advanced → derivatives  
+
+DEFAULT → choose LOWER if unclear
+
+── risk_tolerance_score ────────────────
+1–10 mapping
+
+IMPORTANT:
+- If numeric is explicitly given → MUST match exactly
+- If mixed description → average + round down
+
+── investment_horizon ─────────────────
+Convert to YEARS:
+- months → floor(/12)
+- weeks → floor(/52)
+- short-term → 1
+- medium → 5
+- long → 10
+- range → LOWER bound
+
+VERIFY conversion only — do not reinterpret intent
+
+── liquid_assets ──────────────────────
+Only liquid cash/savings  
+Sum if multiple  
+
+── income ─────────────────────────────
+Annual EUR  
+Monthly → ×12  
+Net → ×1.3  
+
+── investment_amount ──────────────────
+Amount invested NOW  
+Must be positive  
+
+── can_afford_total_loss ──────────────
+true ONLY if client explicitly states they can lose the ENTIRE amount
+("write it off", "I won't miss it", "purely speculative money").
+
+false → default for ALL other cases:
+  • Partial-loss tolerance ("I can handle losing some") → false
+  • Explicit statement that total loss WOULD harm/affect them → false
+  • Silence → false
+
+CRITICAL: If the client says "losing everything would seriously affect me
+financially" (or similar) and A1 output is true → supported = false.
+Partial-loss tolerance does NOT imply total-loss affordability.
+
+── age ────────────────────────────────
+Integer if stated in input, null otherwise. Never inferred.
+
+── financial_vulnerability ────────────
+HIGH → debt, unemployed, essential money, age field > 70, serious health issue
+MEDIUM → irregular income, near retirement (<5 yrs), explicit upcoming
+         large expense (home purchase, tuition)
+LOW → none of the above
+
+Top-down — stop at first match.
+
+CRITICAL AGE RULE: if the age field is present and > 70,
+financial_vulnerability MUST be HIGH. Any other value → supported = false.
+
+CRITICAL: Do NOT accept MEDIUM unless one of its conditions appears
+explicitly in the input. The following are NOT MEDIUM triggers:
+  • Investing a large fraction of liquid_assets
+  • Client expressing concern about total loss
+  • Stable employment with no other signals
+If MEDIUM is output but none of its conditions appear → supported = false.
+
+════════════════════════════════════════
+⚠️ WHAT "FABRICATED" MEANS — READ BEFORE VERIFYING
+════════════════════════════════════════
+
+A value is FABRICATED only when it:
+  ✗ Directly CONTRADICTS something the client explicitly stated, OR
+  ✗ Violates the field rules with NO basis at all
+
+A value is NOT fabricated when:
+  ✓ It correctly applies the DEFAULT rule to a missing field
+  ✓ It correctly maps a verbal description to a number via the rule table
+  ✓ It is a reasonable inference from stated information
+
+KEY RULE:
+"The client did not mention field X" → does NOT mean X is fabricated.
+It means A1 applied the DEFAULT or rule mapping.
+Your job: check whether the default/mapping was applied CORRECTLY — not flag it as invented.
+
+EXAMPLES:
+  • Client says "moderate risk" → A1 outputs risk_tolerance_score: 5 → supported = true (rule mapping)
+  • Client doesn't mention can_afford_total_loss → A1 outputs false → supported = true (default = false)
+  • Client says "7 out of 10 risk" → A1 outputs risk_tolerance_score: 5 → supported = false (contradicts explicit number)
+
+════════════════════════════════════════
+🧠 HOW TO VERIFY (STRICT PROCESS)
+════════════════════════════════════════
+
+For EACH field:
+
+1. Look for EXPLICIT evidence in ORIGINAL_INPUT
+2. If explicit number/value → check EXACT match; mismatch = supported: false
+3. If verbal description → check whether the rule MAPPING was applied correctly
+4. If field not mentioned at all → check whether the DEFAULT was applied correctly
+5. Only mark supported: false if the value CONTRADICTS the input or VIOLATES the rule
+
+⚠ "Not mentioned" ≠ "fabricated". Do NOT flag correctly-defaulted fields.
+⚠ If you find yourself flagging everything → STOP → you are misapplying the rules.
+
+════════════════════════════════════════
+📊 OUTPUT FORMAT (STRICT)
+════════════════════════════════════════
+
+Return ONLY:
 
 {
-    "passed": <true | false>,
-    "confidence": <float 0.0–1.0>,
-    "issues": ["<issue description>", ...],
-    "field_checks": {
-        "<field_name>": {
-            "supported": <true | false>,
-            "reason": "<one sentence citing the rule and the evidence>"
-        },
-        ...
+  "passed": <true | false>,
+  "confidence": <float>,
+  "issues": ["..."],
+  "field_checks": {
+    "<field>": {
+      "supported": <true | false>,
+      "reason": "<cite the explicit input text OR the rule/default that was applied>"
     }
+  }
 }
 
-"supported": false when the field value does not match what the rules above
-produce for the given ORIGINAL_INPUT. "supported": true otherwise.
+════════════════════════════════════════
+📉 CONFIDENCE RULES
+════════════════════════════════════════
 
-"passed" rules:
-  - true  → ALL fields are supported AND confidence >= 0.70
-  - false → ANY field is unsupported OR confidence < 0.70
+1.0 → all fields clearly supported by input or correct rule application
+0.8 → minor ambiguity in one field, but value is within acceptable range
+0.6 → one field clearly contradicts the input or rule
+0.4 → multiple fields contradict the input or rules
+0.0 → output contradicts most explicit inputs (genuine fabrication)
 
-"confidence":
-  - 1.0  → every field clearly correct per rules and input
-  - 0.8  → all correct; minor ambiguity in one field
-  - 0.6  → one field is wrong or significantly ambiguous
-  - 0.4  → multiple fields are wrong
-  - 0.0  → output is fabricated or wildly inconsistent
+DO NOT use 0.0 just because the input is short or some fields are inferred.
 
-Output ONLY the JSON object. Nothing else.
+════════════════════════════════════════
+🚨 FINAL RULE
+════════════════════════════════════════
+
+You are a VALIDATOR, not a THINKER.
+
+Do NOT:
+- reinterpret tone
+- adjust numbers
+- "improve" anything
+- flag correct defaults as errors
+
+Just check:
+→ Does this value contradict the input or violate the rule? If yes → false. Otherwise → true.
 """
 
 
@@ -251,58 +343,66 @@ Output ONLY the JSON object. Nothing else.
 # ── Parser ────────────────────────────────────────────────────────────────────
 
 def parse_verification_result(raw_text: str) -> dict:
-    """
-    Extract and validate a verification_result dict from verifier agent output.
-    Raises ValueError on missing/malformed JSON or invalid structure.
-    """
-    from schemas.verification_result import (
-        REQUIRED_VERIFICATION_KEYS,
-        CONFIDENCE_THRESHOLD,
-        validate_verification_result,
-    )
-
-    # Extract JSON block (handles accidental markdown fences)
-    json_match = re.search(r'\{.*\}', raw_text, re.DOTALL)
-    if not json_match:
-        raise ValueError("No JSON object found in verifier output")
-
+    """Extract and return a validated verification_result dict from verifier output."""
+    from agents.parsing import extract_json_object
+    from schemas.output_models import VerificationResultModel
+    from pydantic import ValidationError
+    import re
+    # Sanitize control characters that break json.loads inside string values
+    sanitized = re.sub(r'[\x00-\x1f]', ' ', raw_text)
+    data = extract_json_object(sanitized)
     try:
-        result = json.loads(json_match.group())
-    except json.JSONDecodeError as e:
-        raise ValueError(f"Verifier output contained malformed JSON: {e}")
-
-    # Structural validation
-    ok, err = validate_verification_result(result)
-    if not ok:
-        raise ValueError(f"verification_result invalid: {err}")
-
-    # Enforce: if confidence is below threshold, passed must be False
-    if result["confidence"] < CONFIDENCE_THRESHOLD and result["passed"] is True:
-        result["passed"] = False
-        result["issues"].append(
-            f"passed forced to False: confidence {result['confidence']:.2f} "
-            f"is below threshold {CONFIDENCE_THRESHOLD}"
-        )
-
-    return result
+        return VerificationResultModel.model_validate(data).model_dump()
+    except ValidationError as exc:
+        raise ValueError(str(exc)) from exc
 
 
 # ── Agent runners ─────────────────────────────────────────────────────────────
 
-def _build_verifier_message(original_input: str, parsed_output: dict) -> str:
-    return (
+def _build_verifier_message(
+    original_input: str,
+    parsed_output: dict,
+    consistency_issues: list | None = None,
+    prior_verification: dict | None = None,
+) -> str:
+    msg = (
         f"ORIGINAL_INPUT:\n{original_input}\n\n"
         f"PARSED_OUTPUT:\n{json.dumps(parsed_output, indent=2)}"
     )
+    if consistency_issues:
+        issues_text = "\n".join(f"- {i}" for i in consistency_issues)
+        msg += (
+            f"\n\nDETERMINISTIC_PRE_CHECKS (already confirmed by rule engine — "
+            f"treat these as definite errors, focus your LLM reasoning on the remaining fields):\n"
+            f"{issues_text}"
+        )
+    if prior_verification:
+        prior_failed = {
+            field: check
+            for field, check in prior_verification.get("field_checks", {}).items()
+            if check.get("supported") is False
+        }
+        prior_issues = prior_verification.get("issues", [])
+        msg += (
+            f"\n\nPRIOR_VERIFICATION_CONTEXT (a previous verifier pass found these problems — "
+            f"check whether the corrected PARSED_OUTPUT has addressed them):\n"
+            f"Previously failed fields:\n{json.dumps(prior_failed, indent=2)}\n"
+            f"Prior issues:\n" + "\n".join(f"- {i}" for i in prior_issues)
+        )
+    return msg
 
 
 async def run_verifier_on_a1(
     original_input: str,
     client_profile: dict,
     model_client,
+    consistency_issues: list | None = None,
+    prior_verification: dict | None = None,
 ) -> dict:
     """
     Verify A1's client_profile against the original client input text.
+    consistency_issues: pre-confirmed errors from the deterministic check layer.
+    prior_verification: result from a previous verifier pass (retry context).
     Returns a verification_result dict.
     """
     agent = AssistantAgent(
@@ -310,7 +410,9 @@ async def run_verifier_on_a1(
         model_client=model_client,
         system_message=VERIFIER_SYSTEM_PROMPT_A1,
     )
-    message = _build_verifier_message(original_input, client_profile)
+    message = _build_verifier_message(
+        original_input, client_profile, consistency_issues, prior_verification
+    )
     response = await agent.on_messages(
         [TextMessage(content=message, source="user")],
         cancellation_token=None,
@@ -322,9 +424,13 @@ async def run_verifier_on_a2(
     original_input: str,
     product_profile: dict,
     model_client,
+    consistency_issues: list | None = None,
+    prior_verification: dict | None = None,
 ) -> dict:
     """
     Verify A2's product_profile against the original product input text.
+    consistency_issues: pre-confirmed errors from the deterministic check layer.
+    prior_verification: result from a previous verifier pass (retry context).
     Returns a verification_result dict.
     """
     agent = AssistantAgent(
@@ -332,7 +438,9 @@ async def run_verifier_on_a2(
         model_client=model_client,
         system_message=VERIFIER_SYSTEM_PROMPT_A2,
     )
-    message = _build_verifier_message(original_input, product_profile)
+    message = _build_verifier_message(
+        original_input, product_profile, consistency_issues, prior_verification
+    )
     response = await agent.on_messages(
         [TextMessage(content=message, source="user")],
         cancellation_token=None,
@@ -340,251 +448,82 @@ async def run_verifier_on_a2(
     return parse_verification_result(response.chat_message.content)
 
 
-# ── Corrector system prompts ──────────────────────────────────────────────────
+# ── Corrector helpers ─────────────────────────────────────────────────────────
 
-CORRECTOR_SYSTEM_PROMPT_A1 = """
-You are AC1, the Correction Agent for A1 (Client Profiler) in a MiFID II pipeline.
+CORRECTOR_SYSTEM_PROMPT_A1 = (
+    "You are CorrectorA1. You receive a client input, a previous flawed output, "
+    "the failed fields, and verifier issues. Re-read the client input from scratch "
+    "and produce a fully corrected JSON output following all Client Profiler rules exactly. "
+    "Output ONLY the JSON object."
+)
 
-A previous agent extracted a client profile from the input text, but the Verifier
-found that specific fields contain wrong values. Your job is to re-extract ONLY
-the flagged fields using the EXACT SAME rules the client profiler uses.
+CORRECTOR_SYSTEM_PROMPT_A2 = (
+    "You are CorrectorA2. You receive a product description, a previous flawed output, "
+    "the failed fields, and verifier issues. Re-read the product description from scratch "
+    "and produce a fully corrected JSON output following all Product Classifier rules exactly. "
+    "Output ONLY the JSON object."
+)
 
-You will receive:
-  ORIGINAL_INPUT   — the raw client description text
-  PREVIOUS_OUTPUT  — the full JSON the previous agent returned
-  FAILED_FIELDS    — the fields the Verifier flagged as wrong, with reasons
-
-════════════════════════════════════════
-YOUR TASK
-════════════════════════════════════════
-1. Read ORIGINAL_INPUT carefully.
-2. For each field in FAILED_FIELDS, derive the correct value using the rules below
-   (the same rules A1 uses).
-3. Return the COMPLETE corrected JSON — all 8 fields — with the wrong fields fixed.
-   Keep all non-flagged fields exactly as they appear in PREVIOUS_OUTPUT.
-
-════════════════════════════════════════
-REQUIRED OUTPUT FORMAT
-════════════════════════════════════════
-Output ONLY the corrected JSON object. No preamble, no explanation, no fences.
-
-{
-    "financial_knowledge": "<none | basic | moderate | advanced>",
-    "risk_tolerance_score": <integer 1–10>,
-    "investment_horizon": <integer, YEARS>,
-    "liquid_assets": <float, EUR>,
-    "income": <float, EUR annual>,
-    "investment_amount": <float, EUR>,
-    "can_afford_total_loss": <true | false>,
-    "financial_vulnerability": "<LOW | MEDIUM | HIGH>"
-}
-
-════════════════════════════════════════
-CLIENT PROFILER FIELD RULES (apply these when correcting)
-════════════════════════════════════════
-
-── financial_knowledge ──────────────────────────────────────────────────────
-  none     → no investing experience, never invested, "don't know much", "first time"
-  basic    → experience ONLY with bank deposits, savings accounts, fixed-term
-             deposits, or government savings bonds
-  moderate → has bought/sold individual stocks, mutual funds, ETFs, REITs
-  advanced → experience with derivatives (options, futures, CFDs, structured
-             products, leveraged instruments, or alternatives)
-  DEFAULT: when in doubt, assign the LOWER category.
-
-── risk_tolerance_score ─────────────────────────────────────────────────────
-  1=no risk, 2=conservative, 3=cautious, 4=moderately cautious, 5=balanced,
-  6=moderately growth, 7=growth, 8=high risk, 9=aggressive, 10=maximum/speculative.
-  Numeric score given → use verbatim (clamp 1–10).
-  Mixed description → average mapped values, round down.
-
-── investment_horizon ───────────────────────────────────────────────────────
-  "X months" → floor(X/12). "X weeks" → floor(X/52). "X years" → X.
-  "short-term"→1, "medium-term"→5, "long-term"→10. Range → LOWER bound.
-
-── liquid_assets ────────────────────────────────────────────────────────────
-  Immediately accessible cash/savings in EUR (float). Exclude illiquid assets.
-  Sum multiple accounts.
-
-── income ───────────────────────────────────────────────────────────────────
-  Gross annual EUR (float). Monthly → ×12. Net → gross up by ~1.3. Unemployed/no pension → 0.0.
-
-── investment_amount ────────────────────────────────────────────────────────
-  Amount to invest now, EUR (positive float). % of savings → compute absolute.
-
-── can_afford_total_loss ────────────────────────────────────────────────────
-  true  → ONLY if client EXPLICITLY states they can lose the entire amount,
-          or clearly implies it ("purely speculative", "won't miss it").
-  false → any other case including silence. Default is false.
-
-── financial_vulnerability ──────────────────────────────────────────────────
-  HIGH   → over 70; heavily in debt relative to income; unemployed (income=0,
-           not retired with pension); money needed for essential expenses;
-           serious health issues affecting finances.
-  MEDIUM → within 5 years of retirement; irregular income; significant upcoming
-           expenses but investment_amount doesn't deplete liquid_assets entirely.
-  LOW    → none of the above. Apply top-down, stop at FIRST match.
-
-Output ONLY the JSON. Nothing else.
-"""
-
-CORRECTOR_SYSTEM_PROMPT_A2 = """
-You are AC2, the Correction Agent for A2 (Product Classifier) in a MiFID II pipeline.
-
-A previous agent classified a financial product, but the Verifier found that specific
-fields contain wrong values. Your job is to re-classify ONLY the flagged fields using
-the EXACT SAME rules the product classifier uses.
-
-You will receive:
-  ORIGINAL_INPUT   — the raw product description text
-  PREVIOUS_OUTPUT  — the full JSON the previous agent returned
-  FAILED_FIELDS    — the fields the Verifier flagged as wrong, with reasons
-
-════════════════════════════════════════
-YOUR TASK
-════════════════════════════════════════
-1. Read ORIGINAL_INPUT carefully.
-2. For each field in FAILED_FIELDS, derive the correct value using the rules below
-   (the same rules A2 uses).
-3. Return the COMPLETE corrected JSON — all 7 fields — with the wrong fields fixed.
-   Keep all non-flagged fields exactly as they appear in PREVIOUS_OUTPUT.
-
-════════════════════════════════════════
-REQUIRED OUTPUT FORMAT
-════════════════════════════════════════
-Output ONLY the corrected JSON object. No preamble, no explanation, no fences.
-
-{
-    "product_name": "<descriptive name>",
-    "risk_class": <integer 1–7>,
-    "complexity_tier": "<NON-COMPLEX | COMPLEX>",
-    "requires_knowledge_level": "<none | basic | moderate | advanced>",
-    "minimum_horizon": <integer, years>,
-    "potential_loss": "<partial | total>",
-    "leverage": <true | false>
-}
-
-════════════════════════════════════════
-PRODUCT CLASSIFIER RULES (apply these when correcting)
-════════════════════════════════════════
-
-ESMA PRIIP RISK CLASS TABLE:
-  Class 1 — money market funds, insured deposits, capital-protected structures
-            → leverage=false, potential_loss=partial, complexity=NON-COMPLEX,
-              knowledge=none, min_horizon=1
-  Class 2 — government bonds (AAA-AA), investment-grade bond funds
-            → leverage=false, potential_loss=partial, complexity=NON-COMPLEX,
-              knowledge=basic, min_horizon=2
-  Class 3 — investment-grade corporate bonds, balanced funds, high-grade bond ETFs
-            → leverage=false, potential_loss=partial, complexity=NON-COMPLEX,
-              knowledge=basic, min_horizon=3
-  Class 4 — diversified equity ETFs, equity index funds, multi-asset, blue-chip equities
-            → leverage=false, potential_loss=partial, complexity=NON-COMPLEX,
-              knowledge=basic, min_horizon=3
-  Class 5 — sector ETFs, single-country equity funds, high-yield bonds, REITs,
-             small-cap equity funds, plain vanilla options (buying only)
-            → leverage=false (unless stated), potential_loss=partial,
-              complexity=COMPLEX for options/structured; NON-COMPLEX for ETFs/REITs,
-              knowledge=moderate, min_horizon=5
-  Class 6 — leveraged ETFs (2x), volatile/speculative single stocks, emerging market
-             equity funds, structured products with capital at risk, futures, spread betting
-            → complexity=COMPLEX, knowledge=advanced, min_horizon=5
-              leverage=true for leveraged ETFs/derivatives; false for single stocks
-              potential_loss=total for leveraged/derivatives; partial for single stocks
-  Class 7 — leveraged ETFs (3x+), CFDs, uncovered options, crypto derivatives,
-             speculative OTC derivatives
-            → leverage=true, potential_loss=total, complexity=COMPLEX,
-              knowledge=advanced, min_horizon=1
-
-LEVERAGE: true → amplifies beyond 1:1 (2x/3x ETF, CFD, futures, margin).
-          false → does not amplify (standard ETFs, bonds, equity funds).
-          A product that can lose 100% is NOT automatically leveraged.
-
-POTENTIAL LOSS: total → realistic full loss scenario.
-                partial → full capital loss not realistic under normal conditions.
-
-MINIMUM HORIZON: use risk class defaults. Override only for explicitly short-term
-instruments (e.g. CFD=1 year). Never set to 0.
-
-Output ONLY the JSON. Nothing else.
-"""
-
-
-# ── Corrector message builder ─────────────────────────────────────────────────
 
 def _build_corrector_message(
     original_input: str,
     previous_output: dict,
     verification_result: dict,
 ) -> str:
-    """Build the user message for the correction agent.
-    Extracts only the failed fields from verification_result to keep the message focused."""
+    """Build the message sent to the corrector agent."""
     failed_fields = {
         field: check
         for field, check in verification_result.get("field_checks", {}).items()
         if check.get("supported") is False
     }
-    # Also include top-level issues for context
-    top_issues = verification_result.get("issues", [])
-
+    issues = verification_result.get("issues", [])
     return (
         f"ORIGINAL_INPUT:\n{original_input}\n\n"
         f"PREVIOUS_OUTPUT:\n{json.dumps(previous_output, indent=2)}\n\n"
         f"FAILED_FIELDS:\n{json.dumps(failed_fields, indent=2)}\n\n"
-        f"VERIFIER_ISSUES:\n" + "\n".join(f"- {i}" for i in top_issues)
+        f"VERIFIER_ISSUES:\n" + "\n".join(f"- {i}" for i in issues)
     )
 
 
-# ── Corrector runners ─────────────────────────────────────────────────────────
-
 async def run_corrector_on_a1(
     original_input: str,
-    bad_profile: dict,
+    previous_output: dict,
     verification_result: dict,
     model_client,
 ) -> dict:
-    """
-    Run the A1 correction agent to fix fields flagged by the verifier.
-    Returns a corrected client_profile dict (validated through parse_client_profile).
-    Raises ValueError if the corrected output is still invalid.
-    """
+    """Run the corrector agent for A1. Returns a validated client_profile dict."""
     from agents.client_profiler import parse_client_profile
-
     agent = AssistantAgent(
         name="CorrectorA1",
         model_client=model_client,
         system_message=CORRECTOR_SYSTEM_PROMPT_A1,
     )
-    message = _build_corrector_message(original_input, bad_profile, verification_result)
+    message = _build_corrector_message(original_input, previous_output, verification_result)
     response = await agent.on_messages(
         [TextMessage(content=message, source="user")],
         cancellation_token=None,
     )
-    # Re-use the same strict parser that A1 uses — corrected output must pass it
     return parse_client_profile(response.chat_message.content)
 
 
 async def run_corrector_on_a2(
     original_input: str,
-    bad_profile: dict,
+    previous_output: dict,
     verification_result: dict,
     model_client,
 ) -> dict:
-    """
-    Run the A2 correction agent to fix fields flagged by the verifier.
-    Returns a corrected product_profile dict (validated through parse_product_profile).
-    Raises ValueError if the corrected output is still invalid.
-    """
+    """Run the corrector agent for A2. Returns a validated product_profile dict."""
     from agents.product_classifier import parse_product_profile
-
     agent = AssistantAgent(
         name="CorrectorA2",
         model_client=model_client,
         system_message=CORRECTOR_SYSTEM_PROMPT_A2,
     )
-    message = _build_corrector_message(original_input, bad_profile, verification_result)
+    message = _build_corrector_message(original_input, previous_output, verification_result)
     response = await agent.on_messages(
         [TextMessage(content=message, source="user")],
         cancellation_token=None,
     )
     return parse_product_profile(response.chat_message.content)
+
+

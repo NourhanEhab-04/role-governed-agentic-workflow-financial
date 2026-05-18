@@ -140,14 +140,17 @@ def test_parse_no_json_raises():
 
 
 def test_parse_malformed_json_raises():
-    with pytest.raises(ValueError, match="malformed JSON"):
+    # json_repair may partially recover the JSON; Pydantic then rejects the
+    # invalid field values — either way a ValueError must be raised.
+    with pytest.raises(ValueError):
         parse_verification_result('{"passed": true, "confidence":}')
 
 
-def test_parse_missing_key_raises():
+def test_parse_missing_field_checks_defaults_to_empty_dict():
+    # field_checks is optional in the model (default_factory=dict)
     bad = {"passed": True, "confidence": 0.9, "issues": []}
-    with pytest.raises(ValueError, match="missing keys"):
-        parse_verification_result(json.dumps(bad))
+    result = parse_verification_result(json.dumps(bad))
+    assert result["field_checks"] == {}
 
 
 def test_parse_low_confidence_forces_passed_false():

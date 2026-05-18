@@ -116,7 +116,7 @@ async def _run_with_mocks(
         patch("agents.conflict_detector.run_conflict_detector", new=AsyncMock(return_value=_good_conflict_report())),
         patch("agents.conflict_detector.check_rule_engine_agreement", new=MagicMock(return_value=_good_audit_verdict())),
         patch("agents.disclosure_agent.run_disclosure_agent", new=AsyncMock(return_value=_good_suitability_report())),
-        patch("orchestrator.pre_check_tool.run_pre_check", new=MagicMock(return_value=_good_pre_check())),
+        patch("orchestrator.orchestrator.run_pre_check", new=MagicMock(return_value=_good_pre_check())),
         patch("orchestrator.orchestrator._VERIFIER_SAMPLE_RATE", sample_rate),
     ):
         if a1_verifier_raises:
@@ -292,3 +292,38 @@ async def test_pipeline_completes_with_all_clean_inputs():
     state, audit = await _run_with_mocks(sample_rate=0.0)
     assert "suitability_report" in state
     assert state.get("halt") is not True
+
+
+# ── Sample-rate gating tests ──────────────────────────────────────────────────
+
+@pytest.mark.asyncio
+async def test_verifier_always_runs_when_consistency_issues_found():
+    """Consistency issues must trigger the verifier regardless of sample_rate=0."""
+    bad_client = _good_client()
+    bad_client["income"] = 0.0
+    bad_client["financial_vulnerability"] = "LOW"  # income=0 → HIGH expected
+
+    state, _ = await _run_with_mocks(client_profile=bad_client, sample_rate=0.0)
+
+    assert len(state["a1_consistency_issues"]) > 0
+    assert "a1_verification" in state, "Verifier must run when consistency issues are present"
+
+
+@pytest.mark.asyncio
+async def test_verifier_skipped_for_clean_inputs_at_zero_rate():
+    """With clean inputs and sample_rate=0, no LLM verifier call should happen."""
+    state, _ = await _run_with_mocks(sample_rate=0.0)
+
+    assert state["a1_consistency_issues"] == []
+    assert state["a2_consistency_issues"] == []
+    assert "a1_verification" not in state
+    assert "a2_verification" not in state
+
+
+@pytest.mark.asyncio
+async def test_default_sample_rate_is_below_one():
+    """Default _VERIFIER_SAMPLE_RATE must be < 1.0 (cost reduction requirement)."""
+    from orchestrator.orchestrator import _VERIFIER_SAMPLE_RATE
+    assert _VERIFIER_SAMPLE_RATE < 1.0, (
+        f"Sample rate is {_VERIFIER_SAMPLE_RATE}; set it below 1.0 to reduce LLM costs"
+    )

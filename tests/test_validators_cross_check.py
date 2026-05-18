@@ -32,7 +32,7 @@ def test_fail_when_decisions_disagree():
     }
     ok, err = validate_after_a3(state)
     assert ok is False
-    assert "bypass" in err.lower() or "!=" in err
+    assert "system error" in err.lower() or "different results" in err.lower()
 
 
 def test_pass_when_pre_check_absent():

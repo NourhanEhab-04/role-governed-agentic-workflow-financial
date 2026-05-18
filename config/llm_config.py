@@ -10,30 +10,45 @@ load_dotenv()
 
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 
-# Groq exposes an OpenAI-compatible endpoint.
 GROQ_BASE_URL = "https://api.groq.com/openai/v1"
+
+# Fast 8B — used by all profiling/classification/rule agents.
 GROQ_MODEL = "llama-3.1-8b-instant"
 
-# Required by OpenAIChatCompletionClient for non-OpenAI model names.
+# Larger 70B — used exclusively by the verifier.
+# Different weights from the 8B agents means different failure modes.
+GROQ_VERIFIER_MODEL = "llama-3.3-70b-versatile"
+
 GROQ_MODEL_INFO = {
     "vision": False,
     "function_calling": True,
-    "json_output": False,
+    "json_output": True,
     "family": "unknown",
     "structured_output": False,
 }
 
 
 def get_model_client() -> OpenAIChatCompletionClient:
-    """Return a configured Groq model client for use by all agents.
-    Raises RuntimeError if the API key is not set."""
     if not GROQ_API_KEY:
-        raise RuntimeError(
-            "GROQ_API_KEY is not set. Add it to your .env file or environment."
-        )
+        raise RuntimeError("GROQ_API_KEY is not set.")
     return OpenAIChatCompletionClient(
         model=GROQ_MODEL,
         api_key=GROQ_API_KEY,
         base_url=GROQ_BASE_URL,
         model_info=GROQ_MODEL_INFO,
+        json_output=True,
+    )
+
+
+def get_verifier_client() -> OpenAIChatCompletionClient:
+    """Return the Groq 70B client used exclusively by the verifier.
+    Larger model with different weights = catches errors the 8B agents miss."""
+    if not GROQ_API_KEY:
+        raise RuntimeError("GROQ_API_KEY is not set.")
+    return OpenAIChatCompletionClient(
+        model=GROQ_VERIFIER_MODEL,
+        api_key=GROQ_API_KEY,
+        base_url=GROQ_BASE_URL,
+        model_info=GROQ_MODEL_INFO,
+        json_output=True,
     )

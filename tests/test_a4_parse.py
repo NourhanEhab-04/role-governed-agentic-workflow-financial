@@ -69,7 +69,7 @@ def test_parse_flag_missing_key_raises():
         "triggered": True,
         # missing severity and message
     }])
-    with pytest.raises(ValueError, match="missing keys"):
+    with pytest.raises(ValueError, match="Field required"):
         parse_conflict_report(report)
 
 

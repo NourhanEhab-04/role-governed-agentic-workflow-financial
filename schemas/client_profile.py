@@ -28,7 +28,6 @@ class FinancialVulnerability(str, Enum):
 #verifier agent
 @dataclass
 class ClientProfile:
-    age: int
     financial_knowledge: FinancialKnowledge
     risk_tolerance_score: int          # 1–10
     investment_horizon: int            # years

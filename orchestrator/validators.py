@@ -45,9 +45,9 @@ def validate_after_a3(state: dict) -> tuple:
         if pre.get("decision") != verdict.get("decision"):
             return (
                 False,
-                f"pre_check_verdict decision '{pre.get('decision')}' "
-                f"!= rule_verdict decision '{verdict.get('decision')}' — "
-                f"possible bypass attempt",
+                f"System error: deterministic rule engine produced different results "
+                f"between pre-check ('{pre.get('decision')}') and A3 ('{verdict.get('decision')}') "
+                f"— possible data mutation between checkpoints",
             )
     return True, ""
 

@@ -1,11 +1,15 @@
 # api.py
 
-from fastapi import FastAPI, HTTPException
-from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
+import asyncio
+import json
 import traceback
 
-from orchestrator.orchestrator import run_pipeline
+from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import StreamingResponse
+from pydantic import BaseModel
+
+from orchestrator.graph import run_pipeline
 from config.llm_config import get_model_client
 
 
@@ -45,13 +49,14 @@ def serialize_state(state: dict) -> dict:
     if isinstance(state, Enum):
         return state.value
     if dataclasses.is_dataclass(state) and not isinstance(state, type):
-        # Convert dataclass to dict, rename pass_ → pass_ stays as-is
-        # (frontend reads pass_ directly)
         return serialize_state(dataclasses.asdict(state))
     return state
 
 
-# ── Endpoint ───────────────────────────────────────────────────────────────────
+_STRIP = {"client_input", "product_input"}
+
+
+# ── Endpoints ──────────────────────────────────────────────────────────────────
 
 @app.post("/assess")
 async def assess(req: AssessmentRequest):
@@ -61,14 +66,71 @@ async def assess(req: AssessmentRequest):
             product_input=req.product_input,
             model_client=get_model_client(),
         )
-        return serialize_state(state)
+        filtered = {k: v for k, v in state.items() if k not in _STRIP}
+        return serialize_state(filtered)
 
     except Exception as e:
-        traceback.print_exc()          # full trace in your terminal
+        traceback.print_exc()
         raise HTTPException(status_code=500, detail=str(e))
 
 
-# ── Health check (useful for quick curl tests) ─────────────────────────────────
+@app.post("/assess/stream")
+async def assess_stream(req: AssessmentRequest):
+    """
+    SSE endpoint — streams pipeline state after each major stage.
+
+    Events are newline-delimited JSON:
+      data: {"type": "<stage>", "state": {...}}\n\n
+
+    Terminated with:
+      data: [DONE]\n\n
+    """
+    queue: asyncio.Queue = asyncio.Queue()
+
+    async def on_event(event_type: str, state_snapshot: dict):
+        filtered = {k: v for k, v in state_snapshot.items() if k not in _STRIP}
+        payload = {"type": event_type, "state": serialize_state(filtered)}
+        await queue.put(payload)
+
+    async def pipeline_task():
+        try:
+            await run_pipeline(
+                client_input=req.client_input,
+                product_input=req.product_input,
+                model_client=get_model_client(),
+                on_event=on_event,
+            )
+        except Exception as e:
+            traceback.print_exc()
+            await queue.put({"type": "error", "detail": str(e)})
+        finally:
+            await queue.put(None)  # sentinel — signals stream end
+
+    async def event_generator():
+        task = asyncio.create_task(pipeline_task())
+        try:
+            while True:
+                item = await queue.get()
+                if item is None:
+                    yield "data: [DONE]\n\n"
+                    break
+                yield f"data: {json.dumps(item)}\n\n"
+        finally:
+            if not task.done():
+                task.cancel()
+                try:
+                    await task
+                except asyncio.CancelledError:
+                    pass
+
+    return StreamingResponse(
+        event_generator(),
+        media_type="text/event-stream",
+        headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
+    )
+
+
+# ── Health check ───────────────────────────────────────────────────────────────
 
 @app.get("/health")
 async def health():

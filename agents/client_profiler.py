@@ -2,9 +2,9 @@
 
 from autogen_agentchat.agents import AssistantAgent
 from autogen_agentchat.messages import TextMessage
-from schemas.client_profile import REQUIRED_CLIENT_KEYS
 import json
-import re
+
+
 
 
 CLIENT_PROFILER_SYSTEM_PROMPT = """
@@ -25,7 +25,8 @@ REQUIRED OUTPUT FORMAT
     "income": <float, EUR annual>,
     "investment_amount": <float, EUR>,
     "can_afford_total_loss": <true | false>,
-    "financial_vulnerability": "<LOW | MEDIUM | HIGH>"
+    "financial_vulnerability": "<LOW | MEDIUM | HIGH>",
+    "age": <integer | null>
 }
 
 ════════════════════════════════════════
@@ -108,16 +109,39 @@ Amount the client wants to invest NOW, in EUR as a float.
 ── can_afford_total_loss ────────────────────────────────────────────────────
 true  → ONLY if the client EXPLICITLY states they can lose the entire amount,
         OR clearly implies it (e.g. "this is purely speculative money I can
-        write off", "I won't miss it if it's gone").
-false → ANY other case, including silence on the topic, vague language, or
-        uncertainty. Default is false.
+        write off", "I won't miss it if it's gone", "I am fine losing 100%").
+
+false → ANY other case, including:
+        • Silence on the topic
+        • Vague language or uncertainty
+        • Partial-loss tolerance only ("I can handle losing some")
+        • Explicit statement that total loss WOULD harm them financially
+          (e.g. "losing everything would seriously affect me", "I cannot
+          afford to lose it all", "total loss would be devastating")
+
+  CRITICAL: A statement that partial loss is acceptable does NOT imply total
+  loss is affordable. Read the FULL sentence. If ANY part of the client's
+  statement indicates total loss would hurt them → false.
+
+  EXAMPLES:
+    "I can lose part but losing all would seriously affect me" → false
+    "losing everything would seriously affect me financially"  → false
+    "I'm fine losing some but not everything"                 → false
+    "this is my emergency fund so I need it back"             → false
+    "this is play money, I can write it off entirely"         → true
+
+  DEFAULT is false.
+
+── age ───────────────────────────────────────────────────────────────────────
+Client's age as an integer (years). Output null if the client does not state
+their age. Do NOT infer age from retirement mentions or other hints.
 
 ── financial_vulnerability ──────────────────────────────────────────────────
 Assign HIGH, MEDIUM, or LOW using this decision tree (apply top-down, stop at
 the FIRST match):
 
   HIGH   → ANY of:
-           • Client is over age 70
+           • Client is over age 70 (i.e., age field > 70)
            • Client states they are heavily in debt / has significant loans
              relative to income
            • Client is unemployed (income = 0 and not retired with pension)
@@ -133,6 +157,16 @@ the FIRST match):
              entirely
 
   LOW    → None of the above conditions are met.
+
+  CRITICAL EXCLUSIONS — these do NOT trigger MEDIUM or HIGH:
+    • Investing a large fraction (even >50%) of liquid_assets, unless the
+      client explicitly states this depletes funds needed for essential costs
+    • Expressing concern about loss ("losing all would affect me") — that is
+      a loss-tolerance statement, NOT a vulnerability indicator
+    • Having a stable salary without any HIGH/MEDIUM conditions above
+    • Absence of mentions: if the client does NOT mention debt, health issues,
+      irregular income, retirement proximity, or essential-expense reliance
+      → assign LOW. Silence on vulnerability conditions = LOW, never MEDIUM.
 
 ════════════════════════════════════════
 MISSING FIELDS: needs_clarification
@@ -155,54 +189,22 @@ OUTPUT RULES (non-negotiable)
 5. financial_knowledge must be lowercase: none | basic | moderate | advanced.
 6. financial_vulnerability must be uppercase: LOW | MEDIUM | HIGH.
 7. can_afford_total_loss must be a boolean: true or false (not a string).
-8. Never add extra fields beyond the 8 listed above.
-9. Never invent or assume data that is not stated or clearly implied.
+8. age must be an integer if stated, or null if not mentioned. Never infer it.
+9. Never add extra fields beyond the 9 listed above.
+10. Never invent or assume data that is not stated or clearly implied.
 """
 
 
 def parse_client_profile(raw_text: str) -> dict:
-    """Extract and return a client_profile dict from agent text output.
-    Raises ValueError if JSON is missing, malformed, incomplete, or has invalid enum values."""
-    # Step 1: try to find a JSON block (handles markdown fences)
-    json_match = re.search(r'\{.*\}', raw_text, re.DOTALL)
-    if not json_match:
-        raise ValueError("No JSON object found in agent output")
-
-    # Step 2: parse it
+    """Extract and return a validated client_profile dict from agent text output."""
+    from agents.parsing import extract_json_object
+    from schemas.output_models import ClientProfileModel
+    from pydantic import ValidationError
+    data = extract_json_object(raw_text)
     try:
-        profile = json.loads(json_match.group())
-    except json.JSONDecodeError as e:
-        raise ValueError(f"Agent output contained malformed JSON: {e}")
-
-    # Step 3: validate all required keys are present
-    missing = REQUIRED_CLIENT_KEYS - profile.keys()
-    if missing:
-        raise ValueError(f"client_profile missing required keys: {missing}")
-
-    # Step 3b: validate that numeric/boolean fields are not null
-    null_fields = [k for k in REQUIRED_CLIENT_KEYS if profile.get(k) is None]
-    if null_fields:
-        raise ValueError(
-            f"client_profile has null values for required fields: {null_fields}. "
-            "These must be extractable from the client description."
-        )
-
-    # Step 4: validate enum values
-    valid_knowledge = {"none", "basic", "moderate", "advanced"}
-    if profile["financial_knowledge"] not in valid_knowledge:
-        raise ValueError(
-            f"Invalid financial_knowledge: '{profile['financial_knowledge']}'. "
-            f"Must be one of {valid_knowledge}"
-        )
-
-    valid_vulnerability = {"LOW", "MEDIUM", "HIGH"}
-    if profile["financial_vulnerability"] not in valid_vulnerability:
-        raise ValueError(
-            f"Invalid financial_vulnerability: '{profile['financial_vulnerability']}'. "
-            f"Must be one of {valid_vulnerability}"
-        )
-
-    return profile
+        return ClientProfileModel.model_validate(data).model_dump()
+    except ValidationError as exc:
+        raise ValueError(str(exc)) from exc
 
 
 async def run_client_profiler(raw_input: str, model_client) -> dict:
@@ -220,3 +222,83 @@ async def run_client_profiler(raw_input: str, model_client) -> dict:
 
     raw_text = response.chat_message.content
     return parse_client_profile(raw_text)
+
+
+async def run_client_profiler_with_feedback(
+    raw_input: str,
+    previous_output: dict,
+    verification_result: dict,
+    model_client,
+    attempt_history: list | None = None,
+) -> dict:
+    """
+    Retry A1 with surgical verifier feedback.
+
+    Passing fields are locked — their current values are copied verbatim into
+    the LOCKED_FIELDS section so the model cannot accidentally regress them.
+    Only the failed fields are presented for re-reasoning.
+
+    attempt_history: all prior (output, verifier_issues, failed_fields) tuples from
+    earlier rounds; included in the prompt so the agent can't go in circles.
+    """
+    agent = AssistantAgent(
+        name="ClientProfiler",
+        model_client=model_client,
+        system_message=CLIENT_PROFILER_SYSTEM_PROMPT,
+    )
+
+    field_checks = verification_result.get("field_checks", {})
+    failed_fields = {
+        field: check
+        for field, check in field_checks.items()
+        if check.get("supported") is False
+    }
+    locked_fields = {
+        field: previous_output[field]
+        for field, check in field_checks.items()
+        if check.get("supported") is True and field in previous_output
+    }
+    issues = verification_result.get("issues", [])
+
+    locked_note = (
+        f"\n\nLOCKED_FIELDS (already verified correct — copy these values EXACTLY into your output, "
+        f"do NOT change them):\n{json.dumps(locked_fields, indent=2)}"
+        if locked_fields else ""
+    )
+
+    # Include full transcript of prior rounds so the agent can see what it already
+    # tried and why those attempts were rejected — prevents circular corrections.
+    history_note = ""
+    if attempt_history:
+        parts = []
+        for entry in attempt_history:
+            parts.append(
+                f"Attempt {entry['attempt']} output:\n{json.dumps(entry['output'], indent=2)}\n"
+                f"Verifier rejected these fields:\n{json.dumps(entry['failed_fields'], indent=2)}\n"
+                f"Issues: " + "; ".join(entry["verifier_issues"])
+            )
+        history_note = (
+            "\n\nPRIOR_ATTEMPTS — do NOT repeat these mistakes:\n"
+            + "\n---\n".join(parts)
+            + "\n"
+        )
+
+    feedback_prompt = (
+        f"CLIENT INPUT:\n{raw_input}\n"
+        + history_note
+        + f"\nYOUR LATEST OUTPUT (flagged by the verifier):\n"
+        f"{json.dumps(previous_output, indent=2)}\n\n"
+        f"VERIFIER ISSUES:\n"
+        + "\n".join(f"- {i}" for i in issues)
+        + f"\n\nFAILED FIELDS (fix ONLY these):\n{json.dumps(failed_fields, indent=2)}"
+        + locked_note
+        + f"\n\nFocus your reasoning on the FAILED FIELDS. "
+        f"Re-read the CLIENT INPUT and correct only the failed fields. "
+        f"Output the complete JSON with all 9 fields."
+    )
+
+    response = await agent.on_messages(
+        [TextMessage(content=feedback_prompt, source="user")],
+        cancellation_token=None,
+    )
+    return parse_client_profile(response.chat_message.content)

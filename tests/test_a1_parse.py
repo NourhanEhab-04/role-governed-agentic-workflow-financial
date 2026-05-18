@@ -36,7 +36,7 @@ def test_json_with_surrounding_prose():
 def test_missing_key_raises_value_error():
     incomplete = json.loads(VALID_JSON)
     del incomplete["financial_knowledge"]
-    with pytest.raises(ValueError, match="missing required keys"):
+    with pytest.raises(ValueError, match="financial_knowledge"):
         parse_client_profile(json.dumps(incomplete))
 
 
@@ -46,7 +46,9 @@ def test_no_json_raises_value_error():
 
 
 def test_malformed_json_raises_value_error():
-    with pytest.raises(ValueError, match="malformed JSON"):
+    # json_repair may partially recover the JSON; Pydantic then rejects the
+    # invalid field values — either way a ValueError must be raised.
+    with pytest.raises(ValueError):
         parse_client_profile('{"financial_knowledge": "basic", "risk_tolerance_score":}')
 
 

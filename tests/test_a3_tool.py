@@ -36,19 +36,16 @@ def test_tool_has_correct_name():
 
 def test_tool_output_matches_direct_rule_engine_call():
     """Core test: tool output must have same score/decision as direct call,
-    with rules converted to the dict format (rule_id -> PASS/FAIL)."""
+    with rules in short-form dict (R1..R7 -> PASS/FAIL)."""
     tool = build_rule_engine_tool()
     tool_result = tool._func(client_profile=BASE_CLIENT, product_profile=BASE_PRODUCT)
     direct_result = evaluate_suitability(BASE_CLIENT, BASE_PRODUCT)
 
     assert tool_result["score"] == direct_result["score"]
     assert tool_result["decision"] == direct_result["decision"]
-    # Verify each rule maps correctly
+    # Rule engine uses short IDs; tool passes them through unchanged.
     for rule in direct_result["rules"]:
-        rule_id = {
-            "R1": "R1_knowledge", "R2": "R2_risk", "R3": "R3_horizon",
-            "R4": "R4_afford", "R5": "R5_vuln", "R6": "R6_leverage", "R7": "R7_complexity",
-        }[rule["rule"]]
+        rule_id = rule["rule"]           # already "R1".."R7"
         expected = "PASS" if rule["pass"] else "FAIL"
         assert tool_result["rules"][rule_id] == expected
 
@@ -63,7 +60,7 @@ def test_tool_output_is_deterministic():
         )
         for _ in range(10)
     ]
-    assert len(set(results)) == 1  # all 10 identical
+    assert len(set(results)) == 1
 
 
 def test_tool_raises_on_missing_client_keys():

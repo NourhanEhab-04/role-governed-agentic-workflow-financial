@@ -155,7 +155,7 @@ class TestRunCorrectorA1:
         mock_agent.on_messages = AsyncMock(return_value=mock_response)
 
         with patch("agents.verifier_agent.AssistantAgent", return_value=mock_agent):
-            with pytest.raises(ValueError, match="missing required keys"):
+            with pytest.raises(ValueError):
                 await run_corrector_on_a1(
                     "original",
                     _good_client(),
@@ -256,7 +256,7 @@ class TestRunCorrectorA2:
         mock_agent.on_messages = AsyncMock(return_value=mock_response)
 
         with patch("agents.verifier_agent.AssistantAgent", return_value=mock_agent):
-            with pytest.raises(ValueError, match="missing required keys"):
+            with pytest.raises(ValueError):
                 await run_corrector_on_a2(
                     "original",
                     _good_product(),

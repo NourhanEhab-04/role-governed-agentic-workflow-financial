@@ -1,17 +1,6 @@
 # agents/conflict_detector.py
 
-import json as _json
-from agents.parsing import extract_json_object
-
-from autogen_agentchat.agents import AssistantAgent
-from autogen_agentchat.messages import TextMessage
-from autogen_core import CancellationToken
 from rule_engine.rule_engine import evaluate_suitability
-from schemas.client_profile import REQUIRED_CLIENT_KEYS
-from schemas.product_profile import REQUIRED_PRODUCT_KEYS
-from schemas.rule_verdict import REQUIRED_VERDICT_KEYS
-VALID_SEVERITIES = {"LOW", "HIGH"}
-REQUIRED_FLAG_KEYS = {"rule_id", "triggered", "severity", "message"}
 
 CONFLICT_DETECTOR_SYSTEM_PROMPT = """
 You are the Conflict Detector in a MiFID II suitability assessment pipeline.
@@ -124,33 +113,13 @@ def check_escalation_trigger(flags: list[dict]) -> dict:
 
 
 def parse_conflict_report(raw: dict) -> dict:
-    for key in ("flags", "escalate", "summary"):
-        if key not in raw:
-            raise ValueError(f"conflict_report missing required key: '{key}'")
-
-    if not isinstance(raw["escalate"], bool):
-        raise ValueError("conflict_report 'escalate' must be a bool")
-
-    if not isinstance(raw["flags"], list):
-        raise ValueError("conflict_report 'flags' must be a list")
-
-    if raw["escalate"] and len(raw["flags"]) == 0:
-        raise ValueError("escalate=True requires at least one flag")
-
-    for i, flag in enumerate(raw["flags"]):
-        missing = REQUIRED_FLAG_KEYS - flag.keys()
-        if missing:
-            raise ValueError(f"Flag {i} missing keys: {missing}")
-        if flag["severity"] not in VALID_SEVERITIES:
-            raise ValueError(
-                f"Flag {i} has invalid severity '{flag['severity']}'. "
-                f"Must be one of {VALID_SEVERITIES}"
-            )
-        if not isinstance(flag["triggered"], bool):
-            raise ValueError(f"Flag {i} 'triggered' must be a bool")
-
-    return raw
-import json as _json
+    """Validate a conflict_report dict using the Pydantic model."""
+    from schemas.output_models import ConflictReportModel
+    from pydantic import ValidationError
+    try:
+        return ConflictReportModel.model_validate(raw).model_dump()
+    except ValidationError as exc:
+        raise ValueError(str(exc)) from exc
 
 
 async def run_conflict_detector(
@@ -196,26 +165,15 @@ def check_rule_engine_agreement(
             "detail": str,
         }
     """
-    # Reverse map: A3 stores rules with descriptive IDs, rule engine uses R1..R7
-    _REVERSE_MAP = {
-        "R1_knowledge": "R1",
-        "R2_risk":      "R2",
-        "R3_horizon":   "R3",
-        "R4_afford":    "R4",
-        "R5_vuln":      "R5",
-        "R6_leverage":  "R6",
-        "R7_complexity":"R7",
-    }
-
     a4_result = evaluate_suitability(client_profile, product_profile)
     a4_decision = a4_result["decision"]
     a4_failed = sorted(r["rule"] for r in a4_result["rules"] if not r["pass"])
 
     a3_decision = a3_verdict.get("decision", "UNKNOWN")
-    # A3 stores rules as {"R1_knowledge": "PASS"/"FAIL", ...} — derive failed list
-    a3_rules = a3_verdict.get("rules", {})
-    if isinstance(a3_rules, dict):
-        a3_failed = sorted(_REVERSE_MAP.get(k, k) for k, v in a3_rules.items() if v == "FAIL")
+    # A3 outputs {"rules": {"R1": "PASS"/"FAIL", ...}}; fall back to "failed_rules"
+    # list for verdicts that pre-date the rules dict (e.g. test fixtures).
+    if "rules" in a3_verdict and isinstance(a3_verdict["rules"], dict):
+        a3_failed = sorted(k for k, v in a3_verdict["rules"].items() if v == "FAIL")
     else:
         a3_failed = sorted(a3_verdict.get("failed_rules", []))
 

@@ -8,7 +8,7 @@ import { useAssessment }        from "./hooks/useAssessment";
 import { mapStateToMessages }   from "./utils/mapStateToMessages";
 
 export default function App() {
-  const { run, isLoading, error, state } = useAssessment();
+  const { run, isLoading, error, state, currentStage } = useAssessment();
 
   // Derive messages from state every render — pure, no extra useState needed
   const messages = state ? mapStateToMessages(state) : [];
@@ -56,7 +56,7 @@ export default function App() {
         </div>
 
         <div className="flex-1 overflow-y-auto">
-          <ChatPanel messages={messages} />
+          <ChatPanel messages={messages} isLoading={isLoading} currentStage={currentStage} />
         </div>
 
       </main>

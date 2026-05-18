@@ -6,15 +6,7 @@ REQUIRED_VERDICT_KEYS = {"score", "decision", "rules"}
 
 VALID_DECISIONS = {"SUITABLE", "UNSUITABLE", "CONDITIONAL"}
 
-VALID_RULE_IDS = {
-    "R1_knowledge",
-    "R2_risk",
-    "R3_horizon",
-    "R4_afford",
-    "R5_vuln",
-    "R6_leverage",
-    "R7_complexity",
-}
+VALID_RULE_IDS = {"R1", "R2", "R3", "R4", "R5", "R6", "R7"}
 
 
 class Decision(str, Enum):

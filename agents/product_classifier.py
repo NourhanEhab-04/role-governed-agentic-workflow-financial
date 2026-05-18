@@ -2,9 +2,7 @@
 
 from autogen_agentchat.agents import AssistantAgent
 from autogen_agentchat.messages import TextMessage
-from schemas.product_profile import REQUIRED_PRODUCT_KEYS
 import json
-import re
 
 
 PRODUCT_CLASSIFIER_SYSTEM_PROMPT = """
@@ -172,74 +170,15 @@ IF the product cannot be identified from the description, output:
 
 
 def parse_product_profile(raw_text: str) -> dict:
-    """Extract and return a product_profile dict from agent text output.
-    Raises ValueError if JSON is missing, malformed, incomplete, or has invalid values."""
-    from schemas.product_profile import (
-        VALID_COMPLEXITY_TIERS,
-        VALID_KNOWLEDGE_LEVELS,
-        VALID_POTENTIAL_LOSS,
-    )
-
-    # Step 1: extract JSON block
-    json_match = re.search(r'\{.*\}', raw_text, re.DOTALL)
-    if not json_match:
-        raise ValueError("No JSON object found in agent output")
-
-    # Step 2: parse
+    """Extract and return a validated product_profile dict from agent text output."""
+    from agents.parsing import extract_json_object
+    from schemas.output_models import ProductProfileModel
+    from pydantic import ValidationError
+    data = extract_json_object(raw_text)
     try:
-        profile = json.loads(json_match.group())
-    except json.JSONDecodeError as e:
-        raise ValueError(f"Agent output contained malformed JSON: {e}")
-
-    # Step 3: required keys
-    missing = REQUIRED_PRODUCT_KEYS - profile.keys()
-    if missing:
-        raise ValueError(f"product_profile missing required keys: {missing}")
-
-    # Step 4: enum validation
-    if profile["complexity_tier"] not in VALID_COMPLEXITY_TIERS:
-        raise ValueError(
-            f"Invalid complexity_tier: '{profile['complexity_tier']}'. "
-            f"Must be one of {VALID_COMPLEXITY_TIERS}"
-        )
-
-    if profile["requires_knowledge_level"] not in VALID_KNOWLEDGE_LEVELS:
-        raise ValueError(
-            f"Invalid requires_knowledge_level: '{profile['requires_knowledge_level']}'. "
-            f"Must be one of {VALID_KNOWLEDGE_LEVELS}"
-        )
-
-    if profile["potential_loss"] not in VALID_POTENTIAL_LOSS:
-        raise ValueError(
-            f"Invalid potential_loss: '{profile['potential_loss']}'. "
-            f"Must be one of {VALID_POTENTIAL_LOSS}"
-        )
-
-    # Step 5: type validation
-    if not isinstance(profile["risk_class"], int) or not (1 <= profile["risk_class"] <= 7):
-        raise ValueError(
-            f"risk_class must be an integer between 1 and 7, got: {profile['risk_class']}"
-        )
-
-    if not isinstance(profile["minimum_horizon"], int) or profile["minimum_horizon"] < 0:
-        raise ValueError(
-            f"minimum_horizon must be a non-negative integer, got: {profile['minimum_horizon']}"
-        )
-
-    if isinstance(profile["leverage"], str):
-        if profile["leverage"].lower() == "true":
-            profile["leverage"] = True
-        elif profile["leverage"].lower() == "false":
-            profile["leverage"] = False
-        else:
-            raise ValueError(f"leverage must be a boolean, got string: '{profile['leverage']}'")
-
-    if not isinstance(profile["leverage"], bool):
-        raise ValueError(
-            f"leverage must be a boolean, got: {type(profile['leverage'])}"
-        )
-
-    return profile
+        return ProductProfileModel.model_validate(data).model_dump()
+    except ValidationError as exc:
+        raise ValueError(str(exc)) from exc
 
 
 async def run_product_classifier(raw_input: str, model_client) -> dict:
@@ -257,3 +196,83 @@ async def run_product_classifier(raw_input: str, model_client) -> dict:
 
     raw_text = response.chat_message.content
     return parse_product_profile(raw_text)
+
+
+async def run_product_classifier_with_feedback(
+    raw_input: str,
+    previous_output: dict,
+    verification_result: dict,
+    model_client,
+    attempt_history: list | None = None,
+) -> dict:
+    """
+    Retry A2 with surgical verifier feedback.
+
+    Passing fields are locked — their current values are copied verbatim into
+    the LOCKED_FIELDS section so the model cannot accidentally regress them.
+    Only the failed fields are presented for re-reasoning.
+
+    attempt_history: all prior (output, verifier_issues, failed_fields) tuples from
+    earlier rounds; included in the prompt so the agent can't go in circles.
+    """
+    agent = AssistantAgent(
+        name="ProductClassifier",
+        model_client=model_client,
+        system_message=PRODUCT_CLASSIFIER_SYSTEM_PROMPT,
+    )
+
+    field_checks = verification_result.get("field_checks", {})
+    failed_fields = {
+        field: check
+        for field, check in field_checks.items()
+        if check.get("supported") is False
+    }
+    locked_fields = {
+        field: previous_output[field]
+        for field, check in field_checks.items()
+        if check.get("supported") is True and field in previous_output
+    }
+    issues = verification_result.get("issues", [])
+
+    locked_note = (
+        f"\n\nLOCKED_FIELDS (already verified correct — copy these values EXACTLY into your output, "
+        f"do NOT change them):\n{json.dumps(locked_fields, indent=2)}"
+        if locked_fields else ""
+    )
+
+    # Include full transcript of prior rounds so the agent can see what it already
+    # tried and why those attempts were rejected — prevents circular corrections.
+    history_note = ""
+    if attempt_history:
+        parts = []
+        for entry in attempt_history:
+            parts.append(
+                f"Attempt {entry['attempt']} output:\n{json.dumps(entry['output'], indent=2)}\n"
+                f"Verifier rejected these fields:\n{json.dumps(entry['failed_fields'], indent=2)}\n"
+                f"Issues: " + "; ".join(entry["verifier_issues"])
+            )
+        history_note = (
+            "\n\nPRIOR_ATTEMPTS — do NOT repeat these mistakes:\n"
+            + "\n---\n".join(parts)
+            + "\n"
+        )
+
+    feedback_prompt = (
+        f"PRODUCT INPUT:\n{raw_input}\n"
+        + history_note
+        + f"\nYOUR LATEST OUTPUT (flagged by the verifier):\n"
+        f"{json.dumps(previous_output, indent=2)}\n\n"
+        f"VERIFIER ISSUES:\n"
+        + "\n".join(f"- {i}" for i in issues)
+        + f"\n\nFAILED FIELDS (fix ONLY these):\n{json.dumps(failed_fields, indent=2)}"
+        + locked_note
+        + f"\n\nFocus your reasoning on the FAILED FIELDS. "
+        f"Re-read the PRODUCT INPUT and correct only the failed fields. "
+        f"Output the complete JSON with all required fields."
+    )
+
+    response = await agent.on_messages(
+        [TextMessage(content=feedback_prompt, source="user")],
+        cancellation_token=None,
+    )
+    return parse_product_profile(response.chat_message.content)

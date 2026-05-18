@@ -26,34 +26,35 @@ function _avContent(verification, agentLabel) {
 }
 
 /**
- * Build the AC (corrector) bubble content string.
+ * Build the retry bubble content string shown after a feedback-driven retry.
  */
-function _acContent(correction, agentLabel) {
+function _retryContent(correction, agentLabel) {
   if (!correction) return null
   if (correction.error) {
-    return `Corrector for ${agentLabel} failed: ${correction.error}`
+    return `${agentLabel} corrector failed: ${correction.error}`
   }
   if (!correction.corrected) {
-    return `Corrector for ${agentLabel} produced no output.`
+    return `${agentLabel} corrector produced no output.`
   }
-  const fixed = (correction.fields_fixed ?? []).join(', ') || 'none'
-  return `Corrector fixed ${agentLabel} output. Fields corrected: ${fixed}.`
+  const fields = (correction.fields_fixed ?? []).join(', ') || 'none'
+  return `${agentLabel} corrected with verifier feedback. Fields fixed: ${fields}.`
 }
 
 /**
- * Emit consistency + verifier + corrector + re-verify messages.
- * consistencyIssues : string[]
- * verification      : object | undefined  (first AV run)
- * correction        : object | undefined  (AC run, only if AV failed)
- * finalVerification : object | undefined  (second AV run after correction)
- * agentLabel        : e.g. "A1" or "A2"
- * stepRef           : { n }
+ * Emit consistency + verifier + correction + re-verify messages.
+ *
+ * consistencyIssues  : string[]
+ * verification       : object | undefined  (first AV run)
+ * retry              : object | undefined  (corrector output, only if AV failed)
+ * finalVerification  : object | undefined  (second AV run after correction)
+ * agentLabel         : e.g. "A1" or "A2"
+ * stepRef            : { n }
  */
 function _emitVerifierMessages(
   messages,
   consistencyIssues,
   verification,
-  correction,
+  retry,
   finalVerification,
   agentLabel,
   stepRef,
@@ -84,32 +85,33 @@ function _emitVerifierMessages(
     }
   }
 
-  // 3. Corrector bubble (only emitted when AV failed and correction was attempted)
-  if (correction !== undefined && correction !== null) {
-    const content = _acContent(correction, agentLabel)
+  // 3. Correction bubble — only when AV failed and corrector ran
+  if (retry !== undefined && retry !== null) {
+    const content = _retryContent(retry, agentLabel)
     if (content) {
-      const isError = !!correction.error || !correction.corrected
+      const isError = !!retry.error || !retry.corrected
       messages.push({
         type: 'agent',
-        agentId: 'AC',
+        agentId: agentLabel,
         stepNumber: stepRef.n++,
         content,
-        structuredOutput: correction,
-        _systemType: isError ? 'correction_error' : 'correction_applied',
+        structuredOutput: retry.corrected ?? null,
+        _systemType: isError ? 'retry_error' : 'retry_applied',
+        isRetry: true,
       })
     }
   }
 
-  // 4. Final AV re-verify bubble (only after successful correction)
+  // 4. Re-verification AV bubble — only present when correction was applied
   if (finalVerification !== undefined && finalVerification !== null) {
-    const content = _avContent(finalVerification, `${agentLabel} (re-verify)`)
+    const content = _avContent(finalVerification, agentLabel)
     if (content) {
       const isWarn = finalVerification.passed === false || finalVerification.passed === null
       messages.push({
         type: 'agent',
         agentId: 'AV',
         stepNumber: stepRef.n++,
-        content,
+        content: `[Re-verify] ${content}`,
         structuredOutput: finalVerification,
         verifierPassed: finalVerification.passed,
         _systemType: isWarn ? 'verification_warn' : 'verification_pass',
@@ -136,16 +138,17 @@ export function mapStateToMessages(state) {
 
   // A1 — client profiler
   if (state.client_profile) {
-    const p = state.client_profile
+    // init_p is the raw first parse; p is the final (possibly corrected) output.
+    const init_p = state.a1_initial_profile ?? state.client_profile
     messages.push({
       type: 'agent',
       agentId: 'A1',
       stepNumber: stepRef.n++,
-      content: `Client profile extracted. ${p.knowledge_level} knowledge level, risk tolerance ${p.risk_tolerance}/10, ${p.investment_horizon}-year horizon, €${p.liquid_assets?.toLocaleString()} liquid assets. Vulnerability: ${p.vulnerability ?? 'NONE'}.`,
-      structuredOutput: p,
+      content: `Client profiler parsed input. ${init_p.financial_knowledge} knowledge, risk ${init_p.risk_tolerance_score}/10, ${init_p.investment_horizon}-year horizon, €${init_p.liquid_assets?.toLocaleString()} liquid assets. Vulnerability: ${init_p.financial_vulnerability ?? 'UNKNOWN'}.`,
+      structuredOutput: init_p,
     })
 
-    // AV / AC — verifier + corrector for A1
+    // AV check → correction → AV re-check — each appears as its own visible bubble.
     _emitVerifierMessages(
       messages,
       state.a1_consistency_issues,
@@ -164,16 +167,16 @@ export function mapStateToMessages(state) {
 
   // A2 — product classifier
   if (state.product_profile) {
-    const p = state.product_profile
+    const init_p2 = state.a2_initial_profile ?? state.product_profile
     messages.push({
       type: 'agent',
       agentId: 'A2',
       stepNumber: stepRef.n++,
-      content: `Product classified. ${p.product_type ?? 'Product'}, risk class ${p.risk_class}, requires ${p.required_knowledge} knowledge, minimum ${p.min_horizon}-year horizon.${p.total_loss_potential ? ' Has total loss potential.' : ''}${p.is_leveraged ? ' Leveraged product.' : ''}`,
-      structuredOutput: p,
+      content: `Product classifier parsed input. ${init_p2.product_name ?? 'Product'}, risk class ${init_p2.risk_class}, requires ${init_p2.requires_knowledge_level} knowledge, minimum ${init_p2.minimum_horizon}-year horizon.${init_p2.potential_loss === 'total' ? ' Has total loss potential.' : ''}${init_p2.leverage ? ' Leveraged product.' : ''}`,
+      structuredOutput: init_p2,
     })
 
-    // AV / AC — verifier + corrector for A2
+    // AV check → correction → AV re-check — each appears as its own visible bubble.
     _emitVerifierMessages(
       messages,
       state.a2_consistency_issues,
@@ -184,7 +187,7 @@ export function mapStateToMessages(state) {
       stepRef,
     )
 
-    // Cross-consistency check (A1 × A2) — always emit if present and non-empty
+    // Cross-consistency check (A1 × A2)
     if (state.cross_consistency_issues && state.cross_consistency_issues.length > 0) {
       messages.push({
         type: 'system',
@@ -213,7 +216,10 @@ export function mapStateToMessages(state) {
   if (state.rule_verdict) {
     const v = state.rule_verdict
     const failed = v.rules
-      ? Object.entries(v.rules).filter(([, r]) => !r.passed).map(([k]) => k).join(', ')
+      ? Object.entries(v.rules)
+          .filter(([, r]) => typeof r === 'string' ? r === 'FAIL' : !(r.pass_ ?? r.passed ?? r.pass))
+          .map(([k]) => k)
+          .join(', ')
       : 'none'
     messages.push({
       type: 'agent',

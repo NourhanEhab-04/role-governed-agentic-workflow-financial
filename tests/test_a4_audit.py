@@ -34,13 +34,13 @@ def test_borderline_not_triggered_unsuitable():
 # --- check_concentration_risk ---
 
 def test_concentration_triggered_above_threshold():
-    client = {"single_asset_concentration_pct": 41}
+    client = {"portfolio_concentration_pct": 41}
     result = check_concentration_risk(client)
     assert result["triggered"] is True
-    assert result["severity"] == "LOW"
+    assert result["severity"] == "HIGH"
 
 def test_concentration_not_triggered_at_threshold():
-    client = {"single_asset_concentration_pct": 40}
+    client = {"portfolio_concentration_pct": 40}
     assert check_concentration_risk(client)["triggered"] is False
 
 def test_concentration_not_triggered_missing_key():
@@ -51,19 +51,19 @@ def test_concentration_not_triggered_missing_key():
 # --- check_contradiction ---
 
 def test_contradiction_triggered_high_vuln_suitable():
-    client = {"vulnerability_status": "HIGH"}
+    client = {"financial_vulnerability": "HIGH"}
     verdict = {"score": 75, "decision": "SUITABLE"}
     result = check_contradiction(client, verdict)
     assert result["triggered"] is True
     assert result["severity"] == "HIGH"
 
 def test_contradiction_not_triggered_high_vuln_unsuitable():
-    client = {"vulnerability_status": "HIGH"}
+    client = {"financial_vulnerability": "HIGH"}
     verdict = {"score": 30, "decision": "UNSUITABLE"}
     assert check_contradiction(client, verdict)["triggered"] is False
 
 def test_contradiction_not_triggered_normal_client_suitable():
-    client = {"vulnerability_status": "NONE"}
+    client = {"financial_vulnerability": "LOW"}
     verdict = {"score": 80, "decision": "SUITABLE"}
     assert check_contradiction(client, verdict)["triggered"] is False
 

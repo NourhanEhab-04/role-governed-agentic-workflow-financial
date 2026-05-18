@@ -36,7 +36,7 @@ def test_json_with_surrounding_prose():
 def test_missing_key_raises_value_error():
     incomplete = json.loads(VALID_JSON)
     del incomplete["risk_class"]
-    with pytest.raises(ValueError, match="missing required keys"):
+    with pytest.raises(ValueError, match="risk_class"):
         parse_product_profile(json.dumps(incomplete))
 
 
@@ -46,7 +46,9 @@ def test_no_json_raises_value_error():
 
 
 def test_malformed_json_raises_value_error():
-    with pytest.raises(ValueError, match="malformed JSON"):
+    # json_repair may partially recover the JSON; Pydantic then rejects the
+    # invalid field values — either way a ValueError must be raised.
+    with pytest.raises(ValueError):
         parse_product_profile('{"risk_class": 4, "complexity_tier":}')
 
 
@@ -74,7 +76,7 @@ def test_invalid_potential_loss_raises_value_error():
 def test_risk_class_out_of_range_raises_value_error():
     bad = json.loads(VALID_JSON)
     bad["risk_class"] = 8
-    with pytest.raises(ValueError, match="risk_class must be an integer between 1 and 7"):
+    with pytest.raises(ValueError, match="risk_class"):
         parse_product_profile(json.dumps(bad))
 
 

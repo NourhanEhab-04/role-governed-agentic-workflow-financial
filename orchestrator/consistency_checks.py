@@ -20,6 +20,79 @@ from __future__ import annotations
 _KNOWLEDGE_ORDER = {"none": 0, "basic": 1, "moderate": 2, "advanced": 3}
 
 
+def enforce_a1_consistency(profile: dict) -> dict:
+    """
+    Deterministically override A1 fields where the rule is unambiguous.
+    Called after all LLM correction attempts — these rules cannot be wrong.
+    """
+    p = dict(profile)
+    age = p.get("age")
+    income = p.get("income")
+    vulnerability = p.get("financial_vulnerability", "LOW")
+
+    # Rule: age > 70 always → HIGH (MiFID II mandatory)
+    if isinstance(age, int) and age > 70:
+        p["financial_vulnerability"] = "HIGH"
+        vulnerability = "HIGH"
+    # Rule: zero income (unemployed, no pension) → HIGH
+    elif income == 0.0:
+        p["financial_vulnerability"] = "HIGH"
+        vulnerability = "HIGH"
+
+    # Rule: can_afford_total_loss cannot be True for HIGH-vulnerability clients
+    if vulnerability == "HIGH" and p.get("can_afford_total_loss") is True:
+        p["can_afford_total_loss"] = False
+
+    # Rule: investment_horizon must be at least 1
+    if isinstance(p.get("investment_horizon"), int) and p["investment_horizon"] < 1:
+        p["investment_horizon"] = 1
+
+    return p
+
+
+def enforce_a2_consistency(profile: dict) -> dict:
+    """
+    Deterministically override A2 fields where ESMA rules are unambiguous.
+    Called after all LLM correction attempts — these rules cannot be wrong.
+    """
+    p = dict(profile)
+    risk_class = p.get("risk_class")
+
+    if not isinstance(risk_class, int):
+        return p  # type errors handled upstream; skip
+
+    # Rule: class 7 mandatory fields (ESMA — no exceptions)
+    if risk_class == 7:
+        p["leverage"] = True
+        p["potential_loss"] = "total"
+        p["complexity_tier"] = "COMPLEX"
+        p["requires_knowledge_level"] = "advanced"
+
+    # Rule: leveraged product must be at least class 6
+    if p.get("leverage") is True and risk_class < 6:
+        p["risk_class"] = 6
+
+    # Rule: COMPLEX products require at least moderate knowledge
+    if p.get("complexity_tier") == "COMPLEX":
+        knowledge = p.get("requires_knowledge_level", "none")
+        if _KNOWLEDGE_ORDER.get(knowledge, 0) < _KNOWLEDGE_ORDER["moderate"]:
+            p["requires_knowledge_level"] = "moderate"
+
+    # Rule: class 1–4 cannot have total potential loss
+    if risk_class <= 4 and p.get("potential_loss") == "total":
+        p["potential_loss"] = "partial"
+
+    # Rule: class 1–4 are not leveraged
+    if risk_class <= 4 and p.get("leverage") is True:
+        p["leverage"] = False
+
+    # Rule: minimum_horizon must be at least 1
+    if isinstance(p.get("minimum_horizon"), int) and p["minimum_horizon"] < 1:
+        p["minimum_horizon"] = 1
+
+    return p
+
+
 def check_a1_consistency(client_profile: dict) -> list[str]:
     """
     Check internal consistency of the A1 client_profile output.
@@ -28,9 +101,18 @@ def check_a1_consistency(client_profile: dict) -> list[str]:
     issues: list[str] = []
     p = client_profile
 
-    # ── income = 0 → vulnerability must be HIGH ──────────────────────────────
     income = p.get("income", None)
     vulnerability = p.get("financial_vulnerability", "")
+
+    # ── age > 70 → vulnerability must be HIGH ────────────────────────────────
+    age = p.get("age", None)
+    if isinstance(age, int) and age > 70 and vulnerability != "HIGH":
+        issues.append(
+            f"age is {age} (over 70) but financial_vulnerability is '{vulnerability}' "
+            "(expected HIGH — clients over 70 are always HIGH vulnerability under MiFID II rules)"
+        )
+
+    # ── income = 0 → vulnerability must be HIGH ──────────────────────────────
     if income == 0.0 and vulnerability != "HIGH":
         issues.append(
             f"income is 0 but financial_vulnerability is '{vulnerability}' "
@@ -47,12 +129,18 @@ def check_a1_consistency(client_profile: dict) -> list[str]:
                 "client is investing more than their accessible cash"
             )
 
-    # ── can_afford_total_loss = True AND vulnerability = HIGH → contradiction ─
+    # ── can_afford_total_loss = True AND vulnerability = HIGH/MEDIUM → contradiction ─
     can_afford = p.get("can_afford_total_loss", False)
     if can_afford is True and vulnerability == "HIGH":
         issues.append(
             "can_afford_total_loss is True but financial_vulnerability is HIGH: "
             "contradictory — a highly vulnerable client should not be marked as able to lose all"
+        )
+    if can_afford is True and vulnerability == "MEDIUM":
+        issues.append(
+            "can_afford_total_loss is True but financial_vulnerability is MEDIUM: "
+            "suspicious — verify the client explicitly stated they can write off the entire amount, "
+            "not just that they can tolerate partial loss"
         )
 
     # ── high risk tolerance but HIGH vulnerability → flag ────────────────────

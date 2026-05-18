@@ -24,6 +24,7 @@ VALID_PROFILE = {
     "investment_amount": 5000.0,
     "can_afford_total_loss": False,
     "financial_vulnerability": "LOW",
+    "age": None,  # Optional field — model_dump() always includes it with default None
 }
 
 
@@ -71,7 +72,7 @@ async def test_run_client_profiler_raises_on_missing_keys():
     """If agent omits required keys, ValueError is raised after parsing."""
     incomplete = {k: v for k, v in list(VALID_PROFILE.items())[:3]}
     mock_client = make_mock_client(json.dumps(incomplete))
-    with pytest.raises(ValueError, match="missing required keys"):
+    with pytest.raises(ValueError, match="Field required"):
         await run_client_profiler("some input", mock_client)
 
 

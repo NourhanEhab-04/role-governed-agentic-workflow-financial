@@ -6,13 +6,13 @@ VALID_VERDICT = """{
     "score": 80,
     "decision": "SUITABLE",
     "rules": {
-        "R1_knowledge": "PASS",
-        "R2_risk": "PASS",
-        "R3_horizon": "FAIL",
-        "R4_afford": "PASS",
-        "R5_vuln": "PASS",
-        "R6_leverage": "PASS",
-        "R7_complexity": "PASS"
+        "R1": "PASS",
+        "R2": "PASS",
+        "R3": "FAIL",
+        "R4": "PASS",
+        "R5": "PASS",
+        "R6": "PASS",
+        "R7": "PASS"
     }
 }"""
 
@@ -21,7 +21,7 @@ def test_clean_verdict_parses_correctly():
     result = parse_rule_verdict(VALID_VERDICT)
     assert result["score"] == 80
     assert result["decision"] == "SUITABLE"
-    assert result["rules"]["R3_horizon"] == "FAIL"
+    assert result["rules"]["R3"] == "FAIL"
     assert len(result["rules"]) == 7
 
 
@@ -34,7 +34,7 @@ def test_verdict_inside_markdown_fence():
 def test_missing_top_level_key_raises():
     incomplete = json.loads(VALID_VERDICT)
     del incomplete["score"]
-    with pytest.raises(ValueError, match="missing required keys"):
+    with pytest.raises(ValueError, match="score"):
         parse_rule_verdict(json.dumps(incomplete))
 
 
@@ -44,7 +44,9 @@ def test_no_json_raises():
 
 
 def test_malformed_json_raises():
-    with pytest.raises(ValueError, match="malformed JSON"):
+    # json_repair may partially recover the JSON; Pydantic then rejects the
+    # invalid field values — either way a ValueError must be raised.
+    with pytest.raises(ValueError):
         parse_rule_verdict('{"score": 80, "decision":}')
 
 
@@ -64,15 +66,15 @@ def test_score_not_int_raises():
 
 def test_missing_rule_id_raises():
     bad = json.loads(VALID_VERDICT)
-    del bad["rules"]["R7_complexity"]
+    del bad["rules"]["R7"]
     with pytest.raises(ValueError, match="missing rule IDs"):
         parse_rule_verdict(json.dumps(bad))
 
 
 def test_invalid_rule_result_raises():
     bad = json.loads(VALID_VERDICT)
-    bad["rules"]["R1_knowledge"] = "MAYBE"
-    with pytest.raises(ValueError, match="invalid result"):
+    bad["rules"]["R1"] = "MAYBE"
+    with pytest.raises(ValueError, match="rules"):
         parse_rule_verdict(json.dumps(bad))
 
 
