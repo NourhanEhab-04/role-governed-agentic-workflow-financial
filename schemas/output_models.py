@@ -66,6 +66,45 @@ class ClientProfileModel(BaseModel):
     def coerce_afford_bool(cls, v: Any) -> bool:
         return _coerce_llm_bool(v)
 
+    @field_validator("risk_tolerance_score", "age", mode="before")
+    @classmethod
+    def coerce_int(cls, v: Any) -> Any:
+        if v is None:
+            return v  # valid for Optional[int] (age field)
+        if isinstance(v, bool):
+            raise ValueError(f"expected integer, got bool: {v!r}")
+        if isinstance(v, int):
+            return v
+        if isinstance(v, float) and v == int(v):
+            return int(v)
+        if isinstance(v, str):
+            cleaned = v.strip().split()[0].rstrip(".,")
+            try:
+                return int(float(cleaned))
+            except (ValueError, IndexError):
+                raise ValueError(f"cannot convert '{v}' to an integer")
+        return v  # let Pydantic's own int coercion handle the rest
+
+    @field_validator("investment_horizon", mode="before")
+    @classmethod
+    def coerce_clamp_horizon(cls, v: Any) -> int:
+        # Clamp to minimum 1 here so the ge=1 Field constraint never fires
+        # on a value the LLM produced via a valid (but edge-case) calculation,
+        # e.g. "6 months" → floor(6/12) = 0 → should be 1.
+        if isinstance(v, bool):
+            raise ValueError(f"expected integer, got bool: {v!r}")
+        if isinstance(v, int):
+            return max(1, v)
+        if isinstance(v, float) and v == int(v):
+            return max(1, int(v))
+        if isinstance(v, str):
+            cleaned = v.strip().split()[0].rstrip(".,")
+            try:
+                return max(1, int(float(cleaned)))
+            except (ValueError, IndexError):
+                raise ValueError(f"cannot convert '{v}' to an integer")
+        return v
+
     @field_validator("liquid_assets", "income", "investment_amount", mode="before")
     @classmethod
     def coerce_numeric(cls, v: Any) -> float:
@@ -83,8 +122,8 @@ class ClientProfileModel(BaseModel):
     @classmethod
     def validate_knowledge(cls, v: Any) -> str:
         valid = {"none", "basic", "moderate", "advanced"}
-        if isinstance(v, str) and v in valid:
-            return v
+        if isinstance(v, str) and v.lower().strip() in valid:
+            return v.lower().strip()
         raise ValueError(
             f"Invalid financial_knowledge: '{v}'. Must be one of {valid}"
         )
@@ -93,8 +132,8 @@ class ClientProfileModel(BaseModel):
     @classmethod
     def validate_vulnerability(cls, v: Any) -> str:
         valid = {"LOW", "MEDIUM", "HIGH"}
-        if isinstance(v, str) and v in valid:
-            return v
+        if isinstance(v, str) and v.upper().strip() in valid:
+            return v.upper().strip()
         raise ValueError(
             f"Invalid financial_vulnerability: '{v}'. Must be one of {valid}"
         )
@@ -138,16 +177,16 @@ class ProductProfileModel(BaseModel):
     @classmethod
     def validate_complexity(cls, v: Any) -> str:
         valid = {"NON-COMPLEX", "COMPLEX"}
-        if isinstance(v, str) and v in valid:
-            return v
+        if isinstance(v, str) and v.upper().strip() in valid:
+            return v.upper().strip()
         raise ValueError(f"Invalid complexity_tier: '{v}'. Must be one of {valid}")
 
     @field_validator("requires_knowledge_level", mode="before")
     @classmethod
     def validate_knowledge_level(cls, v: Any) -> str:
         valid = {"none", "basic", "moderate", "advanced"}
-        if isinstance(v, str) and v in valid:
-            return v
+        if isinstance(v, str) and v.lower().strip() in valid:
+            return v.lower().strip()
         raise ValueError(
             f"Invalid requires_knowledge_level: '{v}'. Must be one of {valid}"
         )
@@ -156,8 +195,8 @@ class ProductProfileModel(BaseModel):
     @classmethod
     def validate_potential_loss(cls, v: Any) -> str:
         valid = {"partial", "total"}
-        if isinstance(v, str) and v in valid:
-            return v
+        if isinstance(v, str) and v.lower().strip() in valid:
+            return v.lower().strip()
         raise ValueError(f"Invalid potential_loss: '{v}'. Must be one of {valid}")
 
 

@@ -136,8 +136,13 @@ async def run_rule_engine_agent(
     raw = evaluate_suitability(cp.model_dump(), pp.model_dump())
     # Rule engine already uses short IDs (R1..R7) — pass through directly.
     rules_dict = {r["rule"]: "PASS" if r["pass"] else "FAIL" for r in raw["rules"]}
+    # Preserve the deterministic detail strings so the disclosure agent can cite
+    # exact threshold values (e.g. "risk_class 7 > tolerance 4 + 2 = 6") rather
+    # than reconstructing them from the raw profiles.
+    rule_details = {r["rule"]: r["detail"] for r in raw["rules"]}
     return {
         "score": raw["score"],
         "decision": raw["decision"],
         "rules": rules_dict,
+        "rule_details": rule_details,
     }

@@ -105,6 +105,10 @@ async def run_a1_feedback_loop(
                 raw_input, current_profile, verification, model_client,
                 attempt_history=attempt_history,
             )
+            # Apply deterministic overrides before the next verifier pass so the
+            # verifier never sees fixable rule violations (e.g. age>70 + MEDIUM).
+            from orchestrator.consistency_checks import enforce_a1_consistency
+            corrected = enforce_a1_consistency(corrected)
             loop_state["correction"]["corrected"] = corrected
             loop_state["correction"]["fields_fixed"] = list(failed_fields.keys())
             loop_state["correction"]["attempts"] += 1
@@ -199,6 +203,10 @@ async def run_a2_feedback_loop(
                 raw_input, current_profile, verification, model_client,
                 attempt_history=attempt_history,
             )
+            # Apply deterministic overrides before the next verifier pass so the
+            # verifier never sees fixable ESMA rule violations.
+            from orchestrator.consistency_checks import enforce_a2_consistency
+            corrected = enforce_a2_consistency(corrected)
             loop_state["correction"]["corrected"] = corrected
             loop_state["correction"]["fields_fixed"] = list(failed_fields.keys())
             loop_state["correction"]["attempts"] += 1

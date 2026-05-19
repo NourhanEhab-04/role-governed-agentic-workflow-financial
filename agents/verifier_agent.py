@@ -21,7 +21,6 @@ import json
 from autogen_agentchat.agents import AssistantAgent
 from autogen_agentchat.messages import TextMessage
 
-from schemas.verification_result import CONFIDENCE_THRESHOLD
 
 
 # ── System prompts ────────────────────────────────────────────────────────────
@@ -193,7 +192,9 @@ For EACH field:
 📊 OUTPUT FORMAT (STRICT)
 ════════════════════════════════════════
 
-Return ONLY:
+Return ONLY a single JSON object with exactly these four top-level keys.
+CRITICAL: "passed" and "confidence" MUST be top-level keys — never omit them.
+Do NOT return just the field_checks dict. The outer wrapper is mandatory.
 
 {
   "passed": <true | false>,
@@ -308,6 +309,8 @@ explicitly designed as short-term (e.g. CFD = 1 year). Never set to 0.
 REQUIRED OUTPUT FORMAT
 ════════════════════════════════════════
 Output ONLY a single JSON object — no preamble, no markdown fences.
+CRITICAL: "passed" and "confidence" MUST be top-level keys — never omit them.
+Do NOT return just the field_checks dict. The outer wrapper is mandatory.
 
 {
     "passed": <true | false>,
@@ -342,6 +345,85 @@ Output ONLY the JSON object. Nothing else.
 
 # ── Parser ────────────────────────────────────────────────────────────────────
 
+def _extract_all_json_objects(text: str) -> list:
+    """
+    Walk through text and return every complete, balanced JSON object found.
+    Used so we can pick the best candidate instead of blindly taking the first.
+    """
+    import json as _json
+    objects = []
+    pos = 0
+    while True:
+        start = text.find('{', pos)
+        if start == -1:
+            break
+        depth = 0
+        in_string = False
+        escape_next = False
+        found_end = None
+        for i, ch in enumerate(text[start:], start):
+            if escape_next:
+                escape_next = False
+                continue
+            if ch == '\\' and in_string:
+                escape_next = True
+                continue
+            if ch == '"':
+                in_string = not in_string
+                continue
+            if in_string:
+                continue
+            if ch == '{':
+                depth += 1
+            elif ch == '}':
+                depth -= 1
+                if depth == 0:
+                    found_end = i
+                    break
+        if found_end is None:
+            break
+        candidate = text[start:found_end + 1]
+        try:
+            obj = _json.loads(candidate)
+            if isinstance(obj, dict):
+                objects.append(obj)
+        except Exception:
+            pass
+        pos = found_end + 1
+    return objects
+
+
+def _recover_flat_field_checks(data: dict) -> dict:
+    """
+    Recover when the LLM returns only the field_checks content at the top level,
+    omitting the required passed / confidence / issues wrapper.
+
+    Detects the pattern: no 'passed' key, and all values are dicts with 'supported'.
+    Reconstructs a valid VerificationResultModel-shaped dict from the field checks.
+    """
+    if "passed" in data or "confidence" in data:
+        return data  # already has the wrapper — nothing to fix
+    if not data:
+        return data
+    all_field_checks = all(
+        isinstance(v, dict) and "supported" in v for v in data.values()
+    )
+    if not all_field_checks:
+        return data  # not a field_checks-only dict — let validation handle it
+    failed = [
+        (k, v) for k, v in data.items() if v.get("supported") is False
+    ]
+    num_failed = len(failed)
+    confidence = round(max(0.4, 1.0 - 0.2 * num_failed), 2)
+    issues = [f"{k}: {v.get('reason', '')}" for k, v in failed]
+    return {
+        "passed": num_failed == 0,
+        "confidence": confidence,
+        "issues": issues,
+        "field_checks": data,
+    }
+
+
 def parse_verification_result(raw_text: str) -> dict:
     """Extract and return a validated verification_result dict from verifier output."""
     from agents.parsing import extract_json_object
@@ -350,7 +432,14 @@ def parse_verification_result(raw_text: str) -> dict:
     import re
     # Sanitize control characters that break json.loads inside string values
     sanitized = re.sub(r'[\x00-\x1f]', ' ', raw_text)
-    data = extract_json_object(sanitized)
+    # Try all JSON objects in the response; prefer the one that already has
+    # the required top-level keys so a stray field-check fragment doesn't win.
+    candidates = _extract_all_json_objects(sanitized)
+    data = next(
+        (c for c in candidates if "passed" in c and "confidence" in c),
+        candidates[0] if candidates else extract_json_object(sanitized),
+    )
+    data = _recover_flat_field_checks(data)
     try:
         return VerificationResultModel.model_validate(data).model_dump()
     except ValidationError as exc:

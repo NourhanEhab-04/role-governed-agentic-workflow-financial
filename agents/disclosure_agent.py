@@ -15,7 +15,9 @@ You receive a JSON object with five keys:
 - "product_profile": structured product profile
 - "rule_verdict": output from the rule engine (score, decision, per-rule results)
 - "conflict_report": output from the conflict detector (flags, escalate, summary)
-- "rule_findings_skeleton": a list of 7 objects, each with "rule_id" and "status" already filled in
+- "rule_findings_skeleton": a list of 7 objects, each with "rule_id", "status", and "detail"
+  already filled in. The "detail" field contains the exact threshold comparison computed
+  by the rule engine — use it as your factual source of truth.
 
 Your responsibilities:
 
@@ -24,11 +26,38 @@ Your responsibilities:
    - Otherwise mirror rule_verdict["decision"] exactly (SUITABLE / CONDITIONAL / UNSUITABLE).
 
 2. Write "rule_findings": copy the 7 entries from "rule_findings_skeleton" exactly —
-   do NOT change the "rule_id" or "status" values — and add an "explanation" field to
-   each: one plain English sentence explaining what the rule checks and why it
-   passed or failed for this specific client and product.
+   do NOT change the "rule_id" or "status" values — and add an "explanation" field to each.
+   Do NOT include the "detail" field in your output entries.
+
    CRITICAL: the "rule_id" values must be exactly R1, R2, R3, R4, R5, R6, R7 —
    never use R1_knowledge, R2_risk, or any other variant.
+
+   How to write explanations:
+
+   For FAIL entries — you MUST:
+     (a) State what the rule requires in plain English.
+     (b) Quote the exact client value AND the exact product requirement from "detail".
+     (c) Explain precisely why they clash (e.g. which threshold was breached and by how much).
+   Do NOT use vague language like "the product may be too risky." Name the numbers.
+   Examples:
+     R1 FAIL: "Knowledge check failed: the product requires 'advanced' knowledge (score 9)
+       but your profile shows 'basic' knowledge (score 3) — a gap of 6 points."
+     R2 FAIL: "Risk alignment failed: the product's risk class is 7, but your risk
+       tolerance score is 4; MiFID II permits a maximum gap of 2 (4 + 2 = 6), so the
+       product exceeds your risk appetite by 1 class."
+     R3 FAIL: "Horizon check failed: the product requires a minimum investment horizon
+       of 5 years but your stated horizon is 2 years — 3 years short of the requirement."
+     R4 FAIL: "Affordability check failed: you indicated you cannot afford a total loss,
+       but this product carries a 'total' potential loss rating."
+     R5 FAIL: "Vulnerability check failed: your financial vulnerability is rated HIGH and
+       the product's risk class is 6 (≥ 5), making it unsuitable for vulnerable clients."
+     R6 FAIL: "Leverage check failed: this product uses leverage, which requires a
+       risk tolerance score of at least 7; your score is 4."
+     R7 FAIL: "Complexity check failed: this product is rated COMPLEX but your financial
+       knowledge level is 'basic', below the required 'moderate' minimum."
+
+   For PASS entries: one sentence confirming compliance, citing the actual values.
+   Example: "Your investment horizon of 5 years meets the product's 3-year minimum."
 
 3. Write "flags_addressed": one entry per flag in conflict_report["flags"]
    where triggered is true. Each entry must have:
@@ -42,12 +71,20 @@ Your responsibilities:
    "MiFID II Article 25(2) — suitability assessed under R1 (knowledge), R4 (affordability)."
    Never leave this field empty.
 
-5. Write "client_facing_summary": 2–3 sentences in plain English, no regulatory
-   jargon. Explain the outcome and what it means for the client. If ESCALATED,
-   explain that a human advisor will review the case.
+5. Write "client_facing_summary": 2–3 sentences in plain English, no regulatory jargon.
+   - For UNSUITABLE or CONDITIONAL: explicitly name each failed rule by its plain English
+     label (not rule IDs), state the exact mismatch values, and explain what this means
+     for the client. Example: "This product requires advanced financial knowledge, but your
+     profile shows only basic knowledge. The product's risk class of 7 also exceeds your
+     maximum tolerable risk of 6 (your score 4, plus the allowed margin of 2). For these
+     reasons, this product does not match your investor profile."
+   - For ESCALATED: explain that a human advisor will review the case, and briefly name
+     the specific concern that triggered escalation (e.g. vulnerability level, contradiction).
+   - For SUITABLE: 1-2 sentences confirming the product matches the client's profile,
+     citing at least one key matching value.
 
-6. Write "summary": one sentence for internal use, summarising the decision
-   and the key reason.
+6. Write "summary": one sentence for internal use, naming the decision and the primary
+   rule(s) that drove it (e.g. "UNSUITABLE — R2 (risk class 7 vs tolerance 4) and R1 failed").
 
 Hard rules:
 - Never override the rule_verdict score or per-rule results.
@@ -59,19 +96,19 @@ Hard rules:
 Respond with exactly this structure:
 {
   "decision": "<SUITABLE | CONDITIONAL | UNSUITABLE | ESCALATED>",
-  "summary": "<one internal sentence>",
+  "summary": "<one internal sentence naming decision and primary failing rules>",
   "rule_findings": [
-    {"rule_id": "R1", "status": "<PASS|FAIL>", "explanation": "<sentence>"},
-    {"rule_id": "R2", "status": "<PASS|FAIL>", "explanation": "<sentence>"},
-    {"rule_id": "R3", "status": "<PASS|FAIL>", "explanation": "<sentence>"},
-    {"rule_id": "R4", "status": "<PASS|FAIL>", "explanation": "<sentence>"},
-    {"rule_id": "R5", "status": "<PASS|FAIL>", "explanation": "<sentence>"},
-    {"rule_id": "R6", "status": "<PASS|FAIL>", "explanation": "<sentence>"},
-    {"rule_id": "R7", "status": "<PASS|FAIL>", "explanation": "<sentence>"}
+    {"rule_id": "R1", "status": "<PASS|FAIL>", "explanation": "<specific values-based sentence>"},
+    {"rule_id": "R2", "status": "<PASS|FAIL>", "explanation": "<specific values-based sentence>"},
+    {"rule_id": "R3", "status": "<PASS|FAIL>", "explanation": "<specific values-based sentence>"},
+    {"rule_id": "R4", "status": "<PASS|FAIL>", "explanation": "<specific values-based sentence>"},
+    {"rule_id": "R5", "status": "<PASS|FAIL>", "explanation": "<specific values-based sentence>"},
+    {"rule_id": "R6", "status": "<PASS|FAIL>", "explanation": "<specific values-based sentence>"},
+    {"rule_id": "R7", "status": "<PASS|FAIL>", "explanation": "<specific values-based sentence>"}
   ],
   "flags_addressed": [],
   "regulatory_basis": "MiFID II Article 25(2) — <rule references>",
-  "client_facing_summary": "<2-3 plain English sentences>"
+  "client_facing_summary": "<2-3 plain English sentences with exact mismatch values>"
 }
 """
 
@@ -102,8 +139,16 @@ async def run_disclosure_agent(
 
     # Build the skeleton so the LLM only writes explanations.
     # rule_verdict["rules"] now uses short IDs (R1..R7) consistently.
+    # rule_verdict["rule_details"] carries the exact threshold strings from the
+    # rule engine (e.g. "risk_class 7 > tolerance 4 + 2 = 6") so the disclosure
+    # agent can cite precise values rather than reconstructing them from profiles.
+    rule_details = rule_verdict.get("rule_details", {})
     rule_findings_skeleton = [
-        {"rule_id": rule_id, "status": rule_verdict.get("rules", {}).get(rule_id, "UNKNOWN")}
+        {
+            "rule_id": rule_id,
+            "status": rule_verdict.get("rules", {}).get(rule_id, "UNKNOWN"),
+            "detail": rule_details.get(rule_id, ""),
+        }
         for rule_id in _RULE_ORDER
     ]
 
