@@ -30,7 +30,7 @@ from orchestrator.validators import (
     validate_after_a4,
     validate_after_a5,
 )
-from orchestrator.audit import build_audit_log
+from orchestrator.audit import build_full_audit_record
 from orchestrator.pre_check_tool import run_pre_check
 from orchestrator.consistency_checks import (
     check_a1_consistency,
@@ -72,7 +72,13 @@ async def run_pipeline(
     from agents.rule_engine_agent import run_rule_engine_agent
     from agents.conflict_detector import run_conflict_detector, check_rule_engine_agreement
     from agents.disclosure_agent import run_disclosure_agent
-    from config.llm_config import get_verifier_client
+    from config.llm_config import get_verifier_client, GROQ_MODEL, GROQ_VERIFIER_MODEL
+
+    _model_version = {
+        "agent_model":    GROQ_MODEL,
+        "verifier_model": GROQ_VERIFIER_MODEL,
+        "provider":       "groq",
+    }
     # Separate stronger model for the verifier — created once per pipeline run.
     verifier_client = get_verifier_client()
     state: dict = {}
@@ -232,7 +238,12 @@ async def run_pipeline(
     a1_ok, a2_ok = await asyncio.gather(_run_a1(), _run_a2())
     if not a1_ok or not a2_ok:
         await emit("halt")
-        return state, build_audit_log(state, retries, outputs, validations)
+        return state, build_full_audit_record(
+            state, retries, outputs, validations,
+            client_text=client_input,
+            product_text=product_input,
+            model_version=_model_version,
+        )
 
     # ── A1 × A2 cross-consistency check ─────────────────────────────────────
     cross_issues = check_a1_a2_cross(state["client_profile"], state["product_profile"])
@@ -252,7 +263,12 @@ async def run_pipeline(
     except Exception as exc:
         halt(f"pre_check failed: {exc}")
         await emit("halt")
-        return state, build_audit_log(state, retries, outputs, validations)
+        return state, build_full_audit_record(
+            state, retries, outputs, validations,
+            client_text=client_input,
+            product_text=product_input,
+            model_version=_model_version,
+        )
 
     # ── A3 ───────────────────────────────────────────────────────────────────
     # validate_after_a3 will now cross-check rule_verdict against pre_check_verdict.
@@ -268,7 +284,12 @@ async def run_pipeline(
     )
     if not ok:
         await emit("halt")
-        return state, build_audit_log(state, retries, outputs, validations)
+        return state, build_full_audit_record(
+            state, retries, outputs, validations,
+            client_text=client_input,
+            product_text=product_input,
+            model_version=_model_version,
+        )
     await emit("a3_done")  # rule_verdict now in state
 
     # ── A4 ───────────────────────────────────────────────────────────────────
@@ -285,7 +306,12 @@ async def run_pipeline(
     except Exception as exc:
         halt(f"audit pre-check failed: {exc}")
         await emit("halt")
-        return state, build_audit_log(state, retries, outputs, validations)
+        return state, build_full_audit_record(
+            state, retries, outputs, validations,
+            client_text=client_input,
+            product_text=product_input,
+            model_version=_model_version,
+        )
 
     ok = await run_stage(
         "A4",
@@ -300,7 +326,12 @@ async def run_pipeline(
     )
     if not ok:
         await emit("halt")
-        return state, build_audit_log(state, retries, outputs, validations)
+        return state, build_full_audit_record(
+            state, retries, outputs, validations,
+            client_text=client_input,
+            product_text=product_input,
+            model_version=_model_version,
+        )
 
     # Escalation flag — set before A5 so A5 writes the correct report type.
     if state.get("conflict_report", {}).get("escalate") is True:
@@ -323,4 +354,9 @@ async def run_pipeline(
     )
     await emit("a5_done")  # suitability_report now in state
 
-    return state, build_audit_log(state, retries, outputs, validations)
+    return state, build_full_audit_record(
+            state, retries, outputs, validations,
+            client_text=client_input,
+            product_text=product_input,
+            model_version=_model_version,
+        )
