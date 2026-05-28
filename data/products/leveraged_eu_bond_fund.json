@@ -1,0 +1,10 @@
+{
+  "name": "2x Leveraged EU Corporate Bond Fund",
+  "description": "A leveraged fund providing 2x daily exposure to a basket of EU investment-grade corporate bonds. Leverage amplifies both gains and losses; full capital loss is possible.",
+  "risk_class": 6,
+  "complexity_tier": "COMPLEX",
+  "leverage": true,
+  "potential_loss": "total",
+  "minimum_horizon": 7,
+  "requires_knowledge_level": "advanced"
+}

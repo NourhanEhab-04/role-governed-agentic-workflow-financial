@@ -21,8 +21,20 @@ def build_audit_log(
     agent_outputs      : {stage_id: str}  raw text output per stage
     validation_results : {stage_id: (bool, str)}
     """
+    from rule_engine.rule_engine import RULE_ENGINE_VERSION
+
+    # Map agent IDs to their reasoning trace keys in pipeline_state
+    _reasoning_keys = {
+        "A1": "a1_reasoning",
+        "A2": "a2_reasoning",
+        "A3": "a3_reasoning",
+        "A4": "a4_reasoning",
+        "A5": "a5_reasoning",
+    }
+
     return {
         "timestamp": datetime.datetime.utcnow().isoformat() + "Z",
+        "rule_engine_version": RULE_ENGINE_VERSION,
         "final_decision": (
             (pipeline_state.get("suitability_report") or {})
             .get("decision", "UNKNOWN")
@@ -30,12 +42,16 @@ def build_audit_log(
         "escalated": pipeline_state.get("escalated", False),
         "halted": pipeline_state.get("halt", False),
         "halt_reason": pipeline_state.get("halt_reason"),
+        "warnings": pipeline_state.get("_warnings", []),
+        "error_chain": pipeline_state.get("_error_chain", []),
         "stages": {
             stage: {
                 "raw_output":        agent_outputs.get(stage),
                 "validation_passed": validation_results.get(stage, (None, ""))[0],
                 "validation_error":  validation_results.get(stage, (None, ""))[1],
                 "retry_count":       retry_counts.get(stage, 0),
+                # Explainability: per-agent chain of thought
+                "reasoning_trace":   pipeline_state.get(_reasoning_keys[stage]),
             }
             for stage in ["A1", "A2", "A3", "A4", "A5"]
         },
@@ -77,8 +93,9 @@ def build_full_audit_record(
 
     return {
         # ── Identity ────────────────────────────────────────────────────────
-        "assessment_id":    str(uuid.uuid4()),
-        "schema_version":   schema_version,
+        "assessment_id":      str(uuid.uuid4()),
+        "schema_version":     schema_version,
+        "rule_engine_version": base["rule_engine_version"],
 
         # ── Backward-compatible keys from build_audit_log ───────────────────
         "timestamp":        base["timestamp"],   # ISO 8601 string ending in "Z"
@@ -145,6 +162,26 @@ def build_full_audit_record(
 
         # ── Regulatory basis ─────────────────────────────────────────────────
         "regulatory_basis":      report.get("regulatory_basis"),
+
+        # ── Provenance: how each profile was produced ────────────────────────
+        "client_profile_provenance":  pipeline_state.get("client_profile_provenance"),
+        "product_profile_provenance": pipeline_state.get("product_profile_provenance"),
+
+        # ── Warnings and error chain ─────────────────────────────────────────
+        # warnings: non-halting anomalies (e.g. score drift between pre-check and A3)
+        # error_chain: ordered log of every correction, override, and warning applied
+        "warnings":   pipeline_state.get("_warnings", []),
+        "error_chain": pipeline_state.get("_error_chain", []),
+
+        # ── Per-agent reasoning traces (explainability / chain of thought) ───
+        # Each trace documents: inputs considered, decision factors, governance
+        # layers applied, corrections made, and the final output per agent.
+        # EU AI Act Art. 13 (transparency) and Art. 14 (human oversight).
+        "a1_reasoning": pipeline_state.get("a1_reasoning"),
+        "a2_reasoning": pipeline_state.get("a2_reasoning"),
+        "a3_reasoning": pipeline_state.get("a3_reasoning"),
+        "a4_reasoning": pipeline_state.get("a4_reasoning"),
+        "a5_reasoning": pipeline_state.get("a5_reasoning"),
 
         # ── Human review (populated post-pipeline when a reviewer acts) ──────
         "human_reviewer_id":     human_reviewer_id,

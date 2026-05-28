@@ -31,6 +31,20 @@ import openai
 from langgraph.graph import StateGraph, END
 from langgraph.types import RetryPolicy
 
+from config.llm_config import GROQ_MODEL, GROQ_VERIFIER_MODEL
+
+
+def _detect_field_overrides(before: dict, after: dict) -> list[dict]:
+    """
+    Return one entry per field that changed between before and after.
+    Used to log deterministic override applications to the error chain.
+    """
+    return [
+        {"field": k, "from": before[k], "to": after[k]}
+        for k in after
+        if k in before and before[k] != after[k]
+    ]
+
 from orchestrator.audit import build_audit_log
 from orchestrator.consistency_checks import (
     check_a1_consistency,
@@ -46,6 +60,7 @@ from orchestrator.validators import (
     validate_after_a3,
     validate_after_a4,
     validate_after_a5,
+    check_a3_score_drift,
 )
 from schemas.langgraph_state import PipelineState
 
@@ -66,6 +81,8 @@ def _node_a1(model_client, verifier_client, on_event=None):
         retries     = dict(state.get("_retries")     or {})
         outputs     = dict(state.get("_outputs")     or {})
         validations = dict(state.get("_validations") or {})
+        warnings    = list(state.get("_warnings")    or [])
+        error_chain = list(state.get("_error_chain") or [])
 
         # ── 1. Run profiler ──────────────────────────────────────────────────
         try:
@@ -75,7 +92,8 @@ def _node_a1(model_client, verifier_client, on_event=None):
         except openai.RateLimitError as exc:
             msg = f"Rate limit at A1: {exc}"
             return {"halt": True, "halt_reason": msg,
-                    "_retries": retries, "_outputs": outputs, "_validations": validations}
+                    "_retries": retries, "_outputs": outputs, "_validations": validations,
+                    "_warnings": warnings, "_error_chain": error_chain}
 
         probe = {**state, "client_profile": profile}
         ok, err = validate_after_a1(probe)
@@ -85,20 +103,20 @@ def _node_a1(model_client, verifier_client, on_event=None):
         if not ok:
             return {"halt": True, "halt_reason": f"A1 failed: {err}",
                     "client_profile": profile,
-                    "_retries": retries, "_outputs": outputs, "_validations": validations}
+                    "_retries": retries, "_outputs": outputs, "_validations": validations,
+                    "_warnings": warnings, "_error_chain": error_chain}
 
         a1_issues = check_a1_consistency(profile)
         updates: dict[str, Any] = {
             "client_profile":        profile,
-            "a1_initial_profile":    profile,   # snapshot for frontend diff
+            "a1_initial_profile":    profile,
             "a1_consistency_issues": a1_issues,
         }
 
-        # ── Emit: initial parse done ─────────────────────────────────────────
         if on_event:
             await on_event("a1_profiled", {**state, **updates})
 
-        # ── 2. Verify — always runs, using the stronger verifier_client ──────
+        # ── 2. Verify ────────────────────────────────────────────────────────
         try:
             verification = await run_verifier_on_a1(
                 state["client_input"], profile,
@@ -112,11 +130,12 @@ def _node_a1(model_client, verifier_client, on_event=None):
                 "issues": [f"Verifier error: {exc}"], "field_checks": {},
             }
 
-        # ── Emit: AV first check done (always — even on error) ──────────────
         if on_event:
             await on_event("a1_verified", {**state, **updates})
 
-        # ── 3. Correction (only when AV explicitly failed, not errored) ──────
+        # ── 3. Correction ────────────────────────────────────────────────────
+        correction_applied = False
+        fields_fixed: list[str] = []
         if updates.get("a1_verification", {}).get("passed") is False:
             fields_fixed = [
                 f for f, c in updates["a1_verification"].get("field_checks", {}).items()
@@ -126,24 +145,30 @@ def _node_a1(model_client, verifier_client, on_event=None):
                 corrected = await run_client_profiler_with_feedback(
                     state["client_input"], profile, updates["a1_verification"], model_client
                 )
-                fresh_issues = check_a1_consistency(corrected)
                 updates["a1_correction"]  = {
                     "original":     profile,
                     "corrected":    corrected,
                     "fields_fixed": fields_fixed,
                 }
                 updates["client_profile"] = corrected
+                correction_applied = True
+                error_chain.append({
+                    "stage":        "A1",
+                    "event":        "verifier_correction_applied",
+                    "fields_fixed": fields_fixed,
+                    "specialist_model": GROQ_MODEL,
+                    "verifier_model":   GROQ_VERIFIER_MODEL,
+                })
             except Exception as exc:
                 updates["a1_correction"] = {
                     "original": profile, "corrected": None,
                     "fields_fixed": [], "error": str(exc),
                 }
 
-            # ── Emit: A1 corrected (always after correction attempt) ─────────
             if on_event:
                 await on_event("a1_corrected", {**state, **updates})
 
-            # ── 4. Re-verify after correction ────────────────────────────────
+            # ── 4. Re-verify ─────────────────────────────────────────────────
             corrected_profile = updates.get("a1_correction", {}).get("corrected")
             if corrected_profile:
                 try:
@@ -160,12 +185,15 @@ def _node_a1(model_client, verifier_client, on_event=None):
                         "issues": [f"Re-verify error: {exc}"], "field_checks": {},
                     }
 
-                # ── Emit: AV re-check done (always) ──────────────────────────
                 if on_event:
                     await on_event("a1_reverified", {**state, **updates})
 
         # ── 5. Deterministic override — always applied last ──────────────────
+        profile_before_enforce = dict(updates["client_profile"])
         updates["client_profile"] = enforce_a1_consistency(updates["client_profile"])
+        overrides = _detect_field_overrides(profile_before_enforce, updates["client_profile"])
+        for override in overrides:
+            error_chain.append({"stage": "A1", "event": "deterministic_override", **override})
 
         try:
             raw = json.loads(state["client_input"])
@@ -177,9 +205,52 @@ def _node_a1(model_client, verifier_client, on_event=None):
         except (json.JSONDecodeError, KeyError, TypeError):
             pass
 
+        # ── 6. Provenance record ─────────────────────────────────────────────
+        override_fields = [o["field"] for o in overrides]
+        updates["client_profile_provenance"] = {
+            "source":               "verifier_corrected" if correction_applied else "original_a1",
+            "specialist_model":     GROQ_MODEL,
+            "verifier_model":       GROQ_VERIFIER_MODEL,
+            "correction_applied":   correction_applied,
+            "correction_fields":    fields_fixed,
+            "deterministic_overrides": override_fields,
+        }
+
+        # ── 7. Reasoning trace (explainability) ──────────────────────────────
+        final_profile = updates["client_profile"]
+        updates["a1_reasoning"] = {
+            "agent": "A1",
+            "role":  "Client Profiler",
+            "method": "llm_extraction_with_verifier_feedback",
+            "verification": {
+                "run":     bool(updates.get("a1_verification")),
+                "passed":  (updates.get("a1_verification") or {}).get("passed"),
+                "confidence": (updates.get("a1_verification") or {}).get("confidence"),
+                "issues":  (updates.get("a1_verification") or {}).get("issues", []),
+            },
+            "correction": {
+                "applied":    correction_applied,
+                "fields_fixed": fields_fixed,
+            },
+            "deterministic_overrides": override_fields,
+            "decision_factors": {
+                field: {
+                    "value":  final_profile.get(field),
+                    "source": (
+                        "deterministic_override" if field in override_fields
+                        else "verifier_corrected" if (correction_applied and field in fields_fixed)
+                        else "llm_extracted"
+                    ),
+                }
+                for field in final_profile
+            },
+        }
+
         updates["_retries"]     = retries
         updates["_outputs"]     = outputs
         updates["_validations"] = validations
+        updates["_warnings"]    = warnings
+        updates["_error_chain"] = error_chain
         return updates
 
     node.__name__ = "node_A1"
@@ -199,6 +270,8 @@ def _node_a2(model_client, verifier_client, on_event=None):
         retries     = dict(state.get("_retries")     or {})
         outputs     = dict(state.get("_outputs")     or {})
         validations = dict(state.get("_validations") or {})
+        warnings    = list(state.get("_warnings")    or [])
+        error_chain = list(state.get("_error_chain") or [])
 
         # ── 1. Run classifier ────────────────────────────────────────────────
         try:
@@ -208,7 +281,8 @@ def _node_a2(model_client, verifier_client, on_event=None):
         except openai.RateLimitError as exc:
             msg = f"Rate limit at A2: {exc}"
             return {"halt": True, "halt_reason": msg,
-                    "_retries": retries, "_outputs": outputs, "_validations": validations}
+                    "_retries": retries, "_outputs": outputs, "_validations": validations,
+                    "_warnings": warnings, "_error_chain": error_chain}
 
         probe = {**state, "product_profile": profile}
         ok, err = validate_after_a2(probe)
@@ -218,19 +292,19 @@ def _node_a2(model_client, verifier_client, on_event=None):
         if not ok:
             return {"halt": True, "halt_reason": f"A2 failed: {err}",
                     "product_profile": profile,
-                    "_retries": retries, "_outputs": outputs, "_validations": validations}
+                    "_retries": retries, "_outputs": outputs, "_validations": validations,
+                    "_warnings": warnings, "_error_chain": error_chain}
 
         a2_issues    = check_a2_consistency(profile)
         cross_issues = check_a1_a2_cross(state.get("client_profile", {}), profile)
 
         updates: dict[str, Any] = {
-            "product_profile":        profile,
-            "a2_initial_profile":     profile,
-            "a2_consistency_issues":  a2_issues,
+            "product_profile":          profile,
+            "a2_initial_profile":       profile,
+            "a2_consistency_issues":    a2_issues,
             "cross_consistency_issues": cross_issues,
         }
 
-        # ── Emit: initial classification done ───────────────────────────────
         if on_event:
             await on_event("a2_profiled", {**state, **updates})
 
@@ -248,11 +322,12 @@ def _node_a2(model_client, verifier_client, on_event=None):
                 "issues": [f"Verifier error: {exc}"], "field_checks": {},
             }
 
-        # ── Emit: AV first check done (always) ──────────────────────────────
         if on_event:
             await on_event("a2_verified", {**state, **updates})
 
-        # ── 3. Correction (only when AV explicitly failed, not errored) ──────
+        # ── 3. Correction ────────────────────────────────────────────────────
+        correction_applied = False
+        fields_fixed: list[str] = []
         if updates.get("a2_verification", {}).get("passed") is False:
             fields_fixed = [
                 f for f, c in updates["a2_verification"].get("field_checks", {}).items()
@@ -262,20 +337,26 @@ def _node_a2(model_client, verifier_client, on_event=None):
                 corrected = await run_product_classifier_with_feedback(
                     state["product_input"], profile, updates["a2_verification"], model_client
                 )
-                fresh_issues = check_a2_consistency(corrected)
                 updates["a2_correction"]   = {
                     "original":     profile,
                     "corrected":    corrected,
                     "fields_fixed": fields_fixed,
                 }
                 updates["product_profile"] = corrected
+                correction_applied = True
+                error_chain.append({
+                    "stage":        "A2",
+                    "event":        "verifier_correction_applied",
+                    "fields_fixed": fields_fixed,
+                    "specialist_model": GROQ_MODEL,
+                    "verifier_model":   GROQ_VERIFIER_MODEL,
+                })
             except Exception as exc:
                 updates["a2_correction"] = {
                     "original": profile, "corrected": None,
                     "fields_fixed": [], "error": str(exc),
                 }
 
-            # ── Emit: A2 corrected (always after correction attempt) ─────────
             if on_event:
                 await on_event("a2_corrected", {**state, **updates})
 
@@ -296,16 +377,62 @@ def _node_a2(model_client, verifier_client, on_event=None):
                         "issues": [f"Re-verify error: {exc}"], "field_checks": {},
                     }
 
-                # ── Emit: AV re-check done (always) ──────────────────────────
                 if on_event:
                     await on_event("a2_reverified", {**state, **updates})
 
-        # ── 5. Deterministic ESMA overrides ─────────────────────────────────
+        # ── 5. Deterministic ESMA overrides — always applied last ────────────
+        profile_before_enforce = dict(updates["product_profile"])
         updates["product_profile"] = enforce_a2_consistency(updates["product_profile"])
+        overrides = _detect_field_overrides(profile_before_enforce, updates["product_profile"])
+        for override in overrides:
+            error_chain.append({"stage": "A2", "event": "deterministic_override", **override})
+
+        # ── 6. Provenance record ─────────────────────────────────────────────
+        override_fields = [o["field"] for o in overrides]
+        updates["product_profile_provenance"] = {
+            "source":               "verifier_corrected" if correction_applied else "original_a2",
+            "specialist_model":     GROQ_MODEL,
+            "verifier_model":       GROQ_VERIFIER_MODEL,
+            "correction_applied":   correction_applied,
+            "correction_fields":    fields_fixed,
+            "deterministic_overrides": override_fields,
+        }
+
+        # ── 7. Reasoning trace (explainability) ──────────────────────────────
+        final_profile = updates["product_profile"]
+        updates["a2_reasoning"] = {
+            "agent": "A2",
+            "role":  "Product Classifier",
+            "method": "llm_extraction_with_verifier_feedback",
+            "verification": {
+                "run":        bool(updates.get("a2_verification")),
+                "passed":     (updates.get("a2_verification") or {}).get("passed"),
+                "confidence": (updates.get("a2_verification") or {}).get("confidence"),
+                "issues":     (updates.get("a2_verification") or {}).get("issues", []),
+            },
+            "correction": {
+                "applied":    correction_applied,
+                "fields_fixed": fields_fixed,
+            },
+            "deterministic_overrides": override_fields,
+            "decision_factors": {
+                field: {
+                    "value":  final_profile.get(field),
+                    "source": (
+                        "deterministic_override" if field in override_fields
+                        else "verifier_corrected" if (correction_applied and field in fields_fixed)
+                        else "llm_extracted"
+                    ),
+                }
+                for field in final_profile
+            },
+        }
 
         updates["_retries"]     = retries
         updates["_outputs"]     = outputs
         updates["_validations"] = validations
+        updates["_warnings"]    = warnings
+        updates["_error_chain"] = error_chain
         return updates
 
     node.__name__ = "node_A2"
@@ -332,6 +459,8 @@ def _node_a3(model_client):
         retries     = dict(state.get("_retries")     or {})
         outputs     = dict(state.get("_outputs")     or {})
         validations = dict(state.get("_validations") or {})
+        warnings    = list(state.get("_warnings")    or [])
+        error_chain = list(state.get("_error_chain") or [])
 
         try:
             verdict = await run_rule_engine_agent(
@@ -340,7 +469,8 @@ def _node_a3(model_client):
         except openai.RateLimitError as exc:
             msg = f"Rate limit at A3: {exc}"
             return {"halt": True, "halt_reason": msg,
-                    "_retries": retries, "_outputs": outputs, "_validations": validations}
+                    "_retries": retries, "_outputs": outputs, "_validations": validations,
+                    "_warnings": warnings, "_error_chain": error_chain}
 
         probe = {**state, "rule_verdict": verdict}
         ok, err = validate_after_a3(probe)
@@ -348,12 +478,75 @@ def _node_a3(model_client):
         outputs["A3"] = str(verdict)
 
         if not ok:
-            return {"halt": True, "halt_reason": f"A3 failed: {err}",
-                    "rule_verdict": verdict,
-                    "_retries": retries, "_outputs": outputs, "_validations": validations}
+            # Three-point integrity failure: A3 LLM disagrees with pre_check.
+            # Recover using pre_check_verdict (deterministic, already validated).
+            pre = state.get("pre_check_verdict")
+            if pre is not None:
+                pre_rules = {r["rule"]: "PASS" if r["pass"] else "FAIL"
+                             for r in pre.get("rules", [])}
+                from rule_engine.rule_engine import evaluate_suitability as _eval_suit
+                _raw = _eval_suit(state["client_profile"], state["product_profile"])
+                verdict = {
+                    "score":             pre["score"],
+                    "decision":          pre["decision"],
+                    "hard_failed_rules": pre.get("hard_failed_rules", []),
+                    "rules":             pre_rules,
+                    "rule_details":      {r["rule"]: r["detail"] for r in _raw["rules"]},
+                }
+                warnings.append({
+                    "stage": "A3", "event": "integrity_failure_recovered",
+                    "a3_decision": outputs["A3"],
+                    "pre_check_decision": pre.get("decision"),
+                    "message": f"A3 integrity check failed ({err}). Recovered from pre_check.",
+                })
+                error_chain.append({
+                    "stage": "A3", "event": "integrity_failure_recovered", "error": err,
+                })
+                validations["A3"] = (True, "pre_check_fallback")
+                outputs["A3"] = str(verdict)
+            else:
+                return {"halt": True, "halt_reason": f"A3 failed: {err}",
+                        "rule_verdict": verdict,
+                        "_retries": retries, "_outputs": outputs, "_validations": validations,
+                        "_warnings": warnings, "_error_chain": error_chain}
+
+        # Score drift: same decision + failed rules but different numeric score.
+        # Non-halting: integrity is intact, but log it so auditors can investigate.
+        drift = check_a3_score_drift(probe)
+        if drift is not None:
+            warnings.append(drift)
+            error_chain.append({**drift, "event": "score_drift_warning"})
+
+        # Reasoning trace: the rule engine IS the chain of thought for A3.
+        # Every rule evaluation has a deterministic detail string from the rule engine.
+        rule_details = verdict.get("rule_details", {})
+        a3_reasoning = {
+            "agent":  "A3",
+            "role":   "Rule Engine Agent",
+            "method": "deterministic_tool_call",
+            "tool_used": "evaluate_suitability_tool",
+            "governance": "LLM must call tool exactly once; cannot reason about suitability itself",
+            "rule_evaluations": {
+                rule_id: {
+                    "result": verdict.get("rules", {}).get(rule_id),
+                    "detail": rule_details.get(rule_id, ""),
+                }
+                for rule_id in ["R1", "R2", "R3", "R4", "R5", "R6", "R7"]
+            },
+            "score":            verdict.get("score"),
+            "decision":         verdict.get("decision"),
+            "hard_failed_rules": verdict.get("hard_failed_rules", []),
+            "three_point_check": {
+                "pre_check_decision":     (state.get("pre_check_verdict") or {}).get("decision"),
+                "a3_decision":            verdict.get("decision"),
+                "audit_agreement":        (state.get("audit_verdict") or {}).get("agreed"),
+            },
+        }
 
         return {"rule_verdict": verdict,
-                "_retries": retries, "_outputs": outputs, "_validations": validations}
+                "a3_reasoning": a3_reasoning,
+                "_retries": retries, "_outputs": outputs, "_validations": validations,
+                "_warnings": warnings, "_error_chain": error_chain}
 
     node.__name__ = "node_A3"
     return node
@@ -382,25 +575,63 @@ def _node_a4(model_client):
         retries     = dict(state.get("_retries")     or {})
         outputs     = dict(state.get("_outputs")     or {})
         validations = dict(state.get("_validations") or {})
+        warnings    = list(state.get("_warnings")    or [])
+        error_chain = list(state.get("_error_chain") or [])
 
         try:
-            report = await run_conflict_detector(
+            report, a4_overrides = await run_conflict_detector(
                 state["client_profile"], state["product_profile"],
                 state["rule_verdict"], model_client
             )
         except openai.RateLimitError as exc:
             msg = f"Rate limit at A4: {exc}"
             return {"halt": True, "halt_reason": msg,
-                    "_retries": retries, "_outputs": outputs, "_validations": validations}
+                    "_retries": retries, "_outputs": outputs, "_validations": validations,
+                    "_warnings": warnings, "_error_chain": error_chain}
+
+        # Log A4 deterministic overrides to the error chain for auditors
+        for override in a4_overrides:
+            error_chain.append({
+                "stage": "A4",
+                "event": "deterministic_override",
+                **override,
+            })
 
         probe = {**state, "conflict_report": report}
         ok, err = validate_after_a4(probe)
         validations["A4"] = (ok, err)
         outputs["A4"] = str(report)
 
+        # Reasoning trace: document each flag's evaluation and any corrections made
+        a4_reasoning = {
+            "agent":  "A4",
+            "role":   "Conflict Detector",
+            "method": "llm_with_deterministic_override",
+            "governance": "LLM flags checked against four deterministic rules; hard invariants enforced",
+            "flags_evaluated": [
+                {
+                    "rule_id":   f.get("rule_id"),
+                    "triggered": f.get("triggered"),
+                    "severity":  f.get("severity"),
+                    "message":   f.get("message"),
+                }
+                for f in report.get("flags", [])
+            ],
+            "escalation_triggered": report.get("escalate", False),
+            "deterministic_overrides_applied": bool(a4_overrides),
+            "overrides_detail": a4_overrides,
+            "reasoning_chain": " | ".join(
+                f"{f.get('rule_id')}: {'TRIGGERED' if f.get('triggered') else 'CLEAR'}"
+                for f in report.get("flags", [])
+            ),
+            "audit_triple_check_agreed": (state.get("audit_verdict") or {}).get("agreed"),
+        }
+
         updates: dict[str, Any] = {
             "conflict_report": report,
+            "a4_reasoning":    a4_reasoning,
             "_retries": retries, "_outputs": outputs, "_validations": validations,
+            "_warnings": warnings, "_error_chain": error_chain,
         }
 
         if not ok:
@@ -425,6 +656,8 @@ def _node_a5(model_client):
         retries     = dict(state.get("_retries")     or {})
         outputs     = dict(state.get("_outputs")     or {})
         validations = dict(state.get("_validations") or {})
+        warnings    = list(state.get("_warnings")    or [])
+        error_chain = list(state.get("_error_chain") or [])
 
         try:
             report = await run_disclosure_agent(
@@ -435,7 +668,8 @@ def _node_a5(model_client):
         except openai.RateLimitError as exc:
             msg = f"Rate limit at A5: {exc}"
             return {"halt": True, "halt_reason": msg,
-                    "_retries": retries, "_outputs": outputs, "_validations": validations}
+                    "_retries": retries, "_outputs": outputs, "_validations": validations,
+                    "_warnings": warnings, "_error_chain": error_chain}
 
         probe = {**state, "suitability_report": report}
         ok, err = validate_after_a5(probe)
@@ -445,10 +679,41 @@ def _node_a5(model_client):
         if not ok:
             return {"halt": True, "halt_reason": f"A5 failed: {err}",
                     "suitability_report": report,
-                    "_retries": retries, "_outputs": outputs, "_validations": validations}
+                    "_retries": retries, "_outputs": outputs, "_validations": validations,
+                    "_warnings": warnings, "_error_chain": error_chain}
+
+        # Reasoning trace: A5 decision path is fully deterministic given its inputs
+        conflict_report = state.get("conflict_report") or {}
+        rule_verdict    = state.get("rule_verdict") or {}
+        escalate        = conflict_report.get("escalate", False)
+        a5_reasoning = {
+            "agent":  "A5",
+            "role":   "Disclosure Agent",
+            "method": "llm_disclosure_with_structured_skeleton",
+            "governance": "Decision determined by conflict escalation flag; A5 writes explanations only",
+            "decision_path": (
+                "conflict_escalate=true → decision=ESCALATED"
+                if escalate
+                else f"conflict_escalate=false → mirror rule_verdict.decision={rule_verdict.get('decision')}"
+            ),
+            "final_decision": report.get("decision"),
+            "rules_failed": [
+                f["rule_id"] for f in report.get("rule_findings", [])
+                if f.get("status") == "FAIL"
+            ],
+            "rules_passed": [
+                f["rule_id"] for f in report.get("rule_findings", [])
+                if f.get("status") == "PASS"
+            ],
+            "regulatory_basis":       report.get("regulatory_basis"),
+            "explanation_provided":   bool(report.get("client_facing_summary")),
+            "flags_addressed_count":  len(report.get("flags_addressed") or []),
+        }
 
         return {"suitability_report": report,
-                "_retries": retries, "_outputs": outputs, "_validations": validations}
+                "a5_reasoning": a5_reasoning,
+                "_retries": retries, "_outputs": outputs, "_validations": validations,
+                "_warnings": warnings, "_error_chain": error_chain}
 
     node.__name__ = "node_A5"
     return node
@@ -516,6 +781,8 @@ async def run_pipeline(
         "_retries":      {},
         "_outputs":      {},
         "_validations":  {},
+        "_warnings":     [],
+        "_error_chain":  [],
     }
 
     accumulated = dict(initial)
@@ -541,6 +808,7 @@ async def run_pipeline(
     retries     = final_state.pop("_retries",     {})
     outputs     = final_state.pop("_outputs",     {})
     validations = final_state.pop("_validations", {})
+    # _warnings and _error_chain stay in final_state so build_audit_log can read them.
 
     audit_log = build_audit_log(final_state, retries, outputs, validations)
     return final_state, audit_log

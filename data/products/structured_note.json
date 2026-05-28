@@ -1,0 +1,10 @@
+{
+  "name": "Capital-Protected Structured Note",
+  "description": "A COMPLEX structured product with partial capital protection and index-linked returns. Despite its COMPLEX classification, it is sold to retail investors of any knowledge level — the complexity triggers R7 for clients below 'moderate' knowledge.",
+  "risk_class": 3,
+  "complexity_tier": "COMPLEX",
+  "leverage": false,
+  "potential_loss": "partial",
+  "minimum_horizon": 2,
+  "requires_knowledge_level": "none"
+}

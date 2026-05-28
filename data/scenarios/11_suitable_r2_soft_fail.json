@@ -1,0 +1,23 @@
+{
+  "description": "Advanced client proposed complex derivative; risk tolerance (3) below threshold — R2 soft fail (−20), score 80 SUITABLE. Tests: single soft-fail does not prevent SUITABLE.",
+  "client": {
+    "name": "Lars Eriksson",
+    "age": 38,
+    "financial_knowledge": "advanced",
+    "risk_tolerance_score": 3,
+    "investment_horizon": 2,
+    "liquid_assets": 120000.0,
+    "income": 90000.0,
+    "investment_amount": 20000,
+    "can_afford_total_loss": true,
+    "financial_vulnerability": "LOW",
+    "portfolio_concentration_pct": 10,
+    "investment_objective": "speculation"
+  },
+  "product_file": "equity_derivative.json",
+  "expected_decision": "SUITABLE",
+  "expected_escalate": false,
+  "expected_rules_failed": [
+    "R2"
+  ]
+}

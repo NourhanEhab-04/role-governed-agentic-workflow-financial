@@ -1,5 +1,5 @@
 {
-  "description": "No-knowledge client proposed complex derivative \u2014 R1+R7 fail, score 55 CONDITIONAL",
+  "description": "No-knowledge client proposed complex derivative \u2014 R1+R7 hard fail \u2192 UNSUITABLE (score 100, hard-fail gate overrides)",
   "client": {
     "name": "Pedro Nunes",
     "age": 28,
@@ -15,7 +15,7 @@
     "investment_objective": "speculation"
   },
   "product_file": "equity_derivative.json",
-  "expected_decision": "CONDITIONAL",
+  "expected_decision": "UNSUITABLE",
   "expected_escalate": false,
   "expected_rules_failed": [
     "R1",

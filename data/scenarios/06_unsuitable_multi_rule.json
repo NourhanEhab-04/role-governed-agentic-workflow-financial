@@ -1,5 +1,5 @@
 {
-  "description": "Multiple rule failures \u2014 R1, R2, R4, R6, R7 all fail, score -40 UNSUITABLE",
+  "description": "Multiple rule failures \u2014 R1, R2, R4, R6, R7 fail; hard fails R1+R4+R7 \u2192 UNSUITABLE (soft-fail score 55, overridden by hard-fail gate)",
   "client": {
     "name": "Chen Wei",
     "age": 23,

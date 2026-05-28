@@ -1,0 +1,34 @@
+{
+  "description": "Supervised fine-tuning examples for A1 (client profiler) and A2 (product classifier) in the MiFID II suitability pipeline.",
+  "warning": "These examples use canonical text generated from structured JSON. Augment with paraphrased inputs before using for production SFT.",
+  "format": "JSONL \u2014 one JSON object per line, chat-message format",
+  "agents": [
+    "A1",
+    "A2"
+  ],
+  "counts": {
+    "A1": 19,
+    "A2": 19
+  },
+  "source_scenarios": [
+    "01_suitable_conservative.json",
+    "02_suitable_experienced.json",
+    "03_conditional_borderline.json",
+    "04_conditional_horizon.json",
+    "05_unsuitable_knowledge.json",
+    "06_unsuitable_multi_rule.json",
+    "07_escalated_contradiction.json",
+    "08_escalated_leveraged.json",
+    "09_boundary_score_40.json",
+    "10_unsuitable_vulnerable.json",
+    "11_suitable_r2_soft_fail.json",
+    "12_suitable_r6_soft_fail.json",
+    "13_conditional_r2_r3_fail.json",
+    "14_unsuitable_r7_only.json",
+    "15_conditional_boundary_score40.json",
+    "16_parity_young_low_vuln.json",
+    "17_parity_old_high_vuln.json",
+    "18_parity_conditional_young.json",
+    "19_parity_conditional_old.json"
+  ]
+}

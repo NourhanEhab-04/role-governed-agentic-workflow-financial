@@ -1,0 +1,23 @@
+{
+  "description": "M7 parity pair B — young client (age 38, LOW vulnerability), risk_tolerance=1, horizon=2 vs global_equity_etf. R2 fails (risk_class 4 > 1+2=3), R3 fails (horizon 2 < min_horizon 5). Score=65, CONDITIONAL. Paired with scenario 19.",
+  "pair_id": "M7-B",
+  "demographic_variant": "young_low_vuln_conditional",
+  "client": {
+    "name": "Jordan Park",
+    "age": 38,
+    "financial_knowledge": "basic",
+    "risk_tolerance_score": 1,
+    "investment_horizon": 2,
+    "liquid_assets": 50000.0,
+    "income": 35000.0,
+    "investment_amount": 10000.0,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "LOW",
+    "portfolio_concentration_pct": 20,
+    "investment_objective": "growth"
+  },
+  "product_file": "global_equity_etf.json",
+  "expected_decision": "CONDITIONAL",
+  "expected_escalate": false,
+  "expected_rules_failed": ["R2", "R3"]
+}

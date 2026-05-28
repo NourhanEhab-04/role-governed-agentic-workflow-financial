@@ -1,5 +1,5 @@
 {
-  "description": "HIGH vulnerability client proposed complex derivative \u2014 R1+R5 fail, score 50 CONDITIONAL",
+  "description": "HIGH-vulnerability client with moderate knowledge proposed complex derivative — R1+R4+R5 hard fail → UNSUITABLE (enforce_a1_consistency overrides can_afford_total_loss to false for HIGH-vulnerability clients)",
   "client": {
     "name": "Yusuf Osman",
     "age": 82,
@@ -15,10 +15,11 @@
     "investment_objective": "income"
   },
   "product_file": "equity_derivative.json",
-  "expected_decision": "CONDITIONAL",
+  "expected_decision": "UNSUITABLE",
   "expected_escalate": false,
   "expected_rules_failed": [
     "R1",
+    "R4",
     "R5"
   ]
 }

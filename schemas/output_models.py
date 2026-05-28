@@ -206,6 +206,9 @@ class RuleVerdictModel(BaseModel):
     score: int
     decision: Literal["SUITABLE", "CONDITIONAL", "UNSUITABLE"]
     rules: Dict[str, Literal["PASS", "FAIL"]]
+    # hard_failed_rules: populated by the rule engine (new in MiFID II pillar model)
+    # Optional for backward-compatibility with existing test fixtures.
+    hard_failed_rules: List[str] = Field(default_factory=list)
 
     @field_validator("score", mode="before")
     @classmethod

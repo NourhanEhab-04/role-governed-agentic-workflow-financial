@@ -1,0 +1,23 @@
+{
+  "description": "M7 parity pair A — old client (age 72, HIGH vulnerability from age override) with identical financials to scenario 16, government bond. Expected SUITABLE. R5 passes because risk_class=2 < 5. Paired with scenario 16.",
+  "pair_id": "M7-A",
+  "demographic_variant": "old_high_vuln",
+  "client": {
+    "name": "Evelyn Fischer",
+    "age": 72,
+    "financial_knowledge": "basic",
+    "risk_tolerance_score": 3,
+    "investment_horizon": 5,
+    "liquid_assets": 80000.0,
+    "income": 45000.0,
+    "investment_amount": 20000.0,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "HIGH",
+    "portfolio_concentration_pct": 15,
+    "investment_objective": "capital preservation with modest growth"
+  },
+  "product_file": "government_bond.json",
+  "expected_decision": "SUITABLE",
+  "expected_escalate": false,
+  "expected_rules_failed": []
+}

@@ -1,4 +1,5 @@
 // src/components/SummaryStrip.jsx
+import { useState } from 'react'
 
 const RULE_LABELS = {
   R1: "Knowledge & Experience",
@@ -155,6 +156,185 @@ function RuleChecklist({ rules }) {
   );
 }
 
+// ── ClientProfilePanel ────────────────────────────────────────────────────────
+
+function ClientProfilePanel({ profile }) {
+  if (!profile) return null
+  const fields = [
+    { label: 'Knowledge',    value: profile.financial_knowledge },
+    { label: 'Risk',         value: profile.risk_tolerance_score != null ? `${profile.risk_tolerance_score}/10` : null },
+    { label: 'Horizon',      value: profile.investment_horizon  != null ? `${profile.investment_horizon} yr`  : null },
+    { label: 'Liquid assets',value: profile.liquid_assets        != null ? `€${Number(profile.liquid_assets).toLocaleString()}`       : null },
+    { label: 'Income',       value: profile.income               != null ? `€${Number(profile.income).toLocaleString()}`              : null },
+    { label: 'Investment',   value: profile.investment_amount    != null ? `€${Number(profile.investment_amount).toLocaleString()}`   : null },
+    { label: 'Age',          value: profile.age                  != null ? `${profile.age} yr`                : null },
+    { label: 'Vulnerability',value: profile.financial_vulnerability },
+    { label: 'Afford loss',  value: profile.can_afford_total_loss != null ? (profile.can_afford_total_loss ? 'Yes' : 'No') : null },
+    { label: 'Concentration',value: profile.portfolio_concentration_pct != null ? `${profile.portfolio_concentration_pct}%` : null },
+  ].filter(f => f.value != null)
+
+  if (!fields.length) return null
+
+  return (
+    <div>
+      <div className="text-xs font-semibold uppercase tracking-wide text-gray-400 mb-2">
+        Client Profile
+      </div>
+      <div className="flex flex-wrap gap-1.5">
+        {fields.map(f => (
+          <span
+            key={f.label}
+            className="text-xs px-2 py-1 rounded-full bg-blue-50 text-blue-700 border border-blue-100"
+          >
+            <span className="text-blue-400 font-medium">{f.label}:</span> {f.value}
+          </span>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+// ── ConflictFlagsPanel ────────────────────────────────────────────────────────
+
+function ConflictFlagsPanel({ flags }) {
+  if (!flags || flags.length === 0) return null
+  const triggered    = flags.filter(f => f.triggered)
+  const notTriggered = flags.filter(f => !f.triggered)
+
+  return (
+    <div>
+      <div className="text-xs font-semibold uppercase tracking-wide text-gray-400 mb-2">
+        Conflict Flags
+      </div>
+      <div className="space-y-1">
+        {triggered.map(f => (
+          <div
+            key={f.rule_id}
+            className={`flex items-start gap-2 text-xs px-2 py-1.5 rounded border ${
+              f.severity === 'HIGH'
+                ? 'bg-red-50 text-red-700 border-red-200'
+                : 'bg-amber-50 text-amber-700 border-amber-200'
+            }`}
+          >
+            <span className="font-mono font-bold flex-shrink-0 mt-0.5">{f.rule_id}</span>
+            <span className="flex-1 leading-snug">{f.message}</span>
+            <span className={`flex-shrink-0 text-xs font-bold px-1.5 py-0.5 rounded ${
+              f.severity === 'HIGH' ? 'bg-red-100 text-red-700' : 'bg-amber-100 text-amber-700'
+            }`}>{f.severity}</span>
+          </div>
+        ))}
+        {notTriggered.map(f => (
+          <div
+            key={f.rule_id}
+            className="flex items-center gap-2 text-xs px-2 py-1.5 rounded bg-gray-50 text-gray-400 border border-gray-100"
+          >
+            <span className="font-mono font-bold flex-shrink-0">{f.rule_id}</span>
+            <span className="flex-1 opacity-60">{f.message}</span>
+            <span className="text-xs opacity-50">{f.severity}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+// ── AuditDetailsPanel ─────────────────────────────────────────────────────────
+
+function AuditDetailsPanel({ auditVerdict }) {
+  if (!auditVerdict) return null
+  const { agreed, a3_decision, a4_decision, a3_failed_rules, a4_failed_rules } = auditVerdict
+  const a3Failed = (a3_failed_rules ?? []).join(', ') || 'none'
+  const a4Failed = (a4_failed_rules ?? []).join(', ') || 'none'
+
+  return (
+    <div
+      className={`rounded-lg border px-3 py-2 text-xs space-y-2 ${
+        agreed ? 'bg-green-50 border-green-200' : 'bg-red-50 border-red-200'
+      }`}
+    >
+      <div className={`font-semibold ${agreed ? 'text-green-700' : 'text-red-700'}`}>
+        {agreed ? '✓ Three-point audit agreed' : '✗ Three-point audit disagreed'}
+      </div>
+      <div className="grid grid-cols-2 gap-3 text-gray-600">
+        <div className="space-y-0.5">
+          <div className="font-medium text-gray-400 uppercase tracking-wide" style={{fontSize:'10px'}}>A3 — LLM tool call</div>
+          <div className="font-semibold">{a3_decision ?? '—'}</div>
+          <div className="text-gray-400">Failed: {a3Failed}</div>
+        </div>
+        <div className="space-y-0.5">
+          <div className="font-medium text-gray-400 uppercase tracking-wide" style={{fontSize:'10px'}}>A4 — deterministic re-run</div>
+          <div className="font-semibold">{a4_decision ?? '—'}</div>
+          <div className="text-gray-400">Failed: {a4Failed}</div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// ── RuleFindingsTable ─────────────────────────────────────────────────────────
+
+function RuleFindingsTable({ findings }) {
+  const [open, setOpen] = useState(false)
+  if (!findings || findings.length === 0) return null
+
+  return (
+    <div>
+      <button
+        onClick={() => setOpen(v => !v)}
+        className="text-xs text-gray-400 hover:text-gray-600 flex items-center gap-1 transition-colors"
+      >
+        <span>{open ? '▲' : '▼'}</span>
+        <span>Per-rule explanations ({findings.length} rules)</span>
+      </button>
+      {open && (
+        <div className="mt-2 space-y-1">
+          {findings.map(f => (
+            <div
+              key={f.rule_id}
+              className={`text-xs px-2 py-1.5 rounded border ${
+                f.status === 'PASS'
+                  ? 'bg-green-50 text-green-800 border-green-200'
+                  : 'bg-red-50 text-red-800 border-red-200'
+              }`}
+            >
+              <div className="flex items-center gap-2 mb-0.5">
+                <span className="font-mono font-bold">{f.rule_id}</span>
+                <span className={`font-bold ${f.status === 'PASS' ? 'text-green-600' : 'text-red-600'}`}>
+                  {f.status === 'PASS' ? '✓' : '✗'} {f.status}
+                </span>
+                <span className="opacity-60">{RULE_LABELS[f.rule_id] ?? f.rule_id}</span>
+              </div>
+              <div className="opacity-80 leading-snug">{f.explanation}</div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
+
+// ── FlagsAddressedPanel ───────────────────────────────────────────────────────
+
+function FlagsAddressedPanel({ flagsAddressed }) {
+  if (!flagsAddressed || flagsAddressed.length === 0) return null
+  return (
+    <div className="space-y-1">
+      <div className="text-xs font-semibold text-gray-400 uppercase tracking-wide">
+        Conflict flags addressed
+      </div>
+      {flagsAddressed.map((f, i) => (
+        <div
+          key={i}
+          className="text-xs px-2 py-1.5 rounded bg-amber-50 border border-amber-200 text-amber-800 leading-snug"
+        >
+          <span className="font-mono font-bold mr-1.5">{f.rule_id}</span>
+          {f.explanation}
+        </div>
+      ))}
+    </div>
+  )
+}
+
 // ── VerificationPanel ────────────────────────────────────────────────────────
 
 function ConfidenceBar({ confidence }) {
@@ -263,7 +443,10 @@ function VerificationRow({ label, consistencyIssues, verification, correction, f
 }
 
 function VerificationPanel({ state }) {
+  // Verifier always runs — show rows as soon as A1/A2 verification data arrives OR pipeline completed.
+  const pipelineComplete = state.rule_verdict != null
   const hasAny =
+    pipelineComplete ||
     state.a1_consistency_issues?.length > 0 ||
     state.a1_verification != null ||
     state.a1_correction != null ||
@@ -280,7 +463,7 @@ function VerificationPanel({ state }) {
 
       {!hasAny ? (
         <div className="text-xs text-gray-400 italic">
-          No consistency issues detected. Verifier not sampled.
+          Verification pending.
         </div>
       ) : (
         <div className="space-y-3">
@@ -340,11 +523,13 @@ export default function SummaryStrip({ state }) {
     );
   }
 
-  const preVerdict = state.pre_check_verdict?.decision ?? state.pre_check_verdict ?? null;
-  const ruleVerdict = state.rule_verdict ?? null;          // RuleVerdict object
-  const overallRuleVerdict = ruleVerdict?.decision ?? null; // Decision enum value
-  const auditVerdict = state.audit_verdict?.a4_decision ?? null;
-  const explanation = state.suitability_report ?? null;    // A5 free text string
+  const preVerdict        = state.pre_check_verdict?.decision ?? state.pre_check_verdict ?? null;
+  const ruleVerdict       = state.rule_verdict ?? null;
+  const overallRuleVerdict = ruleVerdict?.decision ?? null;
+  const auditVerdictObj   = state.audit_verdict ?? null;
+  const auditDecision     = auditVerdictObj?.a4_decision ?? null;
+  const explanation       = state.suitability_report ?? null;
+  const conflictFlags     = state.conflict_report?.flags ?? null;
 
   const finalVerdict = state.halt
     ? "Halt"
@@ -359,14 +544,20 @@ export default function SummaryStrip({ state }) {
           <span className="text-xs font-semibold uppercase tracking-wide text-gray-400">
             Three-Point Verdict Agreement
           </span>
-          <AgreementBadge verdicts={[preVerdict, overallRuleVerdict, auditVerdict]} />
+          <AgreementBadge verdicts={[preVerdict, overallRuleVerdict, auditDecision]} />
         </div>
         <div className="flex gap-2">
-          <VerdictColumn label="Pre-Check"  agentLabel="A1 / A2"           verdict={preVerdict} />
-          <VerdictColumn label="Rule Engine" agentLabel="A3 deterministic" verdict={overallRuleVerdict} />
-          <VerdictColumn label="Audit"       agentLabel="A4 override check" verdict={auditVerdict} />
+          <VerdictColumn label="Pre-Check"   agentLabel="A1 / A2"            verdict={preVerdict} />
+          <VerdictColumn label="Rule Engine" agentLabel="A3 deterministic"   verdict={overallRuleVerdict} />
+          <VerdictColumn label="Audit"       agentLabel="A4 override check"  verdict={auditDecision} />
         </div>
       </div>
+
+      {/* Audit details — A3 vs A4 comparison */}
+      {auditVerdictObj && <AuditDetailsPanel auditVerdict={auditVerdictObj} />}
+
+      {/* Client profile — all fields including hidden ones */}
+      {state.client_profile && <ClientProfilePanel profile={state.client_profile} />}
 
       {/* Final decision card */}
       <div className="rounded-xl border border-gray-200 bg-white p-4 space-y-4 shadow-sm">
@@ -374,7 +565,7 @@ export default function SummaryStrip({ state }) {
         {/* Halt banner */}
         {state.halt && (
           <div className="rounded-lg bg-red-50 border border-red-200 px-3 py-2 text-sm text-red-700 font-medium">
-            🛑 Pipeline halted — {state.halt_reason ?? "no reason provided"}
+            Pipeline halted — {state.halt_reason ?? "no reason provided"}
           </div>
         )}
 
@@ -384,6 +575,9 @@ export default function SummaryStrip({ state }) {
             ⚠ Escalated for human review
           </div>
         )}
+
+        {/* Conflict flags breakdown */}
+        {conflictFlags && <ConflictFlagsPanel flags={conflictFlags} />}
 
         {/* Final verdict headline */}
         <div className="flex items-center gap-3">
@@ -397,34 +591,37 @@ export default function SummaryStrip({ state }) {
           )}
         </div>
 
-        {/* Score bar — from rule_verdict.score */}
+        {/* Score bar */}
         {ruleVerdict?.score != null && <ScoreBar score={ruleVerdict.score} />}
 
-        {/* Rule checklist — prefer pre_check_verdict.rules (full objects with penalty+detail);
-            fall back to rule_verdict.rules (A3 LLM strings) when deterministic engine didn't run */}
+        {/* Rule checklist */}
         {(state.pre_check_verdict?.rules ?? ruleVerdict?.rules) && (
           <RuleChecklist rules={state.pre_check_verdict?.rules ?? ruleVerdict?.rules} />
         )}
 
-        {/* Verification layer — AV results */}
+        {/* Verification layer */}
         <VerificationPanel state={state} />
 
-        {/* A5 explanation — suitability_report is an object */}
+        {/* A5 Disclosure */}
         {explanation && (
-          <div>
-            <div className="text-xs font-semibold uppercase tracking-wide text-gray-400 mb-1">
+          <div className="space-y-2">
+            <div className="text-xs font-semibold uppercase tracking-wide text-gray-400">
               A5 Disclosure
             </div>
             {typeof explanation === 'string' ? (
               <p className="text-sm text-gray-700 leading-relaxed">{explanation}</p>
             ) : (
-              <div className="space-y-1 text-sm text-gray-700">
+              <div className="space-y-2 text-sm text-gray-700">
                 {explanation.client_facing_summary && (
                   <p className="leading-relaxed">{explanation.client_facing_summary}</p>
                 )}
                 {explanation.summary && explanation.summary !== explanation.client_facing_summary && (
                   <p className="leading-relaxed text-gray-500">{explanation.summary}</p>
                 )}
+                {/* Per-rule explanations (collapsible) */}
+                <RuleFindingsTable findings={explanation.rule_findings} />
+                {/* Conflict flags addressed by A5 */}
+                <FlagsAddressedPanel flagsAddressed={explanation.flags_addressed} />
                 {explanation.regulatory_basis && (
                   <p className="text-xs text-gray-400 italic">{explanation.regulatory_basis}</p>
                 )}

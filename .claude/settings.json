@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c \"import subprocess; result = subprocess.run\\(['python', '-c', 'import pypdf; print\\(\\\\\"pypdf available\\\\\"\\)'], capture_output=True, text=True\\); print\\(result.stdout, result.stderr\\)\")",
+      "Bash(python -c \"import pdfminer; print\\('pdfminer available'\\)\")",
+      "Bash(python -c \"import fitz; print\\('pymupdf available'\\)\")",
+      "WebFetch(domain:dutangc.github.io)",
+      "WebFetch(domain:service.betterregulation.com)",
+      "WebFetch(domain:rstudio-pubs-static.s3.amazonaws.com)"
+    ]
+  }
+}

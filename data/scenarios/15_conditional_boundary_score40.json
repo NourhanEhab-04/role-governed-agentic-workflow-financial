@@ -1,0 +1,25 @@
+{
+  "description": "Advanced client proposed leveraged bond fund; all three soft rules fail (R2+R3+R6) — score exactly 40 (100−20−15−25), boundary CONDITIONAL. Tests: minimum passing score and BORDERLINE conflict flag.",
+  "client": {
+    "name": "Nadia Petrova",
+    "age": 29,
+    "financial_knowledge": "advanced",
+    "risk_tolerance_score": 3,
+    "investment_horizon": 5,
+    "liquid_assets": 80000.0,
+    "income": 65000.0,
+    "investment_amount": 20000,
+    "can_afford_total_loss": true,
+    "financial_vulnerability": "LOW",
+    "portfolio_concentration_pct": 10,
+    "investment_objective": "growth"
+  },
+  "product_file": "leveraged_eu_bond_fund.json",
+  "expected_decision": "CONDITIONAL",
+  "expected_escalate": false,
+  "expected_rules_failed": [
+    "R2",
+    "R3",
+    "R6"
+  ]
+}

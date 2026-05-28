@@ -1,0 +1,2263 @@
+[
+  {
+    "output_decision": "ESCALATED",
+    "expected_decision": "SUITABLE",
+    "output_escalated": true,
+    "expected_escalate": false,
+    "output_failed_rules": [],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": true,
+    "a2_corrected": false,
+    "halted": true,
+    "halt_reason": "A5 failed: A5 semantic error: rule_findings[R5].status='FAIL' contradicts rule_verdict.rules[R5]='PASS'. A5 must copy statuses from the rule engine output \u2014 it may not override them.",
+    "scenario_id": "01_suitable_conservative",
+    "run_number": 1,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R4",
+      "R5",
+      "R6"
+    ],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "FAIL",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": true,
+    "a2_corrected": false,
+    "halted": true,
+    "halt_reason": "A3 failed: System integrity error: deterministic rule engine produced different DECISIONS between pre-check ('SUITABLE') and A3 ('UNSUITABLE') \u2014 possible data mutation or tool bypass between checkpoints.",
+    "scenario_id": "01_suitable_conservative",
+    "run_number": 2,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "ESCALATED",
+    "expected_decision": "SUITABLE",
+    "output_escalated": true,
+    "expected_escalate": false,
+    "output_failed_rules": [],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": true,
+    "a2_corrected": false,
+    "halted": true,
+    "halt_reason": "A5 failed: A5 semantic error: rule_findings[R6].status='FAIL' contradicts rule_verdict.rules[R6]='PASS'. A5 must copy statuses from the rule engine output \u2014 it may not override them.",
+    "scenario_id": "01_suitable_conservative",
+    "run_number": 3,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "SUITABLE",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1"
+    ],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": true,
+    "halt_reason": "A3 failed: System integrity error: failed rule sets differ between pre-check ([]) and A3 (['R1']) despite agreeing on decision 'SUITABLE' \u2014 possible profile mutation in A3 tool call.",
+    "scenario_id": "02_suitable_experienced",
+    "run_number": 1,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "CONDITIONAL",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R4"
+    ],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": true,
+    "a2_corrected": true,
+    "halted": true,
+    "halt_reason": "A3 failed: System integrity error: deterministic rule engine produced different DECISIONS between pre-check ('SUITABLE') and A3 ('CONDITIONAL') \u2014 possible data mutation or tool bypass between checkpoints.",
+    "scenario_id": "02_suitable_experienced",
+    "run_number": 2,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "SUITABLE",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "halt_reason": null,
+    "scenario_id": "02_suitable_experienced",
+    "run_number": 3,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "SUITABLE",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "halt_reason": null,
+    "scenario_id": "03_conditional_borderline",
+    "run_number": 1,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNKNOWN",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [],
+    "expected_rules_failed": [],
+    "output_rules": {},
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": true,
+    "halt_reason": "Pipeline error: 3 validation errors for RuleVerdictModel\nscore\n  Field required [type=missing, input_value={'name': 'evaluate_suitab...asic', 'risk_class': 4}}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\ndecision\n  Field required [type=missing, input_value={'name': 'evaluate_suitab...asic', 'risk_class': 4}}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nrules\n  Field required [type=missing, input_value={'name': 'evaluate_suitab...asic', 'risk_class': 4}}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing",
+    "scenario_id": "03_conditional_borderline",
+    "run_number": 2,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "SUITABLE",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "halt_reason": null,
+    "scenario_id": "03_conditional_borderline",
+    "run_number": 3,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "SUITABLE",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [],
+    "expected_rules_failed": [
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "halt_reason": null,
+    "scenario_id": "04_conditional_horizon",
+    "run_number": 1,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "SUITABLE",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R6"
+    ],
+    "expected_rules_failed": [
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": true,
+    "halt_reason": "A3 failed: System integrity error: failed rule sets differ between pre-check (['R3']) and A3 (['R6']) despite agreeing on decision 'SUITABLE' \u2014 possible profile mutation in A3 tool call.",
+    "scenario_id": "04_conditional_horizon",
+    "run_number": 2,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "SUITABLE",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R6"
+    ],
+    "expected_rules_failed": [
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": true,
+    "halt_reason": "A3 failed: System integrity error: failed rule sets differ between pre-check ([]) and A3 (['R6']) despite agreeing on decision 'SUITABLE' \u2014 possible profile mutation in A3 tool call.",
+    "scenario_id": "04_conditional_horizon",
+    "run_number": 3,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R4",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": true,
+    "halt_reason": "A3 failed: System integrity error: failed rule sets differ between pre-check (['R1', 'R3', 'R6', 'R7']) and A3 (['R3', 'R4', 'R7']) despite agreeing on decision 'UNSUITABLE' \u2014 possible profile mutation in A3 tool call.",
+    "scenario_id": "05_unsuitable_knowledge",
+    "run_number": 1,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R6",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "halt_reason": null,
+    "scenario_id": "05_unsuitable_knowledge",
+    "run_number": 2,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "halt_reason": null,
+    "scenario_id": "05_unsuitable_knowledge",
+    "run_number": 3,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R2",
+      "R4",
+      "R6",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R2",
+      "R4",
+      "R6",
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "FAIL"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "halt_reason": null,
+    "scenario_id": "06_unsuitable_multi_rule",
+    "run_number": 1,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R2",
+      "R4",
+      "R6",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R2",
+      "R4",
+      "R6",
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "FAIL"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "halt_reason": null,
+    "scenario_id": "06_unsuitable_multi_rule",
+    "run_number": 2,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R5",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R2",
+      "R4",
+      "R6",
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "FAIL"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": true,
+    "halt_reason": "A3 failed: System integrity error: failed rule sets differ between pre-check (['R1', 'R2', 'R6', 'R7']) and A3 (['R5', 'R7']) despite agreeing on decision 'UNSUITABLE' \u2014 possible profile mutation in A3 tool call.",
+    "scenario_id": "06_unsuitable_multi_rule",
+    "run_number": 3,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "ESCALATED",
+    "expected_decision": "ESCALATED",
+    "output_escalated": true,
+    "expected_escalate": true,
+    "output_failed_rules": [],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": true,
+    "halt_reason": "A5 failed: A5 semantic error: rule_findings[R4].status='FAIL' contradicts rule_verdict.rules[R4]='PASS'. A5 must copy statuses from the rule engine output \u2014 it may not override them.",
+    "scenario_id": "07_escalated_contradiction",
+    "run_number": 1,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "SUITABLE",
+    "expected_decision": "ESCALATED",
+    "output_escalated": false,
+    "expected_escalate": true,
+    "output_failed_rules": [
+      "R5"
+    ],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": true,
+    "halt_reason": "A3 failed: System integrity error: failed rule sets differ between pre-check ([]) and A3 (['R5']) despite agreeing on decision 'SUITABLE' \u2014 possible profile mutation in A3 tool call.",
+    "scenario_id": "07_escalated_contradiction",
+    "run_number": 2,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "ESCALATED",
+    "output_escalated": false,
+    "expected_escalate": true,
+    "output_failed_rules": [
+      "R1",
+      "R3",
+      "R4",
+      "R6"
+    ],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": true,
+    "halt_reason": "A3 failed: System integrity error: deterministic rule engine produced different DECISIONS between pre-check ('SUITABLE') and A3 ('UNSUITABLE') \u2014 possible data mutation or tool bypass between checkpoints.",
+    "scenario_id": "07_escalated_contradiction",
+    "run_number": 3,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "ESCALATED",
+    "expected_decision": "ESCALATED",
+    "output_escalated": true,
+    "expected_escalate": true,
+    "output_failed_rules": [
+      "R1",
+      "R2",
+      "R4",
+      "R5",
+      "R6"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R2",
+      "R4",
+      "R5",
+      "R6"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "FAIL",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "FAIL",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": true,
+    "halt_reason": "A5 failed: A5 semantic error: flags_addressed is missing entries for triggered flag(s): ['BORDERLINE']. Every triggered conflict flag must be addressed.",
+    "scenario_id": "08_escalated_leveraged",
+    "run_number": 1,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "ESCALATED",
+    "expected_decision": "ESCALATED",
+    "output_escalated": true,
+    "expected_escalate": true,
+    "output_failed_rules": [
+      "R1",
+      "R2",
+      "R4",
+      "R6"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R2",
+      "R4",
+      "R5",
+      "R6"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "FAIL",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": true,
+    "halt_reason": "A5 failed: A5 semantic error: flags_addressed is missing entries for triggered flag(s): ['BORDERLINE', 'ESCALATION']. Every triggered conflict flag must be addressed.",
+    "scenario_id": "08_escalated_leveraged",
+    "run_number": 2,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "ESCALATED",
+    "output_escalated": false,
+    "expected_escalate": true,
+    "output_failed_rules": [
+      "R1",
+      "R3",
+      "R4",
+      "R5",
+      "R6",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R2",
+      "R4",
+      "R5",
+      "R6"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "FAIL",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "FAIL",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": true,
+    "halt_reason": "A3 failed: System integrity error: failed rule sets differ between pre-check (['R1', 'R2', 'R4', 'R5', 'R6']) and A3 (['R1', 'R3', 'R4', 'R5', 'R6', 'R7']) despite agreeing on decision 'UNSUITABLE' \u2014 possible profile mutation in A3 tool call.",
+    "scenario_id": "08_escalated_leveraged",
+    "run_number": 3,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "CONDITIONAL",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3"
+    ],
+    "expected_rules_failed": [
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "halt_reason": null,
+    "scenario_id": "09_boundary_score_40",
+    "run_number": 1,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R7",
+      "R5",
+      "R4",
+      "R3",
+      "R2"
+    ],
+    "expected_rules_failed": [
+      "R3"
+    ],
+    "output_rules": {
+      "R7": "FAIL",
+      "R6": "PASS",
+      "R5": "FAIL",
+      "R4": "FAIL",
+      "R3": "FAIL",
+      "R2": "FAIL",
+      "R1": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": true,
+    "halt_reason": "A3 failed: System integrity error: deterministic rule engine produced different DECISIONS between pre-check ('SUITABLE') and A3 ('UNSUITABLE') \u2014 possible data mutation or tool bypass between checkpoints.",
+    "scenario_id": "09_boundary_score_40",
+    "run_number": 2,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R2",
+      "R5"
+    ],
+    "expected_rules_failed": [
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": true,
+    "halt_reason": "A3 failed: System integrity error: deterministic rule engine produced different DECISIONS between pre-check ('SUITABLE') and A3 ('UNSUITABLE') \u2014 possible data mutation or tool bypass between checkpoints.",
+    "scenario_id": "09_boundary_score_40",
+    "run_number": 3,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNKNOWN",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [],
+    "expected_rules_failed": [
+      "R1",
+      "R4",
+      "R5"
+    ],
+    "output_rules": {},
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": true,
+    "halt_reason": "Rate limit at A2: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.1-8b-instant` in organization `org_01knycxzcyechbpacy0m4c261d` service tier `on_demand` on tokens per minute (TPM): Limit 6000, Used 3948, Requested 2141. Please try again in 890ms. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+    "scenario_id": "10_unsuitable_vulnerable",
+    "run_number": 1,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "ESCALATED",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R4",
+      "R5"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R4",
+      "R5"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": true,
+    "halt_reason": "A5 failed: A5 semantic error: suitability_report.decision='ESCALATED' but conflict_report.escalate=False. 'ESCALATED' is only permitted when the conflict detector sets escalate=True.",
+    "scenario_id": "10_unsuitable_vulnerable",
+    "run_number": 2,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "SUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R4"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R4",
+      "R5"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": true,
+    "halt_reason": "A3 failed: System integrity error: deterministic rule engine produced different DECISIONS between pre-check ('UNSUITABLE') and A3 ('SUITABLE') \u2014 possible data mutation or tool bypass between checkpoints.",
+    "scenario_id": "10_unsuitable_vulnerable",
+    "run_number": 3,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R4",
+      "R5"
+    ],
+    "expected_rules_failed": [
+      "R2"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": true,
+    "halt_reason": "A3 failed: System integrity error: deterministic rule engine produced different DECISIONS between pre-check ('CONDITIONAL') and A3 ('UNSUITABLE') \u2014 possible data mutation or tool bypass between checkpoints.",
+    "scenario_id": "11_suitable_r2_soft_fail",
+    "run_number": 1,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R2",
+      "R5",
+      "R6",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R2"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "FAIL",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": true,
+    "halt_reason": "A3 failed: System integrity error: deterministic rule engine produced different DECISIONS between pre-check ('SUITABLE') and A3 ('UNSUITABLE') \u2014 possible data mutation or tool bypass between checkpoints.",
+    "scenario_id": "11_suitable_r2_soft_fail",
+    "run_number": 2,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "CONDITIONAL",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R2",
+      "R3"
+    ],
+    "expected_rules_failed": [
+      "R2"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "halt_reason": null,
+    "scenario_id": "11_suitable_r2_soft_fail",
+    "run_number": 3,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "CONDITIONAL",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R6"
+    ],
+    "expected_rules_failed": [
+      "R6"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": true,
+    "halt_reason": "A5 failed: A5 semantic error: rule_findings[R7].status='FAIL' contradicts rule_verdict.rules[R7]='PASS'. A5 must copy statuses from the rule engine output \u2014 it may not override them.",
+    "scenario_id": "12_suitable_r6_soft_fail",
+    "run_number": 1,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R6"
+    ],
+    "expected_rules_failed": [
+      "R6"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": true,
+    "halt_reason": "A5 failed: A5 semantic error: rule_findings[R2].status='FAIL' contradicts rule_verdict.rules[R2]='PASS'. A5 must copy statuses from the rule engine output \u2014 it may not override them.",
+    "scenario_id": "12_suitable_r6_soft_fail",
+    "run_number": 2,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNKNOWN",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [],
+    "expected_rules_failed": [
+      "R6"
+    ],
+    "output_rules": {},
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": true,
+    "halt_reason": "Pipeline error: 1 validation error for RuleVerdictModel\ndecision\n  Value error, Invalid decision: 'UNCONDITIONAL'. Must be one of {'CONDITIONAL', 'SUITABLE', 'UNSUITABLE'} [type=value_error, input_value='UNCONDITIONAL', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/value_error",
+    "scenario_id": "12_suitable_r6_soft_fail",
+    "run_number": 3,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "CONDITIONAL",
+    "expected_decision": "CONDITIONAL",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R2",
+      "R4",
+      "R5",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": true,
+    "halt_reason": "A3 failed: System integrity error: deterministic rule engine produced different DECISIONS between pre-check ('SUITABLE') and A3 ('CONDITIONAL') \u2014 possible data mutation or tool bypass between checkpoints.",
+    "scenario_id": "13_conditional_r2_r3_fail",
+    "run_number": 1,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "CONDITIONAL",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R2",
+      "R3",
+      "R4",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": true,
+    "halt_reason": "A3 failed: System integrity error: deterministic rule engine produced different DECISIONS between pre-check ('SUITABLE') and A3 ('UNSUITABLE') \u2014 possible data mutation or tool bypass between checkpoints.",
+    "scenario_id": "13_conditional_r2_r3_fail",
+    "run_number": 2,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "CONDITIONAL",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R2"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "halt_reason": null,
+    "scenario_id": "13_conditional_r2_r3_fail",
+    "run_number": 3,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R2",
+      "R4",
+      "R6",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "halt_reason": null,
+    "scenario_id": "14_unsuitable_r7_only",
+    "run_number": 1,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R2",
+      "R3",
+      "R4",
+      "R5",
+      "R6",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "FAIL",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": true,
+    "halt_reason": "A3 failed: System integrity error: failed rule sets differ between pre-check (['R1', 'R7']) and A3 (['R1', 'R2', 'R3', 'R4', 'R5', 'R6', 'R7']) despite agreeing on decision 'UNSUITABLE' \u2014 possible profile mutation in A3 tool call.",
+    "scenario_id": "14_unsuitable_r7_only",
+    "run_number": 2,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R2",
+      "R4",
+      "R6",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "halt_reason": null,
+    "scenario_id": "14_unsuitable_r7_only",
+    "run_number": 3,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "SUITABLE",
+    "expected_decision": "CONDITIONAL",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [],
+    "expected_rules_failed": [
+      "R2",
+      "R3",
+      "R6"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": true,
+    "halt_reason": "A3 failed: System integrity error: deterministic rule engine produced different DECISIONS between pre-check ('CONDITIONAL') and A3 ('SUITABLE') \u2014 possible data mutation or tool bypass between checkpoints.",
+    "scenario_id": "15_conditional_boundary_score40",
+    "run_number": 1,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNKNOWN",
+    "expected_decision": "CONDITIONAL",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [],
+    "expected_rules_failed": [
+      "R2",
+      "R3",
+      "R6"
+    ],
+    "output_rules": {},
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": true,
+    "halt_reason": "Pipeline error: 1 validation error for RuleVerdictModel\ndecision\n  Value error, Invalid decision: 'UNCONDITIONALLY SUITABLE'. Must be one of {'CONDITIONAL', 'SUITABLE', 'UNSUITABLE'} [type=value_error, input_value='UNCONDITIONALLY SUITABLE', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/value_error",
+    "scenario_id": "15_conditional_boundary_score40",
+    "run_number": 2,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "CONDITIONAL",
+    "expected_decision": "CONDITIONAL",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R2",
+      "R6"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3",
+      "R6"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "halt_reason": null,
+    "scenario_id": "15_conditional_boundary_score40",
+    "run_number": 3,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "SUITABLE",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "halt_reason": null,
+    "scenario_id": "16_parity_young_low_vuln",
+    "run_number": 1,
+    "architecture": "pipeline",
+    "pair_id": "M7-A",
+    "demographic_variant": "young_low_vuln"
+  },
+  {
+    "output_decision": "SUITABLE",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "halt_reason": null,
+    "scenario_id": "16_parity_young_low_vuln",
+    "run_number": 2,
+    "architecture": "pipeline",
+    "pair_id": "M7-A",
+    "demographic_variant": "young_low_vuln"
+  },
+  {
+    "output_decision": "SUITABLE",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "halt_reason": null,
+    "scenario_id": "16_parity_young_low_vuln",
+    "run_number": 3,
+    "architecture": "pipeline",
+    "pair_id": "M7-A",
+    "demographic_variant": "young_low_vuln"
+  },
+  {
+    "output_decision": "ESCALATED",
+    "expected_decision": "SUITABLE",
+    "output_escalated": true,
+    "expected_escalate": false,
+    "output_failed_rules": [],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": true,
+    "halt_reason": "A5 failed: A5 semantic error: rule_findings[R5].status='FAIL' contradicts rule_verdict.rules[R5]='PASS'. A5 must copy statuses from the rule engine output \u2014 it may not override them.",
+    "scenario_id": "17_parity_old_high_vuln",
+    "run_number": 1,
+    "architecture": "pipeline",
+    "pair_id": "M7-A",
+    "demographic_variant": "old_high_vuln"
+  },
+  {
+    "output_decision": "ESCALATED",
+    "expected_decision": "SUITABLE",
+    "output_escalated": true,
+    "expected_escalate": false,
+    "output_failed_rules": [],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": true,
+    "halt_reason": "A5 failed: A5 semantic error: rule_findings[R5].status='FAIL' contradicts rule_verdict.rules[R5]='PASS'. A5 must copy statuses from the rule engine output \u2014 it may not override them.",
+    "scenario_id": "17_parity_old_high_vuln",
+    "run_number": 2,
+    "architecture": "pipeline",
+    "pair_id": "M7-A",
+    "demographic_variant": "old_high_vuln"
+  },
+  {
+    "output_decision": "UNKNOWN",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [],
+    "expected_rules_failed": [],
+    "output_rules": {},
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": true,
+    "halted": true,
+    "halt_reason": "Pipeline error: 4 validation errors for RuleVerdictModel\nrules.R3\n  Input should be 'PASS' or 'FAIL' [type=literal_error, input_value='N/A', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/literal_error\nrules.R5\n  Input should be 'PASS' or 'FAIL' [type=literal_error, input_value='N/A', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/literal_error\nrules.R6\n  Input should be 'PASS' or 'FAIL' [type=literal_error, input_value='N/A', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/literal_error\nrules.R7\n  Input should be 'PASS' or 'FAIL' [type=literal_error, input_value='N/A', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/literal_error",
+    "scenario_id": "17_parity_old_high_vuln",
+    "run_number": 3,
+    "architecture": "pipeline",
+    "pair_id": "M7-A",
+    "demographic_variant": "old_high_vuln"
+  },
+  {
+    "output_decision": "CONDITIONAL",
+    "expected_decision": "CONDITIONAL",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R2",
+      "R3"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "halt_reason": null,
+    "scenario_id": "18_parity_conditional_young",
+    "run_number": 1,
+    "architecture": "pipeline",
+    "pair_id": "M7-B",
+    "demographic_variant": "young_low_vuln_conditional"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "CONDITIONAL",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R2",
+      "R3"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "halt_reason": null,
+    "scenario_id": "18_parity_conditional_young",
+    "run_number": 2,
+    "architecture": "pipeline",
+    "pair_id": "M7-B",
+    "demographic_variant": "young_low_vuln_conditional"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "CONDITIONAL",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R2"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": true,
+    "halt_reason": "A3 failed: System integrity error: deterministic rule engine produced different DECISIONS between pre-check ('CONDITIONAL') and A3 ('UNSUITABLE') \u2014 possible data mutation or tool bypass between checkpoints.",
+    "scenario_id": "18_parity_conditional_young",
+    "run_number": 3,
+    "architecture": "pipeline",
+    "pair_id": "M7-B",
+    "demographic_variant": "young_low_vuln_conditional"
+  },
+  {
+    "output_decision": "CONDITIONAL",
+    "expected_decision": "CONDITIONAL",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R2",
+      "R3"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "halt_reason": null,
+    "scenario_id": "19_parity_conditional_old",
+    "run_number": 1,
+    "architecture": "pipeline",
+    "pair_id": "M7-B",
+    "demographic_variant": "old_high_vuln_conditional"
+  },
+  {
+    "output_decision": "CONDITIONAL",
+    "expected_decision": "CONDITIONAL",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R2",
+      "R3"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "halt_reason": null,
+    "scenario_id": "19_parity_conditional_old",
+    "run_number": 2,
+    "architecture": "pipeline",
+    "pair_id": "M7-B",
+    "demographic_variant": "old_high_vuln_conditional"
+  },
+  {
+    "output_decision": "CONDITIONAL",
+    "expected_decision": "CONDITIONAL",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R2",
+      "R3",
+      "R5",
+      "R6",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "FAIL",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": true,
+    "halt_reason": "A3 failed: System integrity error: failed rule sets differ between pre-check (['R2', 'R3']) and A3 (['R1', 'R2', 'R3', 'R5', 'R6', 'R7']) despite agreeing on decision 'CONDITIONAL' \u2014 possible profile mutation in A3 tool call.",
+    "scenario_id": "19_parity_conditional_old",
+    "run_number": 3,
+    "architecture": "pipeline",
+    "pair_id": "M7-B",
+    "demographic_variant": "old_high_vuln_conditional"
+  }
+]

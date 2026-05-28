@@ -1,0 +1,23 @@
+{
+  "description": "M7 parity pair A — young client (age 35, LOW vulnerability) vs identical financials, government bond. Expected SUITABLE. Paired with scenario 17.",
+  "pair_id": "M7-A",
+  "demographic_variant": "young_low_vuln",
+  "client": {
+    "name": "Alex Chen",
+    "age": 35,
+    "financial_knowledge": "basic",
+    "risk_tolerance_score": 3,
+    "investment_horizon": 5,
+    "liquid_assets": 80000.0,
+    "income": 45000.0,
+    "investment_amount": 20000.0,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "LOW",
+    "portfolio_concentration_pct": 15,
+    "investment_objective": "capital preservation with modest growth"
+  },
+  "product_file": "government_bond.json",
+  "expected_decision": "SUITABLE",
+  "expected_escalate": false,
+  "expected_rules_failed": []
+}

@@ -144,7 +144,19 @@ export function mapStateToMessages(state) {
       type: 'agent',
       agentId: 'A1',
       stepNumber: stepRef.n++,
-      content: `Client profiler parsed input. ${init_p.financial_knowledge} knowledge, risk ${init_p.risk_tolerance_score}/10, ${init_p.investment_horizon}-year horizon, €${init_p.liquid_assets?.toLocaleString()} liquid assets. Vulnerability: ${init_p.financial_vulnerability ?? 'UNKNOWN'}.`,
+      content: (() => {
+        const parts = [
+          `${init_p.financial_knowledge} knowledge`,
+          `risk ${init_p.risk_tolerance_score}/10`,
+          `${init_p.investment_horizon}-year horizon`,
+          `€${init_p.liquid_assets?.toLocaleString()} liquid assets`,
+          init_p.income != null ? `€${init_p.income.toLocaleString()} income` : null,
+          init_p.investment_amount != null ? `€${init_p.investment_amount.toLocaleString()} investment` : null,
+          init_p.age != null ? `age ${init_p.age}` : null,
+          init_p.portfolio_concentration_pct != null ? `${init_p.portfolio_concentration_pct}% concentration` : null,
+        ].filter(Boolean)
+        return `Client profiler parsed input. ${parts.join(', ')}. Vulnerability: ${init_p.financial_vulnerability ?? 'UNKNOWN'}.`
+      })(),
       structuredOutput: init_p,
     })
 
@@ -238,12 +250,14 @@ export function mapStateToMessages(state) {
   // Audit system message
   if (state.audit_verdict) {
     const a = state.audit_verdict
+    const a3Failed = (a.a3_failed_rules ?? []).join(', ') || 'none'
+    const a4Failed = (a.a4_failed_rules ?? []).join(', ') || 'none'
     messages.push({
       type: 'system',
       systemType: 'audit',
       text: a.agreed
-        ? 'Audit verdict: AGREED ✅ — all three checkpoints consistent'
-        : `Audit verdict: DISAGREEMENT ❌ — ${a.detail ?? 'possible bypass detected'}`,
+        ? `Audit verdict: AGREED ✅ — A3 & A4 both: ${a.a4_decision ?? '—'}, failed rules: [${a4Failed}]`
+        : `Audit verdict: DISAGREEMENT ❌ — A3: ${a.a3_decision ?? '—'} (failed: ${a3Failed}) | A4: ${a.a4_decision ?? '—'} (failed: ${a4Failed})`,
     })
   }
 
@@ -254,9 +268,16 @@ export function mapStateToMessages(state) {
       type: 'agent',
       agentId: 'A4',
       stepNumber: stepRef.n++,
-      content: c.escalate
-        ? `Conflict detected. ${c.detail ?? 'Rule engine disagreement flagged.'} Escalating to compliance review.`
-        : 'Conflict detector audited verdict. Rule engine agreement confirmed. No escalation required.',
+      content: (() => {
+        const triggered = (c.flags ?? []).filter(f => f.triggered)
+        const flagSummary = triggered.length
+          ? triggered.map(f => `${f.rule_id} [${f.severity}]`).join(', ')
+          : null
+        if (c.escalate) {
+          return `Conflict detected${flagSummary ? ` — flags triggered: ${flagSummary}` : ''}. ${c.summary ?? ''} Escalating to compliance review.`.trim()
+        }
+        return `Conflict detector audited verdict. ${c.summary ?? 'No escalation required.'}${flagSummary ? ` Flags noted: ${flagSummary}.` : ''}`
+      })(),
       structuredOutput: c,
     })
   }

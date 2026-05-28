@@ -166,4 +166,37 @@ async def run_disclosure_agent(
     )
 
     raw = response.chat_message.content
-    return parse_suitability_report(raw)
+
+    # Deterministic overrides — applied before Pydantic validation so the
+    # downstream validator always sees a consistent, engine-authoritative report.
+    data = extract_json_object(raw)
+    if not isinstance(data, dict):
+        raise ValueError("A5 output did not parse to a JSON object")
+
+    # 1. Override rule_findings statuses from the rule engine.
+    #    A5 writes explanations; PASS/FAIL verdicts are owned by the rule engine.
+    _long_to_short = {
+        "R1_knowledge": "R1", "R2_risk": "R2", "R3_horizon": "R3",
+        "R4_afford": "R4", "R5_vuln": "R5", "R6_leverage": "R6", "R7_complexity": "R7",
+    }
+    engine_rules = rule_verdict.get("rules", {})
+    for finding in data.get("rule_findings", []):
+        rid = finding.get("rule_id", "")
+        rid_norm = _long_to_short.get(rid, rid)
+        if rid_norm in engine_rules:
+            finding["status"] = engine_rules[rid_norm]
+
+    # 2. Override decision to match the conflict escalation flag.
+    #    A5 must never set ESCALATED unless A4 authorised it.
+    escalate = conflict_report.get("escalate", False)
+    if escalate and data.get("decision") != "ESCALATED":
+        data["decision"] = "ESCALATED"
+    elif not escalate and data.get("decision") == "ESCALATED":
+        data["decision"] = rule_verdict.get("decision", "UNSUITABLE")
+
+    from schemas.output_models import SuitabilityReportModel
+    from pydantic import ValidationError
+    try:
+        return SuitabilityReportModel.model_validate(data).model_dump()
+    except ValidationError as exc:
+        raise ValueError(str(exc)) from exc

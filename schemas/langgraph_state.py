@@ -53,7 +53,29 @@ class PipelineState(TypedDict, total=False):
     halt: bool
     halt_reason: str
 
+    # ── Provenance: how each final profile was produced ─────────────────────
+    client_profile_provenance: Optional[Dict[str, Any]]
+    product_profile_provenance: Optional[Dict[str, Any]]
+
+    # ── Per-agent reasoning traces (explainability) ──────────────────────────
+    # Each trace documents: what the agent received, how it made its decision,
+    # which governance layers ran, and what (if anything) was corrected.
+    # Populated by orchestrator/graph.py after each node completes.
+    a1_reasoning: Optional[Dict[str, Any]]   # Client Profiler chain of thought
+    a2_reasoning: Optional[Dict[str, Any]]   # Product Classifier chain of thought
+    a3_reasoning: Optional[Dict[str, Any]]   # Rule Engine tool-call trace
+    a4_reasoning: Optional[Dict[str, Any]]   # Conflict Detector flag reasoning
+    a5_reasoning: Optional[Dict[str, Any]]   # Disclosure Agent decision path
+
     # ── Audit metadata (not forwarded to frontend) ──────────────────────────
     _retries: Dict[str, int]
     _outputs: Dict[str, str]
     _validations: Dict[str, Any]
+
+    # ── Non-halting anomalies detected during validation ────────────────────
+    # Each entry: {stage, event, detail, ...context fields}
+    _warnings: List[Dict[str, Any]]
+
+    # ── Ordered log of every mutation applied to profiles ───────────────────
+    # Each entry: {stage, event, field?, from?, to?, fields_fixed?, ...}
+    _error_chain: List[Dict[str, Any]]

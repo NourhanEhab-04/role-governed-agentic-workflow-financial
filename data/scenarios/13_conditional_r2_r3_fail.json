@@ -1,0 +1,24 @@
+{
+  "description": "Low-risk-tolerance client with short horizon proposed global ETF — R2 soft fail (−20) + R3 soft fail (−15), score 65 CONDITIONAL. Tests: two soft fails yield CONDITIONAL, not UNSUITABLE.",
+  "client": {
+    "name": "Ibrahim Yilmaz",
+    "age": 50,
+    "financial_knowledge": "basic",
+    "risk_tolerance_score": 1,
+    "investment_horizon": 3,
+    "liquid_assets": 40000.0,
+    "income": 35000.0,
+    "investment_amount": 10000,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "LOW",
+    "portfolio_concentration_pct": 10,
+    "investment_objective": "moderate growth"
+  },
+  "product_file": "global_equity_etf.json",
+  "expected_decision": "CONDITIONAL",
+  "expected_escalate": false,
+  "expected_rules_failed": [
+    "R2",
+    "R3"
+  ]
+}
