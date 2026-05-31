@@ -1,0 +1,27 @@
+{
+  "description": "UCI row 42 (age 44, MEDIUM vulnerability, none knowledge, RT 4, horizon 4yr) — money market fund: all hard rules pass (score 100) -> SUITABLE",
+  "client_narrative": "Soren Lindqvist is 44 years old and works as a warehouse supervisor. His annual income is approximately 23,800 euros and he holds 56,000 euros in liquid savings. He wants to invest 7,900 euros for approximately 4 years to protect his savings from inflation without taking significant risk. He has no investment experience — he has only used basic bank products such as savings accounts and term deposits. His risk tolerance is 4 out of 10: he accepts minor fluctuations but would be very uncomfortable with significant losses. He has confirmed he can afford to lose the full invested amount if that were to happen. His goal is capital preservation.",
+  "product_narrative": "The product is a short-term money market fund investing exclusively in high-quality, short-duration eurozone sovereign and agency instruments rated at least A-. The fund is registered as a UCITS, listed on Euronext Amsterdam, publishes a KID, and uses no leverage or derivatives of any kind. Capital preservation is the primary objective. The recommended minimum investment period is one year.",
+  "uci_row_index": 42,
+  "uci_source": "https://doi.org/10.24432/C5NC77",
+  "rule_engine_score": 100,
+  "rule_engine_decision": "SUITABLE",
+  "client": {
+    "name": "Soren Lindqvist",
+    "age": 44,
+    "financial_knowledge": "none",
+    "risk_tolerance_score": 4,
+    "investment_horizon": 4,
+    "liquid_assets": 56000.0,
+    "income": 23800.0,
+    "investment_amount": 7900.0,
+    "can_afford_total_loss": true,
+    "financial_vulnerability": "MEDIUM",
+    "portfolio_concentration_pct": 30,
+    "investment_objective": "capital preservation"
+  },
+  "product_file": "money_market_fund.json",
+  "expected_decision": "SUITABLE",
+  "expected_escalate": false,
+  "expected_rules_failed": []
+}

@@ -125,9 +125,15 @@ false → default for ALL other cases:
   • Explicit statement that total loss WOULD harm/affect them → false
   • Silence → false
 
-CRITICAL: If the client says "losing everything would seriously affect me
-financially" (or similar) and A1 output is true → supported = false.
+CRITICAL (false positive): If the client says "losing everything would seriously
+affect me financially" (or similar) and A1 output is true → supported = false.
 Partial-loss tolerance does NOT imply total-loss affordability.
+
+CRITICAL (false negative): If ORIGINAL_INPUT is a JSON object that explicitly
+contains "can_afford_total_loss": true and A1 output is false → supported = false.
+An explicit boolean true in the input overrides the default-false rule. This is
+NOT a case of "silence" or "default applied correctly" — it directly contradicts
+an explicit field value.
 
 ── age ────────────────────────────────
 Integer if stated in input, null otherwise. Never inferred.

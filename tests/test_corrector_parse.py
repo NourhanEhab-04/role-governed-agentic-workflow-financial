@@ -22,6 +22,7 @@ from agents.verifier_agent import _build_corrector_message
 
 def _good_client():
     return {
+        "age": 40,
         "financial_knowledge": "moderate",
         "risk_tolerance_score": 5,
         "investment_horizon": 5,

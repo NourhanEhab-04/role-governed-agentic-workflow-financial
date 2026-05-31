@@ -37,7 +37,7 @@ async def test_live_clean_suitable(model_client):
         "total_loss_potential": False, "minimum_horizon_years": 3,
         "required_knowledge_level": "basic",
     }
-    result = await run_conflict_detector(client, product, make_verdict(100, "SUITABLE"), model_client)
+    result, _ = await run_conflict_detector(client, product, make_verdict(100, "SUITABLE"), model_client)
     assert result["escalate"] is False
 
 
@@ -54,7 +54,7 @@ async def test_live_borderline_conditional(model_client):
         "total_loss_potential": False, "minimum_horizon_years": 3,
         "required_knowledge_level": "basic",
     }
-    result = await run_conflict_detector(client, product, make_verdict(45, "CONDITIONAL"), model_client)
+    result, _ = await run_conflict_detector(client, product, make_verdict(45, "CONDITIONAL"), model_client)
     assert result["escalate"] is False
     borderline = next(f for f in result["flags"] if f["rule_id"] == "BORDERLINE")
     assert borderline["triggered"] is True
@@ -73,7 +73,7 @@ async def test_live_contradiction_escalates(model_client):
         "total_loss_potential": False, "minimum_horizon_years": 2,
         "required_knowledge_level": "basic",
     }
-    result = await run_conflict_detector(client, product, make_verdict(100, "SUITABLE"), model_client)
+    result, _ = await run_conflict_detector(client, product, make_verdict(100, "SUITABLE"), model_client)
     assert result["escalate"] is True
     contradiction = next(f for f in result["flags"] if f["rule_id"] == "CONTRADICTION")
     assert contradiction["triggered"] is True
@@ -92,7 +92,7 @@ async def test_live_concentration_flag(model_client):
         "total_loss_potential": False, "minimum_horizon_years": 3,
         "required_knowledge_level": "basic",
     }
-    result = await run_conflict_detector(client, product, make_verdict(100, "SUITABLE"), model_client)
+    result, _ = await run_conflict_detector(client, product, make_verdict(100, "SUITABLE"), model_client)
     concentration = next(f for f in result["flags"] if f["rule_id"] == "CONCENTRATION")
     assert concentration["triggered"] is True
 
@@ -111,7 +111,7 @@ async def test_live_leveraged_low_tolerance_escalation(model_client):
         "required_knowledge_level": "moderate",
     }
     verdict = make_verdict(35, "UNSUITABLE", failed=["R2", "R4", "R6"])
-    result = await run_conflict_detector(client, product, verdict, model_client)
+    result, _ = await run_conflict_detector(client, product, verdict, model_client)
     # concentration (>40%) + R6 mismatch context → two HIGH flags → escalation
     assert result["escalate"] is True
 
@@ -130,5 +130,5 @@ async def test_live_unsuitable_no_flags(model_client):
         "required_knowledge_level": "advanced",
     }
     verdict = make_verdict(0, "UNSUITABLE", failed=["R1", "R2", "R3", "R4", "R6", "R7"])
-    result = await run_conflict_detector(client, product, verdict, model_client)
+    result, _ = await run_conflict_detector(client, product, verdict, model_client)
     assert result["escalate"] is False

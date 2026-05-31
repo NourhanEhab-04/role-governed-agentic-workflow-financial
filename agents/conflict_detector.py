@@ -49,9 +49,19 @@ FOUR CONFLICT TYPES TO ASSESS
    boundary — human review is advisable to avoid borderline misclassification.
 
 2. CONCENTRATION  (severity: HIGH)
-   Trigger when: client_profile contains "portfolio_concentration_pct" > 40.
-   Meaning: the client is heavily concentrated in one asset class, increasing
-   risk beyond what the seven-rule engine captures.
+   Trigger when ALL of the following are met AND rule_verdict["decision"] != "UNSUITABLE":
+   (An UNSUITABLE verdict already blocks the investment — escalation adds nothing.)
+   Condition (a): client_profile["portfolio_concentration_pct"] > 60
+                  AND product_profile["risk_class"] >= 6
+                  (extreme concentration in a high-risk product amplifies tail risk)
+   Condition (b): client_profile["portfolio_concentration_pct"] > 40
+                  AND client_profile["financial_vulnerability"] == "HIGH"
+                  AND product_profile["risk_class"] >= 2
+                  (ESMA §53-56: stricter limits for vulnerable clients; risk_class=1
+                   money-market products are safe enough even for vulnerable clients)
+   Meaning: concentration risk warrants escalation only when it intersects with an
+   elevated product risk class or a client needing enhanced protection — and only
+   when the base verdict is not already UNSUITABLE.
 
 3. CONTRADICTION  (severity: HIGH)
    Trigger when: client_profile["financial_vulnerability"] == "HIGH"
@@ -114,18 +124,44 @@ def check_borderline(rule_verdict: dict) -> dict:
     }
 
 
-def check_concentration_risk(client_profile: dict) -> dict:
+def check_concentration_risk(
+    client_profile: dict,
+    product_profile: dict = {},
+    rule_verdict: dict = {},
+) -> dict:
     concentration = client_profile.get("portfolio_concentration_pct", 0)
-    triggered = concentration > 40
+    vulnerability = client_profile.get("financial_vulnerability", "LOW")
+    risk_class    = product_profile.get("risk_class", 0)
+    decision      = rule_verdict.get("decision", "")
+
+    # An UNSUITABLE verdict already blocks the investment — escalation adds nothing.
+    if decision == "UNSUITABLE":
+        triggered = False
+    else:
+        # MiFID II proportionality (ESMA §53-56):
+        # (a) extreme concentration in a high-risk product (risk_class ≥ 6)
+        # (b) above-moderate concentration for HIGH-vulnerability client in any
+        #     product above money-market level (risk_class ≥ 2).
+        #     risk_class=1 (money market) is safe enough even for vulnerable clients.
+        triggered = (concentration > 60 and risk_class >= 6) or \
+                    (concentration > 40 and vulnerability == "HIGH" and risk_class >= 2)
+
+    if triggered:
+        if vulnerability == "HIGH":
+            msg = (f"Concentration {concentration}% exceeds 40% for a HIGH-vulnerability "
+                   f"client in a risk_class={risk_class} product (ESMA §53-56).")
+        else:
+            msg = (f"Concentration {concentration}% exceeds 60% in a risk_class={risk_class} "
+                   f"product (≥6 tail-risk amplification threshold).")
+    else:
+        msg = (f"Concentration {concentration}% does not trigger escalation: "
+               f"decision={decision or 'N/A'}, vulnerability={vulnerability}, "
+               f"risk_class={risk_class}.")
     return {
         "rule_id":   "CONCENTRATION",
         "triggered": triggered,
         "severity":  "HIGH",
-        "message": (
-            f"Single-asset concentration {concentration}% exceeds 40% threshold."
-            if triggered else
-            f"Concentration {concentration}% within acceptable range."
-        ),
+        "message":   msg,
     }
 
 
@@ -184,7 +220,7 @@ def _apply_deterministic_overrides(
                           for every flag where the LLM value was wrong
     """
     borderline    = check_borderline(rule_verdict)
-    concentration = check_concentration_risk(client_profile)
+    concentration = check_concentration_risk(client_profile, product_profile, rule_verdict)
     contradiction = check_contradiction(client_profile, rule_verdict, product_profile)
 
     det = {

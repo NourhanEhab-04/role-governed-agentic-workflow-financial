@@ -1,0 +1,29 @@
+{
+  "description": "UCI row 4 (age 53, HIGH vulnerability, basic knowledge, RT 1) — sector equity etf: hard fails ['R5'] -> UNSUITABLE",
+  "uci_row_index": 4,
+  "uci_source": "https://doi.org/10.24432/C5NC77",
+  "rule_engine_score": 65,
+  "rule_engine_decision": "UNSUITABLE",
+  "client": {
+    "name": "Anežka Horáčková",
+    "age": 53,
+    "financial_knowledge": "basic",
+    "risk_tolerance_score": 1,
+    "investment_horizon": 2,
+    "liquid_assets": 2400.0,
+    "income": 32600.0,
+    "investment_amount": 6200.0,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "HIGH",
+    "portfolio_concentration_pct": 45,
+    "investment_objective": "asset growth"
+  },
+  "product_file": "sector_equity_etf.json",
+  "expected_decision": "UNSUITABLE",
+  "expected_escalate": false,
+  "expected_rules_failed": [
+    "R2",
+    "R3",
+    "R5"
+  ]
+}

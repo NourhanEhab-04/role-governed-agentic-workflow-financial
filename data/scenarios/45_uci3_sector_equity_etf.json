@@ -1,0 +1,25 @@
+{
+  "description": "UCI row 3 (age 45, MEDIUM vulnerability, basic knowledge, RT 4, horizon 5yr) — sector equity etf: all hard rules pass (score 100) -> SUITABLE",
+  "uci_row_index": 3,
+  "uci_source": "https://doi.org/10.24432/C5NC77",
+  "rule_engine_score": 100,
+  "rule_engine_decision": "SUITABLE",
+  "client": {
+    "name": "Karin Johansen",
+    "age": 45,
+    "financial_knowledge": "basic",
+    "risk_tolerance_score": 4,
+    "investment_horizon": 5,
+    "liquid_assets": 18000.0,
+    "income": 47300.0,
+    "investment_amount": 10000.0,
+    "can_afford_total_loss": true,
+    "financial_vulnerability": "MEDIUM",
+    "portfolio_concentration_pct": 30,
+    "investment_objective": "capital preservation"
+  },
+  "product_file": "sector_equity_etf.json",
+  "expected_decision": "SUITABLE",
+  "expected_escalate": false,
+  "expected_rules_failed": []
+}

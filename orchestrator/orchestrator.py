@@ -8,5 +8,10 @@ without change: `from orchestrator.orchestrator import run_pipeline`.
 """
 
 from orchestrator.graph import run_pipeline, build_graph
+from orchestrator.pre_check_tool import run_pre_check
 
-__all__ = ["run_pipeline", "build_graph"]
+# Verifier always runs in the current architecture (no sampling).
+# Exposed here so legacy test patches targeting this module still find the attribute.
+_VERIFIER_SAMPLE_RATE: float = 1.0
+
+__all__ = ["run_pipeline", "build_graph", "run_pre_check", "_VERIFIER_SAMPLE_RATE"]

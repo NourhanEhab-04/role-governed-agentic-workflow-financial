@@ -18,8 +18,9 @@ verification loop in real time:
 
 Same pattern for A2 (a2_profiled, a2_verified, a2_corrected, a2_reverified, A2).
 
-Verifier uses a separate, stronger client (OpenRouter / Gemini) so its failure
-modes are independent from the Groq/Llama agents it checks.
+Verifier uses a separate Groq client (llama-3.3-70b-versatile, Meta Llama family)
+so its failure modes are statistically independent from the OpenAI gpt-4.1-nano
+specialist agents it checks — different provider, different model architecture.
 """
 
 from __future__ import annotations
@@ -31,7 +32,7 @@ import openai
 from langgraph.graph import StateGraph, END
 from langgraph.types import RetryPolicy
 
-from config.llm_config import GROQ_MODEL, GROQ_VERIFIER_MODEL
+from config.llm_config import OPENAI_MODEL, OPENAI_VERIFIER_MODEL
 
 
 def _detect_field_overrides(before: dict, after: dict) -> list[dict]:
@@ -156,8 +157,8 @@ def _node_a1(model_client, verifier_client, on_event=None):
                     "stage":        "A1",
                     "event":        "verifier_correction_applied",
                     "fields_fixed": fields_fixed,
-                    "specialist_model": GROQ_MODEL,
-                    "verifier_model":   GROQ_VERIFIER_MODEL,
+                    "specialist_model": OPENAI_MODEL,
+                    "verifier_model":   OPENAI_VERIFIER_MODEL,
                 })
             except Exception as exc:
                 updates["a1_correction"] = {
@@ -209,8 +210,8 @@ def _node_a1(model_client, verifier_client, on_event=None):
         override_fields = [o["field"] for o in overrides]
         updates["client_profile_provenance"] = {
             "source":               "verifier_corrected" if correction_applied else "original_a1",
-            "specialist_model":     GROQ_MODEL,
-            "verifier_model":       GROQ_VERIFIER_MODEL,
+            "specialist_model":     OPENAI_MODEL,
+            "verifier_model":       OPENAI_VERIFIER_MODEL,
             "correction_applied":   correction_applied,
             "correction_fields":    fields_fixed,
             "deterministic_overrides": override_fields,
@@ -348,8 +349,8 @@ def _node_a2(model_client, verifier_client, on_event=None):
                     "stage":        "A2",
                     "event":        "verifier_correction_applied",
                     "fields_fixed": fields_fixed,
-                    "specialist_model": GROQ_MODEL,
-                    "verifier_model":   GROQ_VERIFIER_MODEL,
+                    "specialist_model": OPENAI_MODEL,
+                    "verifier_model":   OPENAI_VERIFIER_MODEL,
                 })
             except Exception as exc:
                 updates["a2_correction"] = {
@@ -391,8 +392,8 @@ def _node_a2(model_client, verifier_client, on_event=None):
         override_fields = [o["field"] for o in overrides]
         updates["product_profile_provenance"] = {
             "source":               "verifier_corrected" if correction_applied else "original_a2",
-            "specialist_model":     GROQ_MODEL,
-            "verifier_model":       GROQ_VERIFIER_MODEL,
+            "specialist_model":     OPENAI_MODEL,
+            "verifier_model":       OPENAI_VERIFIER_MODEL,
             "correction_applied":   correction_applied,
             "correction_fields":    fields_fixed,
             "deterministic_overrides": override_fields,
@@ -649,7 +650,7 @@ def _node_a4(model_client):
     return node
 
 
-def _node_a5(model_client):
+def _node_a5(disclosure_client):
     from agents.disclosure_agent import run_disclosure_agent
 
     async def node(state: PipelineState) -> dict:
@@ -663,7 +664,7 @@ def _node_a5(model_client):
             report = await run_disclosure_agent(
                 state["client_profile"], state["product_profile"],
                 state["rule_verdict"], state["conflict_report"],
-                model_client=model_client,
+                model_client=disclosure_client,
             )
         except openai.RateLimitError as exc:
             msg = f"Rate limit at A5: {exc}"
@@ -721,11 +722,13 @@ def _node_a5(model_client):
 
 # ── Graph builder ──────────────────────────────────────────────────────────────
 
-def build_graph(model_client, verifier_client, on_event=None):
+def build_graph(model_client, verifier_client, disclosure_client, on_event=None):
     """
     Build and compile the MiFID II suitability pipeline as a LangGraph StateGraph.
 
-    verifier_client: stronger model (OpenRouter/Gemini) used by AV nodes only.
+    model_client:      gpt-4.1-nano (OpenAI)                   — used by A1, A2, A3, A4.
+    verifier_client:   llama-3.3-70b-versatile (Groq/Meta)     — used by the verifier (AV) nodes only.
+    disclosure_client: gpt-4o-mini (OpenAI)                    — used exclusively by A5 (disclosure agent).
     on_event: forwarded into A1/A2 nodes so they can stream intermediate steps.
     """
     _retry = RetryPolicy(max_attempts=2, retry_on=Exception)
@@ -738,7 +741,7 @@ def build_graph(model_client, verifier_client, on_event=None):
     g.add_node("A3",        _node_a3(model_client), retry=_retry)
     g.add_node("audit",     _node_audit())
     g.add_node("A4",        _node_a4(model_client), retry=_retry)
-    g.add_node("A5",        _node_a5(model_client), retry=_retry)
+    g.add_node("A5",        _node_a5(disclosure_client), retry=_retry)
 
     g.set_entry_point("A1")
 
@@ -765,15 +768,25 @@ async def run_pipeline(
     Run the full MiFID II suitability pipeline.
     Returns (pipeline_state, audit_log).
 
+    If DATABASE_URL is set in the environment, the full EU AI Act audit record
+    is persisted to PostgreSQL automatically.  If DATABASE_URL is absent or the
+    insert fails, the pipeline result is still returned normally — DB persistence
+    is non-blocking and never causes the pipeline to fail.
+
     on_event: async callable(event_type: str, state_snapshot: dict)
               called after every major step — including intermediate steps
               inside A1 and A2 (a1_profiled, a1_verified, a1_corrected,
               a1_reverified, and the same for A2).
     """
-    from config.llm_config import get_verifier_client
-    verifier_client = get_verifier_client()
+    import os
+    from config.llm_config import (
+        get_verifier_client, get_disclosure_client,
+        OPENAI_MODEL, OPENAI_VERIFIER_MODEL,
+    )
+    verifier_client   = get_verifier_client()
+    disclosure_client = get_disclosure_client()
 
-    graph = build_graph(model_client, verifier_client, on_event)
+    graph = build_graph(model_client, verifier_client, disclosure_client, on_event)
 
     initial: PipelineState = {
         "client_input":  client_input,
@@ -811,4 +824,33 @@ async def run_pipeline(
     # _warnings and _error_chain stay in final_state so build_audit_log can read them.
 
     audit_log = build_audit_log(final_state, retries, outputs, validations)
+
+    # ── PostgreSQL persistence (non-blocking) ──────────────────────────────────
+    # Only runs when DATABASE_URL is configured.  Failures are logged to warnings
+    # but never propagate — the pipeline result is always returned to the caller.
+    if os.environ.get("DATABASE_URL"):
+        from orchestrator.audit import build_full_audit_record, persist_audit_log
+        try:
+            full_record = build_full_audit_record(
+                final_state, retries, outputs, validations,
+                client_text=client_input,
+                product_text=product_input,
+                model_version={
+                    "specialist":  OPENAI_MODEL,
+                    "verifier":    OPENAI_VERIFIER_MODEL,
+                    "disclosure":  "gpt-4o-mini",
+                },
+            )
+            assessment_id = await persist_audit_log(full_record)
+            audit_log["assessment_id"] = assessment_id
+            audit_log["db_persisted"]  = True
+        except Exception as exc:
+            audit_log["db_persisted"]  = False
+            audit_log["db_error"]      = str(exc)
+            final_state.setdefault("_warnings", []).append({
+                "stage": "PERSIST",
+                "event": "db_persist_failed",
+                "error": str(exc),
+            })
+
     return final_state, audit_log

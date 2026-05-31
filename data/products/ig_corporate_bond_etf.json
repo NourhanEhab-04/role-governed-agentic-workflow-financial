@@ -1,0 +1,10 @@
+{
+  "name": "Euro Investment-Grade Corporate Bond ETF",
+  "description": "UCITS ETF tracking Bloomberg Euro Aggregate Corporate index. Holds EUR-denominated investment-grade bonds (minimum Baa3/BBB-). VEV ~7-10% per PRIIPs SRI methodology (Commission Delegated Regulation EU 2017/653 Annex II, MRM class 3, CRM class 2) yields SRI 3. Classified NON-COMPLEX under MiFID II Article 25(4)(a) as a UCITS ETF admitted to trading on a regulated market.",
+  "risk_class": 3,
+  "complexity_tier": "NON-COMPLEX",
+  "leverage": false,
+  "potential_loss": "partial",
+  "minimum_horizon": 3,
+  "requires_knowledge_level": "basic"
+}

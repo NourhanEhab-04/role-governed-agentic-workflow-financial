@@ -1,0 +1,28 @@
+{
+  "description": "UCI row 199 (age 40, MEDIUM vulnerability, moderate knowledge, RT 1, horizon 3yr) — em equity etf: soft fails ['R2', 'R3'] (score 65) -> CONDITIONAL",
+  "uci_row_index": 199,
+  "uci_source": "https://doi.org/10.24432/C5NC77",
+  "rule_engine_score": 65,
+  "rule_engine_decision": "CONDITIONAL",
+  "client": {
+    "name": "Valentijn de Boer",
+    "age": 40,
+    "financial_knowledge": "moderate",
+    "risk_tolerance_score": 1,
+    "investment_horizon": 3,
+    "liquid_assets": 2000.0,
+    "income": 109200.0,
+    "investment_amount": 5500.0,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "MEDIUM",
+    "portfolio_concentration_pct": 60,
+    "investment_objective": "capital preservation"
+  },
+  "product_file": "em_equity_etf.json",
+  "expected_decision": "CONDITIONAL",
+  "expected_escalate": false,
+  "expected_rules_failed": [
+    "R2",
+    "R3"
+  ]
+}

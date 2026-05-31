@@ -1,5 +1,17 @@
 {
-  "description": "HIGH vulnerability elderly client gets SUITABLE verdict \u2014 contradiction forces escalation",
+  "description": "HIGH vulnerability elderly client gets SUITABLE verdict — contradiction forces escalation",
+  "client_narrative": "Elena Rossi is 78 years old and a retired accountant. She holds around 300,000 euros in accessible liquid savings and receives approximately 40,000 euros per year in pension and dividend income. Over her career she has actively managed a personal portfolio that included equities, bonds, options, futures, and structured leveraged products. She rates her risk tolerance at 6 out of 10. She wants to invest 200,000 euros with an 8-year outlook to generate income. She has stated she is entirely willing to lose the invested amount if required — 'at my age, this is discretionary capital.'",
+  "expected_client_profile": {
+    "financial_knowledge": "advanced",
+    "risk_tolerance_score": 6,
+    "investment_horizon": 8,
+    "liquid_assets": 300000.0,
+    "income": 40000.0,
+    "investment_amount": 200000.0,
+    "can_afford_total_loss": true,
+    "financial_vulnerability": "HIGH",
+    "age": 78
+  },
   "client": {
     "name": "Elena Rossi",
     "age": 78,
@@ -13,6 +25,16 @@
     "financial_vulnerability": "HIGH",
     "portfolio_concentration_pct": 10,
     "investment_objective": "income"
+  },
+  "product_narrative": "The product is a broad-market exchange-traded fund that passively tracks the MSCI World Index. It invests across approximately 1,500 equities in 23 developed countries, trades intraday on regulated exchanges, publishes a KID, uses no leverage, and contains no embedded derivatives. Designed for long-term investors, the recommended minimum holding period is five years.",
+  "expected_product_profile": {
+    "product_name": "MSCI World Index ETF",
+    "risk_class": 4,
+    "complexity_tier": "NON-COMPLEX",
+    "requires_knowledge_level": "basic",
+    "minimum_horizon": 5,
+    "potential_loss": "partial",
+    "leverage": false
   },
   "product_file": "global_equity_etf.json",
   "expected_decision": "ESCALATED",

@@ -1,0 +1,21 @@
+{
+  "description": "ESCALATED — Both CONTRADICTION and CONCENTRATION flags: HIGH-vuln (age 70) + portfolio_concentration_pct=45% + global_equity_etf. Rule engine SUITABLE (R5 passes: risk_class=4<5). Both HIGH-severity A4 flags trigger escalation.",
+  "client": {
+    "name": "Dagmar Novak",
+    "age": 70,
+    "financial_knowledge": "basic",
+    "risk_tolerance_score": 4,
+    "investment_horizon": 7,
+    "liquid_assets": 180000.0,
+    "income": 42000.0,
+    "investment_amount": 35000.0,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "HIGH",
+    "portfolio_concentration_pct": 45,
+    "investment_objective": "capital preservation"
+  },
+  "product_file": "global_equity_etf.json",
+  "expected_decision": "ESCALATED",
+  "expected_escalate": true,
+  "expected_rules_failed": []
+}

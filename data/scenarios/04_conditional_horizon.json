@@ -1,5 +1,17 @@
 {
   "description": "Client horizon (3yr) shorter than ETF minimum (5yr) \u2014 R3 fails, score 80 SUITABLE",
+  "client_narrative": "Fatima Al-Hassan is 55 years old and works full-time as a civil engineer, earning approximately 4,600 euros per month gross. She has 60,000 euros in liquid savings and wants to invest 30,000 euros over the next 36 months. She has been buying and selling individual stocks and index ETFs for about eight years and understands market risk well. She describes her risk tolerance as balanced, roughly 5 out of 10. She has explicitly confirmed she can afford to lose the full investment amount if the market moves against her.",
+  "expected_client_profile": {
+    "financial_knowledge": "moderate",
+    "risk_tolerance_score": 5,
+    "investment_horizon": 3,
+    "liquid_assets": 60000.0,
+    "income": 55200.0,
+    "investment_amount": 30000.0,
+    "can_afford_total_loss": true,
+    "financial_vulnerability": "LOW",
+    "age": 55
+  },
   "client": {
     "name": "Fatima Al-Hassan",
     "age": 55,

@@ -1,0 +1,25 @@
+{
+  "description": "UCI row 1 (age 22, HIGH vulnerability, basic knowledge, RT 7, horizon 4yr) — money market fund: all hard rules pass (score 100) -> SUITABLE",
+  "uci_row_index": 1,
+  "uci_source": "https://doi.org/10.24432/C5NC77",
+  "rule_engine_score": 100,
+  "rule_engine_decision": "SUITABLE",
+  "client": {
+    "name": "Kwame Asante",
+    "age": 22,
+    "financial_knowledge": "basic",
+    "risk_tolerance_score": 7,
+    "investment_horizon": 4,
+    "liquid_assets": 56000.0,
+    "income": 33000.0,
+    "investment_amount": 7600.0,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "HIGH",
+    "portfolio_concentration_pct": 30,
+    "investment_objective": "capital preservation"
+  },
+  "product_file": "money_market_fund.json",
+  "expected_decision": "SUITABLE",
+  "expected_escalate": false,
+  "expected_rules_failed": []
+}

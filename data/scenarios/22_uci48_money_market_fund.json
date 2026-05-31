@@ -1,0 +1,25 @@
+{
+  "description": "UCI row 48 (age 39, MEDIUM vulnerability, none knowledge, RT 4, horizon 2yr) — money market fund: all hard rules pass (score 100) -> SUITABLE",
+  "uci_row_index": 48,
+  "uci_source": "https://doi.org/10.24432/C5NC77",
+  "rule_engine_score": 100,
+  "rule_engine_decision": "SUITABLE",
+  "client": {
+    "name": "Elena Bondarenko",
+    "age": 39,
+    "financial_knowledge": "none",
+    "risk_tolerance_score": 4,
+    "investment_horizon": 2,
+    "liquid_assets": 18000.0,
+    "income": 23800.0,
+    "investment_amount": 9200.0,
+    "can_afford_total_loss": true,
+    "financial_vulnerability": "MEDIUM",
+    "portfolio_concentration_pct": 15,
+    "investment_objective": "asset growth"
+  },
+  "product_file": "money_market_fund.json",
+  "expected_decision": "SUITABLE",
+  "expected_escalate": false,
+  "expected_rules_failed": []
+}

@@ -1,0 +1,25 @@
+{
+  "description": "UCI row 63 (age 25, MEDIUM vulnerability, basic knowledge, RT 4, horizon 6yr) — government bond: all hard rules pass (score 100) -> SUITABLE",
+  "uci_row_index": 63,
+  "uci_source": "https://doi.org/10.24432/C5NC77",
+  "rule_engine_score": 100,
+  "rule_engine_decision": "SUITABLE",
+  "client": {
+    "name": "Rasa Vaitkienė",
+    "age": 25,
+    "financial_knowledge": "basic",
+    "risk_tolerance_score": 4,
+    "investment_horizon": 6,
+    "liquid_assets": 2600.0,
+    "income": 30700.0,
+    "investment_amount": 18400.0,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "MEDIUM",
+    "portfolio_concentration_pct": 30,
+    "investment_objective": "income"
+  },
+  "product_file": "government_bond.json",
+  "expected_decision": "SUITABLE",
+  "expected_escalate": false,
+  "expected_rules_failed": []
+}

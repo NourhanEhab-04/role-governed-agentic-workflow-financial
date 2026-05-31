@@ -1,0 +1,91 @@
+{
+  "timestamp": "20260531T115439Z",
+  "runs_per_scenario": 3,
+  "n_scenarios": 12,
+  "baseline": {
+    "architecture": "baseline",
+    "n_runs": 36,
+    "M1_decision_accuracy": 0.5556,
+    "M2_rule_compliance_rate": 0.5556,
+    "M3_decision_consistency": 0.9722,
+    "M4_escalation_accuracy": {
+      "overall_accuracy": 1.0,
+      "sensitivity": 0.0,
+      "specificity": 1.0,
+      "n_positive": 0,
+      "n_negative": 36
+    },
+    "M5_verification": "N/A (baseline)",
+    "M6_per_rule_accuracy": {
+      "R1": 0.9444,
+      "R2": 1.0,
+      "R3": 1.0,
+      "R4": 0.6111,
+      "R5": 0.6389,
+      "R6": 1.0,
+      "R7": 0.8889
+    },
+    "M7_demographic_parity": "N/A (no paired scenarios)",
+    "M_A1_extraction": "N/A (baseline has no A1/A2 agents)",
+    "M_A2_extraction": "N/A (baseline has no A1/A2 agents)",
+    "M8_override_rate": "N/A (baseline)",
+    "M9_pipeline_halt_rate": 0.0,
+    "M10_three_point_integrity": "N/A (baseline)",
+    "M11_hard_rule_enforcement": null,
+    "M12_vulnerability_protection": null,
+    "M13_regulatory_citation_rate": "N/A (baseline)",
+    "M14_explanation_completeness": "N/A (baseline)",
+    "M15_decision_traceability": "N/A (baseline)"
+  },
+  "pipeline": {
+    "architecture": "pipeline",
+    "n_runs": 36,
+    "M1_decision_accuracy": 0.6389,
+    "M2_rule_compliance_rate": 1.0,
+    "M3_decision_consistency": 0.9722,
+    "M4_escalation_accuracy": {
+      "overall_accuracy": 0.6667,
+      "sensitivity": 0.0,
+      "specificity": 0.6667,
+      "n_positive": 0,
+      "n_negative": 36
+    },
+    "M5_verification": {
+      "a1_correction_rate": 0.9166666666666666,
+      "a2_correction_rate": 0.3333333333333333,
+      "overall_correction_rate": 0.625
+    },
+    "M6_per_rule_accuracy": {
+      "R1": 1.0,
+      "R2": 1.0,
+      "R3": 1.0,
+      "R4": 1.0,
+      "R5": 1.0,
+      "R6": 1.0,
+      "R7": 1.0
+    },
+    "M7_demographic_parity": "N/A (no paired scenarios)",
+    "M_A1_extraction": {
+      "n_evaluated": 0,
+      "overall_exact_match_rate": 0.0,
+      "per_field_accuracy": {}
+    },
+    "M_A2_extraction": {
+      "n_evaluated": 0,
+      "overall_exact_match_rate": 0.0,
+      "per_field_accuracy": {}
+    },
+    "M8_override_rate": {
+      "A1": 0.0,
+      "A2": 0.0,
+      "A4": 0.0278
+    },
+    "M9_pipeline_halt_rate": 0.0,
+    "M10_three_point_integrity": 1.0,
+    "M11_hard_rule_enforcement": null,
+    "M12_vulnerability_protection": null,
+    "M13_regulatory_citation_rate": 1.0,
+    "M14_explanation_completeness": 1.0,
+    "M15_decision_traceability": 1.0
+  }
+}

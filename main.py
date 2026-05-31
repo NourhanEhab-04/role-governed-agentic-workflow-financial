@@ -8,7 +8,6 @@ import argparse
 
 from config.llm_config import get_model_client
 from orchestrator.orchestrator import run_pipeline
-from orchestrator.audit import persist_audit_log
 
 
 def main():
@@ -46,14 +45,16 @@ def main():
         print(f"\nHALT: {state['halt_reason']}")
     print("=" * 60 + "\n")
 
-    # ── Persist to PostgreSQL (append-only, EU AI Act compliant) ─────────────
-    # Skipped gracefully if DATABASE_URL is not configured so the pipeline
-    # can run in development and CI without a database.
-    try:
-        assessment_id = asyncio.run(persist_audit_log(audit_log))
-        print(f"Audit persisted → assessment_id={assessment_id}")
-    except (RuntimeError, ImportError) as exc:
-        print(f"[warn] PostgreSQL audit skipped: {exc}")
+    # ── PostgreSQL persistence is handled inside run_pipeline ─────────────────
+    # run_pipeline persists a full EU AI Act audit record automatically when
+    # DATABASE_URL is set.  Report the result here; do not call persist_audit_log
+    # again (audit_log is the lightweight summary, not the full record).
+    import os
+    if os.environ.get("DATABASE_URL"):
+        if audit_log.get("db_persisted"):
+            print(f"Audit persisted → assessment_id={audit_log.get('assessment_id')}")
+        else:
+            print(f"[warn] PostgreSQL audit failed: {audit_log.get('db_error', 'unknown error')}")
 
     # ── Always write JSON file as local backup ────────────────────────────────
     audit_dir = Path("data/audit")

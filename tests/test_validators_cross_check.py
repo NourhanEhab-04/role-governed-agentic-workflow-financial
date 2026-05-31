@@ -8,7 +8,7 @@ from orchestrator.validators import validate_after_a3
 GOOD_VERDICT = {
     "score": 75,
     "decision": "SUITABLE",
-    "rules": [],
+    "rules": {"R1": "PASS", "R2": "PASS", "R3": "PASS", "R4": "PASS", "R5": "PASS", "R6": "PASS", "R7": "PASS"},
     "failed_rules": [],
 }
 
@@ -32,7 +32,7 @@ def test_fail_when_decisions_disagree():
     }
     ok, err = validate_after_a3(state)
     assert ok is False
-    assert "system error" in err.lower() or "different results" in err.lower()
+    assert "integrity" in err.lower() or "different" in err.lower()
 
 
 def test_pass_when_pre_check_absent():

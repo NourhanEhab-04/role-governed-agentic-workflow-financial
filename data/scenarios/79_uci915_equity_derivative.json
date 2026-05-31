@@ -1,0 +1,27 @@
+{
+  "description": "UCI row 915 (age 32, MEDIUM vulnerability, advanced knowledge, RT 5) — equity derivative: hard fails ['R4'] -> UNSUITABLE",
+  "uci_row_index": 915,
+  "uci_source": "https://doi.org/10.24432/C5NC77",
+  "rule_engine_score": 100,
+  "rule_engine_decision": "UNSUITABLE",
+  "client": {
+    "name": "Valeria Conti",
+    "age": 32,
+    "financial_knowledge": "advanced",
+    "risk_tolerance_score": 5,
+    "investment_horizon": 4,
+    "liquid_assets": 18000.0,
+    "income": 55200.0,
+    "investment_amount": 23500.0,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "MEDIUM",
+    "portfolio_concentration_pct": 15,
+    "investment_objective": "balanced growth"
+  },
+  "product_file": "equity_derivative.json",
+  "expected_decision": "UNSUITABLE",
+  "expected_escalate": false,
+  "expected_rules_failed": [
+    "R4"
+  ]
+}

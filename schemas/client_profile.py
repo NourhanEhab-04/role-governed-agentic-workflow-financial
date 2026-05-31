@@ -2,6 +2,7 @@ from enum import Enum
 from dataclasses import dataclass
 
 REQUIRED_CLIENT_KEYS = {
+    "age",
     "financial_knowledge",
     "risk_tolerance_score",
     "investment_horizon",
@@ -28,6 +29,7 @@ class FinancialVulnerability(str, Enum):
 #verifier agent
 @dataclass
 class ClientProfile:
+    age: int                           # mandatory — required for age > 70 vulnerability rule
     financial_knowledge: FinancialKnowledge
     risk_tolerance_score: int          # 1–10
     investment_horizon: int            # years

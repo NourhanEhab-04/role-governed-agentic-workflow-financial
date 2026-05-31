@@ -1,0 +1,21 @@
+{
+  "description": "SUITABLE — LOW-vuln client, portfolio_concentration_pct=45% + em_equity_etf. All rules pass (score=100). Concentration=45% does not trigger under MiFID II-aligned rule: requires HIGH vulnerability OR risk_class ≥ 6 (risk_class=5 here).",
+  "client": {
+    "name": "Priya Sharma",
+    "age": 40,
+    "financial_knowledge": "moderate",
+    "risk_tolerance_score": 5,
+    "investment_horizon": 8,
+    "liquid_assets": 200000.0,
+    "income": 60000.0,
+    "investment_amount": 40000.0,
+    "can_afford_total_loss": true,
+    "financial_vulnerability": "LOW",
+    "portfolio_concentration_pct": 45,
+    "investment_objective": "growth"
+  },
+  "product_file": "em_equity_etf.json",
+  "expected_decision": "SUITABLE",
+  "expected_escalate": false,
+  "expected_rules_failed": []
+}

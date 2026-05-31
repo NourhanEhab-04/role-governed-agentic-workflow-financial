@@ -1,0 +1,23 @@
+{
+  "description": "M7 parity C — old HIGH-vuln (age 71), identical financials, government bond. risk_class=2<4 no CONTRADICTION, SUITABLE. Paired with scenario 113.",
+  "pair_id": "M7-C",
+  "demographic_variant": "old_high_vuln",
+  "client": {
+    "name": "Hilde Andersen",
+    "age": 71,
+    "financial_knowledge": "basic",
+    "risk_tolerance_score": 4,
+    "investment_horizon": 5,
+    "liquid_assets": 100000.0,
+    "income": 38000.0,
+    "investment_amount": 18000.0,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "HIGH",
+    "portfolio_concentration_pct": 15,
+    "investment_objective": "capital preservation"
+  },
+  "product_file": "government_bond.json",
+  "expected_decision": "SUITABLE",
+  "expected_escalate": false,
+  "expected_rules_failed": []
+}

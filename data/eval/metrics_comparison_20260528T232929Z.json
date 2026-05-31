@@ -1,0 +1,67 @@
+{
+  "timestamp": "20260528T232929Z",
+  "runs_per_scenario": 3,
+  "n_scenarios": 21,
+  "baseline": {
+    "architecture": "baseline",
+    "n_runs": 63,
+    "M1_decision_accuracy": 0.5238,
+    "M2_rule_compliance_rate": 0.1429,
+    "M3_decision_consistency": 0.7302,
+    "M4_escalation_accuracy": 0.7143,
+    "M5_verification": "N/A (baseline)",
+    "M6_per_rule_accuracy": {
+      "R1": 0.7083,
+      "R2": 0.7917,
+      "R3": 0.6875,
+      "R4": 0.3333,
+      "R5": 0.5625,
+      "R6": 0.8542,
+      "R7": 0.7917
+    },
+    "M7_demographic_parity": "N/A (no paired scenarios)",
+    "M8_override_rate": "N/A (baseline)",
+    "M9_pipeline_halt_rate": 0.2381,
+    "M10_three_point_integrity": "N/A (baseline)",
+    "M11_hard_rule_enforcement": null,
+    "M12_vulnerability_protection": null,
+    "M13_regulatory_citation_rate": "N/A (baseline)",
+    "M14_explanation_completeness": "N/A (baseline)",
+    "M15_decision_traceability": "N/A (baseline)"
+  },
+  "pipeline": {
+    "architecture": "pipeline",
+    "n_runs": 63,
+    "M1_decision_accuracy": 0.1587,
+    "M2_rule_compliance_rate": 0.381,
+    "M3_decision_consistency": 0.9524,
+    "M4_escalation_accuracy": 0.6825,
+    "M5_verification": {
+      "a1_correction_rate": 0.6111111111111112,
+      "a2_correction_rate": 0.0,
+      "overall_correction_rate": 0.3142857142857143
+    },
+    "M6_per_rule_accuracy": {
+      "R1": 1.0,
+      "R2": 1.0,
+      "R3": 1.0,
+      "R4": 1.0,
+      "R5": 0.75,
+      "R6": 1.0,
+      "R7": 1.0
+    },
+    "M7_demographic_parity": "N/A (no paired scenarios)",
+    "M8_override_rate": {
+      "A1": 0.0,
+      "A2": 0.0,
+      "A4": 0.1429
+    },
+    "M9_pipeline_halt_rate": 0.8571,
+    "M10_three_point_integrity": 0.254,
+    "M11_hard_rule_enforcement": 1.0,
+    "M12_vulnerability_protection": 0.8333,
+    "M13_regulatory_citation_rate": 1.0,
+    "M14_explanation_completeness": 0.25,
+    "M15_decision_traceability": 0.2476
+  }
+}

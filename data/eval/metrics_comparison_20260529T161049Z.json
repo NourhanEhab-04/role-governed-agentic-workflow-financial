@@ -1,0 +1,79 @@
+{
+  "timestamp": "20260529T161049Z",
+  "runs_per_scenario": 5,
+  "n_scenarios": 11,
+  "baseline": {
+    "architecture": "baseline",
+    "n_runs": 55,
+    "M1_decision_accuracy": 0.5128,
+    "M2_rule_compliance_rate": 0.0513,
+    "M3_decision_consistency": 0.6727,
+    "M4_escalation_accuracy": {
+      "overall_accuracy": 0.5128,
+      "sensitivity": 0.0,
+      "specificity": 1.0,
+      "n_positive": 19,
+      "n_negative": 20
+    },
+    "M5_verification": "N/A (baseline)",
+    "M6_per_rule_accuracy": {
+      "R1": 0.7949,
+      "R2": 0.7632,
+      "R3": 0.5263,
+      "R4": 0.3684,
+      "R5": 0.3421,
+      "R6": 0.7368,
+      "R7": 0.7105
+    },
+    "M7_demographic_parity": "N/A (no paired scenarios)",
+    "M8_override_rate": "N/A (baseline)",
+    "M9_pipeline_halt_rate": 0.2909,
+    "M10_three_point_integrity": "N/A (baseline)",
+    "M11_hard_rule_enforcement": null,
+    "M12_vulnerability_protection": null,
+    "M13_regulatory_citation_rate": "N/A (baseline)",
+    "M14_explanation_completeness": "N/A (baseline)",
+    "M15_decision_traceability": "N/A (baseline)"
+  },
+  "pipeline": {
+    "architecture": "pipeline",
+    "n_runs": 55,
+    "M1_decision_accuracy": 1.0,
+    "M2_rule_compliance_rate": 0.8333,
+    "M3_decision_consistency": 0.9818,
+    "M4_escalation_accuracy": {
+      "overall_accuracy": 1.0,
+      "sensitivity": 1.0,
+      "specificity": 1.0,
+      "n_positive": 1,
+      "n_negative": 5
+    },
+    "M5_verification": {
+      "a1_correction_rate": 0.16666666666666666,
+      "a2_correction_rate": 0.0,
+      "overall_correction_rate": 0.08695652173913043
+    },
+    "M6_per_rule_accuracy": {
+      "R1": 1.0,
+      "R2": 1.0,
+      "R3": 1.0,
+      "R4": 0.9091,
+      "R5": 1.0,
+      "R6": 1.0,
+      "R7": 1.0
+    },
+    "M7_demographic_parity": "N/A (no paired scenarios)",
+    "M8_override_rate": {
+      "A1": 0.0,
+      "A2": 0.0,
+      "A4": 0.0364
+    },
+    "M9_pipeline_halt_rate": 0.8909,
+    "M10_three_point_integrity": 0.2,
+    "M11_hard_rule_enforcement": 1.0,
+    "M12_vulnerability_protection": 1.0,
+    "M13_regulatory_citation_rate": 1.0,
+    "M14_explanation_completeness": 0.2,
+    "M15_decision_traceability": 0.1927
+  }
+}

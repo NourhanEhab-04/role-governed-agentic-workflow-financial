@@ -1,0 +1,23 @@
+{
+  "description": "M7 parity I — old HIGH-vuln (age 70), identical financials. risk_class=3<4 no CONTRADICTION, SUITABLE. Paired with scenario 125.",
+  "pair_id": "M7-I",
+  "demographic_variant": "old_high_vuln",
+  "client": {
+    "name": "Antonella Ricci",
+    "age": 70,
+    "financial_knowledge": "moderate",
+    "risk_tolerance_score": 6,
+    "investment_horizon": 6,
+    "liquid_assets": 200000.0,
+    "income": 55000.0,
+    "investment_amount": 40000.0,
+    "can_afford_total_loss": true,
+    "financial_vulnerability": "HIGH",
+    "portfolio_concentration_pct": 15,
+    "investment_objective": "income"
+  },
+  "product_file": "ig_corporate_bond_etf.json",
+  "expected_decision": "SUITABLE",
+  "expected_escalate": false,
+  "expected_rules_failed": []
+}

@@ -1,0 +1,25 @@
+{
+  "description": "UCI row 145 (age 30, LOW vulnerability, basic knowledge, RT 5, horizon 6yr) — sector equity etf: all hard rules pass (score 100) -> SUITABLE",
+  "uci_row_index": 145,
+  "uci_source": "https://doi.org/10.24432/C5NC77",
+  "rule_engine_score": 100,
+  "rule_engine_decision": "SUITABLE",
+  "client": {
+    "name": "Oladapo Adeyemi",
+    "age": 30,
+    "financial_knowledge": "basic",
+    "risk_tolerance_score": 5,
+    "investment_horizon": 6,
+    "liquid_assets": 5000.0,
+    "income": 45400.0,
+    "investment_amount": 4500.0,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "LOW",
+    "portfolio_concentration_pct": 60,
+    "investment_objective": "income"
+  },
+  "product_file": "sector_equity_etf.json",
+  "expected_decision": "SUITABLE",
+  "expected_escalate": false,
+  "expected_rules_failed": []
+}

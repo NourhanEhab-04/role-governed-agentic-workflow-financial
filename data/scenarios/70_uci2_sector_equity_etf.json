@@ -1,0 +1,27 @@
+{
+  "description": "UCI row 2 (age 49, MEDIUM vulnerability, none knowledge, RT 5) — sector equity etf: hard fails ['R1'] -> UNSUITABLE",
+  "uci_row_index": 2,
+  "uci_source": "https://doi.org/10.24432/C5NC77",
+  "rule_engine_score": 100,
+  "rule_engine_decision": "UNSUITABLE",
+  "client": {
+    "name": "Gunnar Erikson",
+    "age": 49,
+    "financial_knowledge": "none",
+    "risk_tolerance_score": 5,
+    "investment_horizon": 7,
+    "liquid_assets": 56000.0,
+    "income": 34100.0,
+    "investment_amount": 2700.0,
+    "can_afford_total_loss": true,
+    "financial_vulnerability": "MEDIUM",
+    "portfolio_concentration_pct": 30,
+    "investment_objective": "long-term growth"
+  },
+  "product_file": "sector_equity_etf.json",
+  "expected_decision": "UNSUITABLE",
+  "expected_escalate": false,
+  "expected_rules_failed": [
+    "R1"
+  ]
+}

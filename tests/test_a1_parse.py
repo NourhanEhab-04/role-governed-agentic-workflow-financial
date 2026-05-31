@@ -3,6 +3,7 @@ import pytest
 from agents.client_profiler import parse_client_profile
 
 VALID_JSON = """{
+    "age": 35,
     "financial_knowledge": "basic",
     "risk_tolerance_score": 4,
     "investment_horizon": 3,

@@ -1,0 +1,25 @@
+{
+  "description": "UCI row 51 (age 30, MEDIUM vulnerability, moderate knowledge, RT 3, horizon 3yr) — structured note: all hard rules pass (score 100) -> SUITABLE",
+  "uci_row_index": 51,
+  "uci_source": "https://doi.org/10.24432/C5NC77",
+  "rule_engine_score": 100,
+  "rule_engine_decision": "SUITABLE",
+  "client": {
+    "name": "Hazel Okonkwo",
+    "age": 30,
+    "financial_knowledge": "moderate",
+    "risk_tolerance_score": 3,
+    "investment_horizon": 3,
+    "liquid_assets": 2800.0,
+    "income": 120000.0,
+    "investment_amount": 7600.0,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "MEDIUM",
+    "portfolio_concentration_pct": 15,
+    "investment_objective": "asset growth"
+  },
+  "product_file": "structured_note.json",
+  "expected_decision": "SUITABLE",
+  "expected_escalate": false,
+  "expected_rules_failed": []
+}

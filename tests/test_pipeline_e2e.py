@@ -14,7 +14,7 @@ PRODUCTS_DIR  = Path("data/products")
 
 def load_scenarios():
     files = sorted(SCENARIOS_DIR.glob("*.json"))
-    assert len(files) == 10, f"Expected 10 scenarios, found {len(files)}"
+    assert len(files) >= 19, f"Expected at least 19 scenarios, found {len(files)}"
     return files
 
 

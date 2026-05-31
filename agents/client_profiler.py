@@ -26,7 +26,7 @@ REQUIRED OUTPUT FORMAT
     "investment_amount": <float, EUR>,
     "can_afford_total_loss": <true | false>,
     "financial_vulnerability": "<LOW | MEDIUM | HIGH>",
-    "age": <integer | null>
+    "age": <integer>
 }
 
 ════════════════════════════════════════
@@ -74,6 +74,12 @@ Integer 1-10. Use this mapping for verbal descriptions:
   If they describe a mix (e.g. "balanced but leaning towards growth"), pick the
   average of the two mapped values and round down (balanced=5, growth=7 → 6).
 
+  CRITICAL — STRUCTURED JSON INPUT: If the input is a JSON object that already
+  contains "risk_tolerance_score" as an integer, copy that integer EXACTLY.
+  Do NOT adjust it based on other fields like "investment_objective" or
+  "financial_vulnerability". The numeric field is always authoritative over
+  any verbal inference you might draw from surrounding fields.
+
 ── investment_horizon ───────────────────────────────────────────────────────
 Output in YEARS as an integer. ALWAYS convert from whatever unit the client uses:
 
@@ -97,9 +103,26 @@ note uncertainty with a round figure. If multiple accounts are listed, sum them.
 
 ── income ───────────────────────────────────────────────────────────────────
 Gross annual income in EUR as a float.
-  - Monthly income stated → multiply by 12.
-  - Net/take-home stated → gross up by approximately 1.3 (flag as estimated).
-  - Zero income (unemployed, retired with no pension stated) → 0.0
+  You MUST calculate income using this exact order:
+
+1. Identify whether the stated income is monthly, annual, weekly, or hourly.
+2. Identify whether it is gross or net/take-home.
+3. Convert to annual income first:
+   - monthly income → income * 12
+   - weekly income → income * 52
+   - annual income → income
+4. If the income is stated as net/take-home, convert estimated gross annual income:
+   - gross_annual_income = annual_net_income * 1.3
+   - also set income_estimated = true
+5. If the income is already gross, do NOT apply the 1.3 multiplier.
+6. If the client is unemployed, retired, student, or has no income and no pension/salary is stated:
+   - income = 0.0
+   - income_estimated = false
+7. If pension is stated, treat pension as income and apply the same rules above.
+8. If no income information is provided:
+   - income = null
+   - income_estimated = false
+
 
 ── investment_amount ────────────────────────────────────────────────────────
 Amount the client wants to invest NOW, in EUR as a float.
@@ -132,9 +155,16 @@ false → ANY other case, including:
 
   DEFAULT is false.
 
+  CRITICAL — STRUCTURED JSON INPUT: If the input is a JSON object that already
+  contains "can_afford_total_loss" as a boolean, copy that boolean EXACTLY.
+  Do NOT override an explicit true with the default false. The explicit boolean
+  in the JSON is authoritative and overrides the default.
+
 ── age ───────────────────────────────────────────────────────────────────────
-Client's age as an integer (years). Output null if the client does not state
-their age. Do NOT infer age from retirement mentions or other hints.
+Client's age in years as a required integer. If the client does NOT state their
+age, respond with the needs_clarification format below — do NOT infer age from
+retirement mentions, life-stage language, or any other hints. Age is required
+for the MiFID II age > 70 vulnerability rule.
 
 ── financial_vulnerability ──────────────────────────────────────────────────
 Assign HIGH, MEDIUM, or LOW using this decision tree (apply top-down, stop at
@@ -189,7 +219,7 @@ OUTPUT RULES (non-negotiable)
 5. financial_knowledge must be lowercase: none | basic | moderate | advanced.
 6. financial_vulnerability must be uppercase: LOW | MEDIUM | HIGH.
 7. can_afford_total_loss must be a boolean: true or false (not a string).
-8. age must be an integer if stated, or null if not mentioned. Never infer it.
+8. age must be a positive integer. If not stated, use needs_clarification — never infer it, never output null.
 9. Never add extra fields beyond the 9 listed above.
 10. Never invent or assume data that is not stated or clearly implied.
 """

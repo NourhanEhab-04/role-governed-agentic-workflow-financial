@@ -1,0 +1,21 @@
+{
+  "description": "SUITABLE — MEDIUM-vuln, portfolio_concentration_pct=50% + global_equity_etf. R3 soft-fails (horizon 4 < min_horizon 5, score=85 SUITABLE). Concentration=50% does not trigger: vulnerability=MEDIUM, risk_class=4 (requires HIGH vuln OR risk_class ≥ 6).",
+  "client": {
+    "name": "Andrei Popescu",
+    "age": 42,
+    "financial_knowledge": "basic",
+    "risk_tolerance_score": 3,
+    "investment_horizon": 4,
+    "liquid_assets": 80000.0,
+    "income": 35000.0,
+    "investment_amount": 20000.0,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "MEDIUM",
+    "portfolio_concentration_pct": 50,
+    "investment_objective": "growth"
+  },
+  "product_file": "global_equity_etf.json",
+  "expected_decision": "SUITABLE",
+  "expected_escalate": false,
+  "expected_rules_failed": ["R3"]
+}

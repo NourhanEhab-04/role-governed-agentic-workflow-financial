@@ -1,0 +1,29 @@
+{
+  "description": "UCI row 80 (age 44, HIGH vulnerability, basic knowledge, RT 5) — em equity etf: hard fails ['R1', 'R5'] -> UNSUITABLE",
+  "uci_row_index": 80,
+  "uci_source": "https://doi.org/10.24432/C5NC77",
+  "rule_engine_score": 85,
+  "rule_engine_decision": "UNSUITABLE",
+  "client": {
+    "name": "Zeynep Arslan",
+    "age": 44,
+    "financial_knowledge": "basic",
+    "risk_tolerance_score": 5,
+    "investment_horizon": 2,
+    "liquid_assets": 2200.0,
+    "income": 19100.0,
+    "investment_amount": 7600.0,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "HIGH",
+    "portfolio_concentration_pct": 15,
+    "investment_objective": "capital preservation"
+  },
+  "product_file": "em_equity_etf.json",
+  "expected_decision": "UNSUITABLE",
+  "expected_escalate": false,
+  "expected_rules_failed": [
+    "R1",
+    "R3",
+    "R5"
+  ]
+}

@@ -2,6 +2,8 @@
   "description": "M7 parity pair A — young client (age 35, LOW vulnerability) vs identical financials, government bond. Expected SUITABLE. Paired with scenario 17.",
   "pair_id": "M7-A",
   "demographic_variant": "young_low_vuln",
+  "client_narrative": "Alex Chen is 35 years old and works as a software engineer. He earns approximately 45,000 euros per year and holds 80,000 euros in liquid savings. He wants to invest 20,000 euros for a minimum of 5 years. His investment knowledge is basic: he has purchased government bond funds and index funds through his bank but has no experience with derivatives or leveraged products. He rates his risk tolerance at 3 out of 10 — cautious, preferring stable instruments — and has stated he cannot afford to lose his investment. His objective is capital preservation with modest growth over the medium term.",
+  "product_narrative": "The product is a eurozone government bond issued by a sovereign member state of the EU, rated AA or above by major credit rating agencies. The bond pays a fixed annual coupon and returns principal at maturity. It is non-complex under MiFID II, requires only basic financial knowledge to understand, and has a minimum recommended holding period of three years. The bond is listed on regulated markets, publishes a prospectus and KID equivalent, uses no leverage, and in the worst case delivers only partial capital loss (credit event).",
   "client": {
     "name": "Alex Chen",
     "age": 35,

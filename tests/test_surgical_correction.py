@@ -45,6 +45,7 @@ def _verification_all_fail():
 
 def _previous_output():
     return {
+        "age": 40,
         "financial_knowledge": "moderate",
         "risk_tolerance_score": 7,
         "investment_horizon": 5,

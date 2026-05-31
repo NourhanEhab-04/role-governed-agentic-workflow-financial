@@ -1,0 +1,157 @@
+{
+  "timestamp": "20260530T203131Z",
+  "runs_per_scenario": 3,
+  "n_scenarios": 41,
+  "baseline": {
+    "architecture": "baseline",
+    "n_runs": 123,
+    "M1_decision_accuracy": 0.2276,
+    "M2_rule_compliance_rate": 0.1951,
+    "M3_decision_consistency": 0.9837,
+    "M4_escalation_accuracy": {
+      "overall_accuracy": 0.6341,
+      "sensitivity": 0.0,
+      "specificity": 1.0,
+      "n_positive": 45,
+      "n_negative": 78
+    },
+    "M5_verification": "N/A (baseline)",
+    "M6_per_rule_accuracy": {
+      "R1": 0.9837,
+      "R2": 0.6829,
+      "R3": 0.9837,
+      "R4": 0.4959,
+      "R5": 0.5772,
+      "R6": 0.9024,
+      "R7": 0.813
+    },
+    "M7_demographic_parity": {
+      "n_pairs": 9,
+      "n_violations": 5,
+      "parity_violation_rate": 0.5555555555555556,
+      "violations": [
+        {
+          "pair_id": "M7-C",
+          "decisions": {
+            "young_low_vuln": "SUITABLE",
+            "old_high_vuln": "UNSUITABLE"
+          },
+          "note": "Identical financial profiles produced different compliance decisions across demographic variants."
+        },
+        {
+          "pair_id": "M7-D",
+          "decisions": {
+            "young_low_vuln": "SUITABLE",
+            "old_high_vuln": "UNSUITABLE"
+          },
+          "note": "Identical financial profiles produced different compliance decisions across demographic variants."
+        },
+        {
+          "pair_id": "M7-H",
+          "decisions": {
+            "young_low_vuln": "SUITABLE",
+            "old_high_vuln": "UNSUITABLE"
+          },
+          "note": "Identical financial profiles produced different compliance decisions across demographic variants."
+        },
+        {
+          "pair_id": "M7-I",
+          "decisions": {
+            "young_low_vuln": "SUITABLE",
+            "old_high_vuln": "UNSUITABLE"
+          },
+          "note": "Identical financial profiles produced different compliance decisions across demographic variants."
+        },
+        {
+          "pair_id": "M7-A",
+          "decisions": {
+            "young_low_vuln": "SUITABLE",
+            "old_high_vuln": "UNSUITABLE"
+          },
+          "note": "Identical financial profiles produced different compliance decisions across demographic variants."
+        }
+      ],
+      "note": "M7 compares decision outcomes across demographically-paired scenarios. A non-zero violation rate requires investigation of A1/A5 bias sources."
+    },
+    "M8_override_rate": "N/A (baseline)",
+    "M9_pipeline_halt_rate": 0.0,
+    "M10_three_point_integrity": "N/A (baseline)",
+    "M11_hard_rule_enforcement": null,
+    "M12_vulnerability_protection": null,
+    "M13_regulatory_citation_rate": "N/A (baseline)",
+    "M14_explanation_completeness": "N/A (baseline)",
+    "M15_decision_traceability": "N/A (baseline)"
+  },
+  "pipeline": {
+    "architecture": "pipeline",
+    "n_runs": 123,
+    "M1_decision_accuracy": 0.8293,
+    "M2_rule_compliance_rate": 0.6748,
+    "M3_decision_consistency": 0.935,
+    "M4_escalation_accuracy": {
+      "overall_accuracy": 0.9268,
+      "sensitivity": 0.9111,
+      "specificity": 0.9359,
+      "n_positive": 45,
+      "n_negative": 78
+    },
+    "M5_verification": {
+      "a1_correction_rate": 0.6666666666666666,
+      "a2_correction_rate": 0.7317073170731707,
+      "overall_correction_rate": 0.6991869918699187
+    },
+    "M6_per_rule_accuracy": {
+      "R1": 0.9675,
+      "R2": 1.0,
+      "R3": 0.8049,
+      "R4": 0.9268,
+      "R5": 0.9756,
+      "R6": 0.9512,
+      "R7": 1.0
+    },
+    "M7_demographic_parity": {
+      "n_pairs": 9,
+      "n_violations": 3,
+      "parity_violation_rate": 0.3333333333333333,
+      "violations": [
+        {
+          "pair_id": "M7-E",
+          "decisions": {
+            "young_low_vuln": "SUITABLE",
+            "old_high_vuln": "ESCALATED"
+          },
+          "note": "Identical financial profiles produced different compliance decisions across demographic variants."
+        },
+        {
+          "pair_id": "M7-F",
+          "decisions": {
+            "young_low_vuln": "CONDITIONAL",
+            "old_high_vuln": "ESCALATED"
+          },
+          "note": "Identical financial profiles produced different compliance decisions across demographic variants."
+        },
+        {
+          "pair_id": "M7-I",
+          "decisions": {
+            "young_low_vuln": "SUITABLE",
+            "old_high_vuln": "CONDITIONAL"
+          },
+          "note": "Identical financial profiles produced different compliance decisions across demographic variants."
+        }
+      ],
+      "note": "M7 compares decision outcomes across demographically-paired scenarios. A non-zero violation rate requires investigation of A1/A5 bias sources."
+    },
+    "M8_override_rate": {
+      "A1": 0.0,
+      "A2": 0.0163,
+      "A4": 0.2276
+    },
+    "M9_pipeline_halt_rate": 0.0,
+    "M10_three_point_integrity": 1.0,
+    "M11_hard_rule_enforcement": 1.0,
+    "M12_vulnerability_protection": 1.0,
+    "M13_regulatory_citation_rate": 1.0,
+    "M14_explanation_completeness": 1.0,
+    "M15_decision_traceability": 1.0
+  }
+}

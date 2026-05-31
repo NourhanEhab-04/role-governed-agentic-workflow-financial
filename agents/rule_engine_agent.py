@@ -30,6 +30,7 @@ from rule_engine.rule_engine import evaluate_suitability
 # ── Pydantic models used by the tool schema ────────────────────────────────────
 
 class ClientProfile(BaseModel):
+    age:                     int
     financial_knowledge:     Literal["none", "basic", "moderate", "advanced"]
     risk_tolerance_score:    int
     investment_horizon:      int

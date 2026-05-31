@@ -1,0 +1,28 @@
+{
+  "description": "UCI row 287 (age 31, MEDIUM vulnerability, moderate knowledge, RT 2, horizon 4yr) — em equity etf: soft fails ['R2', 'R3'] (score 65) -> CONDITIONAL",
+  "uci_row_index": 287,
+  "uci_source": "https://doi.org/10.24432/C5NC77",
+  "rule_engine_score": 65,
+  "rule_engine_decision": "CONDITIONAL",
+  "client": {
+    "name": "Mikael Johansson",
+    "age": 31,
+    "financial_knowledge": "moderate",
+    "risk_tolerance_score": 2,
+    "investment_horizon": 4,
+    "liquid_assets": 5500.0,
+    "income": 10200.0,
+    "investment_amount": 9700.0,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "MEDIUM",
+    "portfolio_concentration_pct": 30,
+    "investment_objective": "balanced growth"
+  },
+  "product_file": "em_equity_etf.json",
+  "expected_decision": "CONDITIONAL",
+  "expected_escalate": false,
+  "expected_rules_failed": [
+    "R2",
+    "R3"
+  ]
+}

@@ -61,9 +61,10 @@ Your responsibilities:
 
 3. Write "flags_addressed": one entry per flag in conflict_report["flags"]
    where triggered is true. Each entry must have:
-   - "rule_id": the flag's rule_id
+   - "rule_id": the flag's rule_id (e.g. "BORDERLINE", "CONCENTRATION", "CONTRADICTION", "ESCALATION")
    - "explanation": one sentence explaining what was flagged and how it affects
      the recommendation.
+   IMPORTANT: include ALL triggered flags, including non-rule flags like BORDERLINE.
    If no flags were triggered, use an empty list [].
 
 4. Write "regulatory_basis": this field MUST begin with "MiFID II Article 25(2)" and
@@ -106,7 +107,7 @@ Respond with exactly this structure:
     {"rule_id": "R6", "status": "<PASS|FAIL>", "explanation": "<specific values-based sentence>"},
     {"rule_id": "R7", "status": "<PASS|FAIL>", "explanation": "<specific values-based sentence>"}
   ],
-  "flags_addressed": [],
+  "flags_addressed": [{"rule_id": "<flag rule_id from conflict_report>", "explanation": "<one sentence>"}],
   "regulatory_basis": "MiFID II Article 25(2) — <rule references>",
   "client_facing_summary": "<2-3 plain English sentences with exact mismatch values>"
 }
@@ -186,13 +187,33 @@ async def run_disclosure_agent(
         if rid_norm in engine_rules:
             finding["status"] = engine_rules[rid_norm]
 
-    # 2. Override decision to match the conflict escalation flag.
-    #    A5 must never set ESCALATED unless A4 authorised it.
+    # 2. Override decision — fully deterministic in both directions.
+    #    A5 writes explanations only; the decision is owned by upstream deterministic outputs.
+    #    When escalate=True  → decision must be ESCALATED (A4 authorised it).
+    #    When escalate=False → decision must mirror rule_verdict exactly.
+    #    This eliminates LLM temperature variance from the decision field.
     escalate = conflict_report.get("escalate", False)
-    if escalate and data.get("decision") != "ESCALATED":
+    if escalate:
         data["decision"] = "ESCALATED"
-    elif not escalate and data.get("decision") == "ESCALATED":
+    else:
         data["decision"] = rule_verdict.get("decision", "UNSUITABLE")
+
+    # 3. Ensure every triggered conflict flag has a flags_addressed entry.
+    #    The LLM frequently omits non-R* flags (e.g. BORDERLINE, CONCENTRATION)
+    #    because the empty-list template hides the expected structure.
+    #    Deterministically fill in any missing entries using the flag's own message.
+    addressed_ids = {
+        entry.get("rule_id")
+        for entry in data.get("flags_addressed", [])
+    }
+    if not isinstance(data.get("flags_addressed"), list):
+        data["flags_addressed"] = []
+    for flag in conflict_report.get("flags", []):
+        if flag.get("triggered") is True and flag.get("rule_id") not in addressed_ids:
+            data["flags_addressed"].append({
+                "rule_id":     flag["rule_id"],
+                "explanation": flag.get("message", f"{flag['rule_id']} flag was triggered."),
+            })
 
     from schemas.output_models import SuitabilityReportModel
     from pydantic import ValidationError

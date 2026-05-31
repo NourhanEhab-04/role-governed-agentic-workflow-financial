@@ -1,0 +1,27 @@
+{
+  "description": "UCI row 343 (age 33, MEDIUM vulnerability, moderate knowledge, RT 7, horizon 4yr) — capital protected note: all hard rules pass, soft fails ['R3'] (score 85) -> SUITABLE",
+  "uci_row_index": 343,
+  "uci_source": "https://doi.org/10.24432/C5NC77",
+  "rule_engine_score": 85,
+  "rule_engine_decision": "SUITABLE",
+  "client": {
+    "name": "Mirjana Babić",
+    "age": 33,
+    "financial_knowledge": "moderate",
+    "risk_tolerance_score": 7,
+    "investment_horizon": 4,
+    "liquid_assets": 56000.0,
+    "income": 111500.0,
+    "investment_amount": 5700.0,
+    "can_afford_total_loss": true,
+    "financial_vulnerability": "MEDIUM",
+    "portfolio_concentration_pct": 15,
+    "investment_objective": "income"
+  },
+  "product_file": "capital_protected_note.json",
+  "expected_decision": "SUITABLE",
+  "expected_escalate": false,
+  "expected_rules_failed": [
+    "R3"
+  ]
+}

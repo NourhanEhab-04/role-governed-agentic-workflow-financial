@@ -1,0 +1,25 @@
+{
+  "description": "UCI row 22 (age 48, HIGH vulnerability, none knowledge, RT 3, horizon 2yr) — money market fund: all hard rules pass (score 100) -> SUITABLE",
+  "uci_row_index": 22,
+  "uci_source": "https://doi.org/10.24432/C5NC77",
+  "rule_engine_score": 100,
+  "rule_engine_decision": "SUITABLE",
+  "client": {
+    "name": "Bogumił Nowak",
+    "age": 48,
+    "financial_knowledge": "none",
+    "risk_tolerance_score": 3,
+    "investment_horizon": 2,
+    "liquid_assets": 56000.0,
+    "income": 13900.0,
+    "investment_amount": 2900.0,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "HIGH",
+    "portfolio_concentration_pct": 15,
+    "investment_objective": "asset growth"
+  },
+  "product_file": "money_market_fund.json",
+  "expected_decision": "SUITABLE",
+  "expected_escalate": false,
+  "expected_rules_failed": []
+}

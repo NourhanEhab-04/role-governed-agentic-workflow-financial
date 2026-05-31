@@ -1,0 +1,27 @@
+{
+  "description": "UCI row 268 (age 45, MEDIUM vulnerability, advanced knowledge, RT 4) — equity derivative: hard fails ['R4'] -> UNSUITABLE",
+  "uci_row_index": 268,
+  "uci_source": "https://doi.org/10.24432/C5NC77",
+  "rule_engine_score": 100,
+  "rule_engine_decision": "UNSUITABLE",
+  "client": {
+    "name": "Michael Brandt",
+    "age": 45,
+    "financial_knowledge": "advanced",
+    "risk_tolerance_score": 4,
+    "investment_horizon": 2,
+    "liquid_assets": 18000.0,
+    "income": 120200.0,
+    "investment_amount": 11400.0,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "MEDIUM",
+    "portfolio_concentration_pct": 15,
+    "investment_objective": "asset growth"
+  },
+  "product_file": "equity_derivative.json",
+  "expected_decision": "UNSUITABLE",
+  "expected_escalate": false,
+  "expected_rules_failed": [
+    "R4"
+  ]
+}

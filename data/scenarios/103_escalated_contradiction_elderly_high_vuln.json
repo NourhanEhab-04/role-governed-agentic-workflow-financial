@@ -1,0 +1,21 @@
+{
+  "description": "ESCALATED — CONTRADICTION flag: HIGH-vuln elderly client (age 74) + global_equity_etf (risk_class=4) → rule engine SUITABLE (R5 passes: 4<5, all rules pass) → A4 contradiction triggers escalation.",
+  "client": {
+    "name": "Miriam Kovacs",
+    "age": 74,
+    "financial_knowledge": "basic",
+    "risk_tolerance_score": 5,
+    "investment_horizon": 5,
+    "liquid_assets": 250000.0,
+    "income": 28000.0,
+    "investment_amount": 40000.0,
+    "can_afford_total_loss": true,
+    "financial_vulnerability": "HIGH",
+    "portfolio_concentration_pct": 20,
+    "investment_objective": "capital preservation"
+  },
+  "product_file": "global_equity_etf.json",
+  "expected_decision": "ESCALATED",
+  "expected_escalate": true,
+  "expected_rules_failed": []
+}

@@ -280,10 +280,11 @@ async def test_persist_audit_log_passes_correct_scalars():
     assert str(assessment_id_val) == rec["assessment_id"]
     assert isinstance(created_at_val, datetime.datetime)
     assert created_at_val.tzinfo is not None  # must be timezone-aware
-    assert model_version_val == MODEL_VERSION
+    assert model_version_val == json.dumps(MODEL_VERSION)  # serialized to JSON string for JSONB
     assert client_text_val == CLIENT_TEXT
     assert product_text_val == PRODUCT_TEXT
-    assert isinstance(state_snapshot_val, dict)  # serialized then re-parsed
+    assert isinstance(state_snapshot_val, str)  # serialized to JSON string for JSONB
+    assert json.loads(state_snapshot_val)  # must be valid JSON
     assert final_decision_val == "SUITABLE"
     assert "Article 25" in regulatory_basis_val
     assert human_reviewer_id_val is None
@@ -299,7 +300,7 @@ async def test_persist_audit_log_state_snapshot_excludes_scalar_columns():
 
     call_args = mock_conn.execute.call_args
     _, *params = call_args.args
-    state_snapshot = params[6]  # $7
+    state_snapshot = json.loads(params[6])  # $7 is now a JSON string; parse before key-checking
 
     for excluded_key in ("client_text", "product_text", "model_version",
                           "assessment_id", "final_decision", "regulatory_basis"):
@@ -317,7 +318,7 @@ async def test_persist_audit_log_state_snapshot_contains_intermediate_outputs():
 
     call_args = mock_conn.execute.call_args
     _, *params = call_args.args
-    state_snapshot = params[6]
+    state_snapshot = json.loads(params[6])  # $7 is a JSON string; parse before key-checking
 
     for key in ("client_profile", "product_profile", "rule_verdict",
                  "conflict_report", "validations", "retry_counts"):

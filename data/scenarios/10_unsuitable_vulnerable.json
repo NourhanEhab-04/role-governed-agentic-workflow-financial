@@ -1,5 +1,17 @@
 {
-  "description": "HIGH-vulnerability client with moderate knowledge proposed complex derivative — R1+R4+R5 hard fail → UNSUITABLE (enforce_a1_consistency overrides can_afford_total_loss to false for HIGH-vulnerability clients)",
+  "description": "HIGH-vulnerability client (age 82, moderate knowledge) proposed equity derivative — R1 hard fail (moderate < advanced) + R5 hard fail (HIGH vuln + RC 6 >= 5) → UNSUITABLE. R4 passes because can_afford_total_loss=true.",
+  "client_narrative": "Yusuf Osman is 82 years old and retired. He receives a monthly pension of approximately 1,670 euros. He has 70,000 euros in accessible savings and is considering investing 40,000 euros with a 5-year outlook, primarily to generate additional income. He has been investing in individual equities and mutual funds for many years and is comfortable with market fluctuations — 'I understand that values go up and down.' He rates his risk tolerance at 5 out of 10. This 40,000 euros is discretionary savings and he has stated clearly that he is prepared to lose the full amount without it affecting his essential living expenses.",
+  "expected_client_profile": {
+    "financial_knowledge": "moderate",
+    "risk_tolerance_score": 5,
+    "investment_horizon": 5,
+    "liquid_assets": 70000.0,
+    "income": 20040.0,
+    "investment_amount": 40000.0,
+    "can_afford_total_loss": true,
+    "financial_vulnerability": "HIGH",
+    "age": 82
+  },
   "client": {
     "name": "Yusuf Osman",
     "age": 82,
@@ -19,7 +31,6 @@
   "expected_escalate": false,
   "expected_rules_failed": [
     "R1",
-    "R4",
     "R5"
   ]
 }

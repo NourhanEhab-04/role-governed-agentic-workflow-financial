@@ -1,0 +1,30 @@
+{
+  "description": "UCI row 42 (age 44, MEDIUM vulnerability, none knowledge, RT 4) — leveraged etf 3x: hard fails ['R1', 'R7'] -> UNSUITABLE",
+  "uci_row_index": 42,
+  "uci_source": "https://doi.org/10.24432/C5NC77",
+  "rule_engine_score": 55,
+  "rule_engine_decision": "UNSUITABLE",
+  "client": {
+    "name": "Håkon Aasberg",
+    "age": 44,
+    "financial_knowledge": "none",
+    "risk_tolerance_score": 4,
+    "investment_horizon": 4,
+    "liquid_assets": 56000.0,
+    "income": 23800.0,
+    "investment_amount": 7900.0,
+    "can_afford_total_loss": true,
+    "financial_vulnerability": "MEDIUM",
+    "portfolio_concentration_pct": 30,
+    "investment_objective": "capital preservation"
+  },
+  "product_file": "leveraged_etf_3x.json",
+  "expected_decision": "UNSUITABLE",
+  "expected_escalate": false,
+  "expected_rules_failed": [
+    "R1",
+    "R2",
+    "R6",
+    "R7"
+  ]
+}

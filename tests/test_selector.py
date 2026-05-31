@@ -13,6 +13,7 @@ def valid_state():
     """A pipeline_state that passes all five validators."""
     return {
         "client_profile": {
+            "age": 40,
             "financial_knowledge": "moderate",
             "risk_tolerance_score": 5,
             "investment_horizon": 5,

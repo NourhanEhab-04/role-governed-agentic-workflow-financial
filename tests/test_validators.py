@@ -20,6 +20,7 @@ def _findings():
 
 def test_a1_valid():
     state = {"client_profile": {
+        "age": 40,
         "financial_knowledge": "moderate",
         "risk_tolerance_score": 5,
         "investment_horizon": 5,

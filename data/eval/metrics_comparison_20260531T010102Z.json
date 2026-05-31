@@ -1,0 +1,108 @@
+{
+  "timestamp": "20260531T010102Z",
+  "runs_per_scenario": 3,
+  "n_scenarios": 18,
+  "baseline": {
+    "architecture": "baseline",
+    "n_runs": 54,
+    "M1_decision_accuracy": 0.3333,
+    "M2_rule_compliance_rate": 0.3333,
+    "M3_decision_consistency": 0.9444,
+    "M4_escalation_accuracy": {
+      "overall_accuracy": 0.3889,
+      "sensitivity": 0.0,
+      "specificity": 1.0,
+      "n_positive": 33,
+      "n_negative": 21
+    },
+    "M5_verification": "N/A (baseline)",
+    "M6_per_rule_accuracy": {
+      "R1": 0.963,
+      "R2": 0.8889,
+      "R3": 0.9259,
+      "R4": 0.5926,
+      "R5": 0.6481,
+      "R6": 0.9444,
+      "R7": 0.9074
+    },
+    "M7_demographic_parity": "N/A (no paired scenarios)",
+    "M_A1_extraction": "N/A (baseline has no A1/A2 agents)",
+    "M_A2_extraction": "N/A (baseline has no A1/A2 agents)",
+    "M8_override_rate": "N/A (baseline)",
+    "M9_pipeline_halt_rate": 0.0,
+    "M10_three_point_integrity": "N/A (baseline)",
+    "M11_hard_rule_enforcement": null,
+    "M12_vulnerability_protection": null,
+    "M13_regulatory_citation_rate": "N/A (baseline)",
+    "M14_explanation_completeness": "N/A (baseline)",
+    "M15_decision_traceability": "N/A (baseline)"
+  },
+  "pipeline": {
+    "architecture": "pipeline",
+    "n_runs": 54,
+    "M1_decision_accuracy": 0.963,
+    "M2_rule_compliance_rate": 0.7778,
+    "M3_decision_consistency": 0.963,
+    "M4_escalation_accuracy": {
+      "overall_accuracy": 0.9815,
+      "sensitivity": 0.9697,
+      "specificity": 1.0,
+      "n_positive": 33,
+      "n_negative": 21
+    },
+    "M5_verification": {
+      "a1_correction_rate": 0.8148148148148148,
+      "a2_correction_rate": 0.7592592592592593,
+      "overall_correction_rate": 0.7870370370370371
+    },
+    "M6_per_rule_accuracy": {
+      "R1": 1.0,
+      "R2": 1.0,
+      "R3": 0.8519,
+      "R4": 0.9444,
+      "R5": 0.9815,
+      "R6": 0.9074,
+      "R7": 1.0
+    },
+    "M7_demographic_parity": "N/A (no paired scenarios)",
+    "M_A1_extraction": {
+      "n_evaluated": 24,
+      "overall_exact_match_rate": 0.1667,
+      "per_field_accuracy": {
+        "financial_knowledge": 1.0,
+        "risk_tolerance_score": 0.75,
+        "investment_horizon": 1.0,
+        "liquid_assets": 1.0,
+        "income": 0.5,
+        "investment_amount": 1.0,
+        "can_afford_total_loss": 0.7083,
+        "financial_vulnerability": 0.7083,
+        "age": 1.0
+      }
+    },
+    "M_A2_extraction": {
+      "n_evaluated": 18,
+      "overall_exact_match_rate": 0.8333,
+      "per_field_accuracy": {
+        "risk_class": 0.8333,
+        "complexity_tier": 1.0,
+        "requires_knowledge_level": 1.0,
+        "minimum_horizon": 0.8333,
+        "potential_loss": 1.0,
+        "leverage": 0.8333
+      }
+    },
+    "M8_override_rate": {
+      "A1": 0.0556,
+      "A2": 0.0185,
+      "A4": 0.3704
+    },
+    "M9_pipeline_halt_rate": 0.0,
+    "M10_three_point_integrity": 1.0,
+    "M11_hard_rule_enforcement": 1.0,
+    "M12_vulnerability_protection": 1.0,
+    "M13_regulatory_citation_rate": 1.0,
+    "M14_explanation_completeness": 1.0,
+    "M15_decision_traceability": 1.0
+  }
+}

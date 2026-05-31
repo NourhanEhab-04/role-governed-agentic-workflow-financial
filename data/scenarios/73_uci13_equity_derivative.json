@@ -1,0 +1,32 @@
+{
+  "description": "UCI row 13 (age 60, MEDIUM vulnerability, none knowledge, RT 1) — equity derivative: hard fails ['R1', 'R4', 'R7'] -> UNSUITABLE",
+  "client_narrative": "Tunde Fashola is 60 years old and works as a school caretaker. He earns approximately 47,800 euros per year and holds only 1,500 euros in liquid savings. He wants to invest 1,500 euros — his entire liquid savings — with a planned holding period of 2 years. He has no investment experience whatsoever: he has never owned any financial product beyond a basic current account. He rates his risk tolerance at 1 out of 10 and has stated he cannot afford to lose the investment. He came to the advisor through a referral and described his goal as growing his savings.",
+  "product_narrative": "The product is a European-style equity call option on a major stock index, traded on a regulated derivatives exchange. It is classified as a complex financial instrument, publishes a KID, and requires no minimum holding period. Advanced financial knowledge is required to understand the payoff structure, exercise mechanics, and potential for complete loss of the premium paid. The product uses no leverage beyond the inherent leverage of the option structure itself, though in adverse scenarios the entire invested premium can be lost.",
+  "uci_row_index": 13,
+  "uci_source": "https://doi.org/10.24432/C5NC77",
+  "rule_engine_score": 80,
+  "rule_engine_decision": "UNSUITABLE",
+  "client": {
+    "name": "Tunde Fashola",
+    "age": 60,
+    "financial_knowledge": "none",
+    "risk_tolerance_score": 1,
+    "investment_horizon": 2,
+    "liquid_assets": 1500.0,
+    "income": 47800.0,
+    "investment_amount": 1500.0,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "MEDIUM",
+    "portfolio_concentration_pct": 60,
+    "investment_objective": "asset growth"
+  },
+  "product_file": "equity_derivative.json",
+  "expected_decision": "UNSUITABLE",
+  "expected_escalate": false,
+  "expected_rules_failed": [
+    "R1",
+    "R2",
+    "R4",
+    "R7"
+  ]
+}

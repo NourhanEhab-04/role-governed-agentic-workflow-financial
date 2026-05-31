@@ -1,0 +1,27 @@
+{
+  "description": "UCI row 56 (age 52, HIGH vulnerability, moderate knowledge, RT 3) matched to ig corporate bond etf — rule engine returns SUITABLE (score 85, R3 soft-fails). risk_class=3 < 4: CONTRADICTION does not trigger. conc=30% < 40: CONCENTRATION does not trigger. Decision: SUITABLE.",
+  "uci_row_index": 56,
+  "uci_source": "https://doi.org/10.24432/C5NC77",
+  "rule_engine_score": 85,
+  "rule_engine_decision": "SUITABLE",
+  "client": {
+    "name": "Renata Wójcik",
+    "age": 52,
+    "financial_knowledge": "moderate",
+    "risk_tolerance_score": 3,
+    "investment_horizon": 2,
+    "liquid_assets": 2300.0,
+    "income": 9800.0,
+    "investment_amount": 8200.0,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "HIGH",
+    "portfolio_concentration_pct": 30,
+    "investment_objective": "capital preservation"
+  },
+  "product_file": "ig_corporate_bond_etf.json",
+  "expected_decision": "SUITABLE",
+  "expected_escalate": false,
+  "expected_rules_failed": [
+    "R3"
+  ]
+}

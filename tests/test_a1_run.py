@@ -16,6 +16,7 @@ from agents.client_profiler import run_client_profiler
 
 
 VALID_PROFILE = {
+    "age": 35,
     "financial_knowledge": "basic",
     "risk_tolerance_score": 4,
     "investment_horizon": 3,
@@ -24,7 +25,6 @@ VALID_PROFILE = {
     "investment_amount": 5000.0,
     "can_afford_total_loss": False,
     "financial_vulnerability": "LOW",
-    "age": None,  # Optional field — model_dump() always includes it with default None
 }
 
 
@@ -94,6 +94,7 @@ async def test_run_client_profiler_raises_on_no_json():
 
 
 MOCK_VALID_RESPONSE = """{
+    "age": 34,
     "financial_knowledge": "basic",
     "risk_tolerance_score": 3,
     "investment_horizon": 5,

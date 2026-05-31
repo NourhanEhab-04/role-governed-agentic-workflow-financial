@@ -18,16 +18,16 @@ PRODUCTS_DIR  = Path("data/products")
 
 def load_scenarios():
     files = sorted(SCENARIOS_DIR.glob("*.json"))
-    assert len(files) == 10, f"Expected 10 scenarios, found {len(files)}"
+    assert len(files) >= 19, f"Expected at least 19 scenarios, found {len(files)}"
     return files
 
 
 @pytest.mark.parametrize("scenario_file", load_scenarios(),
                          ids=lambda f: f.stem)
 def test_fixture_matches_rule_engine(scenario_file):
-    scenario = json.loads(scenario_file.read_text())
+    scenario = json.loads(scenario_file.read_text(encoding="utf-8"))
     product  = json.loads(
-        (PRODUCTS_DIR / scenario["product_file"]).read_text()
+        (PRODUCTS_DIR / scenario["product_file"]).read_text(encoding="utf-8")
     )
 
     verdict =evaluate_suitability(scenario["client"], product)

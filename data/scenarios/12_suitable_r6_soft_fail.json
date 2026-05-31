@@ -1,5 +1,7 @@
 {
   "description": "Advanced client proposed 3x leveraged ETF; risk tolerance (6) just below leverage threshold (7) — R6 soft fail (−25), score 75 SUITABLE. Tests: leverage mismatch alone does not block SUITABLE.",
+  "client_narrative": "Sofia Kovalenko is 32 years old and works as a derivatives trader at a European investment bank. She earns approximately 110,000 euros per year and holds 200,000 euros in liquid savings. She wants to invest 30,000 euros with a 3-year horizon and has an advanced understanding of financial markets, including experience trading leveraged structured products, futures, and OTC derivatives. She rates her risk tolerance at 6 out of 10 — she is comfortable with high volatility but does not actively seek maximum leverage in her personal portfolio. She has confirmed in writing that she can afford to lose the full investment amount. Her objective is aggressive portfolio growth.",
+  "product_narrative": "The product is a 3x daily-leveraged exchange-traded product that amplifies the daily return of a broad equity index by a factor of three using swap-based synthetic replication. It is listed on regulated exchanges, publishes a KID, and uses embedded derivatives to achieve its leverage exposure. Due to daily rebalancing, the product is classified as complex, requires advanced financial knowledge, and is rated risk class 7. The product uses leverage and in adverse market conditions can lose its entire value.",
   "client": {
     "name": "Sofia Kovalenko",
     "age": 32,

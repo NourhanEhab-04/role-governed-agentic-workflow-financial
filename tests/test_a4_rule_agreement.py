@@ -6,6 +6,7 @@ import pytest
 from agents.conflict_detector import check_rule_engine_agreement
 
 CLIENT = {
+    "age": 35,
     "financial_knowledge": "basic",
     "risk_tolerance_score": 4,
     "investment_horizon": 3,

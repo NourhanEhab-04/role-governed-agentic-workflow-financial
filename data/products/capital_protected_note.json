@@ -1,0 +1,10 @@
+{
+  "name": "Euro Capital-Protected Structured Note",
+  "description": "100% capital-protected structured note issued by an investment-grade European bank (Aa3/AA- rating). Returns 80% participation in Euro Stoxx 50 appreciation at maturity (5 years), capital protected if held to maturity. PRIIPs Category 3 (capital protection with conditional participation); issuer CRM class 3 (investment-grade bank, CRM 3) combined with equity-linked MRM class 3 (VEV ~5-9% on participation component) → SRI 3 per Commission Delegated Regulation EU 2017/653 Annex II lookup table (CR3/MR3=3). Classified COMPLEX under MiFID II Article 25(4)(b): conditional payout formula and issuer credit dependency require moderate knowledge to understand the risk that capital protection only holds if held to maturity and the issuer does not default.",
+  "risk_class": 3,
+  "complexity_tier": "COMPLEX",
+  "leverage": false,
+  "potential_loss": "partial",
+  "minimum_horizon": 5,
+  "requires_knowledge_level": "moderate"
+}

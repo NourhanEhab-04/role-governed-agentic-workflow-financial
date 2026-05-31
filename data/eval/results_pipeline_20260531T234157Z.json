@@ -1,0 +1,125 @@
+[
+  {
+    "output_decision": "SUITABLE",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": true,
+    "a2_corrected": false,
+    "a1_correction": {
+      "original": {
+        "financial_knowledge": "basic",
+        "risk_tolerance_score": 2,
+        "investment_horizon": 2,
+        "liquid_assets": 80000.0,
+        "income": 26760.0,
+        "investment_amount": 50000.0,
+        "can_afford_total_loss": false,
+        "financial_vulnerability": "HIGH",
+        "age": 67
+      },
+      "corrected": {
+        "financial_knowledge": "basic",
+        "risk_tolerance_score": 2,
+        "investment_horizon": 2,
+        "liquid_assets": 80000.0,
+        "income": 26760.0,
+        "investment_amount": 50000.0,
+        "can_afford_total_loss": false,
+        "financial_vulnerability": "LOW",
+        "age": 67
+      },
+      "fields_fixed": [
+        "income",
+        "financial_vulnerability"
+      ]
+    },
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 2,
+      "investment_horizon": 2,
+      "liquid_assets": 80000.0,
+      "income": 26760.0,
+      "investment_amount": 50000.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "LOW",
+      "age": 67
+    },
+    "output_product_profile": {
+      "product_name": "Money Market Fund (Eurozone Sovereign and Agency Instruments)",
+      "risk_class": 1,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "none",
+      "minimum_horizon": 1,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": false,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [],
+    "client_vulnerability": "LOW",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R1 (knowledge), R2 (risk), R3 (horizon), R4 (affordability), R5 (vulnerability), R6 (leverage), R7 (complexity).",
+    "output_rule_explanations": {
+      "R1": "Your financial knowledge level of 'basic' meets the product's requirement of 'none'.",
+      "R2": "The product's risk class of 1 is within your risk tolerance score of 2, allowing for a maximum gap of 2.",
+      "R3": "Your investment horizon of 2 years exceeds the product's minimum requirement of 1 year.",
+      "R4": "You indicated that you cannot afford a total loss, but this product carries only a 'partial' potential loss rating.",
+      "R5": "Your financial vulnerability is rated LOW, and the product's risk class of 1 is below the threshold of 5.",
+      "R6": "This product does not use leverage, and your risk tolerance score of 2 is not below the required minimum.",
+      "R7": "The product is rated as 'NON-COMPLEX', which aligns with your financial knowledge level of 'basic'."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 2,
+      "investment_horizon": 2,
+      "liquid_assets": 80000.0,
+      "income": 25200.0,
+      "investment_amount": 50000.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "LOW",
+      "age": 67
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Money Market Fund",
+      "risk_class": 1,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "none",
+      "minimum_horizon": 1,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "01_suitable_conservative",
+    "run_number": 1,
+    "architecture": "pipeline"
+  }
+]

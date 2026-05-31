@@ -1,0 +1,26 @@
+{
+  "description": "M7 parity E — young LOW-vuln (age 33), global equity ETF. R2 fails (4>3), R3 fails (3<5), score=65 CONDITIONAL. Paired with scenario 118.",
+  "pair_id": "M7-E",
+  "demographic_variant": "young_low_vuln",
+  "client": {
+    "name": "Tariq Osman",
+    "age": 33,
+    "financial_knowledge": "basic",
+    "risk_tolerance_score": 1,
+    "investment_horizon": 3,
+    "liquid_assets": 70000.0,
+    "income": 30000.0,
+    "investment_amount": 15000.0,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "LOW",
+    "portfolio_concentration_pct": 12,
+    "investment_objective": "growth"
+  },
+  "product_file": "global_equity_etf.json",
+  "expected_decision": "CONDITIONAL",
+  "expected_escalate": false,
+  "expected_rules_failed": [
+    "R2",
+    "R3"
+  ]
+}

@@ -1,5 +1,17 @@
 {
-  "description": "No-knowledge client proposed complex derivative \u2014 R1+R7 hard fail \u2192 UNSUITABLE (score 100, hard-fail gate overrides)",
+  "description": "No-knowledge client proposed complex derivative — R1+R7 hard fail → UNSUITABLE (score 100, hard-fail gate overrides)",
+  "client_narrative": "Pedro Nunes is 28 years old. He earns a gross monthly salary of approximately 2,500 euros. He has 15,000 euros in a current account and wants to invest 10,000 euros over a 2-year period in something that could give him big returns. He admits he has never invested in anything before — no stocks, no funds, nothing at all: 'I honestly don't know much about financial products, this would be my very first time.' He describes himself as growth-oriented and gives his risk appetite a 6 out of 10. This 10,000 euros is money he has set aside purely for speculation and he is completely fine with losing every cent of it.",
+  "expected_client_profile": {
+    "financial_knowledge": "none",
+    "risk_tolerance_score": 6,
+    "investment_horizon": 2,
+    "liquid_assets": 15000.0,
+    "income": 30000.0,
+    "investment_amount": 10000.0,
+    "can_afford_total_loss": true,
+    "financial_vulnerability": "LOW",
+    "age": 28
+  },
   "client": {
     "name": "Pedro Nunes",
     "age": 28,
@@ -13,6 +25,16 @@
     "financial_vulnerability": "LOW",
     "portfolio_concentration_pct": 5,
     "investment_objective": "speculation"
+  },
+  "product_narrative": "The product is a single-stock call option on a large-cap European company traded on a regulated exchange. The holder acquires the right but not the obligation to buy shares at a fixed strike price on a defined expiry date. The entire premium paid may be lost if the option expires out of the money. As a derivative instrument with a complex, non-linear payoff profile, it requires advanced product knowledge and is classified as complex under MiFID II Article 25(4)(a). It is a short-term speculative instrument, not designed for long-term holding.",
+  "expected_product_profile": {
+    "product_name": "Single-Stock Call Option",
+    "risk_class": 6,
+    "complexity_tier": "COMPLEX",
+    "requires_knowledge_level": "advanced",
+    "minimum_horizon": 1,
+    "potential_loss": "total",
+    "leverage": false
   },
   "product_file": "equity_derivative.json",
   "expected_decision": "UNSUITABLE",

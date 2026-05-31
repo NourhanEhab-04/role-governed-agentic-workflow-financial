@@ -1,0 +1,27 @@
+{
+  "description": "UCI row 34 (age 33, MEDIUM vulnerability, moderate knowledge, RT 8, horizon 3yr) — em equity etf: all hard rules pass, soft fails ['R3'] (score 85) -> SUITABLE",
+  "uci_row_index": 34,
+  "uci_source": "https://doi.org/10.24432/C5NC77",
+  "rule_engine_score": 85,
+  "rule_engine_decision": "SUITABLE",
+  "client": {
+    "name": "Chidera Eze",
+    "age": 33,
+    "financial_knowledge": "moderate",
+    "risk_tolerance_score": 8,
+    "investment_horizon": 3,
+    "liquid_assets": 18000.0,
+    "income": 32300.0,
+    "investment_amount": 1900.0,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "MEDIUM",
+    "portfolio_concentration_pct": 60,
+    "investment_objective": "capital preservation"
+  },
+  "product_file": "em_equity_etf.json",
+  "expected_decision": "SUITABLE",
+  "expected_escalate": false,
+  "expected_rules_failed": [
+    "R3"
+  ]
+}

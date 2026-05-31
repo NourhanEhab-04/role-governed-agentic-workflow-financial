@@ -265,18 +265,18 @@ async def persist_audit_log(
                 human_reviewer_id, human_reviewed_at
             ) VALUES (
                 $1, $2, $3,
-                $4, $5, $6,
-                $7, $8, $9,
+                $4::jsonb, $5, $6,
+                $7::jsonb, $8, $9,
                 $10, $11
             )
             """,
             schema_version,
             uuid.UUID(assessment_id),
             created_at,
-            model_version,          # asyncpg serialises dict → jsonb
+            json.dumps(model_version),   # asyncpg requires JSON string for JSONB
             client_text,
             product_text,
-            state_snapshot,         # asyncpg serialises dict → jsonb
+            json.dumps(state_snapshot),  # asyncpg requires JSON string for JSONB
             final_decision,
             regulatory_basis,
             human_reviewer_id,

@@ -7,6 +7,7 @@ import pytest
 from orchestrator.pre_check_tool import run_pre_check
 
 GOOD_CLIENT = {
+    "age": 35,
     "financial_knowledge": "basic",
     "risk_tolerance_score": 4,
     "investment_horizon": 3,

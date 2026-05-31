@@ -1,0 +1,30 @@
+{
+  "description": "UCI row 33 (age 57, MEDIUM vulnerability, none knowledge, RT 1) — equity derivative: hard fails ['R1', 'R4', 'R7'] -> UNSUITABLE",
+  "uci_row_index": 33,
+  "uci_source": "https://doi.org/10.24432/C5NC77",
+  "rule_engine_score": 80,
+  "rule_engine_decision": "UNSUITABLE",
+  "client": {
+    "name": "Marko Jovanović",
+    "age": 57,
+    "financial_knowledge": "none",
+    "risk_tolerance_score": 1,
+    "investment_horizon": 4,
+    "liquid_assets": 1400.0,
+    "income": 48300.0,
+    "investment_amount": 1600.0,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "MEDIUM",
+    "portfolio_concentration_pct": 60,
+    "investment_objective": "income"
+  },
+  "product_file": "equity_derivative.json",
+  "expected_decision": "UNSUITABLE",
+  "expected_escalate": false,
+  "expected_rules_failed": [
+    "R1",
+    "R2",
+    "R4",
+    "R7"
+  ]
+}

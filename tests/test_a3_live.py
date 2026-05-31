@@ -22,6 +22,7 @@ TEST_PAIRS = [
     # 1 — all pass
     (
         {
+            "age": 40,
             "financial_knowledge": "moderate", "risk_tolerance_score": 5,
             "investment_horizon": 5, "liquid_assets": 20000.0,
             "income": 60000.0, "investment_amount": 3000.0,
@@ -36,6 +37,7 @@ TEST_PAIRS = [
     # 2 — R4 fails (affordability)
     (
         {
+            "age": 35,
             "financial_knowledge": "basic", "risk_tolerance_score": 4,
             "investment_horizon": 3, "liquid_assets": 8000.0,
             "income": 30000.0, "investment_amount": 5000.0,
@@ -50,6 +52,7 @@ TEST_PAIRS = [
     # 3 — R6 fails (leverage)
     (
         {
+            "age": 45,
             "financial_knowledge": "advanced", "risk_tolerance_score": 5,
             "investment_horizon": 7, "liquid_assets": 50000.0,
             "income": 90000.0, "investment_amount": 10000.0,
@@ -64,6 +67,7 @@ TEST_PAIRS = [
     # 4 — R1 + R7 both fail (knowledge + complexity)
     (
         {
+            "age": 30,
             "financial_knowledge": "none", "risk_tolerance_score": 3,
             "investment_horizon": 4, "liquid_assets": 15000.0,
             "income": 45000.0, "investment_amount": 2000.0,
@@ -78,6 +82,7 @@ TEST_PAIRS = [
     # 5 — UNSUITABLE (multiple fails)
     (
         {
+            "age": 72,
             "financial_knowledge": "none", "risk_tolerance_score": 2,
             "investment_horizon": 1, "liquid_assets": 5000.0,
             "income": 20000.0, "investment_amount": 4500.0,

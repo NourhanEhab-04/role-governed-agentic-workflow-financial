@@ -59,7 +59,7 @@ class ClientProfileModel(BaseModel):
     investment_amount: float = Field(gt=0.0)
     can_afford_total_loss: bool
     financial_vulnerability: Literal["LOW", "MEDIUM", "HIGH"]
-    age: Optional[int] = Field(default=None, ge=0)
+    age: int = Field(ge=1, le=150)
 
     @field_validator("can_afford_total_loss", mode="before")
     @classmethod
@@ -70,7 +70,7 @@ class ClientProfileModel(BaseModel):
     @classmethod
     def coerce_int(cls, v: Any) -> Any:
         if v is None:
-            return v  # valid for Optional[int] (age field)
+            raise ValueError("age is required — it cannot be null or missing")
         if isinstance(v, bool):
             raise ValueError(f"expected integer, got bool: {v!r}")
         if isinstance(v, int):
@@ -78,7 +78,10 @@ class ClientProfileModel(BaseModel):
         if isinstance(v, float) and v == int(v):
             return int(v)
         if isinstance(v, str):
-            cleaned = v.strip().split()[0].rstrip(".,")
+            parts = v.strip().split()
+            if not parts:
+                raise ValueError(f"cannot convert empty string to an integer")
+            cleaned = parts[0].rstrip(".,")
             try:
                 return int(float(cleaned))
             except (ValueError, IndexError):

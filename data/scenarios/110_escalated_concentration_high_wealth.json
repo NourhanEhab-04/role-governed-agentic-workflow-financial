@@ -1,0 +1,21 @@
+{
+  "description": "SUITABLE — LOW-vuln high-wealth client (age 52, portfolio_concentration_pct=70%) + global_equity_etf. All rules pass (score=100). Concentration=70% does not trigger: risk_class=4 < 6 and vulnerability=LOW (requires >60% AND risk_class ≥ 6, OR >40% AND HIGH vuln).",
+  "client": {
+    "name": "Henrik Lindqvist",
+    "age": 52,
+    "financial_knowledge": "advanced",
+    "risk_tolerance_score": 7,
+    "investment_horizon": 10,
+    "liquid_assets": 1000000.0,
+    "income": 150000.0,
+    "investment_amount": 200000.0,
+    "can_afford_total_loss": true,
+    "financial_vulnerability": "LOW",
+    "portfolio_concentration_pct": 70,
+    "investment_objective": "aggressive growth"
+  },
+  "product_file": "global_equity_etf.json",
+  "expected_decision": "SUITABLE",
+  "expected_escalate": false,
+  "expected_rules_failed": []
+}

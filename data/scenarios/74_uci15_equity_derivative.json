@@ -1,0 +1,29 @@
+{
+  "description": "UCI row 15 (age 32, MEDIUM vulnerability, none knowledge, RT 4) — equity derivative: hard fails ['R1', 'R4', 'R7'] -> UNSUITABLE",
+  "uci_row_index": 15,
+  "uci_source": "https://doi.org/10.24432/C5NC77",
+  "rule_engine_score": 100,
+  "rule_engine_decision": "UNSUITABLE",
+  "client": {
+    "name": "Ingrid Svensson",
+    "age": 32,
+    "financial_knowledge": "none",
+    "risk_tolerance_score": 4,
+    "investment_horizon": 2,
+    "liquid_assets": 11500.0,
+    "income": 24000.0,
+    "investment_amount": 1600.0,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "MEDIUM",
+    "portfolio_concentration_pct": 60,
+    "investment_objective": "capital preservation"
+  },
+  "product_file": "equity_derivative.json",
+  "expected_decision": "UNSUITABLE",
+  "expected_escalate": false,
+  "expected_rules_failed": [
+    "R1",
+    "R4",
+    "R7"
+  ]
+}

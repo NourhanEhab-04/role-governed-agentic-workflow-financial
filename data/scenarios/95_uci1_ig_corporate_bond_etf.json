@@ -1,0 +1,25 @@
+{
+  "description": "UCI row 1 (age 22, HIGH vulnerability, basic knowledge, RT 7) matched to ig corporate bond etf — rule engine returns SUITABLE (score 100). risk_class=3 < 4: CONTRADICTION does not trigger (low-risk products are appropriate for vulnerable clients per code comment). conc=30% < 40: CONCENTRATION does not trigger. Decision: SUITABLE.",
+  "uci_row_index": 1,
+  "uci_source": "https://doi.org/10.24432/C5NC77",
+  "rule_engine_score": 100,
+  "rule_engine_decision": "SUITABLE",
+  "client": {
+    "name": "Kofi Adu-Mensah",
+    "age": 22,
+    "financial_knowledge": "basic",
+    "risk_tolerance_score": 7,
+    "investment_horizon": 4,
+    "liquid_assets": 56000.0,
+    "income": 33000.0,
+    "investment_amount": 7600.0,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "HIGH",
+    "portfolio_concentration_pct": 30,
+    "investment_objective": "capital preservation"
+  },
+  "product_file": "ig_corporate_bond_etf.json",
+  "expected_decision": "SUITABLE",
+  "expected_escalate": false,
+  "expected_rules_failed": []
+}

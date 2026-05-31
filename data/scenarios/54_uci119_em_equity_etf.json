@@ -1,0 +1,28 @@
+{
+  "description": "UCI row 119 (age 36, LOW vulnerability, moderate knowledge, RT 2, horizon 2yr) — em equity etf: soft fails ['R2', 'R3'] (score 65) -> CONDITIONAL",
+  "uci_row_index": 119,
+  "uci_source": "https://doi.org/10.24432/C5NC77",
+  "rule_engine_score": 65,
+  "rule_engine_decision": "CONDITIONAL",
+  "client": {
+    "name": "Ewa Wiśniewska",
+    "age": 36,
+    "financial_knowledge": "moderate",
+    "risk_tolerance_score": 2,
+    "investment_horizon": 2,
+    "liquid_assets": 37800.0,
+    "income": 79600.0,
+    "investment_amount": 3000.0,
+    "can_afford_total_loss": true,
+    "financial_vulnerability": "LOW",
+    "portfolio_concentration_pct": 45,
+    "investment_objective": "asset growth"
+  },
+  "product_file": "em_equity_etf.json",
+  "expected_decision": "CONDITIONAL",
+  "expected_escalate": false,
+  "expected_rules_failed": [
+    "R2",
+    "R3"
+  ]
+}

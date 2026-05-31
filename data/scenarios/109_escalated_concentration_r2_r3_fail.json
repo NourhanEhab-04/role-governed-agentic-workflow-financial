@@ -1,0 +1,21 @@
+{
+  "description": "CONDITIONAL — MEDIUM-vuln, portfolio_concentration_pct=55% + global_equity_etf. R2 fails (risk_class=4 > RT=1+2=3) and R3 fails (horizon=3 < min_horizon=5); score=65. Concentration=55% does not trigger: vulnerability=MEDIUM, risk_class=4 (requires HIGH vuln OR risk_class ≥ 6).",
+  "client": {
+    "name": "Yuki Tanaka",
+    "age": 35,
+    "financial_knowledge": "basic",
+    "risk_tolerance_score": 1,
+    "investment_horizon": 3,
+    "liquid_assets": 40000.0,
+    "income": 22000.0,
+    "investment_amount": 12000.0,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "MEDIUM",
+    "portfolio_concentration_pct": 55,
+    "investment_objective": "growth"
+  },
+  "product_file": "global_equity_etf.json",
+  "expected_decision": "CONDITIONAL",
+  "expected_escalate": false,
+  "expected_rules_failed": ["R2", "R3"]
+}

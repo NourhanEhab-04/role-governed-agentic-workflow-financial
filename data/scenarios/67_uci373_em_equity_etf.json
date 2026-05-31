@@ -1,0 +1,28 @@
+{
+  "description": "UCI row 373 (age 63, MEDIUM vulnerability, moderate knowledge, RT 1, horizon 5yr) — em equity etf: soft fails ['R2', 'R3'] (score 65) -> CONDITIONAL",
+  "uci_row_index": 373,
+  "uci_source": "https://doi.org/10.24432/C5NC77",
+  "rule_engine_score": 65,
+  "rule_engine_decision": "CONDITIONAL",
+  "client": {
+    "name": "Olena Kovalenko",
+    "age": 63,
+    "financial_knowledge": "moderate",
+    "risk_tolerance_score": 1,
+    "investment_horizon": 5,
+    "liquid_assets": 1300.0,
+    "income": 116600.0,
+    "investment_amount": 17500.0,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "MEDIUM",
+    "portfolio_concentration_pct": 30,
+    "investment_objective": "asset growth"
+  },
+  "product_file": "em_equity_etf.json",
+  "expected_decision": "CONDITIONAL",
+  "expected_escalate": false,
+  "expected_rules_failed": [
+    "R2",
+    "R3"
+  ]
+}

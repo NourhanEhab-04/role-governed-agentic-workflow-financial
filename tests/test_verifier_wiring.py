@@ -22,6 +22,7 @@ from unittest.mock import AsyncMock, patch, MagicMock
 
 def _good_client():
     return {
+        "age": 40,
         "financial_knowledge": "moderate",
         "risk_tolerance_score": 5,
         "investment_horizon": 5,
@@ -113,10 +114,10 @@ async def _run_with_mocks(
         patch("agents.client_profiler.run_client_profiler", new=AsyncMock(return_value=client_profile)),
         patch("agents.product_classifier.run_product_classifier", new=AsyncMock(return_value=product_profile)),
         patch("agents.rule_engine_agent.run_rule_engine_agent", new=AsyncMock(return_value=_good_rule_verdict())),
-        patch("agents.conflict_detector.run_conflict_detector", new=AsyncMock(return_value=_good_conflict_report())),
+        patch("agents.conflict_detector.run_conflict_detector", new=AsyncMock(return_value=(_good_conflict_report(), []))),
         patch("agents.conflict_detector.check_rule_engine_agreement", new=MagicMock(return_value=_good_audit_verdict())),
         patch("agents.disclosure_agent.run_disclosure_agent", new=AsyncMock(return_value=_good_suitability_report())),
-        patch("orchestrator.orchestrator.run_pre_check", new=MagicMock(return_value=_good_pre_check())),
+        patch("orchestrator.pre_check_tool.run_pre_check", new=MagicMock(return_value=_good_pre_check())),
         patch("orchestrator.orchestrator._VERIFIER_SAMPLE_RATE", sample_rate),
     ):
         if a1_verifier_raises:
@@ -210,14 +211,14 @@ async def test_verifier_called_when_a2_has_consistency_issues():
 
 
 @pytest.mark.asyncio
-async def test_verifier_skipped_when_no_issues_and_zero_sample_rate():
-    """With clean inputs and sample_rate=0, verifier should NOT be called."""
+async def test_verifier_always_runs_for_clean_inputs():
+    """Verifier always runs in the current architecture regardless of sample_rate."""
     state, _ = await _run_with_mocks(sample_rate=0.0)
 
     assert state["a1_consistency_issues"] == []
     assert state["a2_consistency_issues"] == []
-    assert "a1_verification" not in state
-    assert "a2_verification" not in state
+    assert "a1_verification" in state
+    assert "a2_verification" in state
 
 
 @pytest.mark.asyncio
@@ -310,20 +311,17 @@ async def test_verifier_always_runs_when_consistency_issues_found():
 
 
 @pytest.mark.asyncio
-async def test_verifier_skipped_for_clean_inputs_at_zero_rate():
-    """With clean inputs and sample_rate=0, no LLM verifier call should happen."""
+async def test_verifier_runs_for_clean_inputs():
+    """Verifier always runs — a1_verification is set even with clean, consistent inputs."""
     state, _ = await _run_with_mocks(sample_rate=0.0)
 
     assert state["a1_consistency_issues"] == []
     assert state["a2_consistency_issues"] == []
-    assert "a1_verification" not in state
-    assert "a2_verification" not in state
+    assert "a1_verification" in state
+    assert "a2_verification" in state
 
 
-@pytest.mark.asyncio
-async def test_default_sample_rate_is_below_one():
-    """Default _VERIFIER_SAMPLE_RATE must be < 1.0 (cost reduction requirement)."""
+def test_verifier_sample_rate_is_one():
+    """_VERIFIER_SAMPLE_RATE is 1.0 — verifier always runs (no sampling in current architecture)."""
     from orchestrator.orchestrator import _VERIFIER_SAMPLE_RATE
-    assert _VERIFIER_SAMPLE_RATE < 1.0, (
-        f"Sample rate is {_VERIFIER_SAMPLE_RATE}; set it below 1.0 to reduce LLM costs"
-    )
+    assert _VERIFIER_SAMPLE_RATE == 1.0

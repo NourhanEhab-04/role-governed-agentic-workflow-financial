@@ -1,0 +1,10 @@
+{
+  "name": "MSCI Emerging Markets Equity ETF",
+  "description": "UCITS ETF tracking the MSCI Emerging Markets index across 24 countries. Equity UCITS funds with predominantly EM exposure exhibit VEV 22-28% historically; under PRIIPs SRI methodology (EU 2017/653 Annex II) MRM class 5 (VEV 20-30%) + CRM class 1 (equity, no issuer-specific credit risk) → SRI 5. Confirmed by ESMA analysis (LPA, 2021): equity UCITS previously SRRI 6-7 reclassify to SRI 4-5 under PRIIPs VEV methodology. Classified NON-COMPLEX under MiFID II Article 25(4)(a) as an admitted UCITS ETF, but elevated market and FX risk require at minimum moderate investor knowledge.",
+  "risk_class": 5,
+  "complexity_tier": "NON-COMPLEX",
+  "leverage": false,
+  "potential_loss": "partial",
+  "minimum_horizon": 7,
+  "requires_knowledge_level": "moderate"
+}

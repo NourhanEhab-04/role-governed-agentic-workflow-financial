@@ -1,5 +1,7 @@
 {
   "description": "Advanced client proposed leveraged bond fund; all three soft rules fail (R2+R3+R6) — score exactly 40 (100−20−15−25), boundary CONDITIONAL. Tests: minimum passing score and BORDERLINE conflict flag.",
+  "client_narrative": "Nadia Petrova is 29 years old and works as a research analyst at a hedge fund. She earns about 65,000 euros annually and holds 80,000 euros in liquid savings. She wants to invest 20,000 euros and has a 5-year horizon. Her investment experience is extensive: she has traded equity derivatives, credit instruments, leveraged bond ETFs, and structured products both professionally and personally. She rates her risk tolerance at 3 out of 10 — she is conservative with her own personal capital despite her professional background — and she has confirmed she can afford to lose the full amount invested. Her objective is growth.",
+  "product_narrative": "The product is a leveraged bond fund that uses borrowing and interest rate derivatives to amplify returns from a European government and investment-grade corporate bond portfolio. The fund targets 2x gross exposure through synthetic leverage. It is registered as a UCITS, publishes a KID, and is classified as a complex financial instrument due to the embedded leverage. The fund requires advanced financial knowledge to evaluate the interest rate and leverage risk. The minimum recommended holding period is seven years. Under adverse interest rate and credit conditions the total invested amount can be lost.",
   "client": {
     "name": "Nadia Petrova",
     "age": 29,

@@ -38,7 +38,13 @@ async def get_pool():
                 "DATABASE_URL environment variable is not set. "
                 "Set it to a PostgreSQL connection string to enable audit persistence."
             )
-        _pool = await asyncpg.create_pool(url, min_size=1, max_size=10)
+        # ssl='require' is needed for cloud-hosted PostgreSQL (Supabase, Neon, etc.).
+        # For local PostgreSQL without SSL, pass DATABASE_URL with ?sslmode=disable
+        # or set DATABASE_URL_SSL=disable in your environment.
+        ssl_mode = os.environ.get("DATABASE_URL_SSL", "require")
+        ssl = ssl_mode if ssl_mode != "disable" else False
+        _pool = await asyncpg.create_pool(url, min_size=1, max_size=10, ssl=ssl)
+        await apply_migrations(_pool)
     return _pool
 
 

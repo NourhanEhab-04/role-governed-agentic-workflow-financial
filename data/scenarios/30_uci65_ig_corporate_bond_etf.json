@@ -1,0 +1,25 @@
+{
+  "description": "UCI row 65 (age 48, MEDIUM vulnerability, basic knowledge, RT 6, horizon 5yr) — ig corporate bond etf: all hard rules pass (score 100) -> SUITABLE",
+  "uci_row_index": 65,
+  "uci_source": "https://doi.org/10.24432/C5NC77",
+  "rule_engine_score": 100,
+  "rule_engine_decision": "SUITABLE",
+  "client": {
+    "name": "Ferhat Yıldız",
+    "age": 48,
+    "financial_knowledge": "basic",
+    "risk_tolerance_score": 6,
+    "investment_horizon": 5,
+    "liquid_assets": 18000.0,
+    "income": 59700.0,
+    "investment_amount": 6600.0,
+    "can_afford_total_loss": true,
+    "financial_vulnerability": "MEDIUM",
+    "portfolio_concentration_pct": 60,
+    "investment_objective": "capital preservation"
+  },
+  "product_file": "ig_corporate_bond_etf.json",
+  "expected_decision": "SUITABLE",
+  "expected_escalate": false,
+  "expected_rules_failed": []
+}

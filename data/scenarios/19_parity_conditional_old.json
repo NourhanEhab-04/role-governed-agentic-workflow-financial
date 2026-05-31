@@ -2,6 +2,8 @@
   "description": "M7 parity pair B — old client (age 75, HIGH vulnerability from age override), identical financials to scenario 18. R2 fails, R3 fails. R5 passes because risk_class=4 < 5. Score=65, CONDITIONAL. Paired with scenario 18.",
   "pair_id": "M7-B",
   "demographic_variant": "old_high_vuln_conditional",
+  "client_narrative": "Margaret Liu is 75 years old and retired. She receives approximately 35,000 euros per year from pension payments and rental income, and holds 50,000 euros in liquid savings. She wants to invest 10,000 euros for about 2 years to earn better returns than her current savings account. Her investment knowledge is basic — she has held bank deposit accounts and bond funds in the past but has no experience with equity instruments. She rates her risk tolerance at 1 out of 10 and has stated she cannot afford to lose her investment. Her investment objective is growth, though she acknowledges she is not comfortable with volatility.",
+  "product_narrative": "The product is a passively managed exchange-traded fund that tracks the MSCI World Index, providing diversified exposure to approximately 1,500 large and mid-cap equities across 23 developed markets. The fund is listed on major European exchanges, trades intraday with high liquidity, publishes a KID, contains no embedded derivatives, and uses no leverage. The recommended minimum investment horizon is five years.",
   "client": {
     "name": "Margaret Liu",
     "age": 75,

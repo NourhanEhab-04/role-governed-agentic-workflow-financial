@@ -1,0 +1,27 @@
+{
+  "description": "UCI row 40 (age 30, LOW vulnerability, moderate knowledge, RT 6, horizon 3yr) — sector equity etf: all hard rules pass, soft fails ['R3'] (score 85) -> SUITABLE",
+  "uci_row_index": 40,
+  "uci_source": "https://doi.org/10.24432/C5NC77",
+  "rule_engine_score": 85,
+  "rule_engine_decision": "SUITABLE",
+  "client": {
+    "name": "Pilar Delgado",
+    "age": 30,
+    "financial_knowledge": "moderate",
+    "risk_tolerance_score": 6,
+    "investment_horizon": 3,
+    "liquid_assets": 36000.0,
+    "income": 109800.0,
+    "investment_amount": 3000.0,
+    "can_afford_total_loss": true,
+    "financial_vulnerability": "LOW",
+    "portfolio_concentration_pct": 60,
+    "investment_objective": "capital preservation"
+  },
+  "product_file": "sector_equity_etf.json",
+  "expected_decision": "SUITABLE",
+  "expected_escalate": false,
+  "expected_rules_failed": [
+    "R3"
+  ]
+}

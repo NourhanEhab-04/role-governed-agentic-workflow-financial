@@ -18,6 +18,7 @@ from unittest.mock import AsyncMock, patch, MagicMock
 # ── shared fixtures ──────────────────────────────────────────────────────────
 
 CLIENT_PROFILE = {
+    "age": 40,
     "financial_knowledge": "basic",
     "risk_tolerance_score": 4,
     "investment_horizon": 3,
@@ -37,10 +38,11 @@ PRODUCT_PROFILE = {
     "leverage": False,
 }
 RULE_VERDICT = {
-    "score": 75,
+    "score": 100,
     "decision": "SUITABLE",
-    "rules": [],
+    "rules": {"R1": "PASS", "R2": "PASS", "R3": "PASS", "R4": "PASS", "R5": "PASS", "R6": "PASS", "R7": "PASS"},
     "failed_rules": [],
+    "hard_failed_rules": [],
 }
 CONFLICT_REPORT = {
     "flags": [],
@@ -51,11 +53,12 @@ SUITABILITY_REPORT = {
     "decision": "SUITABLE",
     "regulatory_basis": "Article 25(2) MiFID II",
     "rule_findings": [
-        {"rule_id": f"R{i}", "passed": True, "detail": "ok"}
+        {"rule_id": f"R{i}", "status": "PASS", "explanation": "ok"}
         for i in range(1, 8)
     ],
     "flags_addressed": [],
-    "client_summary": "You are suitable.",
+    "summary": "Client is suitable.",
+    "client_facing_summary": "You are suitable.",
 }
 
 MODEL_CLIENT = MagicMock()
@@ -83,7 +86,7 @@ def _patch_all(
         "agents.rule_engine_agent.run_rule_engine_agent":
             AsyncMock(return_value=RULE_VERDICT if a3_return is None else a3_return),
         "agents.conflict_detector.run_conflict_detector":
-            AsyncMock(return_value=CONFLICT_REPORT if a4_return is None else a4_return),
+            AsyncMock(return_value=(CONFLICT_REPORT if a4_return is None else a4_return, [])),
         "agents.disclosure_agent.run_disclosure_agent":
             AsyncMock(return_value=SUITABILITY_REPORT if a5_return is None else a5_return),
     }
@@ -141,7 +144,8 @@ async def test_audit_verdict_agrees_when_a3_correct():
     correct_verdict = {
         "score": real["score"],
         "decision": real["decision"],
-        "rules": real["rules"],
+        "rules": {r["rule"]: "PASS" if r["pass"] else "FAIL" for r in real["rules"]},
+        "hard_failed_rules": real["hard_failed_rules"],
         "failed_rules": [r["rule"] for r in real["rules"] if not r["pass"]],
     }
     state, _ = await _run(_patch_all(a3_return=correct_verdict))
@@ -183,8 +187,11 @@ async def test_a2_double_failure_halts_before_pre_check():
 @pytest.mark.asyncio
 async def test_escalation_flag_set_when_conflict_report_escalates():
     """When conflict_report.escalate=True, state['escalated'] must be True."""
-    escalating_report = {**CONFLICT_REPORT, "escalate": True,
-                         "flags": ["contradiction"], "severity": "HIGH"}
+    escalating_report = {
+        **CONFLICT_REPORT,
+        "escalate": True,
+        "flags": [{"rule_id": "CONTRADICTION", "triggered": True, "severity": "HIGH", "message": "x"}],
+    }
     state, _ = await _run(_patch_all(a4_return=escalating_report))
     assert state.get("escalated") is True
 
@@ -192,9 +199,13 @@ async def test_escalation_flag_set_when_conflict_report_escalates():
 @pytest.mark.asyncio
 async def test_a5_always_runs_even_when_escalated():
     """A5 must run and suitability_report must be populated even when escalated."""
-    escalating_report = {**CONFLICT_REPORT, "escalate": True,
-                         "flags": ["contradiction"], "severity": "HIGH"}
-    escalated_report = {**SUITABILITY_REPORT, "decision": "ESCALATED"}
+    escalating_report = {
+        **CONFLICT_REPORT,
+        "escalate": True,
+        "flags": [{"rule_id": "CONTRADICTION", "triggered": True, "severity": "HIGH", "message": "x"}],
+    }
+    escalated_report = {**SUITABILITY_REPORT, "decision": "ESCALATED",
+                        "flags_addressed": [{"rule_id": "CONTRADICTION", "explanation": "Escalated to compliance."}]}
     state, _ = await _run(_patch_all(
         a4_return=escalating_report,
         a5_return=escalated_report,

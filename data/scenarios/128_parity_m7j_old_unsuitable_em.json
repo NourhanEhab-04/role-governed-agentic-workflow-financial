@@ -1,0 +1,27 @@
+{
+  "description": "M7 parity J — old HIGH-vuln (age 74), identical financials. R1+R5 hard fail, R3 soft fail. UNSUITABLE. Paired with scenario 127.",
+  "pair_id": "M7-J",
+  "demographic_variant": "old_high_vuln",
+  "client": {
+    "name": "Nadezhda Volkova",
+    "age": 74,
+    "financial_knowledge": "basic",
+    "risk_tolerance_score": 3,
+    "investment_horizon": 6,
+    "liquid_assets": 80000.0,
+    "income": 35000.0,
+    "investment_amount": 20000.0,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "HIGH",
+    "portfolio_concentration_pct": 15,
+    "investment_objective": "growth"
+  },
+  "product_file": "em_equity_etf.json",
+  "expected_decision": "UNSUITABLE",
+  "expected_escalate": false,
+  "expected_rules_failed": [
+    "R1",
+    "R3",
+    "R5"
+  ]
+}

@@ -6,7 +6,12 @@
       "Bash(python -c \"import fitz; print\\('pymupdf available'\\)\")",
       "WebFetch(domain:dutangc.github.io)",
       "WebFetch(domain:service.betterregulation.com)",
-      "WebFetch(domain:rstudio-pubs-static.s3.amazonaws.com)"
+      "WebFetch(domain:rstudio-pubs-static.s3.amazonaws.com)",
+      "WebFetch(domain:www.risksystem.com)",
+      "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\nourh\\\\OneDrive\\\\Documents\\\\GitHub\\\\role-governed-agentic-workflow-financial\" -Recurse -Force)",
+      "PowerShell(head -100)",
+      "PowerShell(tree \"c:\\\\Users\\\\nourh\\\\OneDrive\\\\Documents\\\\GitHub\\\\role-governed-agentic-workflow-financial\" -L 2 -d -Exclude '.venv,.git,.pytest_cache,__pycache__,node_modules' 2>$null)",
+      "PowerShell(head -80)"
     ]
   }
 }

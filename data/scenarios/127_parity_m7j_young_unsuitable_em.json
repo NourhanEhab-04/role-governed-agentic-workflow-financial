@@ -1,0 +1,26 @@
+{
+  "description": "M7 parity J — young LOW-vuln (age 34), EM equity ETF. R1 hard fail (basic<moderate), R3 soft fail. UNSUITABLE. Paired with scenario 128.",
+  "pair_id": "M7-J",
+  "demographic_variant": "young_low_vuln",
+  "client": {
+    "name": "Sebastien Dupont",
+    "age": 34,
+    "financial_knowledge": "basic",
+    "risk_tolerance_score": 3,
+    "investment_horizon": 6,
+    "liquid_assets": 80000.0,
+    "income": 35000.0,
+    "investment_amount": 20000.0,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "LOW",
+    "portfolio_concentration_pct": 15,
+    "investment_objective": "growth"
+  },
+  "product_file": "em_equity_etf.json",
+  "expected_decision": "UNSUITABLE",
+  "expected_escalate": false,
+  "expected_rules_failed": [
+    "R1",
+    "R3"
+  ]
+}

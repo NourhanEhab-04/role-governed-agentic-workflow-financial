@@ -1,0 +1,10 @@
+{
+  "name": "Euro Balanced Multi-Asset Fund",
+  "description": "Non-UCITS AIFMD fund holding 40-60% European equities and 40-60% investment-grade bonds, with a derivatives overlay (interest-rate and FX hedges). PRIIPs Category 2 (non-linear payoff); VEV ~8-12% → MRM class 3; issuer basket CRM class 2 → SRI 3 per Commission Delegated Regulation EU 2017/653 Annex II CRM-MRM lookup table (CR2/MR3=3). Classified COMPLEX under MiFID II Article 25(4)(b) due to embedded derivative strategies that make it difficult for a retail investor to understand the risk profile without intermediary explanation.",
+  "risk_class": 3,
+  "complexity_tier": "COMPLEX",
+  "leverage": false,
+  "potential_loss": "partial",
+  "minimum_horizon": 4,
+  "requires_knowledge_level": "moderate"
+}

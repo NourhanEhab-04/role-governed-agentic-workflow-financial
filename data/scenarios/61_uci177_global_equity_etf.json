@@ -1,0 +1,28 @@
+{
+  "description": "UCI row 177 (age 52, LOW vulnerability, basic knowledge, RT 1, horizon 2yr) — global equity etf: soft fails ['R2', 'R3'] (score 65) -> CONDITIONAL",
+  "uci_row_index": 177,
+  "uci_source": "https://doi.org/10.24432/C5NC77",
+  "rule_engine_score": 65,
+  "rule_engine_decision": "CONDITIONAL",
+  "client": {
+    "name": "Sigrid Haugen",
+    "age": 52,
+    "financial_knowledge": "basic",
+    "risk_tolerance_score": 1,
+    "investment_horizon": 2,
+    "liquid_assets": 36300.0,
+    "income": 61000.0,
+    "investment_amount": 1000.0,
+    "can_afford_total_loss": true,
+    "financial_vulnerability": "LOW",
+    "portfolio_concentration_pct": 60,
+    "investment_objective": "capital preservation"
+  },
+  "product_file": "global_equity_etf.json",
+  "expected_decision": "CONDITIONAL",
+  "expected_escalate": false,
+  "expected_rules_failed": [
+    "R2",
+    "R3"
+  ]
+}

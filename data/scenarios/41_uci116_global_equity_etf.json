@@ -1,0 +1,27 @@
+{
+  "description": "UCI row 116 (age 30, MEDIUM vulnerability, moderate knowledge, RT 4, horizon 4yr) — global equity etf: all hard rules pass, soft fails ['R3'] (score 85) -> SUITABLE",
+  "uci_row_index": 116,
+  "uci_source": "https://doi.org/10.24432/C5NC77",
+  "rule_engine_score": 85,
+  "rule_engine_decision": "SUITABLE",
+  "client": {
+    "name": "Santiago Ríos",
+    "age": 30,
+    "financial_knowledge": "moderate",
+    "risk_tolerance_score": 4,
+    "investment_horizon": 4,
+    "liquid_assets": 900.0,
+    "income": 77500.0,
+    "investment_amount": 9100.0,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "MEDIUM",
+    "portfolio_concentration_pct": 60,
+    "investment_objective": "capital preservation"
+  },
+  "product_file": "global_equity_etf.json",
+  "expected_decision": "SUITABLE",
+  "expected_escalate": false,
+  "expected_rules_failed": [
+    "R3"
+  ]
+}

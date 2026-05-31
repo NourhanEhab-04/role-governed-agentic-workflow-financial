@@ -1,0 +1,27 @@
+{
+  "description": "UCI row 5 (age 35, MEDIUM vulnerability, none knowledge, RT 4) — em equity etf: hard fails ['R1'] -> UNSUITABLE",
+  "uci_row_index": 5,
+  "uci_source": "https://doi.org/10.24432/C5NC77",
+  "rule_engine_score": 100,
+  "rule_engine_decision": "UNSUITABLE",
+  "client": {
+    "name": "Rosaria Ferraro",
+    "age": 35,
+    "financial_knowledge": "none",
+    "risk_tolerance_score": 4,
+    "investment_horizon": 8,
+    "liquid_assets": 400.0,
+    "income": 23200.0,
+    "investment_amount": 11500.0,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "MEDIUM",
+    "portfolio_concentration_pct": 30,
+    "investment_objective": "long-term growth"
+  },
+  "product_file": "em_equity_etf.json",
+  "expected_decision": "UNSUITABLE",
+  "expected_escalate": false,
+  "expected_rules_failed": [
+    "R1"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "description": "UCI row 9 (age 28, HIGH vulnerability, moderate knowledge, RT 3, horizon 3yr) — money market fund: all hard rules pass (score 100) -> SUITABLE",
+  "uci_row_index": 9,
+  "uci_source": "https://doi.org/10.24432/C5NC77",
+  "rule_engine_score": 100,
+  "rule_engine_decision": "SUITABLE",
+  "client": {
+    "name": "Dijana Ristić",
+    "age": 28,
+    "financial_knowledge": "moderate",
+    "risk_tolerance_score": 3,
+    "investment_horizon": 3,
+    "liquid_assets": 1700.0,
+    "income": 8800.0,
+    "investment_amount": 6700.0,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "HIGH",
+    "portfolio_concentration_pct": 60,
+    "investment_objective": "asset growth"
+  },
+  "product_file": "money_market_fund.json",
+  "expected_decision": "SUITABLE",
+  "expected_escalate": false,
+  "expected_rules_failed": []
+}

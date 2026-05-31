@@ -31,6 +31,7 @@ def enforce_a1_consistency(profile: dict) -> dict:
     vulnerability = p.get("financial_vulnerability", "LOW")
 
     # Rule: age > 70 always → HIGH (MiFID II mandatory)
+    # age is a required field (REQUIRED_CLIENT_KEYS) so it is always present here.
     if isinstance(age, int) and age > 70:
         p["financial_vulnerability"] = "HIGH"
         vulnerability = "HIGH"
@@ -105,6 +106,7 @@ def check_a1_consistency(client_profile: dict) -> list[str]:
     vulnerability = p.get("financial_vulnerability", "")
 
     # ── age > 70 → vulnerability must be HIGH ────────────────────────────────
+    # age is a required field so it is always present in a validated profile.
     age = p.get("age", None)
     if isinstance(age, int) and age > 70 and vulnerability != "HIGH":
         issues.append(

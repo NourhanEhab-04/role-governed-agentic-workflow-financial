@@ -1,0 +1,26 @@
+{
+  "description": "M7 parity G — old HIGH-vuln (age 67), identical financials. CONDITIONAL so no CONTRADICTION. Paired with scenario 121.",
+  "pair_id": "M7-G",
+  "demographic_variant": "old_high_vuln",
+  "client": {
+    "name": "Greta Hoffmann",
+    "age": 67,
+    "financial_knowledge": "basic",
+    "risk_tolerance_score": 1,
+    "investment_horizon": 2,
+    "liquid_assets": 55000.0,
+    "income": 25000.0,
+    "investment_amount": 12000.0,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "HIGH",
+    "portfolio_concentration_pct": 18,
+    "investment_objective": "growth"
+  },
+  "product_file": "global_equity_etf.json",
+  "expected_decision": "CONDITIONAL",
+  "expected_escalate": false,
+  "expected_rules_failed": [
+    "R2",
+    "R3"
+  ]
+}

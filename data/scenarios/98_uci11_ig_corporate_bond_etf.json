@@ -1,0 +1,25 @@
+{
+  "description": "UCI row 11 (age 24, HIGH vulnerability, basic knowledge, RT 5) matched to ig corporate bond etf — rule engine returns SUITABLE (score 100, all R5-relevant rules pass as RC < 5) but orchestrator flags ESCALATED: HIGH-vulnerability client receiving positive recommendation requires human compliance review per ESMA GL §86-88",
+  "uci_row_index": 11,
+  "uci_source": "https://doi.org/10.24432/C5NC77",
+  "rule_engine_score": 100,
+  "rule_engine_decision": "SUITABLE",
+  "client": {
+    "name": "Josip Kovačević",
+    "age": 24,
+    "financial_knowledge": "basic",
+    "risk_tolerance_score": 5,
+    "investment_horizon": 6,
+    "liquid_assets": 18000.0,
+    "income": 17500.0,
+    "investment_amount": 5500.0,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "HIGH",
+    "portfolio_concentration_pct": 45,
+    "investment_objective": "income"
+  },
+  "product_file": "ig_corporate_bond_etf.json",
+  "expected_decision": "ESCALATED",
+  "expected_escalate": true,
+  "expected_rules_failed": []
+}

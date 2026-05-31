@@ -1,5 +1,7 @@
 {
-  "description": "HIGH vulnerability + concentration >40% + multiple rule failures \u2192 escalation; R1, R2, R4, R5, R6 fail",
+  "description": "HIGH vulnerability, conc=55%, leveraged_etf_3x (risk_class=7) \u2014 5 hard rule failures (R1, R2, R4, R5, R6). Decision: UNSUITABLE. Deeply-unsuitable verdicts are not escalated \u2014 the UNSUITABLE outcome already blocks the investment; escalation adds no protection.",
+  "client_narrative": "Bogdan Popescu is 45 years old and works as a logistics manager. He earns approximately 70,000 euros per year. He holds 100,000 euros in liquid savings and wants to invest 80,000 euros \u2014 about 55% of his total investable assets \u2014 in a single product, with a planned holding period of around 3 years. His investment experience is limited to buying and selling stocks and mutual funds on retail brokerage platforms; he has never traded options, futures, or leveraged products. He rates his risk tolerance at 4 out of 10 and has told his advisor he cannot afford to lose this money. He was recently diagnosed with a chronic health condition that affects his employment prospects, and he describes himself as financially and personally stressed. His stated objective is aggressive growth.",
+  "product_narrative": "The product is a 3x daily-leveraged exchange-traded product that amplifies the daily return of a broad equity index by a factor of three using swap-based synthetic replication. It is listed on regulated exchanges, publishes a KID, and uses embedded derivatives to achieve its leverage exposure. Due to daily rebalancing and compounding of leveraged returns, the product is unsuitable for holding periods beyond a single trading session for most investors and can lose its entire value in a sustained declining market. It is classified as a complex instrument, requires advanced financial knowledge, and carries the highest risk class (7). There is no minimum recommended investment horizon, but the expected loss in adverse conditions is total.",
   "client": {
     "name": "Bogdan Popescu",
     "age": 45,
@@ -15,8 +17,8 @@
     "investment_objective": "aggressive growth"
   },
   "product_file": "leveraged_etf_3x.json",
-  "expected_decision": "ESCALATED",
-  "expected_escalate": true,
+  "expected_decision": "UNSUITABLE",
+  "expected_escalate": false,
   "expected_rules_failed": [
     "R1",
     "R2",

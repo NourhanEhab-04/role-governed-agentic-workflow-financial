@@ -1,0 +1,25 @@
+{
+  "description": "UCI row 74 (age 40, MEDIUM vulnerability, moderate knowledge, RT 2, horizon 8yr) — global equity etf: all hard rules pass (score 100) -> SUITABLE",
+  "uci_row_index": 74,
+  "uci_source": "https://doi.org/10.24432/C5NC77",
+  "rule_engine_score": 100,
+  "rule_engine_decision": "SUITABLE",
+  "client": {
+    "name": "Aoife Murphy",
+    "age": 40,
+    "financial_knowledge": "moderate",
+    "risk_tolerance_score": 2,
+    "investment_horizon": 8,
+    "liquid_assets": 2400.0,
+    "income": 120200.0,
+    "investment_amount": 2500.0,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "MEDIUM",
+    "portfolio_concentration_pct": 60,
+    "investment_objective": "long-term growth"
+  },
+  "product_file": "global_equity_etf.json",
+  "expected_decision": "SUITABLE",
+  "expected_escalate": false,
+  "expected_rules_failed": []
+}

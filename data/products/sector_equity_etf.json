@@ -1,0 +1,10 @@
+{
+  "name": "Euro Technology Sector Equity ETF",
+  "description": "UCITS ETF providing concentrated exposure to European technology and digitisation companies. Single-sector equity funds exhibit VEV 22-30% under PRIIPs methodology (higher than diversified equity due to sector concentration); MRM class 5 (VEV 20-30%) + CRM class 1 (equity) → SRI 5 per Commission Delegated Regulation EU 2017/653 Annex II. Analogous to ESMA-observed high-SRRI UCITS funds (SRRI 6) reclassifying to SRI 5 under PRIIPs (LPA, 2021). Classified NON-COMPLEX as an admitted UCITS ETF under MiFID II Article 25(4)(a); sector concentration risk and higher volatility are understood from standard fund documentation.",
+  "risk_class": 5,
+  "complexity_tier": "NON-COMPLEX",
+  "leverage": false,
+  "potential_loss": "partial",
+  "minimum_horizon": 5,
+  "requires_knowledge_level": "basic"
+}

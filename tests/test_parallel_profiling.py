@@ -19,6 +19,7 @@ from unittest.mock import AsyncMock, patch, MagicMock, call
 
 def _good_client():
     return {
+        "age": 40,
         "financial_knowledge": "moderate",
         "risk_tolerance_score": 5,
         "investment_horizon": 5,
@@ -101,10 +102,10 @@ async def _run_pipeline(
         patch("agents.client_profiler.run_client_profiler", new=a1_mock),
         patch("agents.product_classifier.run_product_classifier", new=a2_mock),
         patch("agents.rule_engine_agent.run_rule_engine_agent", new=AsyncMock(return_value=_good_rule_verdict())),
-        patch("agents.conflict_detector.run_conflict_detector", new=AsyncMock(return_value=_good_conflict_report())),
+        patch("agents.conflict_detector.run_conflict_detector", new=AsyncMock(return_value=(_good_conflict_report(), []))),
         patch("agents.conflict_detector.check_rule_engine_agreement", new=MagicMock(return_value=_good_audit_verdict())),
         patch("agents.disclosure_agent.run_disclosure_agent", new=AsyncMock(return_value=_good_suitability_report())),
-        patch("orchestrator.orchestrator.run_pre_check", new=MagicMock(return_value=_good_pre_check())),
+        patch("orchestrator.pre_check_tool.run_pre_check", new=MagicMock(return_value=_good_pre_check())),
         patch("orchestrator.orchestrator._VERIFIER_SAMPLE_RATE", sample_rate),
     ):
         from orchestrator.orchestrator import run_pipeline
@@ -167,10 +168,10 @@ async def test_a1_and_a2_both_called_exactly_once_on_success():
         patch("agents.client_profiler.run_client_profiler", new=a1_mock),
         patch("agents.product_classifier.run_product_classifier", new=a2_mock),
         patch("agents.rule_engine_agent.run_rule_engine_agent", new=AsyncMock(return_value=_good_rule_verdict())),
-        patch("agents.conflict_detector.run_conflict_detector", new=AsyncMock(return_value=_good_conflict_report())),
+        patch("agents.conflict_detector.run_conflict_detector", new=AsyncMock(return_value=(_good_conflict_report(), []))),
         patch("agents.conflict_detector.check_rule_engine_agreement", new=MagicMock(return_value=_good_audit_verdict())),
         patch("agents.disclosure_agent.run_disclosure_agent", new=AsyncMock(return_value=_good_suitability_report())),
-        patch("orchestrator.orchestrator.run_pre_check", new=MagicMock(return_value=_good_pre_check())),
+        patch("orchestrator.pre_check_tool.run_pre_check", new=MagicMock(return_value=_good_pre_check())),
         patch("orchestrator.orchestrator._VERIFIER_SAMPLE_RATE", 0.0),
     ):
         from orchestrator.orchestrator import run_pipeline
@@ -206,10 +207,10 @@ async def test_parallel_execution_both_tasks_complete():
         patch("agents.client_profiler.run_client_profiler", side_effect=tracking_a1),
         patch("agents.product_classifier.run_product_classifier", side_effect=tracking_a2),
         patch("agents.rule_engine_agent.run_rule_engine_agent", new=AsyncMock(return_value=_good_rule_verdict())),
-        patch("agents.conflict_detector.run_conflict_detector", new=AsyncMock(return_value=_good_conflict_report())),
+        patch("agents.conflict_detector.run_conflict_detector", new=AsyncMock(return_value=(_good_conflict_report(), []))),
         patch("agents.conflict_detector.check_rule_engine_agreement", new=MagicMock(return_value=_good_audit_verdict())),
         patch("agents.disclosure_agent.run_disclosure_agent", new=AsyncMock(return_value=_good_suitability_report())),
-        patch("orchestrator.orchestrator.run_pre_check", new=MagicMock(return_value=_good_pre_check())),
+        patch("orchestrator.pre_check_tool.run_pre_check", new=MagicMock(return_value=_good_pre_check())),
         patch("orchestrator.orchestrator._VERIFIER_SAMPLE_RATE", 0.0),
     ):
         from orchestrator.orchestrator import run_pipeline

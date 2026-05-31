@@ -217,6 +217,7 @@ class TestClipReward:
 # ── reward_completion_a1 ──────────────────────────────────────────────────────
 
 _A1_ALL_KEYS = {
+    "age": 40,
     "financial_knowledge": "basic",
     "risk_tolerance_score": 5,
     "investment_horizon": 5,
@@ -288,6 +289,7 @@ class TestRewardCompletionA2:
 # ── reward_completion_a3 ──────────────────────────────────────────────────────
 
 _CP = {
+    "age": 35,
     "financial_knowledge": "basic",
     "risk_tolerance_score": 3,
     "investment_horizon": 5,

@@ -1,0 +1,28 @@
+{
+  "description": "UCI row 205 (age 38, MEDIUM vulnerability, moderate knowledge, RT 1, horizon 3yr) — em equity etf: soft fails ['R2', 'R3'] (score 65) -> CONDITIONAL",
+  "uci_row_index": 205,
+  "uci_source": "https://doi.org/10.24432/C5NC77",
+  "rule_engine_score": 65,
+  "rule_engine_decision": "CONDITIONAL",
+  "client": {
+    "name": "Fatoumata Coulibaly",
+    "age": 38,
+    "financial_knowledge": "moderate",
+    "risk_tolerance_score": 1,
+    "investment_horizon": 3,
+    "liquid_assets": 1100.0,
+    "income": 114500.0,
+    "investment_amount": 13500.0,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "MEDIUM",
+    "portfolio_concentration_pct": 45,
+    "investment_objective": "asset growth"
+  },
+  "product_file": "em_equity_etf.json",
+  "expected_decision": "CONDITIONAL",
+  "expected_escalate": false,
+  "expected_rules_failed": [
+    "R2",
+    "R3"
+  ]
+}

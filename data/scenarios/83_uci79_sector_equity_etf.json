@@ -1,0 +1,28 @@
+{
+  "description": "UCI row 79 (age 22, HIGH vulnerability, basic knowledge, RT 6) — sector equity etf: hard fails ['R5'] -> UNSUITABLE",
+  "uci_row_index": 79,
+  "uci_source": "https://doi.org/10.24432/C5NC77",
+  "rule_engine_score": 85,
+  "rule_engine_decision": "UNSUITABLE",
+  "client": {
+    "name": "Jānis Bērziņš",
+    "age": 22,
+    "financial_knowledge": "basic",
+    "risk_tolerance_score": 6,
+    "investment_horizon": 4,
+    "liquid_assets": 18000.0,
+    "income": 18800.0,
+    "investment_amount": 4900.0,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "HIGH",
+    "portfolio_concentration_pct": 30,
+    "investment_objective": "capital preservation"
+  },
+  "product_file": "sector_equity_etf.json",
+  "expected_decision": "UNSUITABLE",
+  "expected_escalate": false,
+  "expected_rules_failed": [
+    "R3",
+    "R5"
+  ]
+}

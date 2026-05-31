@@ -1,5 +1,17 @@
 {
   "description": "Conservative retired client matched to money market fund — all rules pass",
+  "client_narrative": "Maria Santos is 67 years old and recently retired. She receives a monthly pension of about 2,100 euros. She has 80,000 euros sitting in a savings account and is looking to invest 50,000 euros of that for approximately 2 years. Her entire investment history consists of fixed-term bank deposits and standard savings accounts — she has never owned a stock, fund, or any product beyond basic bank savings instruments. She describes herself as very conservative: 'I cannot afford to lose what I have saved. Losing any portion of this money would seriously affect my finances. My only goal is capital preservation.'",
+  "expected_client_profile": {
+    "financial_knowledge": "basic",
+    "risk_tolerance_score": 2,
+    "investment_horizon": 2,
+    "liquid_assets": 80000.0,
+    "income": 25200.0,
+    "investment_amount": 50000.0,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "LOW",
+    "age": 67
+  },
   "client": {
     "name": "Maria Santos",
     "age": 67,
@@ -13,6 +25,16 @@
     "financial_vulnerability": "LOW",
     "portfolio_concentration_pct": 10,
     "investment_objective": "capital preservation"
+  },
+  "product_narrative": "The product is a short-term money market fund investing exclusively in high-quality, short-duration eurozone sovereign and agency instruments rated at least A-. The fund is registered as a UCITS, listed on Euronext Amsterdam, publishes a KID, and uses no leverage or derivatives of any kind. Capital preservation is the primary objective. The recommended minimum investment period is one year.",
+  "expected_product_profile": {
+    "product_name": "Euro Money Market Fund",
+    "risk_class": 1,
+    "complexity_tier": "NON-COMPLEX",
+    "requires_knowledge_level": "none",
+    "minimum_horizon": 1,
+    "potential_loss": "partial",
+    "leverage": false
   },
   "product_file": "money_market_fund.json",
   "expected_decision": "SUITABLE",

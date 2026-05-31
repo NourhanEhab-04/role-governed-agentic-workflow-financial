@@ -2,6 +2,8 @@
   "description": "M7 parity pair B — young client (age 38, LOW vulnerability), risk_tolerance=1, horizon=2 vs global_equity_etf. R2 fails (risk_class 4 > 1+2=3), R3 fails (horizon 2 < min_horizon 5). Score=65, CONDITIONAL. Paired with scenario 19.",
   "pair_id": "M7-B",
   "demographic_variant": "young_low_vuln_conditional",
+  "client_narrative": "Jordan Park is 38 years old and works as a graphic designer at a small agency. Annual income is about 35,000 euros and liquid savings total 50,000 euros. Jordan wants to invest 10,000 euros for approximately 2 years to grow some spare cash before a planned house purchase. Investment knowledge is basic — some exposure to equity mutual funds but no experience with individual stocks or derivatives. Risk tolerance is 1 out of 10: Jordan strongly prefers not to lose any of the invested capital and would find any loss very difficult to bear. Jordan has confirmed the investment cannot be afforded to lose. Investment objective is growth.",
+  "product_narrative": "The product is a passively managed exchange-traded fund that tracks the MSCI World Index, providing diversified exposure to approximately 1,500 large and mid-cap equities across 23 developed markets. The fund is listed on major European exchanges, trades intraday with high liquidity, publishes a KID, contains no embedded derivatives, and uses no leverage. The recommended minimum investment horizon is five years.",
   "client": {
     "name": "Jordan Park",
     "age": 38,

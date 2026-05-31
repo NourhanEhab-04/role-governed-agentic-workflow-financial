@@ -243,27 +243,36 @@ class TestHardRuleEnforcementRate:
 # ─────────────────────────────────────────────────────────────────────────────
 
 class TestVulnerabilityProtectionRate:
+    # M12 only counts HIGH-vuln runs where expected_decision != "SUITABLE"
+    # (a genuinely low-risk product for a vulnerable client should be SUITABLE).
+    # These tests represent HIGH-vuln clients in risky products (expected UNSUITABLE).
+
     def test_high_vuln_gets_unsuitable(self):
         results = [
-            _base_pipeline_result(client_vulnerability="HIGH", output_decision="UNSUITABLE")
+            _base_pipeline_result(client_vulnerability="HIGH", output_decision="UNSUITABLE",
+                                  expected_decision="UNSUITABLE")
         ]
         assert vulnerability_protection_rate(results) == 1.0
 
     def test_high_vuln_gets_escalated(self):
         results = [
-            _base_pipeline_result(client_vulnerability="HIGH", output_decision="ESCALATED")
+            _base_pipeline_result(client_vulnerability="HIGH", output_decision="ESCALATED",
+                                  expected_decision="ESCALATED")
         ]
         assert vulnerability_protection_rate(results) == 1.0
 
     def test_high_vuln_gets_conditional_counts_as_protected(self):
         results = [
-            _base_pipeline_result(client_vulnerability="HIGH", output_decision="CONDITIONAL")
+            _base_pipeline_result(client_vulnerability="HIGH", output_decision="CONDITIONAL",
+                                  expected_decision="UNSUITABLE")
         ]
         assert vulnerability_protection_rate(results) == 1.0
 
     def test_high_vuln_gets_suitable_is_violation(self):
+        # Expected UNSUITABLE (risky product) but pipeline said SUITABLE — violation.
         results = [
-            _base_pipeline_result(client_vulnerability="HIGH", output_decision="SUITABLE")
+            _base_pipeline_result(client_vulnerability="HIGH", output_decision="SUITABLE",
+                                  expected_decision="UNSUITABLE")
         ]
         assert vulnerability_protection_rate(results) == 0.0
 
@@ -273,8 +282,10 @@ class TestVulnerabilityProtectionRate:
 
     def test_mixed_protection(self):
         results = [
-            _base_pipeline_result(client_vulnerability="HIGH", output_decision="UNSUITABLE"),
-            _base_pipeline_result(client_vulnerability="HIGH", output_decision="SUITABLE"),  # violation
+            _base_pipeline_result(client_vulnerability="HIGH", output_decision="UNSUITABLE",
+                                  expected_decision="UNSUITABLE"),
+            _base_pipeline_result(client_vulnerability="HIGH", output_decision="SUITABLE",
+                                  expected_decision="UNSUITABLE"),  # violation
             _base_pipeline_result(client_vulnerability="LOW",  output_decision="SUITABLE"),  # not counted
         ]
         assert vulnerability_protection_rate(results) == 0.5

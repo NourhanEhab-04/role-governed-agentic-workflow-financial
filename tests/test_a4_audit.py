@@ -34,14 +34,25 @@ def test_borderline_not_triggered_unsuitable():
 # --- check_concentration_risk ---
 
 def test_concentration_triggered_above_threshold():
-    client = {"portfolio_concentration_pct": 41}
-    result = check_concentration_risk(client)
+    # HIGH-vuln client + concentration > 40 + risk_class >= 2 → triggered
+    client = {"portfolio_concentration_pct": 41, "financial_vulnerability": "HIGH"}
+    product = {"risk_class": 3}
+    result = check_concentration_risk(client, product)
     assert result["triggered"] is True
     assert result["severity"] == "HIGH"
 
+def test_concentration_triggered_extreme_concentration_high_risk():
+    # Extreme concentration (> 60) in risk_class >= 6 product → triggered regardless of vulnerability
+    client = {"portfolio_concentration_pct": 65, "financial_vulnerability": "LOW"}
+    product = {"risk_class": 6}
+    result = check_concentration_risk(client, product)
+    assert result["triggered"] is True
+
 def test_concentration_not_triggered_at_threshold():
-    client = {"portfolio_concentration_pct": 40}
-    assert check_concentration_risk(client)["triggered"] is False
+    # Exactly 60% concentration is NOT strictly greater than 60 → no trigger
+    client = {"portfolio_concentration_pct": 60, "financial_vulnerability": "MEDIUM"}
+    product = {"risk_class": 6}
+    assert check_concentration_risk(client, product)["triggered"] is False
 
 def test_concentration_not_triggered_missing_key():
     # missing key → defaults to 0, no trigger
@@ -51,21 +62,32 @@ def test_concentration_not_triggered_missing_key():
 # --- check_contradiction ---
 
 def test_contradiction_triggered_high_vuln_suitable():
+    # HIGH-vuln + SUITABLE verdict on risk_class >= 4 product → contradiction
     client = {"financial_vulnerability": "HIGH"}
     verdict = {"score": 75, "decision": "SUITABLE"}
-    result = check_contradiction(client, verdict)
+    product = {"risk_class": 4}
+    result = check_contradiction(client, verdict, product)
     assert result["triggered"] is True
     assert result["severity"] == "HIGH"
+
+def test_contradiction_not_triggered_high_vuln_suitable_low_risk():
+    # HIGH-vuln + SUITABLE on risk_class 3 (low risk) → no contradiction; safe product
+    client = {"financial_vulnerability": "HIGH"}
+    verdict = {"score": 85, "decision": "SUITABLE"}
+    product = {"risk_class": 3}
+    assert check_contradiction(client, verdict, product)["triggered"] is False
 
 def test_contradiction_not_triggered_high_vuln_unsuitable():
     client = {"financial_vulnerability": "HIGH"}
     verdict = {"score": 30, "decision": "UNSUITABLE"}
-    assert check_contradiction(client, verdict)["triggered"] is False
+    product = {"risk_class": 5}
+    assert check_contradiction(client, verdict, product)["triggered"] is False
 
 def test_contradiction_not_triggered_normal_client_suitable():
     client = {"financial_vulnerability": "LOW"}
     verdict = {"score": 80, "decision": "SUITABLE"}
-    assert check_contradiction(client, verdict)["triggered"] is False
+    product = {"risk_class": 5}
+    assert check_contradiction(client, verdict, product)["triggered"] is False
 
 
 # --- check_escalation_trigger ---

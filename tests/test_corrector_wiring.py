@@ -25,6 +25,7 @@ from unittest.mock import AsyncMock, patch, MagicMock
 
 def _good_client():
     return {
+        "age": 40,
         "financial_knowledge": "moderate",
         "risk_tolerance_score": 5,
         "investment_horizon": 5,
@@ -99,7 +100,7 @@ def _ver_fail():
 
 
 def _corrected_client():
-    c = _good_client()
+    c = _good_client()  # includes "age": 40
     c["risk_tolerance_score"] = 3
     return c
 
@@ -153,7 +154,7 @@ async def _run(
         patch("agents.client_profiler.run_client_profiler",     new=AsyncMock(return_value=_good_client())),
         patch("agents.product_classifier.run_product_classifier", new=AsyncMock(return_value=_good_product())),
         patch("agents.rule_engine_agent.run_rule_engine_agent",  new=AsyncMock(return_value=_good_rule_verdict())),
-        patch("agents.conflict_detector.run_conflict_detector",  new=AsyncMock(return_value=_good_conflict())),
+        patch("agents.conflict_detector.run_conflict_detector",  new=AsyncMock(return_value=(_good_conflict(), []))),
         patch("agents.conflict_detector.check_rule_engine_agreement", new=MagicMock(return_value={"agreed": True, "details": ""})),
         patch("agents.disclosure_agent.run_disclosure_agent",    new=AsyncMock(return_value=_good_suitability())),
         patch("orchestrator.pre_check_tool.run_pre_check",       new=MagicMock(return_value={"decision": "SUITABLE", "triggered_rules": []})),

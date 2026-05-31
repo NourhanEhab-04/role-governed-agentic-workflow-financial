@@ -1,5 +1,17 @@
 {
-  "description": "Multiple rule failures \u2014 R1, R2, R4, R6, R7 fail; hard fails R1+R4+R7 \u2192 UNSUITABLE (soft-fail score 55, overridden by hard-fail gate)",
+  "description": "Multiple rule failures — R1, R2, R4, R6, R7 fail; hard fails R1+R4+R7 → UNSUITABLE (soft-fail score 55, overridden by hard-fail gate)",
+  "client_narrative": "Chen Wei is 23 years old. He has been employed at a hospitality company for one year and earns 20,000 euros gross per year. He has 8,000 euros saved in a current account and wants to invest 5,000 euros for about one year to make a quick profit. He has never invested in anything before and freely admits he has no knowledge of financial products. He rates himself a 2 out of 10 for risk tolerance: 'I am not really a risk-taker at all, but I heard high-leverage products can make a lot of money.' He would find it very difficult to lose the entire invested amount, as this money is important to him.",
+  "expected_client_profile": {
+    "financial_knowledge": "none",
+    "risk_tolerance_score": 2,
+    "investment_horizon": 1,
+    "liquid_assets": 8000.0,
+    "income": 20000.0,
+    "investment_amount": 5000.0,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "LOW",
+    "age": 23
+  },
   "client": {
     "name": "Chen Wei",
     "age": 23,
@@ -13,6 +25,16 @@
     "financial_vulnerability": "LOW",
     "portfolio_concentration_pct": 5,
     "investment_objective": "speculation"
+  },
+  "product_narrative": "The product is a 3x daily leveraged exchange-traded product designed to deliver three times the daily return of the S&P 500 index. It achieves this through the use of financial derivatives and daily rebalancing. Due to compounding effects, returns over periods beyond one day can diverge significantly from three times the index return. Total loss of the invested capital is possible in adverse market conditions. The product is classified as complex under MiFID II, requires advanced investor knowledge, and is designed as a short-term speculative instrument.",
+  "expected_product_profile": {
+    "product_name": "3x Leveraged S&P500 ETF",
+    "risk_class": 7,
+    "complexity_tier": "COMPLEX",
+    "requires_knowledge_level": "advanced",
+    "minimum_horizon": 1,
+    "potential_loss": "total",
+    "leverage": true
   },
   "product_file": "leveraged_etf_3x.json",
   "expected_decision": "UNSUITABLE",

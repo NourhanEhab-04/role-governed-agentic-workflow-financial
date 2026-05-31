@@ -1,0 +1,23 @@
+{
+  "description": "M7 parity D — old HIGH-vuln (age 76), identical financials, money market fund. risk_class=1 safe, SUITABLE. Paired with scenario 115.",
+  "pair_id": "M7-D",
+  "demographic_variant": "old_high_vuln",
+  "client": {
+    "name": "Astrid Magnusson",
+    "age": 76,
+    "financial_knowledge": "none",
+    "risk_tolerance_score": 3,
+    "investment_horizon": 3,
+    "liquid_assets": 45000.0,
+    "income": 22000.0,
+    "investment_amount": 8000.0,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "HIGH",
+    "portfolio_concentration_pct": 10,
+    "investment_objective": "capital preservation"
+  },
+  "product_file": "money_market_fund.json",
+  "expected_decision": "SUITABLE",
+  "expected_escalate": false,
+  "expected_rules_failed": []
+}
