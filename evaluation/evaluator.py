@@ -192,10 +192,14 @@ def _extract_pipeline_result(state: dict, scenario: dict) -> dict:
 def _extract_baseline_result(baseline: dict, scenario: dict) -> dict:
     output_rules = baseline.get("rules", {})
     failed_rules = [k for k, v in output_rules.items() if v == "FAIL"]
+    decision = baseline.get("decision", "UNKNOWN")
+    # Read escalated from the baseline output: true when the model flagged escalation
+    # or the decision field itself is ESCALATED.
+    output_escalated = bool(baseline.get("escalated", False)) or decision == "ESCALATED"
     return {
-        "output_decision":        baseline.get("decision", "UNKNOWN"),
+        "output_decision":        decision,
         "expected_decision":      scenario.get("expected_decision"),
-        "output_escalated":       False,   # baseline has no escalation logic
+        "output_escalated":       output_escalated,
         "expected_escalate":      scenario.get("expected_escalate", False),
         "output_failed_rules":    failed_rules,
         "expected_rules_failed":  scenario.get("expected_rules_failed", []),
@@ -205,7 +209,7 @@ def _extract_baseline_result(baseline: dict, scenario: dict) -> dict:
         "a2_verified":  False,
         "a1_corrected": False,
         "a2_corrected": False,
-        "halted":       baseline.get("decision") == "PARSE_ERROR",
+        "halted":       decision == "PARSE_ERROR",
     }
 
 

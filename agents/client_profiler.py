@@ -159,6 +159,7 @@ false → ANY other case, including:
   contains "can_afford_total_loss" as a boolean, copy that boolean EXACTLY.
   Do NOT override an explicit true with the default false. The explicit boolean
   in the JSON is authoritative and overrides the default.
+  
 
 ── age ───────────────────────────────────────────────────────────────────────
 Client's age in years as a required integer. If the client does NOT state their

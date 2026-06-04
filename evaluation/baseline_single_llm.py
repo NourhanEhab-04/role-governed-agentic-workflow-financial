@@ -74,22 +74,47 @@ R7 — Complexity
 ════════════════════════════════════════
 DECISION LOGIC
 ════════════════════════════════════════
-After applying all 7 rules:
-  UNSUITABLE  — any of R1, R4, R5, R7 failed (hard fails — mandatory protections)
-  UNSUITABLE  — total score < 40 (soft-fail floor not met)
-  CONDITIONAL — score 40–69, no hard fails
-  SUITABLE    — score >= 70, no hard fails
+Step 1 — Apply hard-fail rules:
+  If ANY of R1, R4, R5, R7 failed → decision = UNSUITABLE, escalated = false. STOP.
 
-Score starts at 100. Deduct for soft-fail rules only:
+Step 2 — Compute score (soft-fail rules only, start at 100):
   R2 fail: -20
   R3 fail: -15
   R6 fail: -25
+
+Step 3 — Score-based decision (no hard fails):
+  score < 40  → UNSUITABLE, escalated = false
+  score 40–69 → CONDITIONAL, then apply Step 4
+  score >= 70 → SUITABLE, then apply Step 4
+
+Step 4 — Escalation check (apply ONLY when score-based decision is SUITABLE or CONDITIONAL):
+  Set escalated = true and decision = ESCALATED if ANY of the following hold:
+
+  (a) Vulnerability override — ESMA GL §86-88:
+      Client financial_vulnerability = "HIGH" AND all hard rules pass (R5 passed,
+      meaning product risk_class < 5) AND score-based decision is SUITABLE or CONDITIONAL.
+      Rationale: HIGH-vulnerability clients receiving a positive recommendation must
+      be referred to a human compliance officer for review, even when all rules pass.
+
+  (b) Profile contradiction:
+      There is a significant internal contradiction in the client's profile that
+      makes the assessment unreliable. Examples:
+        - Client states a conservative or capital-preservation objective but has a
+          high risk tolerance score (>= 7), or vice versa.
+        - Client states they cannot afford any loss but requests a growth portfolio.
+        - The client description contains explicit conflicting statements about
+          risk appetite or objectives.
+      Rationale: contradictory profiles cannot be reliably assessed; human review
+      is required before a recommendation is made.
+
+  If NEITHER (a) nor (b) applies, keep the score-based decision and set escalated = false.
 
 ════════════════════════════════════════
 REQUIRED OUTPUT FORMAT — JSON only
 ════════════════════════════════════════
 {
-  "decision": "<SUITABLE | CONDITIONAL | UNSUITABLE>",
+  "decision": "<SUITABLE | CONDITIONAL | UNSUITABLE | ESCALATED>",
+  "escalated": <true | false>,
   "score": <integer>,
   "hard_failed_rules": [<list of rule IDs that are hard fails>],
   "rules": {
@@ -111,14 +136,15 @@ Output ONLY the JSON object. No preamble. No markdown fences.
 def _parse_baseline_result(raw_text: str) -> dict:
     """Extract and lightly validate the baseline result dict."""
     data = extract_json_object(raw_text)
-    # Ensure required keys exist
     required = {"decision", "score", "rules"}
     missing = required - data.keys()
     if missing:
         raise ValueError(f"Baseline result missing keys: {missing}")
-    valid_decisions = {"SUITABLE", "CONDITIONAL", "UNSUITABLE"}
+    valid_decisions = {"SUITABLE", "CONDITIONAL", "UNSUITABLE", "ESCALATED"}
     if data.get("decision") not in valid_decisions:
         raise ValueError(f"Invalid baseline decision: '{data.get('decision')}'")
+    # Normalise escalated flag: true when decision is ESCALATED or field says true
+    data["escalated"] = bool(data.get("escalated", False)) or data.get("decision") == "ESCALATED"
     return data
 
 

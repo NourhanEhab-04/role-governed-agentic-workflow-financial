@@ -1,0 +1,920 @@
+[
+  {
+    "output_decision": "CONDITIONAL",
+    "expected_decision": "CONDITIONAL",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R2",
+      "R3"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "moderate",
+      "risk_tolerance_score": 2,
+      "investment_horizon": 2,
+      "liquid_assets": 2700.0,
+      "income": 59300.0,
+      "investment_amount": 15200.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 39
+    },
+    "output_product_profile": {
+      "product_name": "UCITS exchange-traded fund tracking MSCI Emerging Markets Index",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": false,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [],
+    "client_vulnerability": "MEDIUM",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R2 (risk class) and R3 (investment horizon).",
+    "output_rule_explanations": {
+      "R1": "Your financial knowledge level of 'moderate' meets the product's requirement of 'moderate'.",
+      "R2": "Risk alignment failed: the product's risk class is 5, but your risk tolerance score is 2; MiFID II permits a maximum gap of 2 (2 + 2 = 4), so the product exceeds your risk appetite by 1 class.",
+      "R3": "Horizon check failed: the product requires a minimum investment horizon of 7 years but your stated horizon is 2 years \u2014 5 years short of the requirement.",
+      "R4": "You indicated you can afford a total loss, and this product carries a 'partial' potential loss rating.",
+      "R5": "Your financial vulnerability is rated MEDIUM, and the product's risk class is 5, which is suitable for clients with medium vulnerability.",
+      "R6": "This product does not use leverage, and your risk tolerance score of 2 is not below the required threshold.",
+      "R7": "The product is rated NON-COMPLEX, and your financial knowledge level of 'moderate' meets the required threshold."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "moderate",
+      "risk_tolerance_score": 2,
+      "investment_horizon": 2,
+      "liquid_assets": 2700.0,
+      "income": 59300.0,
+      "investment_amount": 15200.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 39
+    },
+    "expected_product_profile": {
+      "product_name": "MSCI Emerging Markets Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "53_uci105_em_equity_etf",
+    "run_number": 1,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "CONDITIONAL",
+    "expected_decision": "CONDITIONAL",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R2",
+      "R3"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "moderate",
+      "risk_tolerance_score": 2,
+      "investment_horizon": 2,
+      "liquid_assets": 2700.0,
+      "income": 59300.0,
+      "investment_amount": 15200.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 39
+    },
+    "output_product_profile": {
+      "product_name": "UCITS exchange-traded fund tracking the MSCI Emerging Markets Index",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": false,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [],
+    "client_vulnerability": "MEDIUM",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R2 (risk class) and R3 (investment horizon).",
+    "output_rule_explanations": {
+      "R1": "Your financial knowledge level of 'moderate' meets the product's requirement for 'moderate' knowledge.",
+      "R2": "Risk alignment failed: the product's risk class is 5, but your risk tolerance score is 2; MiFID II permits a maximum gap of 2 (2 + 2 = 4), so the product exceeds your risk appetite by 1 class.",
+      "R3": "Horizon check failed: the product requires a minimum investment horizon of 7 years but your stated horizon is 2 years \u2014 5 years short of the requirement.",
+      "R4": "You indicated you cannot afford a total loss, but this product carries a 'partial' potential loss rating.",
+      "R5": "Your financial vulnerability is rated MEDIUM and the product's risk class is 5, which is suitable for clients with medium vulnerability.",
+      "R6": "This product does not use leverage, and your risk tolerance score of 2 is below the minimum required score of 7.",
+      "R7": "The product is rated NON-COMPLEX and your financial knowledge level of 'moderate' meets the required threshold."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "moderate",
+      "risk_tolerance_score": 2,
+      "investment_horizon": 2,
+      "liquid_assets": 2700.0,
+      "income": 59300.0,
+      "investment_amount": 15200.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 39
+    },
+    "expected_product_profile": {
+      "product_name": "MSCI Emerging Markets Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "53_uci105_em_equity_etf",
+    "run_number": 2,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "CONDITIONAL",
+    "expected_decision": "CONDITIONAL",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R2",
+      "R3"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "moderate",
+      "risk_tolerance_score": 2,
+      "investment_horizon": 2,
+      "liquid_assets": 2700.0,
+      "income": 59300.0,
+      "investment_amount": 15200.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 39
+    },
+    "output_product_profile": {
+      "product_name": "UCITS ETF tracking MSCI Emerging Markets Index",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": false,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [],
+    "client_vulnerability": "MEDIUM",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R2 (risk alignment) and R3 (investment horizon).",
+    "output_rule_explanations": {
+      "R1": "Your financial knowledge level of 'moderate' meets the product's requirement for 'moderate' knowledge.",
+      "R2": "Risk alignment failed: the product's risk class is 5, but your risk tolerance score is 2; MiFID II permits a maximum gap of 2 (2 + 2 = 4), so the product exceeds your risk appetite by 1 class.",
+      "R3": "Horizon check failed: the product requires a minimum investment horizon of 7 years but your stated horizon is 2 years \u2014 5 years short of the requirement.",
+      "R4": "You indicated you cannot afford a total loss, but this product carries a 'partial' potential loss rating.",
+      "R5": "Your financial vulnerability is rated MEDIUM and the product's risk class is 5, making it suitable for your vulnerability level.",
+      "R6": "This product does not use leverage, and your risk tolerance score of 2 is below the required minimum of 7.",
+      "R7": "The product is rated NON-COMPLEX and your financial knowledge level of 'moderate' meets the required threshold."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "moderate",
+      "risk_tolerance_score": 2,
+      "investment_horizon": 2,
+      "liquid_assets": 2700.0,
+      "income": 59300.0,
+      "investment_amount": 15200.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 39
+    },
+    "expected_product_profile": {
+      "product_name": "MSCI Emerging Markets Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "53_uci105_em_equity_etf",
+    "run_number": 3,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "CONDITIONAL",
+    "expected_decision": "CONDITIONAL",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R2",
+      "R3"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "moderate",
+      "risk_tolerance_score": 2,
+      "investment_horizon": 2,
+      "liquid_assets": 37800.0,
+      "income": 79600.0,
+      "investment_amount": 3000.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "LOW",
+      "age": 36
+    },
+    "output_product_profile": {
+      "product_name": "UCITS ETF tracking MSCI Emerging Markets Index",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": false,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [],
+    "client_vulnerability": "LOW",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R2 (risk class) and R3 (investment horizon).",
+    "output_rule_explanations": {
+      "R1": "Your financial knowledge level of 'moderate' meets the product's requirement of 'moderate'.",
+      "R2": "Risk alignment failed: the product's risk class is 5, but your risk tolerance score is 2; MiFID II permits a maximum gap of 2 (2 + 2 = 4), so the product exceeds your risk appetite by 1 class.",
+      "R3": "Horizon check failed: the product requires a minimum investment horizon of 7 years but your stated horizon is 2 years \u2014 5 years short of the requirement.",
+      "R4": "You indicated you can afford a total loss, and this product carries a 'partial' potential loss rating.",
+      "R5": "Your financial vulnerability is rated LOW, and the product's risk class is 5, which is suitable for clients with low vulnerability.",
+      "R6": "This product does not use leverage, and your risk tolerance score of 2 is not below the required threshold.",
+      "R7": "The product is rated NON-COMPLEX, which aligns with your financial knowledge level of 'moderate'."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "moderate",
+      "risk_tolerance_score": 2,
+      "investment_horizon": 2,
+      "liquid_assets": 37800.0,
+      "income": 79600.0,
+      "investment_amount": 3000.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "LOW",
+      "age": 36
+    },
+    "expected_product_profile": {
+      "product_name": "MSCI Emerging Markets Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "54_uci119_em_equity_etf",
+    "run_number": 1,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "CONDITIONAL",
+    "expected_decision": "CONDITIONAL",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R2",
+      "R3"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "moderate",
+      "risk_tolerance_score": 2,
+      "investment_horizon": 2,
+      "liquid_assets": 37800.0,
+      "income": 79600.0,
+      "investment_amount": 3000.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "LOW",
+      "age": 36
+    },
+    "output_product_profile": {
+      "product_name": "UCITS ETF tracking MSCI Emerging Markets Index",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": false,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [],
+    "client_vulnerability": "LOW",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R2 (risk class) and R3 (investment horizon).",
+    "output_rule_explanations": {
+      "R1": "Your financial knowledge level of 'moderate' meets the product's requirement for 'moderate' knowledge.",
+      "R2": "Risk alignment failed: the product's risk class is 5, but your risk tolerance score is 2; MiFID II permits a maximum gap of 2 (2 + 2 = 4), so the product exceeds your risk appetite by 1 class.",
+      "R3": "Horizon check failed: the product requires a minimum investment horizon of 7 years but your stated horizon is 2 years \u2014 5 years short of the requirement.",
+      "R4": "You indicated you can afford a total loss, and this product carries a 'partial' potential loss rating.",
+      "R5": "Your financial vulnerability is rated LOW, and the product's risk class is 5, which is suitable for clients with low vulnerability.",
+      "R6": "This product does not use leverage, and your risk tolerance score of 2 is below the required minimum of 7.",
+      "R7": "The product is rated NON-COMPLEX, and your financial knowledge level of 'moderate' meets the required threshold."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "moderate",
+      "risk_tolerance_score": 2,
+      "investment_horizon": 2,
+      "liquid_assets": 37800.0,
+      "income": 79600.0,
+      "investment_amount": 3000.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "LOW",
+      "age": 36
+    },
+    "expected_product_profile": {
+      "product_name": "MSCI Emerging Markets Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "54_uci119_em_equity_etf",
+    "run_number": 2,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "CONDITIONAL",
+    "expected_decision": "CONDITIONAL",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R2",
+      "R3"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "moderate",
+      "risk_tolerance_score": 2,
+      "investment_horizon": 2,
+      "liquid_assets": 37800.0,
+      "income": 79600.0,
+      "investment_amount": 3000.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "LOW",
+      "age": 36
+    },
+    "output_product_profile": {
+      "product_name": "UCITS ETF tracking MSCI Emerging Markets Index",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": false,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [],
+    "client_vulnerability": "LOW",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R2 (risk class) and R3 (investment horizon).",
+    "output_rule_explanations": {
+      "R1": "Your financial knowledge level of 'moderate' meets the product's requirement for 'moderate' knowledge.",
+      "R2": "Risk alignment failed: the product's risk class is 5, but your risk tolerance score is 2; MiFID II permits a maximum gap of 2 (2 + 2 = 4), so the product exceeds your risk appetite by 1 class.",
+      "R3": "Horizon check failed: the product requires a minimum investment horizon of 7 years but your stated horizon is 2 years \u2014 5 years short of the requirement.",
+      "R4": "You indicated you can afford a total loss, and this product carries a 'partial' potential loss rating.",
+      "R5": "Your financial vulnerability is rated LOW, and the product's risk class is 5, which is suitable for clients with low vulnerability.",
+      "R6": "This product does not use leverage, and your risk tolerance score of 2 is sufficient for non-leveraged products.",
+      "R7": "The product is rated NON-COMPLEX, and your financial knowledge level of 'moderate' meets the required threshold."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "moderate",
+      "risk_tolerance_score": 2,
+      "investment_horizon": 2,
+      "liquid_assets": 37800.0,
+      "income": 79600.0,
+      "investment_amount": 3000.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "LOW",
+      "age": 36
+    },
+    "expected_product_profile": {
+      "product_name": "MSCI Emerging Markets Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "54_uci119_em_equity_etf",
+    "run_number": 3,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "CONDITIONAL",
+    "expected_decision": "CONDITIONAL",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R2",
+      "R3"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "moderate",
+      "risk_tolerance_score": 2,
+      "investment_horizon": 4,
+      "liquid_assets": 17000.0,
+      "income": 86000.0,
+      "investment_amount": 8900.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "LOW",
+      "age": 36
+    },
+    "output_product_profile": {
+      "product_name": "UCITS exchange-traded fund tracking the MSCI Emerging Markets Index",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": false,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [],
+    "client_vulnerability": "LOW",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R2 (risk alignment) and R3 (investment horizon).",
+    "output_rule_explanations": {
+      "R1": "Your financial knowledge level of 'moderate' meets the product's requirement for 'moderate' knowledge.",
+      "R2": "Risk alignment failed: the product's risk class is 5, but your risk tolerance score is 2; MiFID II permits a maximum gap of 2 (2 + 2 = 4), so the product exceeds your risk appetite by 1 class.",
+      "R3": "Horizon check failed: the product requires a minimum investment horizon of 7 years but your stated horizon is 4 years \u2014 3 years short of the requirement.",
+      "R4": "You indicated you cannot afford a total loss, but this product carries a 'partial' potential loss rating.",
+      "R5": "Your financial vulnerability is rated LOW, and the product's risk class is 5, which is suitable for clients with low vulnerability.",
+      "R6": "This product does not use leverage, and your risk tolerance score of 2 is below the required minimum of 7.",
+      "R7": "The product is rated NON-COMPLEX, which aligns with your financial knowledge level of 'moderate'."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "moderate",
+      "risk_tolerance_score": 2,
+      "investment_horizon": 4,
+      "liquid_assets": 17000.0,
+      "income": 86000.0,
+      "investment_amount": 8900.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "LOW",
+      "age": 36
+    },
+    "expected_product_profile": {
+      "product_name": "MSCI Emerging Markets Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "55_uci154_em_equity_etf",
+    "run_number": 1,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "CONDITIONAL",
+    "expected_decision": "CONDITIONAL",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R2",
+      "R3"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "moderate",
+      "risk_tolerance_score": 2,
+      "investment_horizon": 4,
+      "liquid_assets": 17000.0,
+      "income": 86000.0,
+      "investment_amount": 8900.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "LOW",
+      "age": 36
+    },
+    "output_product_profile": {
+      "product_name": "UCITS exchange-traded fund tracking the MSCI Emerging Markets Index",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": false,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [],
+    "client_vulnerability": "LOW",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R2 (risk class) and R3 (investment horizon).",
+    "output_rule_explanations": {
+      "R1": "Your financial knowledge level of 'moderate' meets the product's requirement of 'moderate'.",
+      "R2": "Risk alignment failed: the product's risk class is 5, but your risk tolerance score is 2; MiFID II permits a maximum gap of 2 (2 + 2 = 4), so the product exceeds your risk appetite by 1 class.",
+      "R3": "Horizon check failed: the product requires a minimum investment horizon of 7 years but your stated horizon is 4 years \u2014 3 years short of the requirement.",
+      "R4": "You indicated you cannot afford a total loss, but this product carries a 'partial' potential loss rating.",
+      "R5": "Your financial vulnerability is rated LOW and the product's risk class is 5, making it suitable for your vulnerability level.",
+      "R6": "This product does not use leverage, which is appropriate given your risk tolerance score of 2.",
+      "R7": "The product is rated NON-COMPLEX and your financial knowledge level of 'moderate' meets the required threshold."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "moderate",
+      "risk_tolerance_score": 2,
+      "investment_horizon": 4,
+      "liquid_assets": 17000.0,
+      "income": 86000.0,
+      "investment_amount": 8900.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "LOW",
+      "age": 36
+    },
+    "expected_product_profile": {
+      "product_name": "MSCI Emerging Markets Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "55_uci154_em_equity_etf",
+    "run_number": 2,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "CONDITIONAL",
+    "expected_decision": "CONDITIONAL",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R2",
+      "R3"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "moderate",
+      "risk_tolerance_score": 2,
+      "investment_horizon": 4,
+      "liquid_assets": 17000.0,
+      "income": 86000.0,
+      "investment_amount": 8900.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "LOW",
+      "age": 36
+    },
+    "output_product_profile": {
+      "product_name": "UCITS ETF tracking MSCI Emerging Markets Index",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": false,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [],
+    "client_vulnerability": "LOW",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R2 (risk class) and R3 (investment horizon).",
+    "output_rule_explanations": {
+      "R1": "Your financial knowledge level of 'moderate' meets the product's requirement of 'moderate'.",
+      "R2": "Risk alignment failed: the product's risk class is 5, but your risk tolerance score is 2; MiFID II permits a maximum gap of 2 (2 + 2 = 4), so the product exceeds your risk appetite by 1 class.",
+      "R3": "Horizon check failed: the product requires a minimum investment horizon of 7 years but your stated horizon is 4 years \u2014 3 years short of the requirement.",
+      "R4": "You indicated you can afford a total loss, and this product carries a 'partial' potential loss rating.",
+      "R5": "Your financial vulnerability is rated LOW, and the product's risk class is 5, which is suitable for clients with low vulnerability.",
+      "R6": "This product does not use leverage, and your risk tolerance score of 2 is sufficient for non-leveraged products.",
+      "R7": "The product is rated NON-COMPLEX, which aligns with your financial knowledge level of 'moderate'."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "moderate",
+      "risk_tolerance_score": 2,
+      "investment_horizon": 4,
+      "liquid_assets": 17000.0,
+      "income": 86000.0,
+      "investment_amount": 8900.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "LOW",
+      "age": 36
+    },
+    "expected_product_profile": {
+      "product_name": "MSCI Emerging Markets Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "55_uci154_em_equity_etf",
+    "run_number": 3,
+    "architecture": "pipeline"
+  }
+]

@@ -56,8 +56,12 @@ Risk Class 3 — Medium-low risk
   Leverage: false
 
 Risk Class 4 — Medium risk
-  Products: diversified equity ETFs (broad market), equity index funds,
-            multi-asset funds, plain vanilla equities (blue chip)
+  Products: diversified equity ETFs tracking DEVELOPED-MARKET broad indices
+            (e.g. MSCI World, S&P 500, STOXX 600, EURO STOXX 50),
+            developed-market equity index funds, multi-asset funds,
+            plain vanilla blue-chip equities
+  NOTE: RC4 applies to DEVELOPED-MARKET broad indices ONLY.
+        Do NOT assign RC4 to emerging-market funds — those are RC5 (see below).
   Typical loss: significant drawdowns possible, long-term positive expected
   Complexity: NON-COMPLEX
   Knowledge required: basic
@@ -66,19 +70,31 @@ Risk Class 4 — Medium risk
   Leverage: false
 
 Risk Class 5 — Medium-high risk
-  Products: sector ETFs, single-country equity funds, high-yield bond funds,
+  Products: sector ETFs (technology, energy, healthcare, financials, etc.),
+            diversified EMERGING-MARKET equity ETFs and index funds
+            (e.g. MSCI Emerging Markets Index ETF, multi-country EM equity funds),
+            single-country equity funds, high-yield bond funds,
             REITs, small-cap equity funds, plain vanilla options (buying only)
+  NOTE: Any ETF with concentrated sector exposure OR significant emerging-market
+        equity exposure belongs here, NOT in RC4.
+        requires_knowledge_level for this class ranges from basic (NON-COMPLEX
+        sector ETFs) to moderate — read the EXACT value from the product description
+        text; do NOT default to "moderate" when the product text says "basic".
   Typical loss: high volatility, meaningful capital loss possible
-  Complexity: COMPLEX (options/structured); NON-COMPLEX (sector ETFs/REITs)
-  Knowledge required: moderate
-  Minimum horizon: 5 years
+  Complexity: COMPLEX (options/structured); NON-COMPLEX (sector ETFs/REITs/EM ETFs)
+  Knowledge required: basic to moderate (read from product text — see NOTE above)
+  Minimum horizon: 5 years (or as stated in product text)
   Potential loss: partial
   Leverage: false (unless stated otherwise)
 
 Risk Class 6 — High risk
   Products: leveraged ETFs (2x), single stocks (volatile/speculative),
-            emerging market equity funds, structured products with capital at risk,
+            single-country FRONTIER or highly concentrated emerging-market funds,
+            structured products with capital at risk,
             futures contracts, spread betting
+  NOTE: Broad multi-country emerging-market equity ETFs (MSCI EM, 20+ countries)
+        are RC5, NOT RC6. RC6 applies to concentrated single-country EM exposure
+        or frontier markets only.
   Typical loss: very high volatility, significant capital loss likely in adverse scenarios
   Complexity: COMPLEX
   Knowledge required: advanced
@@ -161,8 +177,16 @@ CLASSIFICATION DECISION PROCESS
 
 1. Identify the product type from the description
 2. Match to the nearest risk class using the table above
+   - DEVELOPED-MARKET broad index ETF/fund → RC4
+   - SECTOR ETF or EMERGING-MARKET multi-country index ETF/fund → RC5
+   - Leveraged (2x) ETF, frontier/single-country EM, structured product at risk → RC6
+   - Leveraged (3x+) ETF, CFD, uncovered option → RC7
 3. Apply the complexity, leverage, and potential_loss rules
-4. Set requires_knowledge_level based on the risk class
+4. Set requires_knowledge_level STRICTLY from the product description text.
+   If the text says "basic financial knowledge is required" → use "basic".
+   If the text says "moderate knowledge" → use "moderate".
+   If the text says "advanced" → use "advanced".
+   Do NOT override the text with a table default — the text is always authoritative.
 5. Set minimum_horizon using explicit product text first. If no explicit horizon is stated, use the risk class table default.
 6. Return the JSON object — nothing else
 
