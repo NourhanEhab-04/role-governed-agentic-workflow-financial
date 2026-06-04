@@ -1,5 +1,27 @@
 {
   "description": "ESCALATED — Both CONTRADICTION and CONCENTRATION flags: HIGH-vuln (age 70) + portfolio_concentration_pct=45% + global_equity_etf. Rule engine SUITABLE (R5 passes: risk_class=4<5). Both HIGH-severity A4 flags trigger escalation.",
+  "client_narrative": "Dagmar Novak is 70 years old. Their gross annual income is approximately 42,000 euros (around 3,500 euros per month). They hold 180,000 euros in liquid savings and wish to invest 35,000 euros with a 7-year investment horizon. In terms of financial background, the client has basic investment experience, limited to savings accounts, fixed-term deposits, and simple fixed-income products. Their investment approach is moderate-to-conservative — they rate their risk tolerance at 4 out of 10. They have stated they cannot afford to lose the full 35,000 euros invested. They have been assessed as financially vulnerable.",
+  "expected_client_profile": {
+    "financial_knowledge": "basic",
+    "risk_tolerance_score": 4,
+    "investment_horizon": 7,
+    "liquid_assets": 180000.0,
+    "income": 42000.0,
+    "investment_amount": 35000.0,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "HIGH",
+    "age": 70
+  },
+  "product_narrative": "The product is a passively managed exchange-traded fund that tracks the MSCI World Index, providing diversified exposure to approximately 1,500 large and mid-cap equities across 23 developed markets. The fund is listed on major European exchanges, trades intraday with high liquidity, publishes a KID, contains no embedded derivatives, and uses no leverage. The recommended minimum investment horizon is five years.",
+  "expected_product_profile": {
+    "product_name": "Global Equity ETF",
+    "risk_class": 4,
+    "complexity_tier": "NON-COMPLEX",
+    "requires_knowledge_level": "basic",
+    "minimum_horizon": 5,
+    "potential_loss": "partial",
+    "leverage": false
+  },
   "client": {
     "name": "Dagmar Novak",
     "age": 70,

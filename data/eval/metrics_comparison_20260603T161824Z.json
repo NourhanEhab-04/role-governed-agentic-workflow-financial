@@ -1,0 +1,404 @@
+{
+  "timestamp": "20260603T161824Z",
+  "runs_per_scenario": 3,
+  "n_scenarios": 21,
+  "baseline": {
+    "architecture": "baseline",
+    "n_runs": 63,
+    "M1_decision_accuracy": 0.3016,
+    "M1a_weighted_accuracy": {
+      "n_evaluated": 63,
+      "weighted_accuracy": 0.2923,
+      "unweighted_accuracy": 0.3016,
+      "total_penalty": 46.0
+    },
+    "M1b_scenario_level_accuracy": {
+      "n_scenarios": 21,
+      "scenario_accuracy": 0.2857,
+      "split_vote_scenarios": 0
+    },
+    "M2_rule_compliance_rate": 0.2063,
+    "M2b_rule_compliance_jaccard": {
+      "n_evaluated": 63,
+      "mean_jaccard": 0.3378,
+      "exact_match_rate": 0.2063
+    },
+    "M3_decision_consistency": 0.9683,
+    "M4_escalation_accuracy": {
+      "overall_accuracy": 0.9524,
+      "sensitivity": 0.0,
+      "specificity": 1.0,
+      "precision": 0.0,
+      "f1": 0.0,
+      "mcc": 0.0,
+      "n_positive": 3,
+      "n_negative": 60
+    },
+    "M5_verification": "N/A (baseline)",
+    "M5b_correction_precision": "N/A (baseline)",
+    "M6_per_rule_accuracy": {
+      "R1": 0.7619,
+      "R2": 0.619,
+      "R3": 0.9524,
+      "R4": 0.5079,
+      "R5": 0.5397,
+      "R6": 0.9524,
+      "R7": 0.7302
+    },
+    "M6b_per_rule_accuracy_with_ci": {
+      "R1": {
+        "accuracy": 0.7619,
+        "n_evaluated": 63,
+        "ci_95": [
+          0.6436,
+          0.8501
+        ]
+      },
+      "R2": {
+        "accuracy": 0.619,
+        "n_evaluated": 63,
+        "ci_95": [
+          0.4956,
+          0.7288
+        ]
+      },
+      "R3": {
+        "accuracy": 0.9524,
+        "n_evaluated": 63,
+        "ci_95": [
+          0.8691,
+          0.9837
+        ]
+      },
+      "R4": {
+        "accuracy": 0.5079,
+        "n_evaluated": 63,
+        "ci_95": [
+          0.3876,
+          0.6273
+        ]
+      },
+      "R5": {
+        "accuracy": 0.5397,
+        "n_evaluated": 63,
+        "ci_95": [
+          0.4179,
+          0.6569
+        ]
+      },
+      "R6": {
+        "accuracy": 0.9524,
+        "n_evaluated": 63,
+        "ci_95": [
+          0.8691,
+          0.9837
+        ]
+      },
+      "R7": {
+        "accuracy": 0.7302,
+        "n_evaluated": 63,
+        "ci_95": [
+          0.6097,
+          0.8242
+        ]
+      }
+    },
+    "M7_demographic_parity": {
+      "n_pairs": 8,
+      "n_pairs_same_expected": 8,
+      "n_violations": 3,
+      "parity_violation_rate": 0.375,
+      "n_justified_differentiation": 0,
+      "n_under_differentiation": 0,
+      "violations": [
+        {
+          "pair_id": "M7-C",
+          "decisions": {
+            "young_low_vuln": {
+              "output": "SUITABLE",
+              "expected": "SUITABLE"
+            },
+            "old_high_vuln": {
+              "output": "UNSUITABLE",
+              "expected": "SUITABLE"
+            }
+          },
+          "note": "Identical financials + same expected decision \u2192 different outputs.  Potential demographic bias in A1/A5 narrative framing."
+        },
+        {
+          "pair_id": "M7-H",
+          "decisions": {
+            "young_low_vuln": {
+              "output": "SUITABLE",
+              "expected": "SUITABLE"
+            },
+            "old_high_vuln": {
+              "output": "UNSUITABLE",
+              "expected": "SUITABLE"
+            }
+          },
+          "note": "Identical financials + same expected decision \u2192 different outputs.  Potential demographic bias in A1/A5 narrative framing."
+        },
+        {
+          "pair_id": "M7-I",
+          "decisions": {
+            "young_low_vuln": {
+              "output": "SUITABLE",
+              "expected": "SUITABLE"
+            },
+            "old_high_vuln": {
+              "output": "SUITABLE",
+              "expected": "SUITABLE"
+            }
+          },
+          "note": "Identical financials + same expected decision \u2192 different outputs.  Potential demographic bias in A1/A5 narrative framing."
+        }
+      ],
+      "justified_diffs": [],
+      "under_differentiated": [],
+      "note": "parity_violation_rate is computed only over pairs where both variants share the same expected_decision, to avoid penalising legitimate MiFID II regulatory differentiation as demographic bias."
+    },
+    "M7b_equalized_odds": {
+      "group_stats": {
+        "young": {
+          "n": 24,
+          "n_positive": 3,
+          "tpr": 1.0,
+          "fpr": 0.5714
+        },
+        "old": {
+          "n": 24,
+          "n_positive": 3,
+          "tpr": 1.0,
+          "fpr": 0.9524
+        }
+      },
+      "tpr_gap": 0.0,
+      "fpr_gap": 0.381,
+      "equalized_odds_satisfied": false,
+      "threshold": 0.05,
+      "note": "TPR/FPR gap \u2264 0.05 is the equalized-odds pass criterion."
+    },
+    "M_A1_extraction": "N/A (baseline has no A1/A2 agents)",
+    "M_A2_extraction": "N/A (baseline has no A1/A2 agents)",
+    "M8_override_rate": "N/A (baseline)",
+    "M9_pipeline_halt_rate": 0.0,
+    "M10_three_point_integrity": "N/A (baseline)",
+    "M11_hard_rule_enforcement": {
+      "hard_rule_enforcement_rate": null,
+      "false_positive_rate": 0.6508,
+      "n_hard_fail_runs": 0,
+      "n_no_hard_fail_runs": 63
+    },
+    "M12_vulnerability_protection": null,
+    "M13_regulatory_citation_rate": "N/A (baseline)",
+    "M14_explanation_completeness": "N/A (baseline)",
+    "M15_decision_traceability": "N/A (baseline)",
+    "M15b_decision_traceability_v2": "N/A (baseline)"
+  },
+  "pipeline": {
+    "architecture": "pipeline",
+    "n_runs": 63,
+    "M1_decision_accuracy": 0.9524,
+    "M1a_weighted_accuracy": {
+      "n_evaluated": 63,
+      "weighted_accuracy": 0.9524,
+      "unweighted_accuracy": 0.9524,
+      "total_penalty": 3.0
+    },
+    "M1b_scenario_level_accuracy": {
+      "n_scenarios": 21,
+      "scenario_accuracy": 0.9524,
+      "split_vote_scenarios": 0
+    },
+    "M2_rule_compliance_rate": 0.9048,
+    "M2b_rule_compliance_jaccard": {
+      "n_evaluated": 63,
+      "mean_jaccard": 0.9603,
+      "exact_match_rate": 0.9048
+    },
+    "M3_decision_consistency": 1.0,
+    "M4_escalation_accuracy": {
+      "overall_accuracy": 1.0,
+      "sensitivity": 1.0,
+      "specificity": 1.0,
+      "precision": 1.0,
+      "f1": 1.0,
+      "mcc": 1.0,
+      "n_positive": 3,
+      "n_negative": 60
+    },
+    "M5_verification": {
+      "a1_correction_rate": 0.0,
+      "a2_correction_rate": 0.0,
+      "overall_correction_rate": 0.0
+    },
+    "M5b_correction_precision": {
+      "beneficial_corrections": 0,
+      "harmful_corrections": 0,
+      "neutral_corrections": 0,
+      "total_field_changes": 0,
+      "correction_precision": null,
+      "correction_harm_rate": null,
+      "note": "correction_precision = beneficial / total_field_changes. Returns None when no corrected runs with ground-truth profiles are present."
+    },
+    "M6_per_rule_accuracy": {
+      "R1": 1.0,
+      "R2": 1.0,
+      "R3": 1.0,
+      "R4": 1.0,
+      "R5": 0.9524,
+      "R6": 0.9524,
+      "R7": 1.0
+    },
+    "M6b_per_rule_accuracy_with_ci": {
+      "R1": {
+        "accuracy": 1.0,
+        "n_evaluated": 63,
+        "ci_95": [
+          0.9425,
+          1.0
+        ]
+      },
+      "R2": {
+        "accuracy": 1.0,
+        "n_evaluated": 63,
+        "ci_95": [
+          0.9425,
+          1.0
+        ]
+      },
+      "R3": {
+        "accuracy": 1.0,
+        "n_evaluated": 63,
+        "ci_95": [
+          0.9425,
+          1.0
+        ]
+      },
+      "R4": {
+        "accuracy": 1.0,
+        "n_evaluated": 63,
+        "ci_95": [
+          0.9425,
+          1.0
+        ]
+      },
+      "R5": {
+        "accuracy": 0.9524,
+        "n_evaluated": 63,
+        "ci_95": [
+          0.8691,
+          0.9837
+        ]
+      },
+      "R6": {
+        "accuracy": 0.9524,
+        "n_evaluated": 63,
+        "ci_95": [
+          0.8691,
+          0.9837
+        ]
+      },
+      "R7": {
+        "accuracy": 1.0,
+        "n_evaluated": 63,
+        "ci_95": [
+          0.9425,
+          1.0
+        ]
+      }
+    },
+    "M7_demographic_parity": {
+      "n_pairs": 8,
+      "n_pairs_same_expected": 8,
+      "n_violations": 0,
+      "parity_violation_rate": 0.0,
+      "n_justified_differentiation": 0,
+      "n_under_differentiation": 0,
+      "violations": [],
+      "justified_diffs": [],
+      "under_differentiated": [],
+      "note": "parity_violation_rate is computed only over pairs where both variants share the same expected_decision, to avoid penalising legitimate MiFID II regulatory differentiation as demographic bias."
+    },
+    "M7b_equalized_odds": {
+      "group_stats": {
+        "young": {
+          "n": 24,
+          "n_positive": 3,
+          "tpr": 1.0,
+          "fpr": 0.0
+        },
+        "old": {
+          "n": 24,
+          "n_positive": 3,
+          "tpr": 1.0,
+          "fpr": 0.0
+        }
+      },
+      "tpr_gap": 0.0,
+      "fpr_gap": 0.0,
+      "equalized_odds_satisfied": true,
+      "threshold": 0.05,
+      "note": "TPR/FPR gap \u2264 0.05 is the equalized-odds pass criterion."
+    },
+    "M_A1_extraction": {
+      "n_evaluated": 63,
+      "overall_exact_match_rate": 0.8571,
+      "per_field_accuracy": {
+        "financial_knowledge": 0.9524,
+        "risk_tolerance_score": 1.0,
+        "investment_horizon": 1.0,
+        "liquid_assets": 1.0,
+        "income": 1.0,
+        "investment_amount": 1.0,
+        "can_afford_total_loss": 0.9048,
+        "financial_vulnerability": 1.0,
+        "age": 1.0
+      }
+    },
+    "M_A2_extraction": {
+      "n_evaluated": 63,
+      "overall_exact_match_rate": 0.6667,
+      "per_field_accuracy": {
+        "risk_class": 0.6667,
+        "complexity_tier": 1.0,
+        "requires_knowledge_level": 1.0,
+        "minimum_horizon": 1.0,
+        "potential_loss": 1.0,
+        "leverage": 0.9524
+      }
+    },
+    "M8_override_rate": {
+      "A1": 0.0952,
+      "A2": 0.0,
+      "A4": 0.2381
+    },
+    "M9_pipeline_halt_rate": 0.0,
+    "M10_three_point_integrity": 1.0,
+    "M11_hard_rule_enforcement": {
+      "hard_rule_enforcement_rate": 1.0,
+      "false_positive_rate": 0.0,
+      "n_hard_fail_runs": 6,
+      "n_no_hard_fail_runs": 57
+    },
+    "M12_vulnerability_protection": {
+      "overall_protection_rate": 1.0,
+      "age_driven_rate": 1.0,
+      "other_driven_rate": 1.0,
+      "n_high_vuln_runs": 15,
+      "n_age_driven": 6,
+      "n_other_driven": 9,
+      "note": "age_driven: client age > 70 (deterministic R5 trigger). other_driven: vulnerability from income/assets/multi-factor (A1-dependent). Low other_driven rate with high age_driven rate points to A1 extraction errors."
+    },
+    "M13_regulatory_citation_rate": 1.0,
+    "M14_explanation_completeness": {
+      "n_evaluated": 33,
+      "presence_rate": 1.0,
+      "quality_rate": 1.0,
+      "note": "presence_rate: non-empty explanation present per failed rule. quality_rate: explanation contains a numeric value (threshold/score/amount). quality_rate is the primary MiFID II Art. 25(2) compliance measure."
+    },
+    "M15_decision_traceability": 1.0,
+    "M15b_decision_traceability_v2": 1.0
+  }
+}

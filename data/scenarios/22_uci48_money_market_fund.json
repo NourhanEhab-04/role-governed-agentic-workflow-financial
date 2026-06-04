@@ -4,6 +4,28 @@
   "uci_source": "https://doi.org/10.24432/C5NC77",
   "rule_engine_score": 100,
   "rule_engine_decision": "SUITABLE",
+  "client_narrative": "Elena Bondarenko is 39 years old. Their gross annual income is approximately 23,800 euros (around 1,983 euros per month). They hold 18,000 euros in liquid savings and wish to invest 9,200 euros with a 2-year investment horizon. In terms of financial background, the client has no investment experience and has never purchased any financial product beyond basic bank savings accounts. Their investment approach is moderate-to-conservative — they rate their risk tolerance at 4 out of 10. They have confirmed they can afford to lose the entire 9,200 euros if the investment performs poorly. Their financial circumstances place them in the medium vulnerability category.",
+  "expected_client_profile": {
+    "financial_knowledge": "none",
+    "risk_tolerance_score": 4,
+    "investment_horizon": 2,
+    "liquid_assets": 18000.0,
+    "income": 23800.0,
+    "investment_amount": 9200.0,
+    "can_afford_total_loss": true,
+    "financial_vulnerability": "MEDIUM",
+    "age": 39
+  },
+  "product_narrative": "The product is a short-term money market fund investing exclusively in high-quality, short-duration eurozone sovereign and agency instruments rated at least A-. The fund is registered as a UCITS, listed on Euronext Amsterdam, publishes a KID, and uses no leverage or derivatives of any kind. Capital preservation is the primary objective. The recommended minimum investment period is one year.",
+  "expected_product_profile": {
+    "product_name": "Euro Money Market Fund",
+    "risk_class": 1,
+    "complexity_tier": "NON-COMPLEX",
+    "requires_knowledge_level": "none",
+    "minimum_horizon": 1,
+    "potential_loss": "partial",
+    "leverage": false
+  },
   "client": {
     "name": "Elena Bondarenko",
     "age": 39,

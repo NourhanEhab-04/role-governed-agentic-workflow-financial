@@ -12,6 +12,16 @@
     "financial_vulnerability": "HIGH",
     "age": 82
   },
+  "product_narrative": "The product is a single-stock call option on a large-cap European company traded on a regulated exchange. The holder acquires the right — but not the obligation — to buy shares at a fixed strike price on a defined expiry date. The entire premium paid may be lost if the option expires out of the money. The product is classified COMPLEX under MiFID II Article 25(4)(a) as a derivative with a non-linear payoff profile, requiring advanced product knowledge. It is a short-term speculative instrument with a minimum holding period of one year.",
+  "expected_product_profile": {
+    "product_name": "Single-Stock Call Option",
+    "risk_class": 6,
+    "complexity_tier": "COMPLEX",
+    "requires_knowledge_level": "advanced",
+    "minimum_horizon": 1,
+    "potential_loss": "total",
+    "leverage": false
+  },
   "client": {
     "name": "Yusuf Osman",
     "age": 82,

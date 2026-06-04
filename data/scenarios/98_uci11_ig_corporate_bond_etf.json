@@ -4,6 +4,28 @@
   "uci_source": "https://doi.org/10.24432/C5NC77",
   "rule_engine_score": 100,
   "rule_engine_decision": "SUITABLE",
+  "client_narrative": "Josip Kovačević is 24 years old. Their gross annual income is approximately 17,500 euros (around 1,458 euros per month). They hold 18,000 euros in liquid savings and wish to invest 5,500 euros with a 6-year investment horizon. In terms of financial background, the client has basic investment experience, limited to savings accounts, fixed-term deposits, and simple fixed-income products. Their investment approach is moderate — they rate their risk tolerance at 5 out of 10. They have stated they cannot afford to lose the full 5,500 euros invested. They have been assessed as financially vulnerable.",
+  "expected_client_profile": {
+    "financial_knowledge": "basic",
+    "risk_tolerance_score": 5,
+    "investment_horizon": 6,
+    "liquid_assets": 18000.0,
+    "income": 17500.0,
+    "investment_amount": 5500.0,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "HIGH",
+    "age": 24
+  },
+  "product_narrative": "The product is a UCITS exchange-traded fund tracking the Bloomberg Euro Aggregate Corporate Index, holding EUR-denominated investment-grade bonds rated at minimum BBB-. The fund publishes a KID, trades on regulated exchanges, uses no leverage, and contains no embedded derivatives. It is classified NON-COMPLEX under MiFID II Article 25(4)(a). The recommended minimum holding period is three years.",
+  "expected_product_profile": {
+    "product_name": "Euro Investment-Grade Corporate Bond ETF",
+    "risk_class": 3,
+    "complexity_tier": "NON-COMPLEX",
+    "requires_knowledge_level": "basic",
+    "minimum_horizon": 3,
+    "potential_loss": "partial",
+    "leverage": false
+  },
   "client": {
     "name": "Josip Kovačević",
     "age": 24,

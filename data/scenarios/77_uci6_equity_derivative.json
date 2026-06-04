@@ -4,6 +4,28 @@
   "uci_source": "https://doi.org/10.24432/C5NC77",
   "rule_engine_score": 100,
   "rule_engine_decision": "UNSUITABLE",
+  "client_narrative": "Dominik Wagner is 53 years old. Their gross annual income is approximately 65,500 euros (around 5,458 euros per month). They hold 43,300 euros in liquid savings and wish to invest 3,600 euros with a 3-year investment horizon. In terms of financial background, the client has basic investment experience, limited to savings accounts, fixed-term deposits, and simple fixed-income products. Their investment approach is moderate — they rate their risk tolerance at 6 out of 10. They have confirmed they can afford to lose the entire 3,600 euros if the investment performs poorly.",
+  "expected_client_profile": {
+    "financial_knowledge": "basic",
+    "risk_tolerance_score": 6,
+    "investment_horizon": 3,
+    "liquid_assets": 43300.0,
+    "income": 65500.0,
+    "investment_amount": 3600.0,
+    "can_afford_total_loss": true,
+    "financial_vulnerability": "LOW",
+    "age": 53
+  },
+  "product_narrative": "The product is a single-stock call option on a large-cap European company traded on a regulated exchange. The holder acquires the right — but not the obligation — to buy shares at a fixed strike price on a defined expiry date. The entire premium paid may be lost if the option expires out of the money. The product is classified COMPLEX under MiFID II Article 25(4)(a) as a derivative with a non-linear payoff profile, requiring advanced product knowledge. It is a short-term speculative instrument with a minimum holding period of one year.",
+  "expected_product_profile": {
+    "product_name": "Single-Stock Call Option",
+    "risk_class": 6,
+    "complexity_tier": "COMPLEX",
+    "requires_knowledge_level": "advanced",
+    "minimum_horizon": 1,
+    "potential_loss": "total",
+    "leverage": false
+  },
   "client": {
     "name": "Dominik Wagner",
     "age": 53,

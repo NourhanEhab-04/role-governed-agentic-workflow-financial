@@ -144,10 +144,15 @@ potential_loss: "partial" — losses are possible but full capital loss is not a
 MINIMUM HORIZON GUIDANCE
 ==============================================================
 
-Use these as defaults from the risk class table above.
-Override with a shorter horizon only if the product is explicitly
-designed as a short-term instrument (e.g. money market fund = 1 year,
-CFD = 1 year as speculative instrument).
+PRIORITY RULE — text wins over the table:
+If the product input EXPLICITLY states a minimum or recommended holding
+period (e.g. "minimum holding period of three years", "recommended
+investment horizon is five years", "minimum 3-year horizon"), use that
+EXACT value regardless of the risk class table default.
+
+Only fall back to the risk class table default when NO explicit horizon
+is stated in the input.
+
 Never set minimum_horizon to 0.
 
 ==============================================================
@@ -158,7 +163,7 @@ CLASSIFICATION DECISION PROCESS
 2. Match to the nearest risk class using the table above
 3. Apply the complexity, leverage, and potential_loss rules
 4. Set requires_knowledge_level based on the risk class
-5. Set minimum_horizon based on the risk class table
+5. Set minimum_horizon using explicit product text first. If no explicit horizon is stated, use the risk class table default.
 6. Return the JSON object — nothing else
 
 IF the product cannot be identified from the description, output:

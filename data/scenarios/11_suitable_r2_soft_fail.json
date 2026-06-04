@@ -1,7 +1,27 @@
 {
   "description": "Advanced client proposed complex derivative; risk tolerance (3) below threshold — R2 soft fail (−20), score 80 SUITABLE. Tests: single soft-fail does not prevent SUITABLE.",
   "client_narrative": "Lars Eriksson is 38 years old and works as a quantitative analyst at an asset management firm. His annual gross income is approximately 90,000 euros. He holds 120,000 euros in liquid savings and wants to invest 20,000 euros with a 2-year horizon. Over the past ten years he has actively traded equity options, index futures, and structured leveraged products in addition to equities and fixed income instruments. He rates his risk tolerance at 3 out of 10 on this particular occasion — he acknowledges he is taking a cautious stance given some personal financial commitments — but has signed a written declaration confirming he can afford to lose the entire invested amount if the worst outcome occurs. His objective is short-term speculation.",
+  "expected_client_profile": {
+    "financial_knowledge": "advanced",
+    "risk_tolerance_score": 3,
+    "investment_horizon": 2,
+    "liquid_assets": 120000.0,
+    "income": 90000.0,
+    "investment_amount": 20000.0,
+    "can_afford_total_loss": true,
+    "financial_vulnerability": "LOW",
+    "age": 38
+  },
   "product_narrative": "The product is a European-style equity call option on a major stock index, traded on a regulated derivatives exchange. It is classified as a complex financial instrument, publishes a KID, and requires no minimum holding period. Advanced financial knowledge is required to understand the payoff structure, exercise mechanics, and potential for complete loss of the premium paid. The product uses no leverage beyond the inherent leverage of the option structure itself, though in adverse scenarios the entire invested premium can be lost.",
+  "expected_product_profile": {
+    "product_name": "Single-Stock Call Option",
+    "risk_class": 6,
+    "complexity_tier": "COMPLEX",
+    "requires_knowledge_level": "advanced",
+    "minimum_horizon": 1,
+    "potential_loss": "total",
+    "leverage": false
+  },
   "client": {
     "name": "Lars Eriksson",
     "age": 38,

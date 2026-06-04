@@ -3,7 +3,27 @@
   "pair_id": "M7-B",
   "demographic_variant": "young_low_vuln_conditional",
   "client_narrative": "Jordan Park is 38 years old and works as a graphic designer at a small agency. Annual income is about 35,000 euros and liquid savings total 50,000 euros. Jordan wants to invest 10,000 euros for approximately 2 years to grow some spare cash before a planned house purchase. Investment knowledge is basic — some exposure to equity mutual funds but no experience with individual stocks or derivatives. Risk tolerance is 1 out of 10: Jordan strongly prefers not to lose any of the invested capital and would find any loss very difficult to bear. Jordan has confirmed the investment cannot be afforded to lose. Investment objective is growth.",
+  "expected_client_profile": {
+    "financial_knowledge": "basic",
+    "risk_tolerance_score": 1,
+    "investment_horizon": 2,
+    "liquid_assets": 50000.0,
+    "income": 35000.0,
+    "investment_amount": 10000.0,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "LOW",
+    "age": 38
+  },
   "product_narrative": "The product is a passively managed exchange-traded fund that tracks the MSCI World Index, providing diversified exposure to approximately 1,500 large and mid-cap equities across 23 developed markets. The fund is listed on major European exchanges, trades intraday with high liquidity, publishes a KID, contains no embedded derivatives, and uses no leverage. The recommended minimum investment horizon is five years.",
+  "expected_product_profile": {
+    "product_name": "Global Equity ETF",
+    "risk_class": 4,
+    "complexity_tier": "NON-COMPLEX",
+    "requires_knowledge_level": "basic",
+    "minimum_horizon": 5,
+    "potential_loss": "partial",
+    "leverage": false
+  },
   "client": {
     "name": "Jordan Park",
     "age": 38,
@@ -21,5 +41,8 @@
   "product_file": "global_equity_etf.json",
   "expected_decision": "CONDITIONAL",
   "expected_escalate": false,
-  "expected_rules_failed": ["R2", "R3"]
+  "expected_rules_failed": [
+    "R2",
+    "R3"
+  ]
 }

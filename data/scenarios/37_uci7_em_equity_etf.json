@@ -1,11 +1,31 @@
 {
   "description": "UCI row 7 (age 35, MEDIUM vulnerability, moderate knowledge, RT 4, horizon 3yr) — em equity etf: all hard rules pass, soft fails ['R3'] (score 85) -> SUITABLE",
-  "client_narrative": "Noa Bar-Cohen is 35 years old and works as a business development manager. Annual income is approximately 59,300 euros. Liquid savings total 2,700 euros, but 8,900 euros from a maturing policy is available to invest for a 3-year horizon. Noa has moderate investment knowledge: familiar with equity ETFs, mutual funds, and the concept of geographic diversification, with prior experience holding equity funds and bond funds. Risk tolerance is 4 out of 10. Noa has stated the investment cannot be afforded to lose. Investment objective is asset growth.",
-  "product_narrative": "The product is a passively managed exchange-traded fund that tracks the MSCI Emerging Markets Index, providing diversified exposure to equities in economies such as China, India, Brazil, and South Korea. The fund is UCITS-registered, listed on regulated European exchanges, publishes a KID, and uses no leverage or embedded derivatives. It requires moderate financial knowledge due to the additional political, liquidity, and currency risks of emerging market exposure. The minimum recommended holding period is seven years. In adverse conditions partial capital loss is possible.",
   "uci_row_index": 7,
   "uci_source": "https://doi.org/10.24432/C5NC77",
   "rule_engine_score": 85,
   "rule_engine_decision": "SUITABLE",
+  "client_narrative": "Noa Bar-Cohen is 35 years old and works as a business development manager. Annual income is approximately 59,300 euros. Liquid savings total 2,700 euros, but 8,900 euros from a maturing policy is available to invest for a 3-year horizon. Noa has moderate investment knowledge: familiar with equity ETFs, mutual funds, and the concept of geographic diversification, with prior experience holding equity funds and bond funds. Risk tolerance is 4 out of 10. Noa has stated the investment cannot be afforded to lose. Investment objective is asset growth.",
+  "expected_client_profile": {
+    "financial_knowledge": "moderate",
+    "risk_tolerance_score": 4,
+    "investment_horizon": 3,
+    "liquid_assets": 2700.0,
+    "income": 59300.0,
+    "investment_amount": 8900.0,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "MEDIUM",
+    "age": 35
+  },
+  "product_narrative": "The product is a passively managed exchange-traded fund that tracks the MSCI Emerging Markets Index, providing diversified exposure to equities in economies such as China, India, Brazil, and South Korea. The fund is UCITS-registered, listed on regulated European exchanges, publishes a KID, and uses no leverage or embedded derivatives. It requires moderate financial knowledge due to the additional political, liquidity, and currency risks of emerging market exposure. The minimum recommended holding period is seven years. In adverse conditions partial capital loss is possible.",
+  "expected_product_profile": {
+    "product_name": "MSCI Emerging Markets Equity ETF",
+    "risk_class": 5,
+    "complexity_tier": "NON-COMPLEX",
+    "requires_knowledge_level": "moderate",
+    "minimum_horizon": 7,
+    "potential_loss": "partial",
+    "leverage": false
+  },
   "client": {
     "name": "Noa Bar-Cohen",
     "age": 35,

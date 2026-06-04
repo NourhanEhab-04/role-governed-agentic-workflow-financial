@@ -1,0 +1,338 @@
+[
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R2",
+      "R4",
+      "R5",
+      "R6"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R2",
+      "R4",
+      "R5",
+      "R6"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "FAIL",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "FAIL",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "moderate",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 3,
+      "liquid_assets": 100000.0,
+      "income": 70000.0,
+      "investment_amount": 80000.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 45
+    },
+    "output_product_profile": {
+      "product_name": "3x Leveraged Synthetic Equity ETF",
+      "risk_class": 7,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": true
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": true,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R1",
+      "R4",
+      "R5"
+    ],
+    "client_vulnerability": "HIGH",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R1 (knowledge), R4 (affordability), R5 (vulnerability).",
+    "output_rule_explanations": {
+      "R1": "Knowledge check failed: the product requires 'advanced' knowledge (score 9) but your profile shows 'moderate' knowledge (score 6) \u2014 a gap of 3 points.",
+      "R2": "Risk alignment failed: the product's risk class is 7, but your risk tolerance score is 4; MiFID II permits a maximum gap of 2 (4 + 2 = 6), so the product exceeds your risk appetite by 1 class.",
+      "R3": "Your investment horizon of 3 years meets the product's 1-year minimum.",
+      "R4": "Affordability check failed: you indicated you cannot afford a total loss, but this product carries a 'total' potential loss rating.",
+      "R5": "Vulnerability check failed: your financial vulnerability is rated HIGH and the product's risk class is 7 (\u2265 5), making it unsuitable for vulnerable clients.",
+      "R6": "Leverage check failed: this product uses leverage, which requires a risk tolerance score of at least 7; your score is 4.",
+      "R7": "The product's complexity tier is 'COMPLEX', which is appropriate for your knowledge level of 'moderate'."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "moderate",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 3,
+      "liquid_assets": 100000.0,
+      "income": 70000.0,
+      "investment_amount": 80000.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 45
+    },
+    "expected_product_profile": {
+      "product_name": "3x Leveraged S&P500 ETF",
+      "risk_class": 7,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": true
+    },
+    "scenario_id": "08_escalated_leveraged",
+    "run_number": 1,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R2",
+      "R4",
+      "R5",
+      "R6"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R2",
+      "R4",
+      "R5",
+      "R6"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "FAIL",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "FAIL",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "moderate",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 3,
+      "liquid_assets": 100000.0,
+      "income": 70000.0,
+      "investment_amount": 80000.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 45
+    },
+    "output_product_profile": {
+      "product_name": "3x Leveraged Synthetic Equity ETF",
+      "risk_class": 7,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": true
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": true,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R1",
+      "R4",
+      "R5"
+    ],
+    "client_vulnerability": "HIGH",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R1 (knowledge), R4 (affordability), R5 (vulnerability).",
+    "output_rule_explanations": {
+      "R1": "Knowledge check failed: the product requires 'advanced' knowledge (score 9) but your profile shows 'moderate' knowledge (score 6) \u2014 a gap of 3 points.",
+      "R2": "Risk alignment failed: the product's risk class is 7, but your risk tolerance score is 4; MiFID II permits a maximum gap of 2 (4 + 2 = 6), so the product exceeds your risk appetite by 1 class.",
+      "R3": "Your investment horizon of 3 years meets the product's 1-year minimum.",
+      "R4": "Affordability check failed: you indicated you cannot afford a total loss, but this product carries a 'total' potential loss rating.",
+      "R5": "Vulnerability check failed: your financial vulnerability is rated HIGH and the product's risk class is 7 (\u2265 5), making it unsuitable for vulnerable clients.",
+      "R6": "Leverage check failed: this product uses leverage, which requires a risk tolerance score of at least 7; your score is 4.",
+      "R7": "Your financial knowledge level of 'moderate' meets the product's complexity requirement."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "moderate",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 3,
+      "liquid_assets": 100000.0,
+      "income": 70000.0,
+      "investment_amount": 80000.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 45
+    },
+    "expected_product_profile": {
+      "product_name": "3x Leveraged S&P500 ETF",
+      "risk_class": 7,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": true
+    },
+    "scenario_id": "08_escalated_leveraged",
+    "run_number": 2,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R2",
+      "R4",
+      "R5",
+      "R6"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R2",
+      "R4",
+      "R5",
+      "R6"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "FAIL",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "FAIL",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "moderate",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 3,
+      "liquid_assets": 100000.0,
+      "income": 70000.0,
+      "investment_amount": 80000.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 45
+    },
+    "output_product_profile": {
+      "product_name": "3x Leveraged Synthetic Equity ETF",
+      "risk_class": 7,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": true
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": true,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R1",
+      "R4",
+      "R5"
+    ],
+    "client_vulnerability": "HIGH",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R1 (knowledge), R4 (affordability), R5 (vulnerability).",
+    "output_rule_explanations": {
+      "R1": "Knowledge check failed: the product requires 'advanced' knowledge (score 9) but your profile shows 'moderate' knowledge (score 6) \u2014 a gap of 3 points.",
+      "R2": "Risk alignment failed: the product's risk class is 7, but your risk tolerance score is 4; MiFID II permits a maximum gap of 2 (4 + 2 = 6), so the product exceeds your risk appetite by 1 class.",
+      "R3": "Your investment horizon of 3 years meets the product's 1-year minimum.",
+      "R4": "Affordability check failed: you indicated you cannot afford a total loss, but this product carries a 'total' potential loss rating.",
+      "R5": "Vulnerability check failed: your financial vulnerability is rated HIGH and the product's risk class is 7 (\u2265 5), making it unsuitable for vulnerable clients.",
+      "R6": "Leverage check failed: this product uses leverage, which requires a risk tolerance score of at least 7; your score is 4.",
+      "R7": "Your financial knowledge level of 'moderate' meets the required threshold for the product's complexity tier of 'COMPLEX'."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "moderate",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 3,
+      "liquid_assets": 100000.0,
+      "income": 70000.0,
+      "investment_amount": 80000.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 45
+    },
+    "expected_product_profile": {
+      "product_name": "3x Leveraged S&P500 ETF",
+      "risk_class": 7,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": true
+    },
+    "scenario_id": "08_escalated_leveraged",
+    "run_number": 3,
+    "architecture": "pipeline"
+  }
+]

@@ -1,5 +1,27 @@
 {
   "description": "SUITABLE — LOW-vuln, portfolio_concentration_pct=60% + em_equity_etf. R3 soft-fails (horizon 6 < min_horizon 7, score=85). Concentration=60% does not trigger: risk_class=5 < 6, vulnerability=LOW (requires >60% AND risk_class ≥ 6, OR >40% AND HIGH vuln).",
+  "client_narrative": "Carlos Mendez is 38 years old. Their gross annual income is approximately 90,000 euros (around 7,500 euros per month). They hold 300,000 euros in liquid savings and wish to invest 100,000 euros with a 6-year investment horizon. In terms of financial background, the client has moderate investment experience, including equities, mutual funds, and standard bond instruments. Their investment approach is moderate — they rate their risk tolerance at 5 out of 10. They have confirmed they can afford to lose the entire 100,000 euros if the investment performs poorly.",
+  "expected_client_profile": {
+    "financial_knowledge": "moderate",
+    "risk_tolerance_score": 5,
+    "investment_horizon": 6,
+    "liquid_assets": 300000.0,
+    "income": 90000.0,
+    "investment_amount": 100000.0,
+    "can_afford_total_loss": true,
+    "financial_vulnerability": "LOW",
+    "age": 38
+  },
+  "product_narrative": "The product is a UCITS exchange-traded fund tracking the MSCI Emerging Markets Index, providing exposure to equity markets across 24 emerging-market countries. The fund publishes a KID, trades intraday on regulated exchanges, uses no leverage, and holds no embedded derivatives. It is classified NON-COMPLEX under MiFID II Article 25(4)(a). Due to elevated market and currency risk, moderate financial knowledge is expected from investors. The recommended minimum holding period is seven years.",
+  "expected_product_profile": {
+    "product_name": "MSCI Emerging Markets Equity ETF",
+    "risk_class": 5,
+    "complexity_tier": "NON-COMPLEX",
+    "requires_knowledge_level": "moderate",
+    "minimum_horizon": 7,
+    "potential_loss": "partial",
+    "leverage": false
+  },
   "client": {
     "name": "Carlos Mendez",
     "age": 38,
@@ -17,5 +39,7 @@
   "product_file": "em_equity_etf.json",
   "expected_decision": "SUITABLE",
   "expected_escalate": false,
-  "expected_rules_failed": ["R3"]
+  "expected_rules_failed": [
+    "R3"
+  ]
 }

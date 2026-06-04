@@ -12,20 +12,6 @@
     "financial_vulnerability": "LOW",
     "age": 67
   },
-  "client": {
-    "name": "Maria Santos",
-    "age": 67,
-    "financial_knowledge": "basic",
-    "risk_tolerance_score": 2,
-    "investment_horizon": 2,
-    "liquid_assets": 80000.0,
-    "income": 25000.0,
-    "investment_amount": 50000,
-    "can_afford_total_loss": false,
-    "financial_vulnerability": "LOW",
-    "portfolio_concentration_pct": 10,
-    "investment_objective": "capital preservation"
-  },
   "product_narrative": "The product is a short-term money market fund investing exclusively in high-quality, short-duration eurozone sovereign and agency instruments rated at least A-. The fund is registered as a UCITS, listed on Euronext Amsterdam, publishes a KID, and uses no leverage or derivatives of any kind. Capital preservation is the primary objective. The recommended minimum investment period is one year.",
   "expected_product_profile": {
     "product_name": "Euro Money Market Fund",
@@ -36,7 +22,6 @@
     "potential_loss": "partial",
     "leverage": false
   },
-  "product_file": "money_market_fund.json",
   "expected_decision": "SUITABLE",
   "expected_escalate": false,
   "expected_rules_failed": []

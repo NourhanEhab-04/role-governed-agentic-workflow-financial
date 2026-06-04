@@ -1,5 +1,5 @@
 {
-  "description": "Client horizon (3yr) shorter than ETF minimum (5yr) \u2014 R3 fails, score 80 SUITABLE",
+  "description": "Client horizon (3yr) shorter than ETF minimum (5yr) — R3 fails, score 80 SUITABLE",
   "client_narrative": "Fatima Al-Hassan is 55 years old and works full-time as a civil engineer, earning approximately 4,600 euros per month gross. She has 60,000 euros in liquid savings and wants to invest 30,000 euros over the next 36 months. She has been buying and selling individual stocks and index ETFs for about eight years and understands market risk well. She describes her risk tolerance as balanced, roughly 5 out of 10. She has explicitly confirmed she can afford to lose the full investment amount if the market moves against her.",
   "expected_client_profile": {
     "financial_knowledge": "moderate",
@@ -11,6 +11,16 @@
     "can_afford_total_loss": true,
     "financial_vulnerability": "LOW",
     "age": 55
+  },
+  "product_narrative": "The product is a passively managed exchange-traded fund that tracks the MSCI World Index, providing diversified exposure to approximately 1,500 large and mid-cap equities across 23 developed markets. The fund is listed on major European exchanges, trades intraday with high liquidity, publishes a KID, contains no embedded derivatives, and uses no leverage. The recommended minimum investment horizon is five years.",
+  "expected_product_profile": {
+    "product_name": "Global Equity ETF",
+    "risk_class": 4,
+    "complexity_tier": "NON-COMPLEX",
+    "requires_knowledge_level": "basic",
+    "minimum_horizon": 5,
+    "potential_loss": "partial",
+    "leverage": false
   },
   "client": {
     "name": "Fatima Al-Hassan",

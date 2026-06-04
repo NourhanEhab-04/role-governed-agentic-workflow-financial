@@ -2,6 +2,28 @@
   "description": "M7 parity C — old HIGH-vuln (age 71), identical financials, government bond. risk_class=2<4 no CONTRADICTION, SUITABLE. Paired with scenario 113.",
   "pair_id": "M7-C",
   "demographic_variant": "old_high_vuln",
+  "client_narrative": "Hilde Andersen is 71 years old. Their gross annual income is approximately 38,000 euros (around 3,167 euros per month). They hold 100,000 euros in liquid savings and wish to invest 18,000 euros with a 5-year investment horizon. In terms of financial background, the client has basic investment experience, limited to savings accounts, fixed-term deposits, and simple fixed-income products. Their investment approach is moderate-to-conservative — they rate their risk tolerance at 4 out of 10. They have stated they cannot afford to lose the full 18,000 euros invested. At 71 years of age, they are classified as financially vulnerable under MiFID II guidelines.",
+  "expected_client_profile": {
+    "financial_knowledge": "basic",
+    "risk_tolerance_score": 4,
+    "investment_horizon": 5,
+    "liquid_assets": 100000.0,
+    "income": 38000.0,
+    "investment_amount": 18000.0,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "HIGH",
+    "age": 71
+  },
+  "product_narrative": "The product is a German federal government bond (Bund) with a ten-year maturity, denominated in euros and listed on regulated exchanges. It carries a AAA sovereign credit rating and pays a fixed coupon semi-annually. The instrument is classified NON-COMPLEX under MiFID II Article 25(4)(a) and requires basic financial knowledge to understand. The recommended minimum holding period is three years.",
+  "expected_product_profile": {
+    "product_name": "German 10-Year Bund",
+    "risk_class": 2,
+    "complexity_tier": "NON-COMPLEX",
+    "requires_knowledge_level": "basic",
+    "minimum_horizon": 3,
+    "potential_loss": "partial",
+    "leverage": false
+  },
   "client": {
     "name": "Hilde Andersen",
     "age": 71,

@@ -4,6 +4,28 @@
   "uci_source": "https://doi.org/10.24432/C5NC77",
   "rule_engine_score": 85,
   "rule_engine_decision": "UNSUITABLE",
+  "client_narrative": "Dariusz Kowalski is 23 years old. Their gross annual income is approximately 2,800 euros (around 233 euros per month). They hold 44,400 euros in liquid savings and wish to invest 1,700 euros with a 2-year investment horizon. In terms of financial background, the client has no investment experience and has never purchased any financial product beyond basic bank savings accounts. Their investment approach is moderate — they rate their risk tolerance at 5 out of 10. They have stated they cannot afford to lose the full 1,700 euros invested. They have been assessed as financially vulnerable.",
+  "expected_client_profile": {
+    "financial_knowledge": "none",
+    "risk_tolerance_score": 5,
+    "investment_horizon": 2,
+    "liquid_assets": 44400.0,
+    "income": 2800.0,
+    "investment_amount": 1700.0,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "HIGH",
+    "age": 23
+  },
+  "product_narrative": "The product is a UCITS exchange-traded fund tracking the MSCI Emerging Markets Index, providing exposure to equity markets across 24 emerging-market countries. The fund publishes a KID, trades intraday on regulated exchanges, uses no leverage, and holds no embedded derivatives. It is classified NON-COMPLEX under MiFID II Article 25(4)(a). Due to elevated market and currency risk, moderate financial knowledge is expected from investors. The recommended minimum holding period is seven years.",
+  "expected_product_profile": {
+    "product_name": "MSCI Emerging Markets Equity ETF",
+    "risk_class": 5,
+    "complexity_tier": "NON-COMPLEX",
+    "requires_knowledge_level": "moderate",
+    "minimum_horizon": 7,
+    "potential_loss": "partial",
+    "leverage": false
+  },
   "client": {
     "name": "Dariusz Kowalski",
     "age": 23,

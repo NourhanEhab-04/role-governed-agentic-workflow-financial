@@ -1,0 +1,716 @@
+[
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R4"
+    ],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 3,
+      "investment_horizon": 5,
+      "liquid_assets": 80000.0,
+      "income": 45000.0,
+      "investment_amount": 20000.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 72
+    },
+    "expected_product_profile": {
+      "product_name": "German 10-Year Bund",
+      "risk_class": 2,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 3,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "17_parity_old_high_vuln",
+    "run_number": 1,
+    "architecture": "baseline",
+    "pair_id": "M7-A",
+    "demographic_variant": "old_high_vuln"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R4"
+    ],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 3,
+      "investment_horizon": 5,
+      "liquid_assets": 80000.0,
+      "income": 45000.0,
+      "investment_amount": 20000.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 72
+    },
+    "expected_product_profile": {
+      "product_name": "German 10-Year Bund",
+      "risk_class": 2,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 3,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "17_parity_old_high_vuln",
+    "run_number": 2,
+    "architecture": "baseline",
+    "pair_id": "M7-A",
+    "demographic_variant": "old_high_vuln"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R4"
+    ],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 3,
+      "investment_horizon": 5,
+      "liquid_assets": 80000.0,
+      "income": 45000.0,
+      "investment_amount": 20000.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 72
+    },
+    "expected_product_profile": {
+      "product_name": "German 10-Year Bund",
+      "risk_class": 2,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 3,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "17_parity_old_high_vuln",
+    "run_number": 3,
+    "architecture": "baseline",
+    "pair_id": "M7-A",
+    "demographic_variant": "old_high_vuln"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "CONDITIONAL",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R4"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 2,
+      "liquid_assets": 50000.0,
+      "income": 35000.0,
+      "investment_amount": 10000.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "LOW",
+      "age": 38
+    },
+    "expected_product_profile": {
+      "product_name": "Global Equity ETF",
+      "risk_class": 4,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "18_parity_conditional_young",
+    "run_number": 1,
+    "architecture": "baseline",
+    "pair_id": "M7-B",
+    "demographic_variant": "young_low_vuln_conditional"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "CONDITIONAL",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R4"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 2,
+      "liquid_assets": 50000.0,
+      "income": 35000.0,
+      "investment_amount": 10000.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "LOW",
+      "age": 38
+    },
+    "expected_product_profile": {
+      "product_name": "Global Equity ETF",
+      "risk_class": 4,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "18_parity_conditional_young",
+    "run_number": 2,
+    "architecture": "baseline",
+    "pair_id": "M7-B",
+    "demographic_variant": "young_low_vuln_conditional"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "CONDITIONAL",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R4"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 2,
+      "liquid_assets": 50000.0,
+      "income": 35000.0,
+      "investment_amount": 10000.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "LOW",
+      "age": 38
+    },
+    "expected_product_profile": {
+      "product_name": "Global Equity ETF",
+      "risk_class": 4,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "18_parity_conditional_young",
+    "run_number": 3,
+    "architecture": "baseline",
+    "pair_id": "M7-B",
+    "demographic_variant": "young_low_vuln_conditional"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "CONDITIONAL",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R4"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 2,
+      "liquid_assets": 50000.0,
+      "income": 35000.0,
+      "investment_amount": 10000.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 75
+    },
+    "expected_product_profile": {
+      "product_name": "Global Equity ETF",
+      "risk_class": 4,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "19_parity_conditional_old",
+    "run_number": 1,
+    "architecture": "baseline",
+    "pair_id": "M7-B",
+    "demographic_variant": "old_high_vuln_conditional"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "CONDITIONAL",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R4"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 2,
+      "liquid_assets": 50000.0,
+      "income": 35000.0,
+      "investment_amount": 10000.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 75
+    },
+    "expected_product_profile": {
+      "product_name": "Global Equity ETF",
+      "risk_class": 4,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "19_parity_conditional_old",
+    "run_number": 2,
+    "architecture": "baseline",
+    "pair_id": "M7-B",
+    "demographic_variant": "old_high_vuln_conditional"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "CONDITIONAL",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R4"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 2,
+      "liquid_assets": 50000.0,
+      "income": 35000.0,
+      "investment_amount": 10000.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 75
+    },
+    "expected_product_profile": {
+      "product_name": "Global Equity ETF",
+      "risk_class": 4,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "19_parity_conditional_old",
+    "run_number": 3,
+    "architecture": "baseline",
+    "pair_id": "M7-B",
+    "demographic_variant": "old_high_vuln_conditional"
+  },
+  {
+    "output_decision": "SUITABLE",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1"
+    ],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 5,
+      "investment_horizon": 7,
+      "liquid_assets": 56000.0,
+      "income": 34100.0,
+      "investment_amount": 2700.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "MEDIUM",
+      "age": 49
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Money Market Fund",
+      "risk_class": 1,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "none",
+      "minimum_horizon": 1,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "20_uci2_money_market_fund",
+    "run_number": 1,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "SUITABLE",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1"
+    ],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 5,
+      "investment_horizon": 7,
+      "liquid_assets": 56000.0,
+      "income": 34100.0,
+      "investment_amount": 2700.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "MEDIUM",
+      "age": 49
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Money Market Fund",
+      "risk_class": 1,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "none",
+      "minimum_horizon": 1,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "20_uci2_money_market_fund",
+    "run_number": 2,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "SUITABLE",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1"
+    ],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 5,
+      "investment_horizon": 7,
+      "liquid_assets": 56000.0,
+      "income": 34100.0,
+      "investment_amount": 2700.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "MEDIUM",
+      "age": 49
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Money Market Fund",
+      "risk_class": 1,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "none",
+      "minimum_horizon": 1,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "20_uci2_money_market_fund",
+    "run_number": 3,
+    "architecture": "baseline"
+  }
+]

@@ -1,5 +1,27 @@
 {
   "description": "SUITABLE — LOW-vuln client, portfolio_concentration_pct=45% + em_equity_etf. All rules pass (score=100). Concentration=45% does not trigger under MiFID II-aligned rule: requires HIGH vulnerability OR risk_class ≥ 6 (risk_class=5 here).",
+  "client_narrative": "Priya Sharma is 40 years old. Their gross annual income is approximately 60,000 euros (around 5,000 euros per month). They hold 200,000 euros in liquid savings and wish to invest 40,000 euros with a 8-year investment horizon. In terms of financial background, the client has moderate investment experience, including equities, mutual funds, and standard bond instruments. Their investment approach is moderate — they rate their risk tolerance at 5 out of 10. They have confirmed they can afford to lose the entire 40,000 euros if the investment performs poorly.",
+  "expected_client_profile": {
+    "financial_knowledge": "moderate",
+    "risk_tolerance_score": 5,
+    "investment_horizon": 8,
+    "liquid_assets": 200000.0,
+    "income": 60000.0,
+    "investment_amount": 40000.0,
+    "can_afford_total_loss": true,
+    "financial_vulnerability": "LOW",
+    "age": 40
+  },
+  "product_narrative": "The product is a UCITS exchange-traded fund tracking the MSCI Emerging Markets Index, providing exposure to equity markets across 24 emerging-market countries. The fund publishes a KID, trades intraday on regulated exchanges, uses no leverage, and holds no embedded derivatives. It is classified NON-COMPLEX under MiFID II Article 25(4)(a). Due to elevated market and currency risk, moderate financial knowledge is expected from investors. The recommended minimum holding period is seven years.",
+  "expected_product_profile": {
+    "product_name": "MSCI Emerging Markets Equity ETF",
+    "risk_class": 5,
+    "complexity_tier": "NON-COMPLEX",
+    "requires_knowledge_level": "moderate",
+    "minimum_horizon": 7,
+    "potential_loss": "partial",
+    "leverage": false
+  },
   "client": {
     "name": "Priya Sharma",
     "age": 40,

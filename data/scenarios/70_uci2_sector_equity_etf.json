@@ -4,6 +4,28 @@
   "uci_source": "https://doi.org/10.24432/C5NC77",
   "rule_engine_score": 100,
   "rule_engine_decision": "UNSUITABLE",
+  "client_narrative": "Gunnar Erikson is 49 years old. Their gross annual income is approximately 34,100 euros (around 2,842 euros per month). They hold 56,000 euros in liquid savings and wish to invest 2,700 euros with a 7-year investment horizon. In terms of financial background, the client has no investment experience and has never purchased any financial product beyond basic bank savings accounts. Their investment approach is moderate — they rate their risk tolerance at 5 out of 10. They have confirmed they can afford to lose the entire 2,700 euros if the investment performs poorly. Their financial circumstances place them in the medium vulnerability category.",
+  "expected_client_profile": {
+    "financial_knowledge": "none",
+    "risk_tolerance_score": 5,
+    "investment_horizon": 7,
+    "liquid_assets": 56000.0,
+    "income": 34100.0,
+    "investment_amount": 2700.0,
+    "can_afford_total_loss": true,
+    "financial_vulnerability": "MEDIUM",
+    "age": 49
+  },
+  "product_narrative": "The product is a UCITS exchange-traded fund providing concentrated exposure to European technology and digitisation sector companies. The fund publishes a KID, trades intraday on regulated exchanges, uses no leverage, and holds no embedded derivatives. It is classified NON-COMPLEX under MiFID II Article 25(4)(a). Sector concentration produces higher volatility than diversified equity funds; basic financial knowledge is required. The recommended minimum holding period is five years.",
+  "expected_product_profile": {
+    "product_name": "Euro Technology Sector Equity ETF",
+    "risk_class": 5,
+    "complexity_tier": "NON-COMPLEX",
+    "requires_knowledge_level": "basic",
+    "minimum_horizon": 5,
+    "potential_loss": "partial",
+    "leverage": false
+  },
   "client": {
     "name": "Gunnar Erikson",
     "age": 49,

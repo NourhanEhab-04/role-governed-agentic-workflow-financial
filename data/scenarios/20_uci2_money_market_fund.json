@@ -1,11 +1,31 @@
 {
   "description": "UCI row 2 (age 49, MEDIUM vulnerability, none knowledge, RT 5, horizon 7yr) — money market fund: all hard rules pass (score 100) -> SUITABLE",
-  "client_narrative": "Marta Osei is 49 years old and works part-time as a community health worker. Her annual income is approximately 34,100 euros and she holds 56,000 euros in accessible savings. She wants to invest 2,700 euros and is comfortable holding the investment for up to 7 years. She has no prior investment experience and describes her knowledge of financial instruments as none — she has only ever used a current account and a postal savings product. She rates her risk tolerance at 5 out of 10 and has stated that she can afford to lose the full amount invested if that outcome occurs. Her long-term goal is to grow her savings.",
-  "product_narrative": "The product is a short-term money market fund investing exclusively in high-quality, short-duration eurozone sovereign and agency instruments rated at least A-. The fund is registered as a UCITS, listed on Euronext Amsterdam, publishes a KID, and uses no leverage or derivatives of any kind. Capital preservation is the primary objective. The recommended minimum investment period is one year.",
   "uci_row_index": 2,
   "uci_source": "https://doi.org/10.24432/C5NC77",
   "rule_engine_score": 100,
   "rule_engine_decision": "SUITABLE",
+  "client_narrative": "Marta Osei is 49 years old and works part-time as a community health worker. Her annual income is approximately 34,100 euros and she holds 56,000 euros in accessible savings. She wants to invest 2,700 euros and is comfortable holding the investment for up to 7 years. She has no prior investment experience and describes her knowledge of financial instruments as none — she has only ever used a current account and a postal savings product. She rates her risk tolerance at 5 out of 10 and has stated that she can afford to lose the full amount invested if that outcome occurs. Her long-term goal is to grow her savings.",
+  "expected_client_profile": {
+    "financial_knowledge": "none",
+    "risk_tolerance_score": 5,
+    "investment_horizon": 7,
+    "liquid_assets": 56000.0,
+    "income": 34100.0,
+    "investment_amount": 2700.0,
+    "can_afford_total_loss": true,
+    "financial_vulnerability": "MEDIUM",
+    "age": 49
+  },
+  "product_narrative": "The product is a short-term money market fund investing exclusively in high-quality, short-duration eurozone sovereign and agency instruments rated at least A-. The fund is registered as a UCITS, listed on Euronext Amsterdam, publishes a KID, and uses no leverage or derivatives of any kind. Capital preservation is the primary objective. The recommended minimum investment period is one year.",
+  "expected_product_profile": {
+    "product_name": "Euro Money Market Fund",
+    "risk_class": 1,
+    "complexity_tier": "NON-COMPLEX",
+    "requires_knowledge_level": "none",
+    "minimum_horizon": 1,
+    "potential_loss": "partial",
+    "leverage": false
+  },
   "client": {
     "name": "Marta Osei",
     "age": 49,

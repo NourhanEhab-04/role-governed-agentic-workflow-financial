@@ -4,6 +4,28 @@
   "uci_source": "https://doi.org/10.24432/C5NC77",
   "rule_engine_score": 80,
   "rule_engine_decision": "UNSUITABLE",
+  "client_narrative": "Marko Jovanović is 57 years old. Their gross annual income is approximately 48,300 euros (around 4,025 euros per month). They hold 1,400 euros in liquid savings and wish to invest 1,600 euros with a 4-year investment horizon. In terms of financial background, the client has no investment experience and has never purchased any financial product beyond basic bank savings accounts. Their investment approach is very conservative — they rate their risk tolerance at 1 out of 10. They have stated they cannot afford to lose the full 1,600 euros invested. Their financial circumstances place them in the medium vulnerability category.",
+  "expected_client_profile": {
+    "financial_knowledge": "none",
+    "risk_tolerance_score": 1,
+    "investment_horizon": 4,
+    "liquid_assets": 1400.0,
+    "income": 48300.0,
+    "investment_amount": 1600.0,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "MEDIUM",
+    "age": 57
+  },
+  "product_narrative": "The product is a single-stock call option on a large-cap European company traded on a regulated exchange. The holder acquires the right — but not the obligation — to buy shares at a fixed strike price on a defined expiry date. The entire premium paid may be lost if the option expires out of the money. The product is classified COMPLEX under MiFID II Article 25(4)(a) as a derivative with a non-linear payoff profile, requiring advanced product knowledge. It is a short-term speculative instrument with a minimum holding period of one year.",
+  "expected_product_profile": {
+    "product_name": "Single-Stock Call Option",
+    "risk_class": 6,
+    "complexity_tier": "COMPLEX",
+    "requires_knowledge_level": "advanced",
+    "minimum_horizon": 1,
+    "potential_loss": "total",
+    "leverage": false
+  },
   "client": {
     "name": "Marko Jovanović",
     "age": 57,

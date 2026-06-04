@@ -77,7 +77,7 @@ def load_product(product_file: str) -> dict:
     return json.loads((PRODUCTS_DIR / product_file).read_text(encoding="utf-8"))
 
 
-def expected_rules_for_scenario(scenario: dict, product: dict) -> dict:
+def expected_rules_for_scenario(scenario: dict) -> dict:
     """
     Derive expected per-rule PASS/FAIL from expected_rules_failed.
     All rules not in expected_rules_failed are PASS.
@@ -94,7 +94,7 @@ def _extract_failed_rules_from_pipeline(state: dict) -> list[str]:
     return []
 
 
-def _extract_pipeline_result(state: dict, scenario: dict, product: dict) -> dict:
+def _extract_pipeline_result(state: dict, scenario: dict) -> dict:
     rv = state.get("rule_verdict", {}) or {}
     sr = state.get("suitability_report", {}) or {}
     cf = state.get("conflict_report", {}) or {}
@@ -161,7 +161,7 @@ def _extract_pipeline_result(state: dict, scenario: dict, product: dict) -> dict
         "output_failed_rules":    _extract_failed_rules_from_pipeline(state),
         "expected_rules_failed":  scenario.get("expected_rules_failed", []),
         "output_rules":           rv.get("rules", {}),
-        "expected_rules":         expected_rules_for_scenario(scenario, product),
+        "expected_rules":         expected_rules_for_scenario(scenario),
         "a1_verified":   bool(a1_ver),
         "a2_verified":   bool(a2_ver),
         "a1_corrected":  bool(a1_cor.get("corrected")),
@@ -189,7 +189,7 @@ def _extract_pipeline_result(state: dict, scenario: dict, product: dict) -> dict
     }
 
 
-def _extract_baseline_result(baseline: dict, scenario: dict, product: dict) -> dict:
+def _extract_baseline_result(baseline: dict, scenario: dict) -> dict:
     output_rules = baseline.get("rules", {})
     failed_rules = [k for k, v in output_rules.items() if v == "FAIL"]
     return {
@@ -200,7 +200,7 @@ def _extract_baseline_result(baseline: dict, scenario: dict, product: dict) -> d
         "output_failed_rules":    failed_rules,
         "expected_rules_failed":  scenario.get("expected_rules_failed", []),
         "output_rules":           output_rules,
-        "expected_rules":         expected_rules_for_scenario(scenario, product),
+        "expected_rules":         expected_rules_for_scenario(scenario),
         "a1_verified":  False,
         "a2_verified":  False,
         "a1_corrected": False,
@@ -215,19 +215,17 @@ def _extract_baseline_result(baseline: dict, scenario: dict, product: dict) -> d
 
 async def run_scenario_once(
     scenario: dict,
-    product: dict,
     model_client,
     architecture: str,      # "pipeline" or "baseline"
 ) -> dict:
     """Run one scenario once through the chosen architecture."""
-    # Use narrative text when present so A1/A2 face real NLP extraction work.
-    # Fall back to json.dumps of the structured dict for non-narrative scenarios.
-    client_text  = scenario.get("client_narrative") or json.dumps(scenario["client"])
-    product_text = scenario.get("product_narrative") or json.dumps(product)
+    # Narratives are mandatory — all scenarios must have both fields.
+    client_text  = scenario["client_narrative"]
+    product_text = scenario["product_narrative"]
 
     if architecture == "baseline":
         result = await run_baseline(client_text, product_text, model_client)
-        result = _extract_baseline_result(result, scenario, product)
+        result = _extract_baseline_result(result, scenario)
     else:
         # Pipeline
         from orchestrator.graph import run_pipeline
@@ -236,7 +234,7 @@ async def run_scenario_once(
             product_input=product_text,
             model_client=model_client,
         )
-        result = _extract_pipeline_result(state, scenario, product)
+        result = _extract_pipeline_result(state, scenario)
 
     # Attach expected extraction targets when the scenario defines them
     result["expected_client_profile"]  = scenario.get("expected_client_profile")
@@ -265,7 +263,6 @@ async def evaluate_architecture(
 
     for i, sc_path in enumerate(sorted(scenario_files), 1):
         scenario = load_scenario(sc_path)
-        product  = load_product(scenario["product_file"])
         sc_id    = sc_path.stem
 
         print(f"  [{i}/{len(scenario_files)}] {sc_id}: {scenario.get('description', '')[:60]}")
@@ -273,7 +270,7 @@ async def evaluate_architecture(
         for run_n in range(1, runs_per_scenario + 1):
             try:
                 result = await run_scenario_once(
-                    scenario, product, model_client, architecture
+                    scenario, model_client, architecture
                 )
                 result["scenario_id"]  = sc_id
                 result["run_number"]   = run_n
@@ -311,7 +308,7 @@ async def evaluate_architecture(
                     "output_failed_rules":   [],
                     "expected_rules_failed": scenario.get("expected_rules_failed", []),
                     "output_rules":       {},
-                    "expected_rules":     expected_rules_for_scenario(scenario, product),
+                    "expected_rules":     expected_rules_for_scenario(scenario),
                     "error":              str(exc),
                 }
                 if "pair_id" in scenario:
@@ -410,70 +407,232 @@ async def main(runs: int, scenario_filter: list[str] | None, pipeline_only: str 
     metrics_path = EVAL_OUT_DIR / f"metrics_comparison_{ts}.json"
     metrics_path.write_text(json.dumps(comparison, indent=2))
 
-    # Print comparison table
-    print(f"\n{'='*60}")
-    print("  METRICS COMPARISON (M1-M7: accuracy / M8-M15: governance)")
-    print(f"{'='*60}")
-    labels = {
-        "M1_decision_accuracy":    "M1 Decision Accuracy",
-        "M2_rule_compliance_rate": "M2 Rule Compliance",
-        "M3_decision_consistency": "M3 Consistency",
-    }
-    print(f"  {'Metric':<35} {'Baseline':>10} {'Pipeline':>10}")
-    print(f"  {'-'*57}")
-    for key, label in labels.items():
-        b = baseline_metrics.get(key, "—")
-        p = pipeline_metrics.get(key, "—")
-        print(f"  {label:<35} {b:>10} {p:>10}")
-    # M4 is now a dict — print its sub-metrics separately
-    print(f"\n  M4 Escalation Accuracy (completed runs only):")
+    # ── Print comparison table ────────────────────────────────────────────────
+    def _fs(v) -> str:
+        """Format a scalar metric value for the table."""
+        if isinstance(v, float):
+            return f"{v:.4f}"
+        return str(v)
+
+    W = 60
+    print(f"\n{'='*W}")
+    print("  METRICS COMPARISON  (Baseline vs Pipeline)")
+    print(f"{'='*W}")
+    print(f"  {'Metric':<38} {'Baseline':>9} {'Pipeline':>9}")
+    print(f"  {'-'*58}")
+
+    # ── M1 family ────────────────────────────────────────────────────────────
+    print(f"\n  --- M1: Decision Accuracy ---")
+    for key, label in [
+        ("M1_decision_accuracy",        "M1  Decision Accuracy"),
+        ("M3_decision_consistency",     "M3  Decision Consistency"),
+        ("M2_rule_compliance_rate",     "M2  Rule Compliance (exact)"),
+    ]:
+        b = _fs(baseline_metrics.get(key, "—"))
+        p = _fs(pipeline_metrics.get(key, "—"))
+        print(f"  {label:<38} {b:>9} {p:>9}")
+
+    print(f"\n  M1a Weighted Decision Accuracy:")
+    for arch, metrics in [("Baseline", baseline_metrics), ("Pipeline", pipeline_metrics)]:
+        m1a = metrics.get("M1a_weighted_accuracy", {})
+        if isinstance(m1a, dict):
+            print(f"    {arch}: weighted={m1a.get('weighted_accuracy','—')}  "
+                  f"unweighted={m1a.get('unweighted_accuracy','—')}  "
+                  f"penalty={m1a.get('total_penalty','—')}  "
+                  f"(n={m1a.get('n_evaluated','—')})")
+        else:
+            print(f"    {arch}: {m1a}")
+
+    print(f"\n  M1b Scenario-Level Accuracy (majority vote):")
+    for arch, metrics in [("Baseline", baseline_metrics), ("Pipeline", pipeline_metrics)]:
+        m1b = metrics.get("M1b_scenario_level_accuracy", {})
+        if isinstance(m1b, dict):
+            print(f"    {arch}: scenario_accuracy={m1b.get('scenario_accuracy','—')}  "
+                  f"split_vote_scenarios={m1b.get('split_vote_scenarios','—')}  "
+                  f"(n_scenarios={m1b.get('n_scenarios','—')})")
+        else:
+            print(f"    {arch}: {m1b}")
+
+    print(f"\n  M2b Rule Compliance Jaccard:")
+    for arch, metrics in [("Baseline", baseline_metrics), ("Pipeline", pipeline_metrics)]:
+        m2b = metrics.get("M2b_rule_compliance_jaccard", {})
+        if isinstance(m2b, dict):
+            print(f"    {arch}: mean_jaccard={m2b.get('mean_jaccard','—')}  "
+                  f"exact_match_rate={m2b.get('exact_match_rate','—')}  "
+                  f"(n={m2b.get('n_evaluated','—')})")
+        else:
+            print(f"    {arch}: {m2b}")
+
+    # ── M4 ───────────────────────────────────────────────────────────────────
+    print(f"\n  --- M4: Escalation Accuracy ---")
     for arch, metrics in [("Baseline", baseline_metrics), ("Pipeline", pipeline_metrics)]:
         m4 = metrics.get("M4_escalation_accuracy", {})
         if isinstance(m4, dict):
             print(f"    {arch}: overall={m4.get('overall_accuracy','—')}  "
-                  f"sensitivity={m4.get('sensitivity','—')}  "
-                  f"specificity={m4.get('specificity','—')}  "
+                  f"sensitivity={m4.get('sensitivity','—')}  specificity={m4.get('specificity','—')}  "
+                  f"precision={m4.get('precision','—')}  f1={m4.get('f1','—')}  mcc={m4.get('mcc','—')}  "
                   f"(n_pos={m4.get('n_positive','—')}, n_neg={m4.get('n_negative','—')})")
         else:
             print(f"    {arch}: {m4}")
-    print(f"\n  M5 Verification Correction Rate (pipeline only):")
+
+    # ── M5 family ────────────────────────────────────────────────────────────
+    print(f"\n  --- M5: Verification Correction Rate (pipeline only) ---")
     m5 = pipeline_metrics.get("M5_verification", {})
     if isinstance(m5, dict):
         for k, v in m5.items():
-            print(f"    {k}: {v:.4f}")
-    print(f"\n  M_A1 Client Extraction Accuracy (narrative scenarios only):")
+            print(f"    {k}: {_fs(v)}")
+    else:
+        print(f"    {m5}")
+
+    print(f"\n  M5b Correction Precision (pipeline only):")
+    m5b = pipeline_metrics.get("M5b_correction_precision", {})
+    if isinstance(m5b, dict):
+        print(f"    beneficial={m5b.get('beneficial_corrections','—')}  "
+              f"harmful={m5b.get('harmful_corrections','—')}  "
+              f"neutral={m5b.get('neutral_corrections','—')}  "
+              f"total_changes={m5b.get('total_field_changes','—')}")
+        cp = m5b.get("correction_precision")
+        ch = m5b.get("correction_harm_rate")
+        print(f"    correction_precision={cp if cp is not None else '—'}  "
+              f"correction_harm_rate={ch if ch is not None else '—'}")
+    else:
+        print(f"    {m5b}")
+
+    # ── M6 family ────────────────────────────────────────────────────────────
+    print(f"\n  --- M6: Per-Rule Accuracy ---")
+    print(f"  {'Rule':<8} {'Baseline':>9} {'Pipeline':>9}  "
+          f"{'B-CI-lo':>8} {'B-CI-hi':>8}  {'P-CI-lo':>8} {'P-CI-hi':>8}")
+    print(f"  {'-'*70}")
+    b_m6  = baseline_metrics.get("M6_per_rule_accuracy", {})
+    p_m6  = pipeline_metrics.get("M6_per_rule_accuracy", {})
+    b_m6b = baseline_metrics.get("M6b_per_rule_accuracy_with_ci", {})
+    p_m6b = pipeline_metrics.get("M6b_per_rule_accuracy_with_ci", {})
+    for rule in ["R1", "R2", "R3", "R4", "R5", "R6", "R7"]:
+        bv  = b_m6.get(rule)
+        pv  = p_m6.get(rule)
+        bci = b_m6b.get(rule, {}).get("ci_95", (None, None))
+        pci = p_m6b.get(rule, {}).get("ci_95", (None, None))
+        bv_s  = f"{bv:.4f}"  if bv  is not None else "    —"
+        pv_s  = f"{pv:.4f}"  if pv  is not None else "    —"
+        blo_s = f"{bci[0]:.4f}" if bci[0] is not None else "      —"
+        bhi_s = f"{bci[1]:.4f}" if bci[1] is not None else "      —"
+        plo_s = f"{pci[0]:.4f}" if pci[0] is not None else "      —"
+        phi_s = f"{pci[1]:.4f}" if pci[1] is not None else "      —"
+        print(f"  {rule:<8} {bv_s:>9} {pv_s:>9}  {blo_s:>8} {bhi_s:>8}  {plo_s:>8} {phi_s:>8}")
+
+    # ── M7 family ────────────────────────────────────────────────────────────
+    print(f"\n  --- M7: Demographic Parity (paired scenarios) ---")
+    for arch, metrics in [("Baseline", baseline_metrics), ("Pipeline", pipeline_metrics)]:
+        m7 = metrics.get("M7_demographic_parity", "N/A (no paired scenarios)")
+        if isinstance(m7, dict):
+            print(f"    {arch}: n_pairs={m7.get('n_pairs','—')}  "
+                  f"n_same_expected={m7.get('n_pairs_same_expected','—')}  "
+                  f"violations={m7.get('n_violations','—')}  "
+                  f"parity_violation_rate={m7.get('parity_violation_rate','—')}  "
+                  f"justified_diffs={m7.get('n_justified_differentiation','—')}  "
+                  f"under_differentiated={m7.get('n_under_differentiation','—')}")
+        else:
+            print(f"    {arch}: {m7}")
+
+    print(f"\n  M7b Equalized Odds Gap (paired scenarios):")
+    for arch, metrics in [("Baseline", baseline_metrics), ("Pipeline", pipeline_metrics)]:
+        m7b = metrics.get("M7b_equalized_odds", "N/A (no paired scenarios)")
+        if isinstance(m7b, dict):
+            gs = m7b.get("group_stats", {})
+            print(f"    {arch}: tpr_gap={m7b.get('tpr_gap','—')}  "
+                  f"fpr_gap={m7b.get('fpr_gap','—')}  "
+                  f"satisfied={m7b.get('equalized_odds_satisfied','—')}")
+            for grp, stat in gs.items():
+                print(f"      {grp}: n={stat.get('n','—')}  "
+                      f"tpr={stat.get('tpr','—')}  fpr={stat.get('fpr','—')}")
+        else:
+            print(f"    {arch}: {m7b}")
+
+    # ── M_A1 / M_A2 ──────────────────────────────────────────────────────────
+    print(f"\n  --- M_A1: Client Extraction Accuracy (pipeline only) ---")
     ma1 = pipeline_metrics.get("M_A1_extraction", {})
     if isinstance(ma1, dict) and ma1.get("n_evaluated", 0) > 0:
-        print(f"    n_evaluated={ma1['n_evaluated']}  exact_match={ma1.get('overall_exact_match_rate', '—'):.4f}")
+        print(f"    n_evaluated={ma1['n_evaluated']}  "
+              f"overall_exact_match={ma1.get('overall_exact_match_rate', '—'):.4f}")
         for field, acc in ma1.get("per_field_accuracy", {}).items():
-            print(f"      {field}: {acc:.4f}" if acc is not None else f"      {field}: —")
+            print(f"      {field}: {f'{acc:.4f}' if acc is not None else '—'}")
     else:
-        print(f"    no narrative scenarios with expected_client_profile found")
-    print(f"\n  M_A2 Product Extraction Accuracy (narrative scenarios only):")
+        print(f"    {ma1 if not isinstance(ma1, dict) else 'no results with expected_client_profile'}")
+
+    print(f"\n  --- M_A2: Product Extraction Accuracy (pipeline only) ---")
     ma2 = pipeline_metrics.get("M_A2_extraction", {})
     if isinstance(ma2, dict) and ma2.get("n_evaluated", 0) > 0:
-        print(f"    n_evaluated={ma2['n_evaluated']}  exact_match={ma2.get('overall_exact_match_rate', '—'):.4f}")
+        print(f"    n_evaluated={ma2['n_evaluated']}  "
+              f"overall_exact_match={ma2.get('overall_exact_match_rate', '—'):.4f}")
         for field, acc in ma2.get("per_field_accuracy", {}).items():
-            print(f"      {field}: {acc:.4f}" if acc is not None else f"      {field}: —")
+            print(f"      {field}: {f'{acc:.4f}' if acc is not None else '—'}")
     else:
-        print(f"    no narrative scenarios with expected_product_profile found")
-    print(f"\n  Governance / Compliance / Explainability:")
+        print(f"    {ma2 if not isinstance(ma2, dict) else 'no results with expected_product_profile'}")
+
+    # ── Governance M8-M15 ────────────────────────────────────────────────────
+    print(f"\n  --- Governance / Compliance / Explainability (M8–M15) ---")
+    print(f"  {'Metric':<38} {'Baseline':>9} {'Pipeline':>9}")
+    print(f"  {'-'*58}")
     gov_labels = {
-        "M8_override_rate":             "M8 Override Rate",
-        "M9_pipeline_halt_rate":        "M9 Halt Rate",
-        "M10_three_point_integrity":    "M10 Three-Point Integrity",
-        "M11_hard_rule_enforcement":    "M11 Hard Rule Enforcement",
-        "M12_vulnerability_protection": "M12 Vulnerability Protection",
-        "M13_regulatory_citation_rate": "M13 Regulatory Citation",
-        "M14_explanation_completeness": "M14 Explanation Completeness",
-        "M15_decision_traceability":    "M15 Decision Traceability",
+        "M9_pipeline_halt_rate":        "M9  Halt Rate",
     }
     for key, label in gov_labels.items():
-        b = baseline_governance.get(key, "—")
-        p = pipeline_governance.get(key, "—")
-        b_s = str(b) if not isinstance(b, float) else f"{b:.4f}"
-        p_s = str(p) if not isinstance(p, float) else f"{p:.4f}"
-        print(f"  {label:<35} {b_s:>10} {p_s:>10}")
+        b = _fs(baseline_governance.get(key, "—"))
+        p = _fs(pipeline_governance.get(key, "—"))
+        print(f"  {label:<38} {b:>9} {p:>9}")
+
+    print(f"\n  M8 Override Rate (pipeline only):")
+    m8 = pipeline_governance.get("M8_override_rate", {})
+    if isinstance(m8, dict):
+        for agent, rate in m8.items():
+            print(f"    {agent}: {f'{rate:.4f}' if isinstance(rate, float) else rate}")
+    else:
+        print(f"    {m8}")
+
+    print(f"\n  M10 Three-Point Integrity (pipeline only):")
+    m10 = pipeline_governance.get("M10_three_point_integrity")
+    print(f"    pipeline: {f'{m10:.4f}' if isinstance(m10, float) else m10}")
+
+    print(f"\n  M11 Hard Rule Enforcement:")
+    for arch, gov in [("Baseline", baseline_governance), ("Pipeline", pipeline_governance)]:
+        m11 = gov.get("M11_hard_rule_enforcement")
+        if isinstance(m11, dict):
+            print(f"    {arch}: enforcement_rate={m11.get('hard_rule_enforcement_rate','—')}  "
+                  f"false_positive_rate={m11.get('false_positive_rate','—')}  "
+                  f"(n_hard_fail={m11.get('n_hard_fail_runs','—')}, "
+                  f"n_no_hard_fail={m11.get('n_no_hard_fail_runs','—')})")
+        else:
+            print(f"    {arch}: {m11}")
+
+    print(f"\n  M12 Vulnerability Protection:")
+    for arch, gov in [("Baseline", baseline_governance), ("Pipeline", pipeline_governance)]:
+        m12 = gov.get("M12_vulnerability_protection")
+        if isinstance(m12, dict):
+            print(f"    {arch}: overall={m12.get('overall_protection_rate','—')}  "
+                  f"age_driven={m12.get('age_driven_rate','—')}  "
+                  f"other_driven={m12.get('other_driven_rate','—')}  "
+                  f"(n_high_vuln={m12.get('n_high_vuln_runs','—')})")
+        else:
+            print(f"    {arch}: {m12}")
+
+    print(f"\n  M13 Regulatory Citation / M14 Explanation Completeness / M15 Traceability "
+          f"(pipeline only):")
+    m13  = pipeline_governance.get("M13_regulatory_citation_rate")
+    m14  = pipeline_governance.get("M14_explanation_completeness")
+    m15  = pipeline_governance.get("M15_decision_traceability")
+    m15b = pipeline_governance.get("M15b_decision_traceability_v2")
+    print(f"    M13 citation_rate={f'{m13:.4f}' if isinstance(m13, float) else m13}")
+    if isinstance(m14, dict):
+        print(f"    M14 presence_rate={m14.get('presence_rate','—')}  "
+              f"quality_rate={m14.get('quality_rate','—')}  "
+              f"(n={m14.get('n_evaluated','—')})")
+    else:
+        print(f"    M14: {m14}")
+    print(f"    M15  traceability (equal-weight) = "
+          f"{f'{m15:.4f}' if isinstance(m15, float) else m15}")
+    print(f"    M15b traceability (context-weighted) = "
+          f"{f'{m15b:.4f}' if isinstance(m15b, float) else m15b}")
+
     print(f"\n  Metrics saved → {metrics_path}")
 
 

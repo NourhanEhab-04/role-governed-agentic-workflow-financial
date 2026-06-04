@@ -1,7 +1,27 @@
 {
-  "description": "Client horizon (4yr) below ETF minimum (5yr) \u2014 R3 soft fail (\u221215), score 85 SUITABLE",
-  "client_narrative": "Sara Lindqvist is 40 years old and works as a school teacher. She earns about 40,000 euros a year and holds 25,000 euros in liquid savings. She wants to invest 15,000 euros for roughly four years \u2014 she plans to use the money for a home renovation project after that period. Sara has basic investment knowledge; she has previously bought mutual funds through her bank but has no experience with individual stocks or derivatives. She describes her risk tolerance as 4 out of 10 \u2014 willing to accept some market fluctuations but not comfortable with major losses. She has confirmed she cannot afford to lose her investment. Her goal is moderate portfolio growth.",
+  "description": "Client horizon (4yr) below ETF minimum (5yr) — R3 soft fail (−15), score 85 SUITABLE",
+  "client_narrative": "Sara Lindqvist is 40 years old and works as a school teacher. She earns about 40,000 euros a year and holds 25,000 euros in liquid savings. She wants to invest 15,000 euros for roughly four years — she plans to use the money for a home renovation project after that period. Sara has basic investment knowledge; she has previously bought mutual funds through her bank but has no experience with individual stocks or derivatives. She describes her risk tolerance as 4 out of 10 — willing to accept some market fluctuations but not comfortable with major losses. She has confirmed she cannot afford to lose her investment. Her goal is moderate portfolio growth.",
+  "expected_client_profile": {
+    "financial_knowledge": "basic",
+    "risk_tolerance_score": 4,
+    "investment_horizon": 4,
+    "liquid_assets": 25000.0,
+    "income": 40000.0,
+    "investment_amount": 15000.0,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "LOW",
+    "age": 40
+  },
   "product_narrative": "The product is a passively managed exchange-traded fund that tracks the MSCI World Index, providing diversified exposure to approximately 1,500 large and mid-cap equities across 23 developed markets. The fund is listed on major European exchanges, trades intraday with high liquidity, publishes a KID, contains no embedded derivatives, and uses no leverage. The recommended minimum investment horizon is five years.",
+  "expected_product_profile": {
+    "product_name": "Global Equity ETF",
+    "risk_class": 4,
+    "complexity_tier": "NON-COMPLEX",
+    "requires_knowledge_level": "basic",
+    "minimum_horizon": 5,
+    "potential_loss": "partial",
+    "leverage": false
+  },
   "client": {
     "name": "Sara Lindqvist",
     "age": 40,

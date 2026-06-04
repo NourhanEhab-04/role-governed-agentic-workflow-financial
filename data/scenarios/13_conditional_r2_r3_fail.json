@@ -1,7 +1,27 @@
 {
   "description": "Low-risk-tolerance client with short horizon proposed global ETF — R2 soft fail (−20) + R3 soft fail (−15), score 65 CONDITIONAL. Tests: two soft fails yield CONDITIONAL, not UNSUITABLE.",
   "client_narrative": "Ibrahim Yilmaz is 50 years old and works as a civil servant. He earns roughly 35,000 euros per year and holds 40,000 euros in accessible savings. He wants to invest 10,000 euros over a period of about 3 years. His investment knowledge is basic — he has only ever held standard savings accounts and term deposits at his local bank and has never invested in funds or equities. He rates his risk tolerance at 1 out of 10: he strongly prefers capital safety over growth and would find even modest losses stressful. He has confirmed he cannot afford to lose his investment. His objective is moderate portfolio growth, although his behaviour and stated preferences point strongly toward capital preservation.",
+  "expected_client_profile": {
+    "financial_knowledge": "basic",
+    "risk_tolerance_score": 1,
+    "investment_horizon": 3,
+    "liquid_assets": 40000.0,
+    "income": 35000.0,
+    "investment_amount": 10000.0,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "LOW",
+    "age": 50
+  },
   "product_narrative": "The product is a passively managed exchange-traded fund that tracks the MSCI World Index, providing diversified exposure to approximately 1,500 large and mid-cap equities across 23 developed markets. The fund is listed on major European exchanges, trades intraday with high liquidity, publishes a KID, contains no embedded derivatives, and uses no leverage. The recommended minimum investment horizon is five years.",
+  "expected_product_profile": {
+    "product_name": "Global Equity ETF",
+    "risk_class": 4,
+    "complexity_tier": "NON-COMPLEX",
+    "requires_knowledge_level": "basic",
+    "minimum_horizon": 5,
+    "potential_loss": "partial",
+    "leverage": false
+  },
   "client": {
     "name": "Ibrahim Yilmaz",
     "age": 50,

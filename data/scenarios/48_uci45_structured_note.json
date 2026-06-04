@@ -1,11 +1,31 @@
 {
   "description": "UCI row 45 (age 35, MEDIUM vulnerability, moderate knowledge, RT 3, horizon 2yr) — structured note: all hard rules pass (score 100) -> SUITABLE",
-  "client_narrative": "Kristoffer Lund is 35 years old and works as an accountant at a logistics company. He earns approximately 31,900 euros per year and holds 2,500 euros in liquid savings. He wants to invest 1,800 euros for about 2 years to earn better returns than a savings account while limiting downside risk. His investment knowledge is moderate: he understands the basics of bonds and structured products and has previously held bank-issued structured notes. He rates his risk tolerance at 3 out of 10 — cautious but not entirely risk-averse — and has stated he cannot afford to lose his investment. His investment objective is asset growth.",
-  "product_narrative": "The product is a capital-at-risk structured note that provides conditional coupon payments linked to the performance of a basket of European equity indices. Coupons are paid only if all index levels remain above a predefined barrier on specified observation dates; if any index closes below the barrier at maturity, the investor receives a reduced capital repayment proportional to the worst-performing index. The note is classified as a complex financial instrument under MiFID II, publishes a KID, and does not require any specific minimum knowledge level in its terms. It uses no leverage and has a minimum recommended holding period of two years. In barrier breach scenarios partial capital loss results.",
   "uci_row_index": 45,
   "uci_source": "https://doi.org/10.24432/C5NC77",
   "rule_engine_score": 100,
   "rule_engine_decision": "SUITABLE",
+  "client_narrative": "Kristoffer Lund is 35 years old and works as an accountant at a logistics company. He earns approximately 31,900 euros per year and holds 2,500 euros in liquid savings. He wants to invest 1,800 euros for about 2 years to earn better returns than a savings account while limiting downside risk. His investment knowledge is moderate: he understands the basics of bonds and structured products and has previously held bank-issued structured notes. He rates his risk tolerance at 3 out of 10 — cautious but not entirely risk-averse — and has stated he cannot afford to lose his investment. His investment objective is asset growth.",
+  "expected_client_profile": {
+    "financial_knowledge": "moderate",
+    "risk_tolerance_score": 3,
+    "investment_horizon": 2,
+    "liquid_assets": 2500.0,
+    "income": 31900.0,
+    "investment_amount": 1800.0,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "MEDIUM",
+    "age": 35
+  },
+  "product_narrative": "The product is a capital-at-risk structured note that provides conditional coupon payments linked to the performance of a basket of European equity indices. Coupons are paid only if all index levels remain above a predefined barrier on specified observation dates; if any index closes below the barrier at maturity, the investor receives a reduced capital repayment proportional to the worst-performing index. The note is classified as a complex financial instrument under MiFID II, publishes a KID, and does not require any specific minimum knowledge level in its terms. It uses no leverage and has a minimum recommended holding period of two years. In barrier breach scenarios partial capital loss results.",
+  "expected_product_profile": {
+    "product_name": "Capital-Protected Structured Note",
+    "risk_class": 3,
+    "complexity_tier": "COMPLEX",
+    "requires_knowledge_level": "none",
+    "minimum_horizon": 2,
+    "potential_loss": "partial",
+    "leverage": false
+  },
   "client": {
     "name": "Kristoffer Lund",
     "age": 35,

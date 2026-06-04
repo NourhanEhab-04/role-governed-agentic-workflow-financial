@@ -1,0 +1,291 @@
+{
+  "timestamp": "20260603T144936Z",
+  "runs_per_scenario": 3,
+  "n_scenarios": 2,
+  "baseline": {
+    "architecture": "baseline",
+    "n_runs": 6,
+    "M1_decision_accuracy": 1.0,
+    "M1a_weighted_accuracy": {
+      "n_evaluated": 6,
+      "weighted_accuracy": 1.0,
+      "unweighted_accuracy": 1.0,
+      "total_penalty": 0.0
+    },
+    "M1b_scenario_level_accuracy": {
+      "n_scenarios": 2,
+      "scenario_accuracy": 1.0,
+      "split_vote_scenarios": 0
+    },
+    "M2_rule_compliance_rate": 0.0,
+    "M2b_rule_compliance_jaccard": {
+      "n_evaluated": 6,
+      "mean_jaccard": 0.3333,
+      "exact_match_rate": 0.0
+    },
+    "M3_decision_consistency": 1.0,
+    "M4_escalation_accuracy": {
+      "overall_accuracy": 1.0,
+      "sensitivity": 0.0,
+      "specificity": 1.0,
+      "precision": 0.0,
+      "f1": 0.0,
+      "mcc": 0.0,
+      "n_positive": 0,
+      "n_negative": 6
+    },
+    "M5_verification": "N/A (baseline)",
+    "M5b_correction_precision": "N/A (baseline)",
+    "M6_per_rule_accuracy": {
+      "R1": 1.0,
+      "R2": 1.0,
+      "R3": 0.5,
+      "R4": 0.5,
+      "R5": 1.0,
+      "R6": 1.0,
+      "R7": 1.0
+    },
+    "M6b_per_rule_accuracy_with_ci": {
+      "R1": {
+        "accuracy": 1.0,
+        "n_evaluated": 6,
+        "ci_95": [
+          0.6097,
+          1.0
+        ]
+      },
+      "R2": {
+        "accuracy": 1.0,
+        "n_evaluated": 6,
+        "ci_95": [
+          0.6097,
+          1.0
+        ]
+      },
+      "R3": {
+        "accuracy": 0.5,
+        "n_evaluated": 6,
+        "ci_95": [
+          0.1876,
+          0.8124
+        ]
+      },
+      "R4": {
+        "accuracy": 0.5,
+        "n_evaluated": 6,
+        "ci_95": [
+          0.1876,
+          0.8124
+        ]
+      },
+      "R5": {
+        "accuracy": 1.0,
+        "n_evaluated": 6,
+        "ci_95": [
+          0.6097,
+          1.0
+        ]
+      },
+      "R6": {
+        "accuracy": 1.0,
+        "n_evaluated": 6,
+        "ci_95": [
+          0.6097,
+          1.0
+        ]
+      },
+      "R7": {
+        "accuracy": 1.0,
+        "n_evaluated": 6,
+        "ci_95": [
+          0.6097,
+          1.0
+        ]
+      }
+    },
+    "M7_demographic_parity": "N/A (no paired scenarios)",
+    "M7b_equalized_odds": "N/A (no paired scenarios)",
+    "M_A1_extraction": "N/A (baseline has no A1/A2 agents)",
+    "M_A2_extraction": "N/A (baseline has no A1/A2 agents)",
+    "M8_override_rate": "N/A (baseline)",
+    "M9_pipeline_halt_rate": 0.0,
+    "M10_three_point_integrity": "N/A (baseline)",
+    "M11_hard_rule_enforcement": {
+      "hard_rule_enforcement_rate": null,
+      "false_positive_rate": 0.0,
+      "n_hard_fail_runs": 0,
+      "n_no_hard_fail_runs": 6
+    },
+    "M12_vulnerability_protection": null,
+    "M13_regulatory_citation_rate": "N/A (baseline)",
+    "M14_explanation_completeness": "N/A (baseline)",
+    "M15_decision_traceability": "N/A (baseline)",
+    "M15b_decision_traceability_v2": "N/A (baseline)"
+  },
+  "pipeline": {
+    "architecture": "pipeline",
+    "n_runs": 6,
+    "M1_decision_accuracy": 1.0,
+    "M1a_weighted_accuracy": {
+      "n_evaluated": 6,
+      "weighted_accuracy": 1.0,
+      "unweighted_accuracy": 1.0,
+      "total_penalty": 0.0
+    },
+    "M1b_scenario_level_accuracy": {
+      "n_scenarios": 2,
+      "scenario_accuracy": 1.0,
+      "split_vote_scenarios": 0
+    },
+    "M2_rule_compliance_rate": 0.5,
+    "M2b_rule_compliance_jaccard": {
+      "n_evaluated": 6,
+      "mean_jaccard": 0.8333,
+      "exact_match_rate": 0.5
+    },
+    "M3_decision_consistency": 1.0,
+    "M4_escalation_accuracy": {
+      "overall_accuracy": 1.0,
+      "sensitivity": 0.0,
+      "specificity": 1.0,
+      "precision": 0.0,
+      "f1": 0.0,
+      "mcc": 0.0,
+      "n_positive": 0,
+      "n_negative": 6
+    },
+    "M5_verification": {
+      "a1_correction_rate": 0.0,
+      "a2_correction_rate": 0.0,
+      "overall_correction_rate": 0.0
+    },
+    "M5b_correction_precision": {
+      "beneficial_corrections": 0,
+      "harmful_corrections": 0,
+      "neutral_corrections": 0,
+      "total_field_changes": 0,
+      "correction_precision": null,
+      "correction_harm_rate": null,
+      "note": "correction_precision = beneficial / total_field_changes. Returns None when no corrected runs with ground-truth profiles are present."
+    },
+    "M6_per_rule_accuracy": {
+      "R1": 1.0,
+      "R2": 1.0,
+      "R3": 1.0,
+      "R4": 1.0,
+      "R5": 1.0,
+      "R6": 0.5,
+      "R7": 1.0
+    },
+    "M6b_per_rule_accuracy_with_ci": {
+      "R1": {
+        "accuracy": 1.0,
+        "n_evaluated": 6,
+        "ci_95": [
+          0.6097,
+          1.0
+        ]
+      },
+      "R2": {
+        "accuracy": 1.0,
+        "n_evaluated": 6,
+        "ci_95": [
+          0.6097,
+          1.0
+        ]
+      },
+      "R3": {
+        "accuracy": 1.0,
+        "n_evaluated": 6,
+        "ci_95": [
+          0.6097,
+          1.0
+        ]
+      },
+      "R4": {
+        "accuracy": 1.0,
+        "n_evaluated": 6,
+        "ci_95": [
+          0.6097,
+          1.0
+        ]
+      },
+      "R5": {
+        "accuracy": 1.0,
+        "n_evaluated": 6,
+        "ci_95": [
+          0.6097,
+          1.0
+        ]
+      },
+      "R6": {
+        "accuracy": 0.5,
+        "n_evaluated": 6,
+        "ci_95": [
+          0.1876,
+          0.8124
+        ]
+      },
+      "R7": {
+        "accuracy": 1.0,
+        "n_evaluated": 6,
+        "ci_95": [
+          0.6097,
+          1.0
+        ]
+      }
+    },
+    "M7_demographic_parity": "N/A (no paired scenarios)",
+    "M7b_equalized_odds": "N/A (no paired scenarios)",
+    "M_A1_extraction": {
+      "n_evaluated": 6,
+      "overall_exact_match_rate": 1.0,
+      "per_field_accuracy": {
+        "financial_knowledge": 1.0,
+        "risk_tolerance_score": 1.0,
+        "investment_horizon": 1.0,
+        "liquid_assets": 1.0,
+        "income": 1.0,
+        "investment_amount": 1.0,
+        "can_afford_total_loss": 1.0,
+        "financial_vulnerability": 1.0,
+        "age": 1.0
+      }
+    },
+    "M_A2_extraction": {
+      "n_evaluated": 6,
+      "overall_exact_match_rate": 0.5,
+      "per_field_accuracy": {
+        "risk_class": 0.5,
+        "complexity_tier": 1.0,
+        "requires_knowledge_level": 1.0,
+        "minimum_horizon": 1.0,
+        "potential_loss": 1.0,
+        "leverage": 0.5
+      }
+    },
+    "M8_override_rate": {
+      "A1": 0.0,
+      "A2": 0.0,
+      "A4": 0.0
+    },
+    "M9_pipeline_halt_rate": 0.0,
+    "M10_three_point_integrity": 1.0,
+    "M11_hard_rule_enforcement": {
+      "hard_rule_enforcement_rate": 1.0,
+      "false_positive_rate": 0.0,
+      "n_hard_fail_runs": 3,
+      "n_no_hard_fail_runs": 3
+    },
+    "M12_vulnerability_protection": null,
+    "M13_regulatory_citation_rate": 1.0,
+    "M14_explanation_completeness": {
+      "n_evaluated": 6,
+      "presence_rate": 1.0,
+      "quality_rate": 0.75,
+      "note": "presence_rate: non-empty explanation present per failed rule. quality_rate: explanation contains a numeric value (threshold/score/amount). quality_rate is the primary MiFID II Art. 25(2) compliance measure."
+    },
+    "M15_decision_traceability": 1.0,
+    "M15b_decision_traceability_v2": 1.0
+  }
+}

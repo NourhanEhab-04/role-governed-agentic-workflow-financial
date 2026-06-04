@@ -4,6 +4,28 @@
   "uci_source": "https://doi.org/10.24432/C5NC77",
   "rule_engine_score": 85,
   "rule_engine_decision": "SUITABLE",
+  "client_narrative": "Mirjana Babić is 33 years old. Their gross annual income is approximately 111,500 euros (around 9,292 euros per month). They hold 56,000 euros in liquid savings and wish to invest 5,700 euros with a 4-year investment horizon. In terms of financial background, the client has moderate investment experience, including equities, mutual funds, and standard bond instruments. Their investment approach is growth-oriented and risk-tolerant — they rate their risk appetite at 7 out of 10. They have confirmed they can afford to lose the entire 5,700 euros if the investment performs poorly. Their financial circumstances place them in the medium vulnerability category.",
+  "expected_client_profile": {
+    "financial_knowledge": "moderate",
+    "risk_tolerance_score": 7,
+    "investment_horizon": 4,
+    "liquid_assets": 56000.0,
+    "income": 111500.0,
+    "investment_amount": 5700.0,
+    "can_afford_total_loss": true,
+    "financial_vulnerability": "MEDIUM",
+    "age": 33
+  },
+  "product_narrative": "The product is a capital-protected structured note with partial capital protection and index-linked returns. It is classified as COMPLEX under MiFID II Article 25(4)(b), but may be sold to retail investors of any knowledge level. Capital protection is conditional on holding to maturity, and the payoff formula introduces complexity that may be difficult for inexperienced investors to evaluate independently. The minimum recommended holding period is two years.",
+  "expected_product_profile": {
+    "product_name": "Euro Capital-Protected Structured Note",
+    "risk_class": 3,
+    "complexity_tier": "COMPLEX",
+    "requires_knowledge_level": "moderate",
+    "minimum_horizon": 5,
+    "potential_loss": "partial",
+    "leverage": false
+  },
   "client": {
     "name": "Mirjana Babić",
     "age": 33,

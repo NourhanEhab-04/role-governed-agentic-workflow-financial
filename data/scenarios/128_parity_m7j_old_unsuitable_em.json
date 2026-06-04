@@ -2,6 +2,28 @@
   "description": "M7 parity J — old HIGH-vuln (age 74), identical financials. R1+R5 hard fail, R3 soft fail. UNSUITABLE. Paired with scenario 127.",
   "pair_id": "M7-J",
   "demographic_variant": "old_high_vuln",
+  "client_narrative": "Nadezhda Volkova is 74 years old. Their gross annual income is approximately 35,000 euros (around 2,917 euros per month). They hold 80,000 euros in liquid savings and wish to invest 20,000 euros with a 6-year investment horizon. In terms of financial background, the client has basic investment experience, limited to savings accounts, fixed-term deposits, and simple fixed-income products. Their investment approach is moderate-to-conservative — they rate their risk tolerance at 3 out of 10. They have stated they cannot afford to lose the full 20,000 euros invested. At 74 years of age, they are classified as financially vulnerable under MiFID II guidelines.",
+  "expected_client_profile": {
+    "financial_knowledge": "basic",
+    "risk_tolerance_score": 3,
+    "investment_horizon": 6,
+    "liquid_assets": 80000.0,
+    "income": 35000.0,
+    "investment_amount": 20000.0,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "HIGH",
+    "age": 74
+  },
+  "product_narrative": "The product is a UCITS exchange-traded fund tracking the MSCI Emerging Markets Index, providing exposure to equity markets across 24 emerging-market countries. The fund publishes a KID, trades intraday on regulated exchanges, uses no leverage, and holds no embedded derivatives. It is classified NON-COMPLEX under MiFID II Article 25(4)(a). Due to elevated market and currency risk, moderate financial knowledge is expected from investors. The recommended minimum holding period is seven years.",
+  "expected_product_profile": {
+    "product_name": "MSCI Emerging Markets Equity ETF",
+    "risk_class": 5,
+    "complexity_tier": "NON-COMPLEX",
+    "requires_knowledge_level": "moderate",
+    "minimum_horizon": 7,
+    "potential_loss": "partial",
+    "leverage": false
+  },
   "client": {
     "name": "Nadezhda Volkova",
     "age": 74,

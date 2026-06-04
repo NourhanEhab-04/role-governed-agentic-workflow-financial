@@ -1,0 +1,1797 @@
+[
+  {
+    "output_decision": "SUITABLE",
+    "expected_decision": "ESCALATED",
+    "output_escalated": false,
+    "expected_escalate": true,
+    "output_failed_rules": [],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 4,
+      "liquid_assets": 2800.0,
+      "income": 19100.0,
+      "investment_amount": 5100.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 34
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Investment-Grade Corporate Bond ETF",
+      "risk_class": 3,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 3,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "100_uci76_ig_corporate_bond_etf",
+    "run_number": 1,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "SUITABLE",
+    "expected_decision": "ESCALATED",
+    "output_escalated": false,
+    "expected_escalate": true,
+    "output_failed_rules": [],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 4,
+      "liquid_assets": 2800.0,
+      "income": 19100.0,
+      "investment_amount": 5100.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 34
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Investment-Grade Corporate Bond ETF",
+      "risk_class": 3,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 3,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "100_uci76_ig_corporate_bond_etf",
+    "run_number": 2,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "SUITABLE",
+    "expected_decision": "ESCALATED",
+    "output_escalated": false,
+    "expected_escalate": true,
+    "output_failed_rules": [],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 4,
+      "liquid_assets": 2800.0,
+      "income": 19100.0,
+      "investment_amount": 5100.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 34
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Investment-Grade Corporate Bond ETF",
+      "risk_class": 3,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 3,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "100_uci76_ig_corporate_bond_etf",
+    "run_number": 3,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R3",
+      "R4",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R2",
+      "R4",
+      "R6",
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "FAIL"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 2,
+      "liquid_assets": 2600.0,
+      "income": 49500.0,
+      "investment_amount": 1000.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 39
+    },
+    "expected_product_profile": {
+      "product_name": "3x Leveraged S&P500 ETF",
+      "risk_class": 7,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": true
+    },
+    "scenario_id": "91_uci26_leveraged_etf_3x",
+    "run_number": 1,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R3",
+      "R4",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R2",
+      "R4",
+      "R6",
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "FAIL"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 2,
+      "liquid_assets": 2600.0,
+      "income": 49500.0,
+      "investment_amount": 1000.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 39
+    },
+    "expected_product_profile": {
+      "product_name": "3x Leveraged S&P500 ETF",
+      "risk_class": 7,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": true
+    },
+    "scenario_id": "91_uci26_leveraged_etf_3x",
+    "run_number": 2,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R3",
+      "R4",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R2",
+      "R4",
+      "R6",
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "FAIL"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 2,
+      "liquid_assets": 2600.0,
+      "income": 49500.0,
+      "investment_amount": 1000.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 39
+    },
+    "expected_product_profile": {
+      "product_name": "3x Leveraged S&P500 ETF",
+      "risk_class": 7,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": true
+    },
+    "scenario_id": "91_uci26_leveraged_etf_3x",
+    "run_number": 3,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R4",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R2",
+      "R6",
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "FAIL"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 5,
+      "liquid_assets": 18000.0,
+      "income": 47300.0,
+      "investment_amount": 10000.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "MEDIUM",
+      "age": 45
+    },
+    "expected_product_profile": {
+      "product_name": "3x Leveraged S&P500 ETF",
+      "risk_class": 7,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": true
+    },
+    "scenario_id": "92_uci3_leveraged_etf_3x",
+    "run_number": 1,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R4",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R2",
+      "R6",
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "FAIL"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 5,
+      "liquid_assets": 18000.0,
+      "income": 47300.0,
+      "investment_amount": 10000.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "MEDIUM",
+      "age": 45
+    },
+    "expected_product_profile": {
+      "product_name": "3x Leveraged S&P500 ETF",
+      "risk_class": 7,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": true
+    },
+    "scenario_id": "92_uci3_leveraged_etf_3x",
+    "run_number": 2,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R4",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R2",
+      "R6",
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "FAIL"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 5,
+      "liquid_assets": 18000.0,
+      "income": 47300.0,
+      "investment_amount": 10000.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "MEDIUM",
+      "age": 45
+    },
+    "expected_product_profile": {
+      "product_name": "3x Leveraged S&P500 ETF",
+      "risk_class": 7,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": true
+    },
+    "scenario_id": "92_uci3_leveraged_etf_3x",
+    "run_number": 3,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R4",
+      "R5",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R2",
+      "R4",
+      "R5",
+      "R6",
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "FAIL",
+      "R7": "FAIL"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 2,
+      "liquid_assets": 2400.0,
+      "income": 32600.0,
+      "investment_amount": 6200.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 53
+    },
+    "expected_product_profile": {
+      "product_name": "3x Leveraged S&P500 ETF",
+      "risk_class": 7,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": true
+    },
+    "scenario_id": "93_uci4_leveraged_etf_3x",
+    "run_number": 1,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R4",
+      "R5",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R2",
+      "R4",
+      "R5",
+      "R6",
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "FAIL",
+      "R7": "FAIL"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 2,
+      "liquid_assets": 2400.0,
+      "income": 32600.0,
+      "investment_amount": 6200.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 53
+    },
+    "expected_product_profile": {
+      "product_name": "3x Leveraged S&P500 ETF",
+      "risk_class": 7,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": true
+    },
+    "scenario_id": "93_uci4_leveraged_etf_3x",
+    "run_number": 2,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R4",
+      "R5",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R2",
+      "R4",
+      "R5",
+      "R6",
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "FAIL",
+      "R7": "FAIL"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 2,
+      "liquid_assets": 2400.0,
+      "income": 32600.0,
+      "investment_amount": 6200.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 53
+    },
+    "expected_product_profile": {
+      "product_name": "3x Leveraged S&P500 ETF",
+      "risk_class": 7,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": true
+    },
+    "scenario_id": "93_uci4_leveraged_etf_3x",
+    "run_number": 3,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R3",
+      "R4",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R2",
+      "R4",
+      "R6",
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "FAIL"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 2,
+      "liquid_assets": 11500.0,
+      "income": 24000.0,
+      "investment_amount": 1600.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 32
+    },
+    "expected_product_profile": {
+      "product_name": "3x Leveraged S&P500 ETF",
+      "risk_class": 7,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": true
+    },
+    "scenario_id": "94_uci15_leveraged_etf_3x",
+    "run_number": 1,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R3",
+      "R4",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R2",
+      "R4",
+      "R6",
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "FAIL"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 2,
+      "liquid_assets": 11500.0,
+      "income": 24000.0,
+      "investment_amount": 1600.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 32
+    },
+    "expected_product_profile": {
+      "product_name": "3x Leveraged S&P500 ETF",
+      "risk_class": 7,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": true
+    },
+    "scenario_id": "94_uci15_leveraged_etf_3x",
+    "run_number": 2,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R3",
+      "R4",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R2",
+      "R4",
+      "R6",
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "FAIL"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 2,
+      "liquid_assets": 11500.0,
+      "income": 24000.0,
+      "investment_amount": 1600.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 32
+    },
+    "expected_product_profile": {
+      "product_name": "3x Leveraged S&P500 ETF",
+      "risk_class": 7,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": true
+    },
+    "scenario_id": "94_uci15_leveraged_etf_3x",
+    "run_number": 3,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R4",
+      "R5"
+    ],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 7,
+      "investment_horizon": 4,
+      "liquid_assets": 56000.0,
+      "income": 33000.0,
+      "investment_amount": 7600.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 22
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Investment-Grade Corporate Bond ETF",
+      "risk_class": 3,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 3,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "95_uci1_ig_corporate_bond_etf",
+    "run_number": 1,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R4",
+      "R5"
+    ],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 7,
+      "investment_horizon": 4,
+      "liquid_assets": 56000.0,
+      "income": 33000.0,
+      "investment_amount": 7600.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 22
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Investment-Grade Corporate Bond ETF",
+      "risk_class": 3,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 3,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "95_uci1_ig_corporate_bond_etf",
+    "run_number": 2,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R4",
+      "R5"
+    ],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 7,
+      "investment_horizon": 4,
+      "liquid_assets": 56000.0,
+      "income": 33000.0,
+      "investment_amount": 7600.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 22
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Investment-Grade Corporate Bond ETF",
+      "risk_class": 3,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 3,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "95_uci1_ig_corporate_bond_etf",
+    "run_number": 3,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "ESCALATED",
+    "output_escalated": false,
+    "expected_escalate": true,
+    "output_failed_rules": [
+      "R4",
+      "R5"
+    ],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "moderate",
+      "risk_tolerance_score": 3,
+      "investment_horizon": 3,
+      "liquid_assets": 1700.0,
+      "income": 8800.0,
+      "investment_amount": 6700.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 28
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Investment-Grade Corporate Bond ETF",
+      "risk_class": 3,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 3,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "96_uci9_ig_corporate_bond_etf",
+    "run_number": 1,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "SUITABLE",
+    "expected_decision": "ESCALATED",
+    "output_escalated": false,
+    "expected_escalate": true,
+    "output_failed_rules": [
+      "R5"
+    ],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "moderate",
+      "risk_tolerance_score": 3,
+      "investment_horizon": 3,
+      "liquid_assets": 1700.0,
+      "income": 8800.0,
+      "investment_amount": 6700.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 28
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Investment-Grade Corporate Bond ETF",
+      "risk_class": 3,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 3,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "96_uci9_ig_corporate_bond_etf",
+    "run_number": 2,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "SUITABLE",
+    "expected_decision": "ESCALATED",
+    "output_escalated": false,
+    "expected_escalate": true,
+    "output_failed_rules": [
+      "R5"
+    ],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "moderate",
+      "risk_tolerance_score": 3,
+      "investment_horizon": 3,
+      "liquid_assets": 1700.0,
+      "income": 8800.0,
+      "investment_amount": 6700.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 28
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Investment-Grade Corporate Bond ETF",
+      "risk_class": 3,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 3,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "96_uci9_ig_corporate_bond_etf",
+    "run_number": 3,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "SUITABLE",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R5"
+    ],
+    "expected_rules_failed": [
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "moderate",
+      "risk_tolerance_score": 3,
+      "investment_horizon": 2,
+      "liquid_assets": 2300.0,
+      "income": 9800.0,
+      "investment_amount": 8200.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 52
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Investment-Grade Corporate Bond ETF",
+      "risk_class": 3,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 3,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "97_uci56_ig_corporate_bond_etf",
+    "run_number": 1,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "SUITABLE",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R5"
+    ],
+    "expected_rules_failed": [
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "moderate",
+      "risk_tolerance_score": 3,
+      "investment_horizon": 2,
+      "liquid_assets": 2300.0,
+      "income": 9800.0,
+      "investment_amount": 8200.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 52
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Investment-Grade Corporate Bond ETF",
+      "risk_class": 3,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 3,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "97_uci56_ig_corporate_bond_etf",
+    "run_number": 2,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "SUITABLE",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R5"
+    ],
+    "expected_rules_failed": [
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "moderate",
+      "risk_tolerance_score": 3,
+      "investment_horizon": 2,
+      "liquid_assets": 2300.0,
+      "income": 9800.0,
+      "investment_amount": 8200.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 52
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Investment-Grade Corporate Bond ETF",
+      "risk_class": 3,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 3,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "97_uci56_ig_corporate_bond_etf",
+    "run_number": 3,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "SUITABLE",
+    "expected_decision": "ESCALATED",
+    "output_escalated": false,
+    "expected_escalate": true,
+    "output_failed_rules": [
+      "R5"
+    ],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 5,
+      "investment_horizon": 6,
+      "liquid_assets": 18000.0,
+      "income": 17500.0,
+      "investment_amount": 5500.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 24
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Investment-Grade Corporate Bond ETF",
+      "risk_class": 3,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 3,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "98_uci11_ig_corporate_bond_etf",
+    "run_number": 1,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "SUITABLE",
+    "expected_decision": "ESCALATED",
+    "output_escalated": false,
+    "expected_escalate": true,
+    "output_failed_rules": [
+      "R5"
+    ],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 5,
+      "investment_horizon": 6,
+      "liquid_assets": 18000.0,
+      "income": 17500.0,
+      "investment_amount": 5500.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 24
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Investment-Grade Corporate Bond ETF",
+      "risk_class": 3,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 3,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "98_uci11_ig_corporate_bond_etf",
+    "run_number": 2,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "SUITABLE",
+    "expected_decision": "ESCALATED",
+    "output_escalated": false,
+    "expected_escalate": true,
+    "output_failed_rules": [
+      "R5"
+    ],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 5,
+      "investment_horizon": 6,
+      "liquid_assets": 18000.0,
+      "income": 17500.0,
+      "investment_amount": 5500.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 24
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Investment-Grade Corporate Bond ETF",
+      "risk_class": 3,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 3,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "98_uci11_ig_corporate_bond_etf",
+    "run_number": 3,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "ESCALATED",
+    "output_escalated": false,
+    "expected_escalate": true,
+    "output_failed_rules": [
+      "R4",
+      "R5"
+    ],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 7,
+      "liquid_assets": 2700.0,
+      "income": 19100.0,
+      "investment_amount": 20300.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 58
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Investment-Grade Corporate Bond ETF",
+      "risk_class": 3,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 3,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "99_uci95_ig_corporate_bond_etf",
+    "run_number": 1,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "ESCALATED",
+    "output_escalated": false,
+    "expected_escalate": true,
+    "output_failed_rules": [
+      "R4",
+      "R5"
+    ],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 7,
+      "liquid_assets": 2700.0,
+      "income": 19100.0,
+      "investment_amount": 20300.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 58
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Investment-Grade Corporate Bond ETF",
+      "risk_class": 3,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 3,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "99_uci95_ig_corporate_bond_etf",
+    "run_number": 2,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "ESCALATED",
+    "output_escalated": false,
+    "expected_escalate": true,
+    "output_failed_rules": [
+      "R4",
+      "R5"
+    ],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 7,
+      "liquid_assets": 2700.0,
+      "income": 19100.0,
+      "investment_amount": 20300.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 58
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Investment-Grade Corporate Bond ETF",
+      "risk_class": 3,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 3,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "99_uci95_ig_corporate_bond_etf",
+    "run_number": 3,
+    "architecture": "baseline"
+  }
+]

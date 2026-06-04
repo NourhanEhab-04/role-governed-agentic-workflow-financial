@@ -2,6 +2,28 @@
   "description": "M7 parity D — young LOW-vuln (age 26), money market fund. All rules pass, SUITABLE. Paired with scenario 116.",
   "pair_id": "M7-D",
   "demographic_variant": "young_low_vuln",
+  "client_narrative": "Sven Larsson is 26 years old. Their gross annual income is approximately 22,000 euros (around 1,833 euros per month). They hold 45,000 euros in liquid savings and wish to invest 8,000 euros with a 3-year investment horizon. In terms of financial background, the client has no investment experience and has never purchased any financial product beyond basic bank savings accounts. Their investment approach is moderate-to-conservative — they rate their risk tolerance at 3 out of 10. They have stated they cannot afford to lose the full 8,000 euros invested.",
+  "expected_client_profile": {
+    "financial_knowledge": "none",
+    "risk_tolerance_score": 3,
+    "investment_horizon": 3,
+    "liquid_assets": 45000.0,
+    "income": 22000.0,
+    "investment_amount": 8000.0,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "LOW",
+    "age": 26
+  },
+  "product_narrative": "The product is a short-term money market fund investing exclusively in high-quality, short-duration eurozone sovereign and agency instruments rated at least A-. The fund is registered as a UCITS, listed on Euronext Amsterdam, publishes a KID, and uses no leverage or derivatives of any kind. Capital preservation is the primary objective. The recommended minimum investment period is one year.",
+  "expected_product_profile": {
+    "product_name": "Euro Money Market Fund",
+    "risk_class": 1,
+    "complexity_tier": "NON-COMPLEX",
+    "requires_knowledge_level": "none",
+    "minimum_horizon": 1,
+    "potential_loss": "partial",
+    "leverage": false
+  },
   "client": {
     "name": "Sven Larsson",
     "age": 26,

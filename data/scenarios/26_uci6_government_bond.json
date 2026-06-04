@@ -1,11 +1,31 @@
 {
   "description": "UCI row 6 (age 53, LOW vulnerability, basic knowledge, RT 6, horizon 3yr) — government bond: all hard rules pass (score 100) -> SUITABLE",
-  "client_narrative": "Ingeborg Haas is 53 years old and works as a human resources manager at a manufacturing company. She earns roughly 65,500 euros per year and holds 43,300 euros in liquid savings. She wants to invest 3,600 euros for about 3 years to generate stable returns ahead of a planned early retirement. She has basic investment knowledge: she has previously held government bond funds and blue-chip equity funds through her bank but has no experience with complex or leveraged products. She rates her risk tolerance at 6 out of 10 and has confirmed she can afford to lose the invested amount. Her primary objective is capital preservation.",
-  "product_narrative": "The product is a eurozone government bond issued by a sovereign member state of the EU, rated AA or above by major credit rating agencies. The bond pays a fixed annual coupon and returns principal at maturity. It is non-complex under MiFID II, requires only basic financial knowledge to understand, and has a minimum recommended holding period of three years. The bond is listed on regulated markets, publishes a prospectus and KID equivalent, uses no leverage, and in the worst case delivers only partial capital loss (credit event).",
   "uci_row_index": 6,
   "uci_source": "https://doi.org/10.24432/C5NC77",
   "rule_engine_score": 100,
   "rule_engine_decision": "SUITABLE",
+  "client_narrative": "Ingeborg Haas is 53 years old and works as a human resources manager at a manufacturing company. She earns roughly 65,500 euros per year and holds 43,300 euros in liquid savings. She wants to invest 3,600 euros for about 3 years to generate stable returns ahead of a planned early retirement. She has basic investment knowledge: she has previously held government bond funds and blue-chip equity funds through her bank but has no experience with complex or leveraged products. She rates her risk tolerance at 6 out of 10 and has confirmed she can afford to lose the invested amount. Her primary objective is capital preservation.",
+  "expected_client_profile": {
+    "financial_knowledge": "basic",
+    "risk_tolerance_score": 6,
+    "investment_horizon": 3,
+    "liquid_assets": 43300.0,
+    "income": 65500.0,
+    "investment_amount": 3600.0,
+    "can_afford_total_loss": true,
+    "financial_vulnerability": "LOW",
+    "age": 53
+  },
+  "product_narrative": "The product is a eurozone government bond issued by a sovereign member state of the EU, rated AA or above by major credit rating agencies. The bond pays a fixed annual coupon and returns principal at maturity. It is non-complex under MiFID II, requires only basic financial knowledge to understand, and has a minimum recommended holding period of three years. The bond is listed on regulated markets, publishes a prospectus and KID equivalent, uses no leverage, and in the worst case delivers only partial capital loss (credit event).",
+  "expected_product_profile": {
+    "product_name": "German 10-Year Bund",
+    "risk_class": 2,
+    "complexity_tier": "NON-COMPLEX",
+    "requires_knowledge_level": "basic",
+    "minimum_horizon": 3,
+    "potential_loss": "partial",
+    "leverage": false
+  },
   "client": {
     "name": "Ingeborg Haas",
     "age": 53,

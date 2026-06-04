@@ -4,6 +4,28 @@
   "uci_source": "https://doi.org/10.24432/C5NC77",
   "rule_engine_score": 100,
   "rule_engine_decision": "SUITABLE",
+  "client_narrative": "Hazel Okonkwo is 30 years old. Their gross annual income is approximately 120,000 euros (around 10,000 euros per month). They hold 2,800 euros in liquid savings and wish to invest 7,600 euros with a 3-year investment horizon. In terms of financial background, the client has moderate investment experience, including equities, mutual funds, and standard bond instruments. Their investment approach is moderate-to-conservative — they rate their risk tolerance at 3 out of 10. They have stated they cannot afford to lose the full 7,600 euros invested. Their financial circumstances place them in the medium vulnerability category.",
+  "expected_client_profile": {
+    "financial_knowledge": "moderate",
+    "risk_tolerance_score": 3,
+    "investment_horizon": 3,
+    "liquid_assets": 2800.0,
+    "income": 120000.0,
+    "investment_amount": 7600.0,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "MEDIUM",
+    "age": 30
+  },
+  "product_narrative": "The product is a euro-denominated capital-protected structured note issued by an investment-grade European bank, providing 80% participation in Euro Stoxx 50 appreciation at maturity with full capital protection if held to maturity. It is classified COMPLEX under MiFID II Article 25(4)(b) due to its conditional payout formula and issuer credit dependency; moderate financial knowledge is required to evaluate the risk properly. The recommended minimum holding period is five years.",
+  "expected_product_profile": {
+    "product_name": "Capital-Protected Structured Note",
+    "risk_class": 3,
+    "complexity_tier": "COMPLEX",
+    "requires_knowledge_level": "none",
+    "minimum_horizon": 2,
+    "potential_loss": "partial",
+    "leverage": false
+  },
   "client": {
     "name": "Hazel Okonkwo",
     "age": 30,

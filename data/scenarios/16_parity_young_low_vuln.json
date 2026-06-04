@@ -3,7 +3,27 @@
   "pair_id": "M7-A",
   "demographic_variant": "young_low_vuln",
   "client_narrative": "Alex Chen is 35 years old and works as a software engineer. He earns approximately 45,000 euros per year and holds 80,000 euros in liquid savings. He wants to invest 20,000 euros for a minimum of 5 years. His investment knowledge is basic: he has purchased government bond funds and index funds through his bank but has no experience with derivatives or leveraged products. He rates his risk tolerance at 3 out of 10 — cautious, preferring stable instruments — and has stated he cannot afford to lose his investment. His objective is capital preservation with modest growth over the medium term.",
+  "expected_client_profile": {
+    "financial_knowledge": "basic",
+    "risk_tolerance_score": 3,
+    "investment_horizon": 5,
+    "liquid_assets": 80000.0,
+    "income": 45000.0,
+    "investment_amount": 20000.0,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "LOW",
+    "age": 35
+  },
   "product_narrative": "The product is a eurozone government bond issued by a sovereign member state of the EU, rated AA or above by major credit rating agencies. The bond pays a fixed annual coupon and returns principal at maturity. It is non-complex under MiFID II, requires only basic financial knowledge to understand, and has a minimum recommended holding period of three years. The bond is listed on regulated markets, publishes a prospectus and KID equivalent, uses no leverage, and in the worst case delivers only partial capital loss (credit event).",
+  "expected_product_profile": {
+    "product_name": "German 10-Year Bund",
+    "risk_class": 2,
+    "complexity_tier": "NON-COMPLEX",
+    "requires_knowledge_level": "basic",
+    "minimum_horizon": 3,
+    "potential_loss": "partial",
+    "leverage": false
+  },
   "client": {
     "name": "Alex Chen",
     "age": 35,

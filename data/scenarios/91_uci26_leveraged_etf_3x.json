@@ -4,6 +4,28 @@
   "uci_source": "https://doi.org/10.24432/C5NC77",
   "rule_engine_score": 55,
   "rule_engine_decision": "UNSUITABLE",
+  "client_narrative": "Grzegorz Lewandowski is 39 years old. Their gross annual income is approximately 49,500 euros (around 4,125 euros per month). They hold 2,600 euros in liquid savings and wish to invest 1,000 euros with a 2-year investment horizon. In terms of financial background, the client has no investment experience and has never purchased any financial product beyond basic bank savings accounts. Their investment approach is moderate-to-conservative — they rate their risk tolerance at 4 out of 10. They have stated they cannot afford to lose the full 1,000 euros invested. Their financial circumstances place them in the medium vulnerability category.",
+  "expected_client_profile": {
+    "financial_knowledge": "none",
+    "risk_tolerance_score": 4,
+    "investment_horizon": 2,
+    "liquid_assets": 2600.0,
+    "income": 49500.0,
+    "investment_amount": 1000.0,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "MEDIUM",
+    "age": 39
+  },
+  "product_narrative": "The product is a leveraged exchange-traded product providing 3x daily leveraged exposure to the S&P 500 index through financial derivatives and daily rebalancing. Due to compounding effects, returns over periods beyond one day can diverge significantly from three times the index return, and total loss of invested capital is possible in adverse market conditions. The product is classified COMPLEX under MiFID II and requires advanced investor knowledge. It is designed as a short-term speculative instrument; the minimum recommended holding period is one year.",
+  "expected_product_profile": {
+    "product_name": "3x Leveraged S&P500 ETF",
+    "risk_class": 7,
+    "complexity_tier": "COMPLEX",
+    "requires_knowledge_level": "advanced",
+    "minimum_horizon": 1,
+    "potential_loss": "total",
+    "leverage": true
+  },
   "client": {
     "name": "Grzegorz Lewandowski",
     "age": 39,

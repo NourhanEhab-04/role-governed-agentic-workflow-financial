@@ -4,6 +4,28 @@
   "uci_source": "https://doi.org/10.24432/C5NC77",
   "rule_engine_score": 100,
   "rule_engine_decision": "SUITABLE",
+  "client_narrative": "Dijana Ristić is 28 years old. Their gross annual income is approximately 8,800 euros (around 733 euros per month). They hold 1,700 euros in liquid savings and wish to invest 6,700 euros with a 3-year investment horizon. In terms of financial background, the client has moderate investment experience, including equities, mutual funds, and standard bond instruments. Their investment approach is moderate-to-conservative — they rate their risk tolerance at 3 out of 10. They have stated they cannot afford to lose the full 6,700 euros invested. They have been assessed as financially vulnerable.",
+  "expected_client_profile": {
+    "financial_knowledge": "moderate",
+    "risk_tolerance_score": 3,
+    "investment_horizon": 3,
+    "liquid_assets": 1700.0,
+    "income": 8800.0,
+    "investment_amount": 6700.0,
+    "can_afford_total_loss": false,
+    "financial_vulnerability": "HIGH",
+    "age": 28
+  },
+  "product_narrative": "The product is a short-term money market fund investing exclusively in high-quality, short-duration eurozone sovereign and agency instruments rated at least A-. The fund is registered as a UCITS, listed on Euronext Amsterdam, publishes a KID, and uses no leverage or derivatives of any kind. Capital preservation is the primary objective. The recommended minimum investment period is one year.",
+  "expected_product_profile": {
+    "product_name": "Euro Money Market Fund",
+    "risk_class": 1,
+    "complexity_tier": "NON-COMPLEX",
+    "requires_knowledge_level": "none",
+    "minimum_horizon": 1,
+    "potential_loss": "partial",
+    "leverage": false
+  },
   "client": {
     "name": "Dijana Ristić",
     "age": 28,

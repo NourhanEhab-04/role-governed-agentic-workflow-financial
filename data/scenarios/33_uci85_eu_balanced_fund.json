@@ -4,6 +4,28 @@
   "uci_source": "https://doi.org/10.24432/C5NC77",
   "rule_engine_score": 100,
   "rule_engine_decision": "SUITABLE",
+  "client_narrative": "Simone Nakamura is 29 years old. Their gross annual income is approximately 55,100 euros (around 4,592 euros per month). They hold 56,000 euros in liquid savings and wish to invest 1,800 euros with a 4-year investment horizon. In terms of financial background, the client has moderate investment experience, including equities, mutual funds, and standard bond instruments. Their investment approach is moderate — they rate their risk tolerance at 6 out of 10. They have confirmed they can afford to lose the entire 1,800 euros if the investment performs poorly. Their financial circumstances place them in the medium vulnerability category.",
+  "expected_client_profile": {
+    "financial_knowledge": "moderate",
+    "risk_tolerance_score": 6,
+    "investment_horizon": 4,
+    "liquid_assets": 56000.0,
+    "income": 55100.0,
+    "investment_amount": 1800.0,
+    "can_afford_total_loss": true,
+    "financial_vulnerability": "MEDIUM",
+    "age": 29
+  },
+  "product_narrative": "The product is a non-UCITS AIFMD fund holding a 40-60% allocation to European equities and 40-60% to investment-grade bonds, with a derivatives overlay for interest-rate and FX hedging. Due to its embedded derivative strategies, it is classified as COMPLEX under MiFID II Article 25(4)(b). Investors should have at minimum moderate financial knowledge to understand the risk profile. The recommended minimum holding period is four years.",
+  "expected_product_profile": {
+    "product_name": "Euro Balanced Multi-Asset Fund",
+    "risk_class": 3,
+    "complexity_tier": "COMPLEX",
+    "requires_knowledge_level": "moderate",
+    "minimum_horizon": 4,
+    "potential_loss": "partial",
+    "leverage": false
+  },
   "client": {
     "name": "Simone Nakamura",
     "age": 29,

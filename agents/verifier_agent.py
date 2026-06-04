@@ -308,8 +308,13 @@ POTENTIAL LOSS RULES:
   partial → full capital loss is NOT realistic under normal market conditions
              (diversified equity funds, bonds, standard ETFs, balanced funds)
 
-MINIMUM HORIZON: use risk class defaults above. Override only if product is
-explicitly designed as short-term (e.g. CFD = 1 year). Never set to 0.
+MINIMUM HORIZON — evidence-first:
+First, search ORIGINAL_INPUT for any explicit statement of a minimum or
+recommended holding period (e.g. "three years", "minimum 5-year horizon",
+"recommended investment horizon is N years"). If such a statement is present,
+the correct value is that exact number — mark any other value as supported: false.
+Only if NO explicit horizon is stated should you fall back to the risk class
+table default. Never accept 0.
 
 ════════════════════════════════════════
 REQUIRED OUTPUT FORMAT

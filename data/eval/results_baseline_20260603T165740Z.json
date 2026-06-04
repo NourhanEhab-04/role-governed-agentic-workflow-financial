@@ -1,0 +1,1524 @@
+[
+  {
+    "output_decision": "SUITABLE",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 4,
+      "liquid_assets": 56000.0,
+      "income": 23800.0,
+      "investment_amount": 7900.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "MEDIUM",
+      "age": 44
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Money Market Fund",
+      "risk_class": 1,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "none",
+      "minimum_horizon": 1,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "21_uci42_money_market_fund",
+    "run_number": 1,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "SUITABLE",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 4,
+      "liquid_assets": 56000.0,
+      "income": 23800.0,
+      "investment_amount": 7900.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "MEDIUM",
+      "age": 44
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Money Market Fund",
+      "risk_class": 1,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "none",
+      "minimum_horizon": 1,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "21_uci42_money_market_fund",
+    "run_number": 2,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "SUITABLE",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 4,
+      "liquid_assets": 56000.0,
+      "income": 23800.0,
+      "investment_amount": 7900.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "MEDIUM",
+      "age": 44
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Money Market Fund",
+      "risk_class": 1,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "none",
+      "minimum_horizon": 1,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "21_uci42_money_market_fund",
+    "run_number": 3,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R4",
+      "R5",
+      "R7"
+    ],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 2,
+      "liquid_assets": 18000.0,
+      "income": 23800.0,
+      "investment_amount": 9200.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "MEDIUM",
+      "age": 39
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Money Market Fund",
+      "risk_class": 1,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "none",
+      "minimum_horizon": 1,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "22_uci48_money_market_fund",
+    "run_number": 1,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R3",
+      "R5",
+      "R7"
+    ],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 2,
+      "liquid_assets": 18000.0,
+      "income": 23800.0,
+      "investment_amount": 9200.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "MEDIUM",
+      "age": 39
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Money Market Fund",
+      "risk_class": 1,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "none",
+      "minimum_horizon": 1,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "22_uci48_money_market_fund",
+    "run_number": 2,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R4",
+      "R5",
+      "R7"
+    ],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 2,
+      "liquid_assets": 18000.0,
+      "income": 23800.0,
+      "investment_amount": 9200.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "MEDIUM",
+      "age": 39
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Money Market Fund",
+      "risk_class": 1,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "none",
+      "minimum_horizon": 1,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "22_uci48_money_market_fund",
+    "run_number": 3,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R5"
+    ],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 7,
+      "investment_horizon": 4,
+      "liquid_assets": 56000.0,
+      "income": 33000.0,
+      "investment_amount": 7600.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 22
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Money Market Fund",
+      "risk_class": 1,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "none",
+      "minimum_horizon": 1,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "23_uci1_money_market_fund",
+    "run_number": 1,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R5"
+    ],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 7,
+      "investment_horizon": 4,
+      "liquid_assets": 56000.0,
+      "income": 33000.0,
+      "investment_amount": 7600.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 22
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Money Market Fund",
+      "risk_class": 1,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "none",
+      "minimum_horizon": 1,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "23_uci1_money_market_fund",
+    "run_number": 2,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R5"
+    ],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 7,
+      "investment_horizon": 4,
+      "liquid_assets": 56000.0,
+      "income": 33000.0,
+      "investment_amount": 7600.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 22
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Money Market Fund",
+      "risk_class": 1,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "none",
+      "minimum_horizon": 1,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "23_uci1_money_market_fund",
+    "run_number": 3,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R4",
+      "R5"
+    ],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "moderate",
+      "risk_tolerance_score": 3,
+      "investment_horizon": 3,
+      "liquid_assets": 1700.0,
+      "income": 8800.0,
+      "investment_amount": 6700.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 28
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Money Market Fund",
+      "risk_class": 1,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "none",
+      "minimum_horizon": 1,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "24_uci9_money_market_fund",
+    "run_number": 1,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R4",
+      "R5"
+    ],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "moderate",
+      "risk_tolerance_score": 3,
+      "investment_horizon": 3,
+      "liquid_assets": 1700.0,
+      "income": 8800.0,
+      "investment_amount": 6700.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 28
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Money Market Fund",
+      "risk_class": 1,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "none",
+      "minimum_horizon": 1,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "24_uci9_money_market_fund",
+    "run_number": 2,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R4",
+      "R5"
+    ],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "moderate",
+      "risk_tolerance_score": 3,
+      "investment_horizon": 3,
+      "liquid_assets": 1700.0,
+      "income": 8800.0,
+      "investment_amount": 6700.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 28
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Money Market Fund",
+      "risk_class": 1,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "none",
+      "minimum_horizon": 1,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "24_uci9_money_market_fund",
+    "run_number": 3,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R4",
+      "R5",
+      "R7"
+    ],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 3,
+      "investment_horizon": 2,
+      "liquid_assets": 56000.0,
+      "income": 13900.0,
+      "investment_amount": 2900.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 48
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Money Market Fund",
+      "risk_class": 1,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "none",
+      "minimum_horizon": 1,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "25_uci22_money_market_fund",
+    "run_number": 1,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R4",
+      "R5"
+    ],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 3,
+      "investment_horizon": 2,
+      "liquid_assets": 56000.0,
+      "income": 13900.0,
+      "investment_amount": 2900.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 48
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Money Market Fund",
+      "risk_class": 1,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "none",
+      "minimum_horizon": 1,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "25_uci22_money_market_fund",
+    "run_number": 2,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R4",
+      "R5"
+    ],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 3,
+      "investment_horizon": 2,
+      "liquid_assets": 56000.0,
+      "income": 13900.0,
+      "investment_amount": 2900.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 48
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Money Market Fund",
+      "risk_class": 1,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "none",
+      "minimum_horizon": 1,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "25_uci22_money_market_fund",
+    "run_number": 3,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "SUITABLE",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 6,
+      "investment_horizon": 3,
+      "liquid_assets": 43300.0,
+      "income": 65500.0,
+      "investment_amount": 3600.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "LOW",
+      "age": 53
+    },
+    "expected_product_profile": {
+      "product_name": "German 10-Year Bund",
+      "risk_class": 2,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 3,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "26_uci6_government_bond",
+    "run_number": 1,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "SUITABLE",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 6,
+      "investment_horizon": 3,
+      "liquid_assets": 43300.0,
+      "income": 65500.0,
+      "investment_amount": 3600.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "LOW",
+      "age": 53
+    },
+    "expected_product_profile": {
+      "product_name": "German 10-Year Bund",
+      "risk_class": 2,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 3,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "26_uci6_government_bond",
+    "run_number": 2,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "SUITABLE",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 6,
+      "investment_horizon": 3,
+      "liquid_assets": 43300.0,
+      "income": 65500.0,
+      "investment_amount": 3600.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "LOW",
+      "age": 53
+    },
+    "expected_product_profile": {
+      "product_name": "German 10-Year Bund",
+      "risk_class": 2,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 3,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "26_uci6_government_bond",
+    "run_number": 3,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R4",
+      "R5"
+    ],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 3,
+      "investment_horizon": 9,
+      "liquid_assets": 1000.0,
+      "income": 29300.0,
+      "investment_amount": 7800.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 31
+    },
+    "expected_product_profile": {
+      "product_name": "German 10-Year Bund",
+      "risk_class": 2,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 3,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "27_uci36_government_bond",
+    "run_number": 1,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R4",
+      "R5",
+      "R7"
+    ],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 3,
+      "investment_horizon": 9,
+      "liquid_assets": 1000.0,
+      "income": 29300.0,
+      "investment_amount": 7800.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 31
+    },
+    "expected_product_profile": {
+      "product_name": "German 10-Year Bund",
+      "risk_class": 2,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 3,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "27_uci36_government_bond",
+    "run_number": 2,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R4",
+      "R5",
+      "R7"
+    ],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 3,
+      "investment_horizon": 9,
+      "liquid_assets": 1000.0,
+      "income": 29300.0,
+      "investment_amount": 7800.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 31
+    },
+    "expected_product_profile": {
+      "product_name": "German 10-Year Bund",
+      "risk_class": 2,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 3,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "27_uci36_government_bond",
+    "run_number": 3,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R4",
+      "R5",
+      "R7"
+    ],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 6,
+      "liquid_assets": 2600.0,
+      "income": 30700.0,
+      "investment_amount": 18400.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 25
+    },
+    "expected_product_profile": {
+      "product_name": "German 10-Year Bund",
+      "risk_class": 2,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 3,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "28_uci63_government_bond",
+    "run_number": 1,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R4",
+      "R5",
+      "R7"
+    ],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 6,
+      "liquid_assets": 2600.0,
+      "income": 30700.0,
+      "investment_amount": 18400.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 25
+    },
+    "expected_product_profile": {
+      "product_name": "German 10-Year Bund",
+      "risk_class": 2,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 3,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "28_uci63_government_bond",
+    "run_number": 2,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R4",
+      "R5",
+      "R7"
+    ],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 6,
+      "liquid_assets": 2600.0,
+      "income": 30700.0,
+      "investment_amount": 18400.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 25
+    },
+    "expected_product_profile": {
+      "product_name": "German 10-Year Bund",
+      "risk_class": 2,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 3,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "28_uci63_government_bond",
+    "run_number": 3,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "SUITABLE",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 5,
+      "liquid_assets": 18000.0,
+      "income": 47300.0,
+      "investment_amount": 10000.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "MEDIUM",
+      "age": 45
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Investment-Grade Corporate Bond ETF",
+      "risk_class": 3,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 3,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "29_uci3_ig_corporate_bond_etf",
+    "run_number": 1,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "SUITABLE",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 5,
+      "liquid_assets": 18000.0,
+      "income": 47300.0,
+      "investment_amount": 10000.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "MEDIUM",
+      "age": 45
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Investment-Grade Corporate Bond ETF",
+      "risk_class": 3,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 3,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "29_uci3_ig_corporate_bond_etf",
+    "run_number": 2,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "SUITABLE",
+    "expected_decision": "SUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [],
+    "expected_rules_failed": [],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 5,
+      "liquid_assets": 18000.0,
+      "income": 47300.0,
+      "investment_amount": 10000.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "MEDIUM",
+      "age": 45
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Investment-Grade Corporate Bond ETF",
+      "risk_class": 3,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 3,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "29_uci3_ig_corporate_bond_etf",
+    "run_number": 3,
+    "architecture": "baseline"
+  }
+]
