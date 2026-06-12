@@ -1,0 +1,116 @@
+{
+  "study_type": "live_ablation",
+  "total_files": 400,
+  "total_scenarios": 50,
+  "total_configs": 6,
+  "config_ids": [
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7"
+  ],
+  "scenario_ids": [
+    "05_unsuitable_knowledge",
+    "07_escalated_contradiction",
+    "08_escalated_leveraged",
+    "100_uci76_ig_corporate_bond_etf",
+    "101_escalated_contradiction_high_vuln_basic",
+    "102_escalated_contradiction_high_vuln_moderate",
+    "103_escalated_contradiction_elderly_high_vuln",
+    "104_escalated_contradiction_high_income_high_vuln",
+    "108_escalated_concentration_em_r3_fail",
+    "111_escalated_contradiction_and_concentration",
+    "112_escalated_concentration_conditional_base",
+    "114_parity_m7c_old_suitable_govt_bond",
+    "115_parity_m7d_young_suitable_mmf",
+    "118_parity_m7e_old_conditional_equity",
+    "11_suitable_r2_soft_fail",
+    "121_parity_m7g_young_conditional_equity",
+    "122_parity_m7g_old_conditional_equity",
+    "123_parity_m7h_young_suitable_ig_bond",
+    "124_parity_m7h_old_suitable_ig_bond",
+    "127_parity_m7j_young_unsuitable_em",
+    "18_parity_conditional_young",
+    "22_uci48_money_market_fund",
+    "25_uci22_money_market_fund",
+    "28_uci63_government_bond",
+    "30_uci65_ig_corporate_bond_etf",
+    "34_uci99_eu_balanced_fund",
+    "37_uci7_em_equity_etf",
+    "45_uci3_sector_equity_etf",
+    "53_uci105_em_equity_etf",
+    "57_uci227_em_equity_etf",
+    "59_uci54_global_equity_etf",
+    "61_uci177_global_equity_etf",
+    "62_uci503_global_equity_etf",
+    "66_uci479_sector_equity_etf",
+    "67_uci373_em_equity_etf",
+    "68_uci287_em_equity_etf",
+    "71_uci5_em_equity_etf",
+    "74_uci15_equity_derivative",
+    "76_uci44_equity_derivative",
+    "79_uci915_equity_derivative",
+    "80_uci1_sector_equity_etf",
+    "85_uci47_em_equity_etf",
+    "87_uci6_structured_note",
+    "92_uci3_leveraged_etf_3x",
+    "93_uci4_leveraged_etf_3x",
+    "94_uci15_leveraged_etf_3x",
+    "96_uci9_ig_corporate_bond_etf",
+    "97_uci56_ig_corporate_bond_etf",
+    "98_uci11_ig_corporate_bond_etf",
+    "99_uci95_ig_corporate_bond_etf"
+  ],
+  "category_counts": {
+    "SUITABLE": 14,
+    "CONDITIONAL": 13,
+    "UNSUITABLE": 13,
+    "ESCALATED": 10
+  },
+  "per_config": {
+    "P2": {
+      "label": "No pre_check",
+      "variant": "no_precheck",
+      "total": 50,
+      "correct": 45,
+      "errors": 0
+    },
+    "P3": {
+      "label": "No audit",
+      "variant": "no_audit",
+      "total": 50,
+      "correct": 45,
+      "errors": 0
+    },
+    "P4": {
+      "label": "LLM-only A3",
+      "variant": "llm_only_a3",
+      "total": 50,
+      "correct": 5,
+      "errors": 0
+    },
+    "P5": {
+      "label": "No A4",
+      "variant": "no_conflict_detector",
+      "total": 50,
+      "correct": 38,
+      "errors": 0
+    },
+    "P6": {
+      "label": "Single LLM Baseline",
+      "variant": "single_llm",
+      "total": 50,
+      "correct": 18,
+      "errors": 0
+    },
+    "P7": {
+      "label": "No Rule Engine",
+      "variant": "no_rule_engine",
+      "total": 50,
+      "correct": 19,
+      "errors": 0
+    }
+  }
+}

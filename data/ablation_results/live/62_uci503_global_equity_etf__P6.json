@@ -1,0 +1,46 @@
+{
+  "scenario_id": "62_uci503_global_equity_etf",
+  "scenario_file": "data\\scenarios\\62_uci503_global_equity_etf.json",
+  "category": "CONDITIONAL",
+  "config_id": "P6",
+  "config_label": "Single LLM Baseline",
+  "pipeline_variant": "single_llm",
+  "final_decision": "UNSUITABLE",
+  "expected_decision": "CONDITIONAL",
+  "expected_escalate": false,
+  "output_escalate": false,
+  "decision_correct": false,
+  "escalation_correct": true,
+  "score": 55,
+  "rules_failed": [
+    "R4"
+  ],
+  "rule_decision": "UNSUITABLE",
+  "conflict_flags": [],
+  "verifier": {
+    "a1_verifier_ran": false,
+    "a1_verifier_passed": null,
+    "a1_correction_applied": false,
+    "a1_fields_fixed": [],
+    "a2_verifier_ran": false,
+    "a2_verifier_passed": null,
+    "a2_correction_applied": false,
+    "a2_fields_fixed": [],
+    "any_correction": false
+  },
+  "consistency": {
+    "a1_overrides": [],
+    "a2_overrides": [],
+    "any_override": false
+  },
+  "llm_only_a3": {},
+  "halted": false,
+  "halt_reason": null,
+  "warnings": [],
+  "audit_summary": {
+    "assessment_id": null,
+    "model_version": null,
+    "rule_engine_version": "1.0.0"
+  },
+  "error": null
+}

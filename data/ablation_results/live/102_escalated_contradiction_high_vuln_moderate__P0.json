@@ -1,0 +1,47 @@
+{
+  "scenario_id": "102_escalated_contradiction_high_vuln_moderate",
+  "scenario_file": "data\\scenarios\\102_escalated_contradiction_high_vuln_moderate.json",
+  "category": "ESCALATED",
+  "config_id": "P0",
+  "config_label": "Full Pipeline",
+  "pipeline_variant": "full",
+  "final_decision": "ESCALATED",
+  "expected_decision": "ESCALATED",
+  "expected_escalate": true,
+  "output_escalate": true,
+  "decision_correct": true,
+  "escalation_correct": true,
+  "score": 100,
+  "rules_failed": [],
+  "rule_decision": "SUITABLE",
+  "conflict_flags": [
+    "CONTRADICTION",
+    "ESCALATION"
+  ],
+  "verifier": {
+    "a1_verifier_ran": false,
+    "a1_verifier_passed": null,
+    "a1_correction_applied": false,
+    "a1_fields_fixed": [],
+    "a2_verifier_ran": false,
+    "a2_verifier_passed": null,
+    "a2_correction_applied": false,
+    "a2_fields_fixed": [],
+    "any_correction": false
+  },
+  "consistency": {
+    "a1_overrides": [],
+    "a2_overrides": [],
+    "any_override": false
+  },
+  "llm_only_a3": {},
+  "halted": false,
+  "halt_reason": "Escalation flagged by conflict detector.",
+  "warnings": [],
+  "audit_summary": {
+    "assessment_id": "f04bd94c-801d-4435-b8ec-a370c2bc7070",
+    "model_version": null,
+    "rule_engine_version": "1.0.0"
+  },
+  "error": null
+}

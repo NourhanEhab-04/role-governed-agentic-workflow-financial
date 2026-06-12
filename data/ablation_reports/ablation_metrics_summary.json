@@ -1,0 +1,258 @@
+{
+  "per_config": {
+    "A0": {
+      "M1_decision_accuracy": 1.0,
+      "M1c_per_category": {
+        "SUITABLE": 1.0,
+        "CONDITIONAL": 1.0,
+        "UNSUITABLE": 1.0,
+        "ESCALATED": 1.0
+      },
+      "M2_unsuitable_recall": 1.0,
+      "M2p_unsuitable_precision": 1.0,
+      "M3_escalation_recall": 1.0,
+      "M3p_escalation_precision": 1.0,
+      "M3f_escalation_f1": 1.0,
+      "M6_parity_gap": 0.0,
+      "n_cells": 50,
+      "n_errors": 0
+    },
+    "A1": {
+      "M1_decision_accuracy": 0.8,
+      "M1c_per_category": {
+        "SUITABLE": 1.0,
+        "CONDITIONAL": 1.0,
+        "UNSUITABLE": 1.0,
+        "ESCALATED": 0.0
+      },
+      "M2_unsuitable_recall": 1.0,
+      "M2p_unsuitable_precision": 1.0,
+      "M3_escalation_recall": 0.0,
+      "M3p_escalation_precision": 0.0,
+      "M3f_escalation_f1": 0.0,
+      "M6_parity_gap": 1.0,
+      "n_cells": 50,
+      "n_errors": 0
+    },
+    "A2": {
+      "M1_decision_accuracy": 1.0,
+      "M1c_per_category": {
+        "SUITABLE": 1.0,
+        "CONDITIONAL": 1.0,
+        "UNSUITABLE": 1.0,
+        "ESCALATED": 1.0
+      },
+      "M2_unsuitable_recall": 1.0,
+      "M2p_unsuitable_precision": 1.0,
+      "M3_escalation_recall": 1.0,
+      "M3p_escalation_precision": 1.0,
+      "M3f_escalation_f1": 1.0,
+      "M6_parity_gap": 0.0,
+      "n_cells": 50,
+      "n_errors": 0
+    },
+    "A3": {
+      "M1_decision_accuracy": 0.92,
+      "M1c_per_category": {
+        "SUITABLE": 1.0,
+        "CONDITIONAL": 1.0,
+        "UNSUITABLE": 1.0,
+        "ESCALATED": 0.6
+      },
+      "M2_unsuitable_recall": 1.0,
+      "M2p_unsuitable_precision": 1.0,
+      "M3_escalation_recall": 0.6,
+      "M3p_escalation_precision": 1.0,
+      "M3f_escalation_f1": 0.7499999999999999,
+      "M6_parity_gap": 0.4,
+      "n_cells": 50,
+      "n_errors": 0
+    },
+    "A4": {
+      "M1_decision_accuracy": 0.9,
+      "M1c_per_category": {
+        "SUITABLE": 1.0,
+        "CONDITIONAL": 1.0,
+        "UNSUITABLE": 1.0,
+        "ESCALATED": 0.5
+      },
+      "M2_unsuitable_recall": 1.0,
+      "M2p_unsuitable_precision": 1.0,
+      "M3_escalation_recall": 0.5,
+      "M3p_escalation_precision": 1.0,
+      "M3f_escalation_f1": 0.6666666666666666,
+      "M6_parity_gap": 0.5,
+      "n_cells": 50,
+      "n_errors": 0
+    },
+    "R1_off": {
+      "M1_decision_accuracy": 0.96,
+      "M1c_per_category": {
+        "SUITABLE": 1.0,
+        "CONDITIONAL": 1.0,
+        "UNSUITABLE": 0.8461538461538461,
+        "ESCALATED": 1.0
+      },
+      "M2_unsuitable_recall": 0.8461538461538461,
+      "M2p_unsuitable_precision": 1.0,
+      "M3_escalation_recall": 1.0,
+      "M3p_escalation_precision": 1.0,
+      "M3f_escalation_f1": 1.0,
+      "M6_parity_gap": 0.15384615384615385,
+      "n_cells": 50,
+      "n_errors": 0
+    },
+    "R4_off": {
+      "M1_decision_accuracy": 0.98,
+      "M1c_per_category": {
+        "SUITABLE": 1.0,
+        "CONDITIONAL": 1.0,
+        "UNSUITABLE": 0.9230769230769231,
+        "ESCALATED": 1.0
+      },
+      "M2_unsuitable_recall": 0.9230769230769231,
+      "M2p_unsuitable_precision": 1.0,
+      "M3_escalation_recall": 1.0,
+      "M3p_escalation_precision": 1.0,
+      "M3f_escalation_f1": 1.0,
+      "M6_parity_gap": 0.07692307692307687,
+      "n_cells": 50,
+      "n_errors": 0
+    },
+    "R5_off": {
+      "M1_decision_accuracy": 0.96,
+      "M1c_per_category": {
+        "SUITABLE": 1.0,
+        "CONDITIONAL": 1.0,
+        "UNSUITABLE": 0.8461538461538461,
+        "ESCALATED": 1.0
+      },
+      "M2_unsuitable_recall": 0.8461538461538461,
+      "M2p_unsuitable_precision": 1.0,
+      "M3_escalation_recall": 1.0,
+      "M3p_escalation_precision": 0.8333333333333334,
+      "M3f_escalation_f1": 0.9090909090909091,
+      "M6_parity_gap": 0.15384615384615385,
+      "n_cells": 50,
+      "n_errors": 0
+    },
+    "R7_off": {
+      "M1_decision_accuracy": 0.98,
+      "M1c_per_category": {
+        "SUITABLE": 1.0,
+        "CONDITIONAL": 1.0,
+        "UNSUITABLE": 0.9230769230769231,
+        "ESCALATED": 1.0
+      },
+      "M2_unsuitable_recall": 0.9230769230769231,
+      "M2p_unsuitable_precision": 1.0,
+      "M3_escalation_recall": 1.0,
+      "M3p_escalation_precision": 1.0,
+      "M3f_escalation_f1": 1.0,
+      "M6_parity_gap": 0.07692307692307687,
+      "n_cells": 50,
+      "n_errors": 0
+    },
+    "R2_off": {
+      "M1_decision_accuracy": 0.74,
+      "M1c_per_category": {
+        "SUITABLE": 1.0,
+        "CONDITIONAL": 0.0,
+        "UNSUITABLE": 1.0,
+        "ESCALATED": 1.0
+      },
+      "M2_unsuitable_recall": 1.0,
+      "M2p_unsuitable_precision": 1.0,
+      "M3_escalation_recall": 1.0,
+      "M3p_escalation_precision": 0.8333333333333334,
+      "M3f_escalation_f1": 0.9090909090909091,
+      "M6_parity_gap": 1.0,
+      "n_cells": 50,
+      "n_errors": 0
+    },
+    "R3_off": {
+      "M1_decision_accuracy": 0.74,
+      "M1c_per_category": {
+        "SUITABLE": 1.0,
+        "CONDITIONAL": 0.0,
+        "UNSUITABLE": 1.0,
+        "ESCALATED": 1.0
+      },
+      "M2_unsuitable_recall": 1.0,
+      "M2p_unsuitable_precision": 1.0,
+      "M3_escalation_recall": 1.0,
+      "M3p_escalation_precision": 0.8333333333333334,
+      "M3f_escalation_f1": 0.9090909090909091,
+      "M6_parity_gap": 1.0,
+      "n_cells": 50,
+      "n_errors": 0
+    },
+    "R6_off": {
+      "M1_decision_accuracy": 1.0,
+      "M1c_per_category": {
+        "SUITABLE": 1.0,
+        "CONDITIONAL": 1.0,
+        "UNSUITABLE": 1.0,
+        "ESCALATED": 1.0
+      },
+      "M2_unsuitable_recall": 1.0,
+      "M2p_unsuitable_precision": 1.0,
+      "M3_escalation_recall": 1.0,
+      "M3p_escalation_precision": 1.0,
+      "M3f_escalation_f1": 1.0,
+      "M6_parity_gap": 0.0,
+      "n_cells": 50,
+      "n_errors": 0
+    },
+    "T1": {
+      "M1_decision_accuracy": 1.0,
+      "M1c_per_category": {
+        "SUITABLE": 1.0,
+        "CONDITIONAL": 1.0,
+        "UNSUITABLE": 1.0,
+        "ESCALATED": 1.0
+      },
+      "M2_unsuitable_recall": 1.0,
+      "M2p_unsuitable_precision": 1.0,
+      "M3_escalation_recall": 1.0,
+      "M3p_escalation_precision": 1.0,
+      "M3f_escalation_f1": 1.0,
+      "M6_parity_gap": 0.0,
+      "n_cells": 50,
+      "n_errors": 0
+    },
+    "T2": {
+      "M1_decision_accuracy": 0.74,
+      "M1c_per_category": {
+        "SUITABLE": 1.0,
+        "CONDITIONAL": 0.0,
+        "UNSUITABLE": 1.0,
+        "ESCALATED": 1.0
+      },
+      "M2_unsuitable_recall": 1.0,
+      "M2p_unsuitable_precision": 1.0,
+      "M3_escalation_recall": 1.0,
+      "M3p_escalation_precision": 0.8333333333333334,
+      "M3f_escalation_f1": 0.9090909090909091,
+      "M6_parity_gap": 1.0,
+      "n_cells": 50,
+      "n_errors": 0
+    }
+  },
+  "deltas": {
+    "A1": -0.19999999999999996,
+    "A2": 0.0,
+    "A3": -0.07999999999999996,
+    "A4": -0.09999999999999998,
+    "R1_off": -0.040000000000000036,
+    "R4_off": -0.020000000000000018,
+    "R5_off": -0.040000000000000036,
+    "R7_off": -0.020000000000000018,
+    "R2_off": -0.26,
+    "R3_off": -0.26,
+    "R6_off": 0.0,
+    "T1": 0.0,
+    "T2": -0.26
+  },
+  "control_id": "A0"
+}

@@ -1,0 +1,65 @@
+{
+  "scenario_id": "28_uci63_government_bond",
+  "scenario_file": "data\\scenarios\\28_uci63_government_bond.json",
+  "category": "SUITABLE",
+  "config_id": "P4",
+  "config_label": "LLM-only A3",
+  "pipeline_variant": "llm_only_a3",
+  "final_decision": "ERROR",
+  "expected_decision": "SUITABLE",
+  "expected_escalate": false,
+  "output_escalate": false,
+  "decision_correct": false,
+  "escalation_correct": true,
+  "score": 55,
+  "rules_failed": [],
+  "rule_decision": "CONDITIONAL",
+  "conflict_flags": [
+    "BORDERLINE"
+  ],
+  "verifier": {
+    "a1_verifier_ran": false,
+    "a1_verifier_passed": null,
+    "a1_correction_applied": false,
+    "a1_fields_fixed": [],
+    "a2_verifier_ran": false,
+    "a2_verifier_passed": null,
+    "a2_correction_applied": false,
+    "a2_fields_fixed": [],
+    "any_correction": false
+  },
+  "consistency": {
+    "a1_overrides": [],
+    "a2_overrides": [],
+    "any_override": false
+  },
+  "llm_only_a3": {
+    "agreed_with_precheck": false,
+    "disagreements": [
+      {
+        "stage": "A3",
+        "event": "llm_only_a3_disagrees_with_precheck",
+        "llm_decision": "CONDITIONAL",
+        "precheck_decision": "SUITABLE",
+        "ablation": "llm_only_a3"
+      }
+    ]
+  },
+  "halted": true,
+  "halt_reason": "A4 failed: audit_verdict shows rule engine disagreement but conflict_report.escalate is False \u2014 inconsistent state",
+  "warnings": [
+    {
+      "stage": "A3",
+      "event": "llm_only_a3_disagrees_with_precheck",
+      "llm_decision": "CONDITIONAL",
+      "precheck_decision": "SUITABLE",
+      "ablation": "llm_only_a3"
+    }
+  ],
+  "audit_summary": {
+    "assessment_id": "c0310398-bae4-4949-a51a-077e0005ed39",
+    "model_version": null,
+    "rule_engine_version": "1.0.0"
+  },
+  "error": null
+}

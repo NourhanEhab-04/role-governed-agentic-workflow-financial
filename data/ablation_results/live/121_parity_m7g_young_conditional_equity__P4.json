@@ -1,0 +1,49 @@
+{
+  "scenario_id": "121_parity_m7g_young_conditional_equity",
+  "scenario_file": "data\\scenarios\\121_parity_m7g_young_conditional_equity.json",
+  "category": "CONDITIONAL",
+  "config_id": "P4",
+  "config_label": "LLM-only A3",
+  "pipeline_variant": "llm_only_a3",
+  "final_decision": "ERROR",
+  "expected_decision": "CONDITIONAL",
+  "expected_escalate": false,
+  "output_escalate": false,
+  "decision_correct": false,
+  "escalation_correct": true,
+  "score": 55,
+  "rules_failed": [],
+  "rule_decision": "CONDITIONAL",
+  "conflict_flags": [
+    "BORDERLINE"
+  ],
+  "verifier": {
+    "a1_verifier_ran": false,
+    "a1_verifier_passed": null,
+    "a1_correction_applied": false,
+    "a1_fields_fixed": [],
+    "a2_verifier_ran": false,
+    "a2_verifier_passed": null,
+    "a2_correction_applied": false,
+    "a2_fields_fixed": [],
+    "any_correction": false
+  },
+  "consistency": {
+    "a1_overrides": [],
+    "a2_overrides": [],
+    "any_override": false
+  },
+  "llm_only_a3": {
+    "agreed_with_precheck": true,
+    "disagreements": []
+  },
+  "halted": true,
+  "halt_reason": "A4 failed: audit_verdict shows rule engine disagreement but conflict_report.escalate is False \u2014 inconsistent state",
+  "warnings": [],
+  "audit_summary": {
+    "assessment_id": "c11e6e5e-c0ac-4fa1-b65a-f4678fe6aa17",
+    "model_version": null,
+    "rule_engine_version": "1.0.0"
+  },
+  "error": null
+}

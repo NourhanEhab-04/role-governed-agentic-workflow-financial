@@ -1,0 +1,52 @@
+{
+  "scenario_id": "111_escalated_contradiction_and_concentration",
+  "scenario_file": "data\\scenarios\\111_escalated_contradiction_and_concentration.json",
+  "category": "ESCALATED",
+  "config_id": "P7",
+  "config_label": "No Rule Engine",
+  "pipeline_variant": "no_rule_engine",
+  "final_decision": "UNSUITABLE",
+  "expected_decision": "ESCALATED",
+  "expected_escalate": true,
+  "output_escalate": false,
+  "decision_correct": false,
+  "escalation_correct": false,
+  "score": 45,
+  "rules_failed": [
+    "R4",
+    "R5"
+  ],
+  "rule_decision": "UNSUITABLE",
+  "conflict_flags": [
+    "BORDERLINE"
+  ],
+  "verifier": {
+    "a1_verifier_ran": false,
+    "a1_verifier_passed": null,
+    "a1_correction_applied": false,
+    "a1_fields_fixed": [],
+    "a2_verifier_ran": false,
+    "a2_verifier_passed": null,
+    "a2_correction_applied": false,
+    "a2_fields_fixed": [],
+    "any_correction": false
+  },
+  "consistency": {
+    "a1_overrides": [],
+    "a2_overrides": [],
+    "any_override": false
+  },
+  "llm_only_a3": {
+    "agreed_with_precheck": true,
+    "disagreements": []
+  },
+  "halted": false,
+  "halt_reason": null,
+  "warnings": [],
+  "audit_summary": {
+    "assessment_id": "0889c3ef-0cda-48d7-9bdb-fc38ffad1178",
+    "model_version": null,
+    "rule_engine_version": "1.0.0"
+  },
+  "error": null
+}

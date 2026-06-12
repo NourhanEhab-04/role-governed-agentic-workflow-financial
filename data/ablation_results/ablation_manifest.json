@@ -1,0 +1,138 @@
+{
+  "total_cells": 700,
+  "total_scenarios": 50,
+  "total_configs": 14,
+  "config_ids": [
+    "A0",
+    "A1",
+    "A2",
+    "A3",
+    "A4",
+    "R1_off",
+    "R4_off",
+    "R5_off",
+    "R7_off",
+    "R2_off",
+    "R3_off",
+    "R6_off",
+    "T1",
+    "T2"
+  ],
+  "scenario_ids": [
+    "06_unsuitable_multi_rule",
+    "07_escalated_contradiction",
+    "08_escalated_leveraged",
+    "100_uci76_ig_corporate_bond_etf",
+    "101_escalated_contradiction_high_vuln_basic",
+    "102_escalated_contradiction_high_vuln_moderate",
+    "103_escalated_contradiction_elderly_high_vuln",
+    "104_escalated_contradiction_high_income_high_vuln",
+    "10_unsuitable_vulnerable",
+    "111_escalated_contradiction_and_concentration",
+    "112_escalated_concentration_conditional_base",
+    "113_parity_m7c_young_suitable_govt_bond",
+    "116_parity_m7d_old_suitable_mmf",
+    "118_parity_m7e_old_conditional_equity",
+    "121_parity_m7g_young_conditional_equity",
+    "122_parity_m7g_old_conditional_equity",
+    "124_parity_m7h_old_suitable_ig_bond",
+    "125_parity_m7i_young_suitable_ig_bond",
+    "18_parity_conditional_young",
+    "20_uci2_money_market_fund",
+    "23_uci1_money_market_fund",
+    "29_uci3_ig_corporate_bond_etf",
+    "34_uci99_eu_balanced_fund",
+    "38_uci85_em_equity_etf",
+    "43_uci40_sector_equity_etf",
+    "44_uci145_sector_equity_etf",
+    "45_uci3_sector_equity_etf",
+    "49_uci51_structured_note",
+    "53_uci105_em_equity_etf",
+    "57_uci227_em_equity_etf",
+    "59_uci54_global_equity_etf",
+    "61_uci177_global_equity_etf",
+    "62_uci503_global_equity_etf",
+    "66_uci479_sector_equity_etf",
+    "67_uci373_em_equity_etf",
+    "68_uci287_em_equity_etf",
+    "71_uci5_em_equity_etf",
+    "72_uci26_em_equity_etf",
+    "73_uci13_equity_derivative",
+    "75_uci33_equity_derivative",
+    "78_uci268_equity_derivative",
+    "81_uci4_sector_equity_etf",
+    "83_uci79_sector_equity_etf",
+    "85_uci47_em_equity_etf",
+    "87_uci6_structured_note",
+    "89_uci42_leveraged_etf_3x",
+    "96_uci9_ig_corporate_bond_etf",
+    "97_uci56_ig_corporate_bond_etf",
+    "98_uci11_ig_corporate_bond_etf",
+    "99_uci95_ig_corporate_bond_etf"
+  ],
+  "category_counts": {
+    "SUITABLE": 14,
+    "CONDITIONAL": 13,
+    "UNSUITABLE": 13,
+    "ESCALATED": 10
+  },
+  "errors": [],
+  "summary": {
+    "A0": {
+      "total": 50,
+      "correct": 50
+    },
+    "A1": {
+      "total": 50,
+      "correct": 40
+    },
+    "A2": {
+      "total": 50,
+      "correct": 50
+    },
+    "A3": {
+      "total": 50,
+      "correct": 46
+    },
+    "A4": {
+      "total": 50,
+      "correct": 45
+    },
+    "R1_off": {
+      "total": 50,
+      "correct": 48
+    },
+    "R4_off": {
+      "total": 50,
+      "correct": 49
+    },
+    "R5_off": {
+      "total": 50,
+      "correct": 48
+    },
+    "R7_off": {
+      "total": 50,
+      "correct": 49
+    },
+    "R2_off": {
+      "total": 50,
+      "correct": 37
+    },
+    "R3_off": {
+      "total": 50,
+      "correct": 37
+    },
+    "R6_off": {
+      "total": 50,
+      "correct": 50
+    },
+    "T1": {
+      "total": 50,
+      "correct": 50
+    },
+    "T2": {
+      "total": 50,
+      "correct": 37
+    }
+  }
+}

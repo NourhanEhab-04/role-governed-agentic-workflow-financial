@@ -1,0 +1,15 @@
+config_id,axis,label,is_control,M1_accuracy,M1c_SUITABLE,M1c_CONDITIONAL,M1c_UNSUITABLE,M1c_ESCALATED,M2_unsuitable_recall,M2p_unsuitable_precision,M3_escalation_recall,M3p_escalation_precision,M3f_escalation_f1,M5_delta_vs_control,M6_parity_gap,n_cells,n_errors
+A0,architecture,Full Pipeline (control),True,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,nan,0.0,50,0
+A1,architecture,No Conflict Detector,False,0.8,1.0,1.0,1.0,0.0,1.0,1.0,0.0,0.0,0.0,-0.2,1.0,50,0
+A2,architecture,No BORDERLINE Flag,False,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.0,0.0,50,0
+A3,architecture,No CONCENTRATION Flag,False,0.92,1.0,1.0,1.0,0.6,1.0,1.0,0.6,1.0,0.75,-0.08,0.4,50,0
+A4,architecture,No CONTRADICTION Flag,False,0.9,1.0,1.0,1.0,0.5,1.0,1.0,0.5,1.0,0.6667,-0.1,0.5,50,0
+R1_off,rule,R1 Disabled (Knowledge),False,0.96,1.0,1.0,0.8462,1.0,0.8462,1.0,1.0,1.0,1.0,-0.04,0.1538,50,0
+R4_off,rule,R4 Disabled (Affordability),False,0.98,1.0,1.0,0.9231,1.0,0.9231,1.0,1.0,1.0,1.0,-0.02,0.0769,50,0
+R5_off,rule,R5 Disabled (Vulnerability),False,0.96,1.0,1.0,0.8462,1.0,0.8462,1.0,1.0,0.8333,0.9091,-0.04,0.1538,50,0
+R7_off,rule,R7 Disabled (Complexity),False,0.98,1.0,1.0,0.9231,1.0,0.9231,1.0,1.0,1.0,1.0,-0.02,0.0769,50,0
+R2_off,rule,R2 Disabled (Risk Alignment),False,0.74,1.0,0.0,1.0,1.0,1.0,1.0,1.0,0.8333,0.9091,-0.26,1.0,50,0
+R3_off,rule,R3 Disabled (Horizon),False,0.74,1.0,0.0,1.0,1.0,1.0,1.0,1.0,0.8333,0.9091,-0.26,1.0,50,0
+R6_off,rule,R6 Disabled (Leverage),False,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.0,0.0,50,0
+T1,threshold,Strict Thresholds,False,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,0.0,0.0,50,0
+T2,threshold,Lenient Thresholds,False,0.74,1.0,0.0,1.0,1.0,1.0,1.0,1.0,0.8333,0.9091,-0.26,1.0,50,0

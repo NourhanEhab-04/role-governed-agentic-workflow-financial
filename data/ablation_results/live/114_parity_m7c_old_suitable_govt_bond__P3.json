@@ -1,0 +1,44 @@
+{
+  "scenario_id": "114_parity_m7c_old_suitable_govt_bond",
+  "scenario_file": "data\\scenarios\\114_parity_m7c_old_suitable_govt_bond.json",
+  "category": "SUITABLE",
+  "config_id": "P3",
+  "config_label": "No audit",
+  "pipeline_variant": "no_audit",
+  "final_decision": "SUITABLE",
+  "expected_decision": "SUITABLE",
+  "expected_escalate": false,
+  "output_escalate": false,
+  "decision_correct": true,
+  "escalation_correct": true,
+  "score": 100,
+  "rules_failed": [],
+  "rule_decision": "SUITABLE",
+  "conflict_flags": [],
+  "verifier": {
+    "a1_verifier_ran": false,
+    "a1_verifier_passed": null,
+    "a1_correction_applied": false,
+    "a1_fields_fixed": [],
+    "a2_verifier_ran": false,
+    "a2_verifier_passed": null,
+    "a2_correction_applied": false,
+    "a2_fields_fixed": [],
+    "any_correction": false
+  },
+  "consistency": {
+    "a1_overrides": [],
+    "a2_overrides": [],
+    "any_override": false
+  },
+  "llm_only_a3": {},
+  "halted": false,
+  "halt_reason": null,
+  "warnings": [],
+  "audit_summary": {
+    "assessment_id": "b5f4b92a-9e13-447a-b2f1-15f208360f5c",
+    "model_version": null,
+    "rule_engine_version": "1.0.0"
+  },
+  "error": null
+}

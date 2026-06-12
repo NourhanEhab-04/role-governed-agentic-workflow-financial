@@ -1,0 +1,46 @@
+{
+  "scenario_id": "79_uci915_equity_derivative",
+  "scenario_file": "data\\scenarios\\79_uci915_equity_derivative.json",
+  "category": "UNSUITABLE",
+  "config_id": "P5",
+  "config_label": "No A4",
+  "pipeline_variant": "no_conflict_detector",
+  "final_decision": "UNSUITABLE",
+  "expected_decision": "UNSUITABLE",
+  "expected_escalate": false,
+  "output_escalate": false,
+  "decision_correct": true,
+  "escalation_correct": true,
+  "score": 75,
+  "rules_failed": [
+    "R4"
+  ],
+  "rule_decision": "UNSUITABLE",
+  "conflict_flags": [],
+  "verifier": {
+    "a1_verifier_ran": false,
+    "a1_verifier_passed": null,
+    "a1_correction_applied": false,
+    "a1_fields_fixed": [],
+    "a2_verifier_ran": false,
+    "a2_verifier_passed": null,
+    "a2_correction_applied": false,
+    "a2_fields_fixed": [],
+    "any_correction": false
+  },
+  "consistency": {
+    "a1_overrides": [],
+    "a2_overrides": [],
+    "any_override": false
+  },
+  "llm_only_a3": {},
+  "halted": false,
+  "halt_reason": null,
+  "warnings": [],
+  "audit_summary": {
+    "assessment_id": "ee1263af-3ebd-443b-8547-3391b986a879",
+    "model_version": null,
+    "rule_engine_version": "1.0.0"
+  },
+  "error": null
+}

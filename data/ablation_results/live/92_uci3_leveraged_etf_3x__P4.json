@@ -1,0 +1,65 @@
+{
+  "scenario_id": "92_uci3_leveraged_etf_3x",
+  "scenario_file": "data\\scenarios\\92_uci3_leveraged_etf_3x.json",
+  "category": "UNSUITABLE",
+  "config_id": "P4",
+  "config_label": "LLM-only A3",
+  "pipeline_variant": "llm_only_a3",
+  "final_decision": "ERROR",
+  "expected_decision": "UNSUITABLE",
+  "expected_escalate": false,
+  "output_escalate": false,
+  "decision_correct": false,
+  "escalation_correct": true,
+  "score": 50,
+  "rules_failed": [],
+  "rule_decision": "CONDITIONAL",
+  "conflict_flags": [
+    "BORDERLINE"
+  ],
+  "verifier": {
+    "a1_verifier_ran": false,
+    "a1_verifier_passed": null,
+    "a1_correction_applied": false,
+    "a1_fields_fixed": [],
+    "a2_verifier_ran": false,
+    "a2_verifier_passed": null,
+    "a2_correction_applied": false,
+    "a2_fields_fixed": [],
+    "any_correction": false
+  },
+  "consistency": {
+    "a1_overrides": [],
+    "a2_overrides": [],
+    "any_override": false
+  },
+  "llm_only_a3": {
+    "agreed_with_precheck": false,
+    "disagreements": [
+      {
+        "stage": "A3",
+        "event": "llm_only_a3_disagrees_with_precheck",
+        "llm_decision": "CONDITIONAL",
+        "precheck_decision": "UNSUITABLE",
+        "ablation": "llm_only_a3"
+      }
+    ]
+  },
+  "halted": true,
+  "halt_reason": "A4 failed: audit_verdict shows rule engine disagreement but conflict_report.escalate is False \u2014 inconsistent state",
+  "warnings": [
+    {
+      "stage": "A3",
+      "event": "llm_only_a3_disagrees_with_precheck",
+      "llm_decision": "CONDITIONAL",
+      "precheck_decision": "UNSUITABLE",
+      "ablation": "llm_only_a3"
+    }
+  ],
+  "audit_summary": {
+    "assessment_id": "1085b26f-b85b-4df5-931f-aa60b5a41ccb",
+    "model_version": null,
+    "rule_engine_version": "1.0.0"
+  },
+  "error": null
+}

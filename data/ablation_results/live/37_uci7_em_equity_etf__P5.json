@@ -1,0 +1,44 @@
+{
+  "scenario_id": "37_uci7_em_equity_etf",
+  "scenario_file": "data\\scenarios\\37_uci7_em_equity_etf.json",
+  "category": "SUITABLE",
+  "config_id": "P5",
+  "config_label": "No A4",
+  "pipeline_variant": "no_conflict_detector",
+  "final_decision": "ERROR",
+  "expected_decision": "SUITABLE",
+  "expected_escalate": false,
+  "output_escalate": false,
+  "decision_correct": false,
+  "escalation_correct": true,
+  "score": 85,
+  "rules_failed": [],
+  "rule_decision": "SUITABLE",
+  "conflict_flags": [],
+  "verifier": {
+    "a1_verifier_ran": false,
+    "a1_verifier_passed": null,
+    "a1_correction_applied": false,
+    "a1_fields_fixed": [],
+    "a2_verifier_ran": false,
+    "a2_verifier_passed": null,
+    "a2_correction_applied": false,
+    "a2_fields_fixed": [],
+    "any_correction": false
+  },
+  "consistency": {
+    "a1_overrides": [],
+    "a2_overrides": [],
+    "any_override": false
+  },
+  "llm_only_a3": {},
+  "halted": true,
+  "halt_reason": "Pipeline error: Request timed out.",
+  "warnings": [],
+  "audit_summary": {
+    "assessment_id": "33b34825-a274-42a2-9a9e-dda3a8af2dc3",
+    "model_version": null,
+    "rule_engine_version": "1.0.0"
+  },
+  "error": null
+}

@@ -1,0 +1,114 @@
+{
+  "scenario_id": "118_parity_m7e_old_conditional_equity",
+  "scenario_file": "data\\scenarios\\118_parity_m7e_old_conditional_equity.json",
+  "category": "CONDITIONAL",
+  "config_id": "A1",
+  "config_label": "No Conflict Detector",
+  "config_axis": "architecture",
+  "rule_verdict": {
+    "score": 65,
+    "decision": "CONDITIONAL",
+    "hard_failed_rules": [],
+    "rules": [
+      {
+        "rule": "R1",
+        "pass": true,
+        "hard_fail": true,
+        "penalty": 0,
+        "pillar": 1,
+        "detail": "client knowledge 'basic' (3) >= product requirement 'basic' (3)"
+      },
+      {
+        "rule": "R2",
+        "pass": false,
+        "hard_fail": false,
+        "penalty": -20,
+        "pillar": 3,
+        "detail": "risk_class 4 > risk_tolerance_score 1 + 2 (3) [soft fail \u2014 score -20]"
+      },
+      {
+        "rule": "R3",
+        "pass": false,
+        "hard_fail": false,
+        "penalty": -15,
+        "pillar": 2,
+        "detail": "investment_horizon 3 < minimum_horizon 5 [soft fail \u2014 score -15]"
+      },
+      {
+        "rule": "R4",
+        "pass": true,
+        "hard_fail": true,
+        "penalty": 0,
+        "pillar": 2,
+        "detail": "client can afford total loss or product does not carry total loss risk"
+      },
+      {
+        "rule": "R5",
+        "pass": true,
+        "hard_fail": true,
+        "penalty": 0,
+        "pillar": 3,
+        "detail": "client is not HIGH-vulnerability or product risk_class 4 < 5"
+      },
+      {
+        "rule": "R6",
+        "pass": true,
+        "hard_fail": false,
+        "penalty": 0,
+        "pillar": 3,
+        "detail": "product is not leveraged or risk_tolerance_score 1 >= 7"
+      },
+      {
+        "rule": "R7",
+        "pass": true,
+        "hard_fail": true,
+        "penalty": 0,
+        "pillar": 1,
+        "detail": "product complexity_tier='NON-COMPLEX' or client knowledge 'basic' meets COMPLEX threshold"
+      }
+    ],
+    "rule_engine_version": "1.0.0",
+    "ablation_disabled_rules": [],
+    "ablation_suitable_threshold": 70,
+    "ablation_conditional_threshold": 40
+  },
+  "conflict_report": {
+    "flags": [
+      {
+        "rule_id": "BORDERLINE",
+        "triggered": false,
+        "severity": "LOW",
+        "message": "[ABLATION: BORDERLINE flag disabled]"
+      },
+      {
+        "rule_id": "CONCENTRATION",
+        "triggered": false,
+        "severity": "HIGH",
+        "message": "[ABLATION: CONCENTRATION flag disabled]"
+      },
+      {
+        "rule_id": "CONTRADICTION",
+        "triggered": false,
+        "severity": "HIGH",
+        "message": "[ABLATION: CONTRADICTION flag disabled]"
+      },
+      {
+        "rule_id": "ESCALATION",
+        "triggered": false,
+        "severity": "HIGH",
+        "message": "[ABLATION: ESCALATION flag disabled]"
+      }
+    ],
+    "escalate": false,
+    "summary": "No conflict flags triggered."
+  },
+  "final_decision": "CONDITIONAL",
+  "expected_decision": "CONDITIONAL",
+  "expected_escalate": false,
+  "output_escalate": false,
+  "decision_correct": true,
+  "escalation_correct": true,
+  "score": 65,
+  "rules_failed": [],
+  "error": null
+}

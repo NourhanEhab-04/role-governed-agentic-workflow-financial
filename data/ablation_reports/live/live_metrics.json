@@ -1,0 +1,158 @@
+{
+  "per_config": {
+    "P0": {
+      "M1_accuracy": 0.88,
+      "M1c_per_category": {
+        "SUITABLE": 0.9285714285714286,
+        "CONDITIONAL": 1.0,
+        "UNSUITABLE": 1.0,
+        "ESCALATED": 0.5
+      },
+      "M2_unsuitable_recall": 1.0,
+      "M2p_precision": 1.0,
+      "M3_esc_recall": 0.5,
+      "M3p_esc_precision": 1.0,
+      "M3f_esc_f1": 0.6666666666666666,
+      "M6_parity_gap": 0.5,
+      "n_correct": 44,
+      "n_total": 50,
+      "n_errors": 0
+    },
+    "P1": {
+      "M1_accuracy": 0.9,
+      "M1c_per_category": {
+        "SUITABLE": 0.9285714285714286,
+        "CONDITIONAL": 1.0,
+        "UNSUITABLE": 1.0,
+        "ESCALATED": 0.6
+      },
+      "M2_unsuitable_recall": 1.0,
+      "M2p_precision": 1.0,
+      "M3_esc_recall": 0.6,
+      "M3p_esc_precision": 1.0,
+      "M3f_esc_f1": 0.7499999999999999,
+      "M6_parity_gap": 0.4,
+      "n_correct": 45,
+      "n_total": 50,
+      "n_errors": 0
+    },
+    "P2": {
+      "M1_accuracy": 0.9,
+      "M1c_per_category": {
+        "SUITABLE": 0.9285714285714286,
+        "CONDITIONAL": 1.0,
+        "UNSUITABLE": 1.0,
+        "ESCALATED": 0.6
+      },
+      "M2_unsuitable_recall": 1.0,
+      "M2p_precision": 1.0,
+      "M3_esc_recall": 0.6,
+      "M3p_esc_precision": 1.0,
+      "M3f_esc_f1": 0.7499999999999999,
+      "M6_parity_gap": 0.4,
+      "n_correct": 45,
+      "n_total": 50,
+      "n_errors": 0
+    },
+    "P3": {
+      "M1_accuracy": 0.9,
+      "M1c_per_category": {
+        "SUITABLE": 0.9285714285714286,
+        "CONDITIONAL": 1.0,
+        "UNSUITABLE": 1.0,
+        "ESCALATED": 0.6
+      },
+      "M2_unsuitable_recall": 1.0,
+      "M2p_precision": 1.0,
+      "M3_esc_recall": 0.6,
+      "M3p_esc_precision": 1.0,
+      "M3f_esc_f1": 0.7499999999999999,
+      "M6_parity_gap": 0.4,
+      "n_correct": 45,
+      "n_total": 50,
+      "n_errors": 0
+    },
+    "P4": {
+      "M1_accuracy": 0.1,
+      "M1c_per_category": {
+        "SUITABLE": 0.35714285714285715,
+        "CONDITIONAL": 0.0,
+        "UNSUITABLE": 0.0,
+        "ESCALATED": 0.0
+      },
+      "M2_unsuitable_recall": 0.0,
+      "M2p_precision": NaN,
+      "M3_esc_recall": 0.0,
+      "M3p_esc_precision": NaN,
+      "M3f_esc_f1": NaN,
+      "M6_parity_gap": 0.35714285714285715,
+      "n_correct": 5,
+      "n_total": 50,
+      "n_errors": 0
+    },
+    "P5": {
+      "M1_accuracy": 0.76,
+      "M1c_per_category": {
+        "SUITABLE": 0.8571428571428571,
+        "CONDITIONAL": 1.0,
+        "UNSUITABLE": 1.0,
+        "ESCALATED": 0.0
+      },
+      "M2_unsuitable_recall": 1.0,
+      "M2p_precision": 1.0,
+      "M3_esc_recall": 0.0,
+      "M3p_esc_precision": NaN,
+      "M3f_esc_f1": NaN,
+      "M6_parity_gap": 1.0,
+      "n_correct": 38,
+      "n_total": 50,
+      "n_errors": 0
+    },
+    "P6": {
+      "M1_accuracy": 0.36,
+      "M1c_per_category": {
+        "SUITABLE": 0.35714285714285715,
+        "CONDITIONAL": 0.0,
+        "UNSUITABLE": 1.0,
+        "ESCALATED": 0.0
+      },
+      "M2_unsuitable_recall": 1.0,
+      "M2p_precision": 0.3023255813953488,
+      "M3_esc_recall": 0.0,
+      "M3p_esc_precision": NaN,
+      "M3f_esc_f1": NaN,
+      "M6_parity_gap": 1.0,
+      "n_correct": 18,
+      "n_total": 50,
+      "n_errors": 0
+    },
+    "P7": {
+      "M1_accuracy": 0.38,
+      "M1c_per_category": {
+        "SUITABLE": 0.35714285714285715,
+        "CONDITIONAL": 0.5384615384615384,
+        "UNSUITABLE": 0.5384615384615384,
+        "ESCALATED": 0.0
+      },
+      "M2_unsuitable_recall": 0.5384615384615384,
+      "M2p_precision": 0.3684210526315789,
+      "M3_esc_recall": 0.0,
+      "M3p_esc_precision": NaN,
+      "M3f_esc_f1": NaN,
+      "M6_parity_gap": 0.5384615384615384,
+      "n_correct": 19,
+      "n_total": 50,
+      "n_errors": 0
+    }
+  },
+  "deltas": {
+    "P1": 0.020000000000000018,
+    "P2": 0.020000000000000018,
+    "P3": 0.020000000000000018,
+    "P4": -0.78,
+    "P5": -0.12,
+    "P6": -0.52,
+    "P7": -0.5
+  },
+  "control_id": "P0"
+}

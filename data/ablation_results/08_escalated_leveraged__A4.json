@@ -1,0 +1,122 @@
+{
+  "scenario_id": "08_escalated_leveraged",
+  "scenario_file": "data\\scenarios\\08_escalated_leveraged.json",
+  "category": "UNSUITABLE",
+  "config_id": "A4",
+  "config_label": "No CONTRADICTION Flag",
+  "config_axis": "architecture",
+  "rule_verdict": {
+    "score": 55,
+    "decision": "UNSUITABLE",
+    "hard_failed_rules": [
+      "R1",
+      "R4",
+      "R5"
+    ],
+    "rules": [
+      {
+        "rule": "R1",
+        "pass": false,
+        "hard_fail": true,
+        "penalty": 0,
+        "pillar": 1,
+        "detail": "client knowledge 'moderate' (6) < product requirement 'advanced' (9) [HARD FAIL \u2014 Art. 25(2)(a)]"
+      },
+      {
+        "rule": "R2",
+        "pass": false,
+        "hard_fail": false,
+        "penalty": -20,
+        "pillar": 3,
+        "detail": "risk_class 7 > risk_tolerance_score 4 + 2 (6) [soft fail \u2014 score -20]"
+      },
+      {
+        "rule": "R3",
+        "pass": true,
+        "hard_fail": false,
+        "penalty": 0,
+        "pillar": 2,
+        "detail": "investment_horizon 3 >= minimum_horizon 1"
+      },
+      {
+        "rule": "R4",
+        "pass": false,
+        "hard_fail": true,
+        "penalty": 0,
+        "pillar": 2,
+        "detail": "client cannot afford total loss but product has potential_loss='total' [HARD FAIL \u2014 Art. 25(2)(b)]"
+      },
+      {
+        "rule": "R5",
+        "pass": false,
+        "hard_fail": true,
+        "penalty": 0,
+        "pillar": 3,
+        "detail": "client is HIGH-vulnerability and product risk_class 7 >= 5 [HARD FAIL \u2014 ESMA GL \u00a786-88]"
+      },
+      {
+        "rule": "R6",
+        "pass": false,
+        "hard_fail": false,
+        "penalty": -25,
+        "pillar": 3,
+        "detail": "product is leveraged and risk_tolerance_score 4 < 7 [soft fail \u2014 score -25]"
+      },
+      {
+        "rule": "R7",
+        "pass": true,
+        "hard_fail": true,
+        "penalty": 0,
+        "pillar": 1,
+        "detail": "product complexity_tier='COMPLEX' or client knowledge 'moderate' meets COMPLEX threshold"
+      }
+    ],
+    "rule_engine_version": "1.0.0",
+    "ablation_disabled_rules": [],
+    "ablation_suitable_threshold": 70,
+    "ablation_conditional_threshold": 40
+  },
+  "conflict_report": {
+    "flags": [
+      {
+        "rule_id": "BORDERLINE",
+        "triggered": true,
+        "severity": "LOW",
+        "message": "Score 55 is in the borderline zone [40\u201355]. Human review recommended."
+      },
+      {
+        "rule_id": "CONCENTRATION",
+        "triggered": false,
+        "severity": "HIGH",
+        "message": "Concentration 55% does not trigger escalation: decision=UNSUITABLE, vulnerability=HIGH, risk_class=7."
+      },
+      {
+        "rule_id": "CONTRADICTION",
+        "triggered": false,
+        "severity": "HIGH",
+        "message": "[ABLATION: CONTRADICTION flag disabled]"
+      },
+      {
+        "rule_id": "ESCALATION",
+        "triggered": false,
+        "severity": "HIGH",
+        "message": "No HIGH-severity flags triggered \u2014 no escalation."
+      }
+    ],
+    "escalate": false,
+    "summary": "Conflict detection complete. Active flags: ['BORDERLINE']. Escalate: False."
+  },
+  "final_decision": "UNSUITABLE",
+  "expected_decision": "UNSUITABLE",
+  "expected_escalate": false,
+  "output_escalate": false,
+  "decision_correct": true,
+  "escalation_correct": true,
+  "score": 55,
+  "rules_failed": [
+    "R1",
+    "R4",
+    "R5"
+  ],
+  "error": null
+}

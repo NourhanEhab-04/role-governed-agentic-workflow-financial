@@ -1,0 +1,46 @@
+{
+  "scenario_id": "71_uci5_em_equity_etf",
+  "scenario_file": "data\\scenarios\\71_uci5_em_equity_etf.json",
+  "category": "UNSUITABLE",
+  "config_id": "P0",
+  "config_label": "Full Pipeline",
+  "pipeline_variant": "full",
+  "final_decision": "UNSUITABLE",
+  "expected_decision": "UNSUITABLE",
+  "expected_escalate": false,
+  "output_escalate": false,
+  "decision_correct": true,
+  "escalation_correct": true,
+  "score": 100,
+  "rules_failed": [
+    "R1"
+  ],
+  "rule_decision": "UNSUITABLE",
+  "conflict_flags": [],
+  "verifier": {
+    "a1_verifier_ran": false,
+    "a1_verifier_passed": null,
+    "a1_correction_applied": false,
+    "a1_fields_fixed": [],
+    "a2_verifier_ran": false,
+    "a2_verifier_passed": null,
+    "a2_correction_applied": false,
+    "a2_fields_fixed": [],
+    "any_correction": false
+  },
+  "consistency": {
+    "a1_overrides": [],
+    "a2_overrides": [],
+    "any_override": false
+  },
+  "llm_only_a3": {},
+  "halted": false,
+  "halt_reason": null,
+  "warnings": [],
+  "audit_summary": {
+    "assessment_id": "fad8c61d-4d64-4303-bb7b-f3c69c6baf0d",
+    "model_version": null,
+    "rule_engine_version": "1.0.0"
+  },
+  "error": null
+}

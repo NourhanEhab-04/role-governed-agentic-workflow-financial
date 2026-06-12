@@ -1,0 +1,47 @@
+{
+  "scenario_id": "45_uci3_sector_equity_etf",
+  "scenario_file": "data\\scenarios\\45_uci3_sector_equity_etf.json",
+  "category": "SUITABLE",
+  "config_id": "P4",
+  "config_label": "LLM-only A3",
+  "pipeline_variant": "llm_only_a3",
+  "final_decision": "SUITABLE",
+  "expected_decision": "SUITABLE",
+  "expected_escalate": false,
+  "output_escalate": false,
+  "decision_correct": true,
+  "escalation_correct": true,
+  "score": 100,
+  "rules_failed": [],
+  "rule_decision": "SUITABLE",
+  "conflict_flags": [],
+  "verifier": {
+    "a1_verifier_ran": false,
+    "a1_verifier_passed": null,
+    "a1_correction_applied": false,
+    "a1_fields_fixed": [],
+    "a2_verifier_ran": false,
+    "a2_verifier_passed": null,
+    "a2_correction_applied": false,
+    "a2_fields_fixed": [],
+    "any_correction": false
+  },
+  "consistency": {
+    "a1_overrides": [],
+    "a2_overrides": [],
+    "any_override": false
+  },
+  "llm_only_a3": {
+    "agreed_with_precheck": true,
+    "disagreements": []
+  },
+  "halted": false,
+  "halt_reason": null,
+  "warnings": [],
+  "audit_summary": {
+    "assessment_id": "e7ae0efe-0de4-4ff5-a289-fcda0d927566",
+    "model_version": null,
+    "rule_engine_version": "1.0.0"
+  },
+  "error": null
+}

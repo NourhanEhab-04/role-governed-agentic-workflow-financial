@@ -1,0 +1,120 @@
+{
+  "scenario_id": "71_uci5_em_equity_etf",
+  "scenario_file": "data\\scenarios\\71_uci5_em_equity_etf.json",
+  "category": "UNSUITABLE",
+  "config_id": "R6_off",
+  "config_label": "R6 Disabled (Leverage)",
+  "config_axis": "rule",
+  "rule_verdict": {
+    "score": 100,
+    "decision": "UNSUITABLE",
+    "hard_failed_rules": [
+      "R1"
+    ],
+    "rules": [
+      {
+        "rule": "R1",
+        "pass": false,
+        "hard_fail": true,
+        "penalty": 0,
+        "pillar": 1,
+        "detail": "client knowledge 'none' (1) < product requirement 'moderate' (6) [HARD FAIL \u2014 Art. 25(2)(a)]"
+      },
+      {
+        "rule": "R2",
+        "pass": true,
+        "hard_fail": false,
+        "penalty": 0,
+        "pillar": 3,
+        "detail": "risk_class 5 <= risk_tolerance_score 4 + 2 (6)"
+      },
+      {
+        "rule": "R3",
+        "pass": true,
+        "hard_fail": false,
+        "penalty": 0,
+        "pillar": 2,
+        "detail": "investment_horizon 8 >= minimum_horizon 7"
+      },
+      {
+        "rule": "R4",
+        "pass": true,
+        "hard_fail": true,
+        "penalty": 0,
+        "pillar": 2,
+        "detail": "client can afford total loss or product does not carry total loss risk"
+      },
+      {
+        "rule": "R5",
+        "pass": true,
+        "hard_fail": true,
+        "penalty": 0,
+        "pillar": 3,
+        "detail": "client is not HIGH-vulnerability or product risk_class 5 < 5"
+      },
+      {
+        "rule": "R6",
+        "pass": true,
+        "hard_fail": false,
+        "penalty": 0,
+        "pillar": 3,
+        "detail": "[ABLATION: rule disabled \u2014 forced PASS]"
+      },
+      {
+        "rule": "R7",
+        "pass": true,
+        "hard_fail": true,
+        "penalty": 0,
+        "pillar": 1,
+        "detail": "product complexity_tier='NON-COMPLEX' or client knowledge 'none' meets COMPLEX threshold"
+      }
+    ],
+    "rule_engine_version": "1.0.0",
+    "ablation_disabled_rules": [
+      "R6"
+    ],
+    "ablation_suitable_threshold": 70,
+    "ablation_conditional_threshold": 40
+  },
+  "conflict_report": {
+    "flags": [
+      {
+        "rule_id": "BORDERLINE",
+        "triggered": false,
+        "severity": "LOW",
+        "message": "Score 100 is outside borderline zone."
+      },
+      {
+        "rule_id": "CONCENTRATION",
+        "triggered": false,
+        "severity": "HIGH",
+        "message": "Concentration 30% does not trigger escalation: decision=UNSUITABLE, vulnerability=MEDIUM, risk_class=5."
+      },
+      {
+        "rule_id": "CONTRADICTION",
+        "triggered": false,
+        "severity": "HIGH",
+        "message": "No contradiction: vulnerability=MEDIUM, decision=UNSUITABLE, risk_class=5 \u2014 enhanced-protection threshold not breached."
+      },
+      {
+        "rule_id": "ESCALATION",
+        "triggered": false,
+        "severity": "HIGH",
+        "message": "No HIGH-severity flags triggered \u2014 no escalation."
+      }
+    ],
+    "escalate": false,
+    "summary": "No conflict flags triggered."
+  },
+  "final_decision": "UNSUITABLE",
+  "expected_decision": "UNSUITABLE",
+  "expected_escalate": false,
+  "output_escalate": false,
+  "decision_correct": true,
+  "escalation_correct": true,
+  "score": 100,
+  "rules_failed": [
+    "R1"
+  ],
+  "error": null
+}

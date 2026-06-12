@@ -1,0 +1,1840 @@
+[
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R4",
+      "R5"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3",
+      "R5"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 2,
+      "liquid_assets": 2400.0,
+      "income": 32600.0,
+      "investment_amount": 6200.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 53
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Technology Sector Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "81_uci4_sector_equity_etf",
+    "run_number": 1,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R4",
+      "R5"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3",
+      "R5"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 2,
+      "liquid_assets": 2400.0,
+      "income": 32600.0,
+      "investment_amount": 6200.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 53
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Technology Sector Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "81_uci4_sector_equity_etf",
+    "run_number": 2,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R4",
+      "R5"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3",
+      "R5"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 2,
+      "liquid_assets": 2400.0,
+      "income": 32600.0,
+      "investment_amount": 6200.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 53
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Technology Sector Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "81_uci4_sector_equity_etf",
+    "run_number": 3,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R4",
+      "R5"
+    ],
+    "expected_rules_failed": [
+      "R3",
+      "R5"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 5,
+      "investment_horizon": 2,
+      "liquid_assets": 2000.0,
+      "income": 17500.0,
+      "investment_amount": 1700.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 25
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Technology Sector Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "82_uci10_sector_equity_etf",
+    "run_number": 1,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R4",
+      "R5"
+    ],
+    "expected_rules_failed": [
+      "R3",
+      "R5"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 5,
+      "investment_horizon": 2,
+      "liquid_assets": 2000.0,
+      "income": 17500.0,
+      "investment_amount": 1700.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 25
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Technology Sector Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "82_uci10_sector_equity_etf",
+    "run_number": 2,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R4",
+      "R5"
+    ],
+    "expected_rules_failed": [
+      "R3",
+      "R5"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 5,
+      "investment_horizon": 2,
+      "liquid_assets": 2000.0,
+      "income": 17500.0,
+      "investment_amount": 1700.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 25
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Technology Sector Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "82_uci10_sector_equity_etf",
+    "run_number": 3,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R4",
+      "R5"
+    ],
+    "expected_rules_failed": [
+      "R3",
+      "R5"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 6,
+      "investment_horizon": 4,
+      "liquid_assets": 18000.0,
+      "income": 18800.0,
+      "investment_amount": 4900.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 22
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Technology Sector Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "83_uci79_sector_equity_etf",
+    "run_number": 1,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R4",
+      "R5"
+    ],
+    "expected_rules_failed": [
+      "R3",
+      "R5"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 6,
+      "investment_horizon": 4,
+      "liquid_assets": 18000.0,
+      "income": 18800.0,
+      "investment_amount": 4900.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 22
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Technology Sector Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "83_uci79_sector_equity_etf",
+    "run_number": 2,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R4",
+      "R5"
+    ],
+    "expected_rules_failed": [
+      "R3",
+      "R5"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 6,
+      "investment_horizon": 4,
+      "liquid_assets": 18000.0,
+      "income": 18800.0,
+      "investment_amount": 4900.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 22
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Technology Sector Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "83_uci79_sector_equity_etf",
+    "run_number": 3,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R4",
+      "R5"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R3",
+      "R5"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 5,
+      "investment_horizon": 2,
+      "liquid_assets": 2200.0,
+      "income": 19100.0,
+      "investment_amount": 7600.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 44
+    },
+    "expected_product_profile": {
+      "product_name": "MSCI Emerging Markets Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "84_uci80_em_equity_etf",
+    "run_number": 1,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R4",
+      "R5"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R3",
+      "R5"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 5,
+      "investment_horizon": 2,
+      "liquid_assets": 2200.0,
+      "income": 19100.0,
+      "investment_amount": 7600.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 44
+    },
+    "expected_product_profile": {
+      "product_name": "MSCI Emerging Markets Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "84_uci80_em_equity_etf",
+    "run_number": 2,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R4",
+      "R5"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R3",
+      "R5"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 5,
+      "investment_horizon": 2,
+      "liquid_assets": 2200.0,
+      "income": 19100.0,
+      "investment_amount": 7600.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 44
+    },
+    "expected_product_profile": {
+      "product_name": "MSCI Emerging Markets Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "84_uci80_em_equity_etf",
+    "run_number": 3,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R3",
+      "R4",
+      "R5"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R3",
+      "R5"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 5,
+      "investment_horizon": 2,
+      "liquid_assets": 44400.0,
+      "income": 2800.0,
+      "investment_amount": 1700.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 23
+    },
+    "expected_product_profile": {
+      "product_name": "MSCI Emerging Markets Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "85_uci47_em_equity_etf",
+    "run_number": 1,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R4"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R3",
+      "R5"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 5,
+      "investment_horizon": 2,
+      "liquid_assets": 44400.0,
+      "income": 2800.0,
+      "investment_amount": 1700.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 23
+    },
+    "expected_product_profile": {
+      "product_name": "MSCI Emerging Markets Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "85_uci47_em_equity_etf",
+    "run_number": 2,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R3",
+      "R4",
+      "R5"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R3",
+      "R5"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 5,
+      "investment_horizon": 2,
+      "liquid_assets": 44400.0,
+      "income": 2800.0,
+      "investment_amount": 1700.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 23
+    },
+    "expected_product_profile": {
+      "product_name": "MSCI Emerging Markets Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "85_uci47_em_equity_etf",
+    "run_number": 3,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R4",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 2,
+      "liquid_assets": 56000.0,
+      "income": 59500.0,
+      "investment_amount": 1500.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "MEDIUM",
+      "age": 67
+    },
+    "expected_product_profile": {
+      "product_name": "Capital-Protected Structured Note",
+      "risk_class": 3,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "none",
+      "minimum_horizon": 2,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "86_uci0_structured_note",
+    "run_number": 1,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R4",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 2,
+      "liquid_assets": 56000.0,
+      "income": 59500.0,
+      "investment_amount": 1500.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "MEDIUM",
+      "age": 67
+    },
+    "expected_product_profile": {
+      "product_name": "Capital-Protected Structured Note",
+      "risk_class": 3,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "none",
+      "minimum_horizon": 2,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "86_uci0_structured_note",
+    "run_number": 2,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R4",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 2,
+      "liquid_assets": 56000.0,
+      "income": 59500.0,
+      "investment_amount": 1500.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "MEDIUM",
+      "age": 67
+    },
+    "expected_product_profile": {
+      "product_name": "Capital-Protected Structured Note",
+      "risk_class": 3,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "none",
+      "minimum_horizon": 2,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "86_uci0_structured_note",
+    "run_number": 3,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 6,
+      "investment_horizon": 3,
+      "liquid_assets": 43300.0,
+      "income": 65500.0,
+      "investment_amount": 3600.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "LOW",
+      "age": 53
+    },
+    "expected_product_profile": {
+      "product_name": "Capital-Protected Structured Note",
+      "risk_class": 3,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "none",
+      "minimum_horizon": 2,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "87_uci6_structured_note",
+    "run_number": 1,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 6,
+      "investment_horizon": 3,
+      "liquid_assets": 43300.0,
+      "income": 65500.0,
+      "investment_amount": 3600.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "LOW",
+      "age": 53
+    },
+    "expected_product_profile": {
+      "product_name": "Capital-Protected Structured Note",
+      "risk_class": 3,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "none",
+      "minimum_horizon": 2,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "87_uci6_structured_note",
+    "run_number": 2,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 6,
+      "investment_horizon": 3,
+      "liquid_assets": 43300.0,
+      "income": 65500.0,
+      "investment_amount": 3600.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "LOW",
+      "age": 53
+    },
+    "expected_product_profile": {
+      "product_name": "Capital-Protected Structured Note",
+      "risk_class": 3,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "none",
+      "minimum_horizon": 2,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "87_uci6_structured_note",
+    "run_number": 3,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R4",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 2,
+      "liquid_assets": 2500.0,
+      "income": 30600.0,
+      "investment_amount": 1800.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 28
+    },
+    "expected_product_profile": {
+      "product_name": "Capital-Protected Structured Note",
+      "risk_class": 3,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "none",
+      "minimum_horizon": 2,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "88_uci14_structured_note",
+    "run_number": 1,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R4",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 2,
+      "liquid_assets": 2500.0,
+      "income": 30600.0,
+      "investment_amount": 1800.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 28
+    },
+    "expected_product_profile": {
+      "product_name": "Capital-Protected Structured Note",
+      "risk_class": 3,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "none",
+      "minimum_horizon": 2,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "88_uci14_structured_note",
+    "run_number": 2,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R4",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 2,
+      "liquid_assets": 2500.0,
+      "income": 30600.0,
+      "investment_amount": 1800.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 28
+    },
+    "expected_product_profile": {
+      "product_name": "Capital-Protected Structured Note",
+      "risk_class": 3,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "none",
+      "minimum_horizon": 2,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "88_uci14_structured_note",
+    "run_number": 3,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R4",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R2",
+      "R6",
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "FAIL"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 4,
+      "liquid_assets": 56000.0,
+      "income": 23800.0,
+      "investment_amount": 7900.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "MEDIUM",
+      "age": 44
+    },
+    "expected_product_profile": {
+      "product_name": "3x Leveraged S&P500 ETF",
+      "risk_class": 7,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": true
+    },
+    "scenario_id": "89_uci42_leveraged_etf_3x",
+    "run_number": 1,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R4",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R2",
+      "R6",
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "FAIL"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 4,
+      "liquid_assets": 56000.0,
+      "income": 23800.0,
+      "investment_amount": 7900.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "MEDIUM",
+      "age": 44
+    },
+    "expected_product_profile": {
+      "product_name": "3x Leveraged S&P500 ETF",
+      "risk_class": 7,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": true
+    },
+    "scenario_id": "89_uci42_leveraged_etf_3x",
+    "run_number": 2,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R4",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R2",
+      "R6",
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "FAIL"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 4,
+      "liquid_assets": 56000.0,
+      "income": 23800.0,
+      "investment_amount": 7900.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "MEDIUM",
+      "age": 44
+    },
+    "expected_product_profile": {
+      "product_name": "3x Leveraged S&P500 ETF",
+      "risk_class": 7,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": true
+    },
+    "scenario_id": "89_uci42_leveraged_etf_3x",
+    "run_number": 3,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R4",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R2",
+      "R6",
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "FAIL"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 2,
+      "liquid_assets": 18000.0,
+      "income": 23800.0,
+      "investment_amount": 9200.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "MEDIUM",
+      "age": 39
+    },
+    "expected_product_profile": {
+      "product_name": "3x Leveraged S&P500 ETF",
+      "risk_class": 7,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": true
+    },
+    "scenario_id": "90_uci48_leveraged_etf_3x",
+    "run_number": 1,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R4",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R2",
+      "R6",
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "FAIL"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 2,
+      "liquid_assets": 18000.0,
+      "income": 23800.0,
+      "investment_amount": 9200.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "MEDIUM",
+      "age": 39
+    },
+    "expected_product_profile": {
+      "product_name": "3x Leveraged S&P500 ETF",
+      "risk_class": 7,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": true
+    },
+    "scenario_id": "90_uci48_leveraged_etf_3x",
+    "run_number": 2,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R4",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R2",
+      "R6",
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "FAIL"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 2,
+      "liquid_assets": 18000.0,
+      "income": 23800.0,
+      "investment_amount": 9200.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "MEDIUM",
+      "age": 39
+    },
+    "expected_product_profile": {
+      "product_name": "3x Leveraged S&P500 ETF",
+      "risk_class": 7,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": true
+    },
+    "scenario_id": "90_uci48_leveraged_etf_3x",
+    "run_number": 3,
+    "architecture": "baseline"
+  }
+]

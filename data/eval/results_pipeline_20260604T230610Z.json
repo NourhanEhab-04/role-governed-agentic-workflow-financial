@@ -1,0 +1,3153 @@
+[
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1"
+    ],
+    "expected_rules_failed": [
+      "R1"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 8,
+      "liquid_assets": 400.0,
+      "income": 23200.0,
+      "investment_amount": 11500.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 35
+    },
+    "output_product_profile": {
+      "product_name": "UCITS ETF tracking MSCI Emerging Markets Index",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": true,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R1"
+    ],
+    "client_vulnerability": "MEDIUM",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 R1 (knowledge)",
+    "output_rule_explanations": {
+      "R1": "Knowledge check failed: the product requires 'moderate' knowledge (score 6) but your profile shows 'basic' knowledge (score 3) \u2014 a gap of 3 points.",
+      "R2": "Your risk tolerance score of 4 meets the product's risk class of 5, allowing for a maximum gap of 2.",
+      "R3": "Your investment horizon of 8 years exceeds the product's minimum requirement of 7 years.",
+      "R4": "The product does not carry a total loss risk, which aligns with your ability to afford a total loss.",
+      "R5": "Your financial vulnerability is rated MEDIUM, which is acceptable for the product's risk class of 5.",
+      "R6": "The product does not use leverage, and your risk tolerance score of 4 is sufficient.",
+      "R7": "The product is rated NON-COMPLEX, which is appropriate for your basic financial knowledge."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 8,
+      "liquid_assets": 400.0,
+      "income": 23200.0,
+      "investment_amount": 11500.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 35
+    },
+    "expected_product_profile": {
+      "product_name": "MSCI Emerging Markets Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "71_uci5_em_equity_etf",
+    "run_number": 1,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1"
+    ],
+    "expected_rules_failed": [
+      "R1"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 8,
+      "liquid_assets": 400.0,
+      "income": 23200.0,
+      "investment_amount": 11500.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 35
+    },
+    "output_product_profile": {
+      "product_name": "UCITS ETF tracking MSCI Emerging Markets Index",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": true,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R1"
+    ],
+    "client_vulnerability": "MEDIUM",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R1 (knowledge).",
+    "output_rule_explanations": {
+      "R1": "Knowledge check failed: the product requires 'moderate' knowledge (score 6) but your profile shows 'basic' knowledge (score 3) \u2014 a gap of 3 points.",
+      "R2": "Your risk tolerance score of 4 meets the product's risk class of 5, allowing for a maximum gap of 2.",
+      "R3": "Your investment horizon of 8 years meets the product's minimum requirement of 7 years.",
+      "R4": "You indicated you cannot afford a total loss, but this product carries a 'partial' potential loss rating.",
+      "R5": "Your financial vulnerability is rated MEDIUM, and the product's risk class is 5, which is suitable for your profile.",
+      "R6": "This product does not use leverage, and your risk tolerance score of 4 is sufficient.",
+      "R7": "The product is rated NON-COMPLEX, which aligns with your basic financial knowledge."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 8,
+      "liquid_assets": 400.0,
+      "income": 23200.0,
+      "investment_amount": 11500.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 35
+    },
+    "expected_product_profile": {
+      "product_name": "MSCI Emerging Markets Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "71_uci5_em_equity_etf",
+    "run_number": 2,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1"
+    ],
+    "expected_rules_failed": [
+      "R1"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 8,
+      "liquid_assets": 400.0,
+      "income": 23200.0,
+      "investment_amount": 11500.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 35
+    },
+    "output_product_profile": {
+      "product_name": "UCITS ETF tracking MSCI Emerging Markets Index",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": false,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R1"
+    ],
+    "client_vulnerability": "MEDIUM",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R1 (knowledge).",
+    "output_rule_explanations": {
+      "R1": "Knowledge check failed: the product requires 'moderate' knowledge (score 6) but your profile shows 'basic' knowledge (score 3) \u2014 a gap of 3 points.",
+      "R2": "Your risk tolerance score of 4 is sufficient for the product's risk class of 5, which is within the acceptable range.",
+      "R3": "Your investment horizon of 8 years meets the product's minimum requirement of 7 years.",
+      "R4": "You indicated you cannot afford a total loss, but this product carries a 'partial' potential loss rating.",
+      "R5": "Your financial vulnerability is rated MEDIUM, which is acceptable for the product's risk class of 5.",
+      "R6": "This product does not use leverage, and your risk tolerance score of 4 is adequate.",
+      "R7": "The product is rated NON-COMPLEX, which aligns with your basic financial knowledge."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 8,
+      "liquid_assets": 400.0,
+      "income": 23200.0,
+      "investment_amount": 11500.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 35
+    },
+    "expected_product_profile": {
+      "product_name": "MSCI Emerging Markets Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "71_uci5_em_equity_etf",
+    "run_number": 3,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R3"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 2,
+      "liquid_assets": 2600.0,
+      "income": 49500.0,
+      "investment_amount": 1000.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 39
+    },
+    "output_product_profile": {
+      "product_name": "UCITS ETF tracking MSCI Emerging Markets Index",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": true,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R1"
+    ],
+    "client_vulnerability": "MEDIUM",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R1 (knowledge) and R3 (investment horizon).",
+    "output_rule_explanations": {
+      "R1": "Knowledge check failed: the product requires 'moderate' knowledge (score 6) but your profile shows 'basic' knowledge (score 3) \u2014 a gap of 3 points.",
+      "R2": "Your risk tolerance score of 4 meets the product's risk class of 5, allowing for a maximum gap of 2.",
+      "R3": "Horizon check failed: the product requires a minimum investment horizon of 7 years but your stated horizon is 2 years \u2014 5 years short of the requirement.",
+      "R4": "You indicated you can afford a total loss, and this product carries a 'partial' potential loss rating.",
+      "R5": "Your financial vulnerability is rated MEDIUM and the product's risk class is 5, which is suitable for your vulnerability level.",
+      "R6": "This product does not use leverage, and your risk tolerance score of 4 is sufficient.",
+      "R7": "The product is rated NON-COMPLEX, which aligns with your basic financial knowledge."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 2,
+      "liquid_assets": 2600.0,
+      "income": 49500.0,
+      "investment_amount": 1000.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 39
+    },
+    "expected_product_profile": {
+      "product_name": "MSCI Emerging Markets Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "72_uci26_em_equity_etf",
+    "run_number": 1,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R3"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 2,
+      "liquid_assets": 2600.0,
+      "income": 49500.0,
+      "investment_amount": 1000.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 39
+    },
+    "output_product_profile": {
+      "product_name": "UCITS ETF tracking MSCI Emerging Markets Index",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": true,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R1"
+    ],
+    "client_vulnerability": "MEDIUM",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R1 (knowledge) and R3 (investment horizon).",
+    "output_rule_explanations": {
+      "R1": "Knowledge check failed: the product requires 'moderate' knowledge (score 6) but your profile shows 'basic' knowledge (score 3) \u2014 a gap of 3 points.",
+      "R2": "Your risk tolerance score of 4 meets the product's risk class of 5, allowing for a maximum gap of 2.",
+      "R3": "Horizon check failed: the product requires a minimum investment horizon of 7 years but your stated horizon is 2 years \u2014 5 years short of the requirement.",
+      "R4": "You indicated you can afford a total loss, and this product carries a 'partial' potential loss rating.",
+      "R5": "Your financial vulnerability is rated MEDIUM and the product's risk class is 5, which is suitable for your profile.",
+      "R6": "This product does not use leverage, and your risk tolerance score of 4 is sufficient.",
+      "R7": "The product is rated NON-COMPLEX, which aligns with your basic financial knowledge."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 2,
+      "liquid_assets": 2600.0,
+      "income": 49500.0,
+      "investment_amount": 1000.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 39
+    },
+    "expected_product_profile": {
+      "product_name": "MSCI Emerging Markets Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "72_uci26_em_equity_etf",
+    "run_number": 2,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R3"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 2,
+      "liquid_assets": 2600.0,
+      "income": 49500.0,
+      "investment_amount": 1000.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 39
+    },
+    "output_product_profile": {
+      "product_name": "UCITS ETF tracking MSCI Emerging Markets Index",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": true,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R1"
+    ],
+    "client_vulnerability": "MEDIUM",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R1 (knowledge) and R3 (investment horizon).",
+    "output_rule_explanations": {
+      "R1": "Knowledge check failed: the product requires 'moderate' knowledge (score 6) but your profile shows 'basic' knowledge (score 3) \u2014 a gap of 3 points.",
+      "R2": "Your risk tolerance score of 4 meets the product's risk class of 5, allowing for a maximum gap of 2.",
+      "R3": "Horizon check failed: the product requires a minimum investment horizon of 7 years but your stated horizon is 2 years \u2014 5 years short of the requirement.",
+      "R4": "You indicated you can afford a total loss, and this product carries a 'partial' potential loss rating.",
+      "R5": "Your financial vulnerability is rated MEDIUM, which is acceptable for this product's risk class of 5.",
+      "R6": "This product does not use leverage, and your risk tolerance score of 4 is sufficient.",
+      "R7": "The product is rated NON-COMPLEX, which aligns with your basic financial knowledge."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 2,
+      "liquid_assets": 2600.0,
+      "income": 49500.0,
+      "investment_amount": 1000.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 39
+    },
+    "expected_product_profile": {
+      "product_name": "MSCI Emerging Markets Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "72_uci26_em_equity_etf",
+    "run_number": 3,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "HALT",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [],
+    "expected_rules_failed": [
+      "R1",
+      "R2",
+      "R4",
+      "R7"
+    ],
+    "output_rules": {},
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "a1_verified": true,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": true,
+    "halt_reason": "Pipeline error: 1 validation error for ProductProfileModel\nminimum_horizon\n  Input should be greater than or equal to 1 [type=greater_than_equal, input_value=0, input_type=int]\n    For further information visit https://errors.pydantic.dev/2.13/v/greater_than_equal",
+    "output_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 2,
+      "liquid_assets": 1500.0,
+      "income": 47800.0,
+      "investment_amount": 1500.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "LOW",
+      "age": 60
+    },
+    "output_product_profile": {},
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": false,
+    "three_point_agreed": false,
+    "output_hard_failed_rules": [],
+    "client_vulnerability": "LOW",
+    "regulatory_basis": null,
+    "output_rule_explanations": {},
+    "pre_check_present": false,
+    "rule_details_present": false,
+    "conflict_present": false,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 2,
+      "liquid_assets": 1500.0,
+      "income": 47800.0,
+      "investment_amount": 1500.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 60
+    },
+    "expected_product_profile": {
+      "product_name": "Single-Stock Call Option",
+      "risk_class": 6,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": false
+    },
+    "scenario_id": "73_uci13_equity_derivative",
+    "run_number": 1,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R2",
+      "R4",
+      "R6",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R2",
+      "R4",
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 2,
+      "liquid_assets": 1500.0,
+      "income": 47800.0,
+      "investment_amount": 1500.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "LOW",
+      "age": 60
+    },
+    "output_product_profile": {
+      "product_name": "European-style equity call option on a major stock index",
+      "risk_class": 7,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": true
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": false,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R1",
+      "R4",
+      "R7"
+    ],
+    "client_vulnerability": "LOW",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R1 (knowledge), R4 (affordability), R7 (complexity).",
+    "output_rule_explanations": {
+      "R1": "Knowledge check failed: the product requires 'advanced' knowledge (score 9) but your profile shows 'basic' knowledge (score 3) \u2014 a gap of 6 points.",
+      "R2": "Risk alignment failed: the product's risk class is 7, but your risk tolerance score is 1; MiFID II permits a maximum gap of 2 (1 + 2 = 3), so the product exceeds your risk appetite by 4 classes.",
+      "R3": "Your investment horizon of 2 years meets the product's 1-year minimum.",
+      "R4": "Affordability check failed: you indicated you cannot afford a total loss, but this product carries a 'total' potential loss rating.",
+      "R5": "Your financial vulnerability is rated LOW, which is acceptable for this product's risk class of 7.",
+      "R6": "Leverage check failed: this product uses leverage, which requires a risk tolerance score of at least 7; your score is 1.",
+      "R7": "Complexity check failed: this product is rated COMPLEX but your financial knowledge level is 'basic', below the required 'moderate' minimum."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 2,
+      "liquid_assets": 1500.0,
+      "income": 47800.0,
+      "investment_amount": 1500.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 60
+    },
+    "expected_product_profile": {
+      "product_name": "Single-Stock Call Option",
+      "risk_class": 6,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": false
+    },
+    "scenario_id": "73_uci13_equity_derivative",
+    "run_number": 2,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "HALT",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [],
+    "expected_rules_failed": [
+      "R1",
+      "R2",
+      "R4",
+      "R7"
+    ],
+    "output_rules": {},
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "a1_verified": true,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": true,
+    "halt_reason": "Pipeline error: 1 validation error for ProductProfileModel\nminimum_horizon\n  Input should be greater than or equal to 1 [type=greater_than_equal, input_value=0, input_type=int]\n    For further information visit https://errors.pydantic.dev/2.13/v/greater_than_equal",
+    "output_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 2,
+      "liquid_assets": 1500.0,
+      "income": 47800.0,
+      "investment_amount": 1500.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "LOW",
+      "age": 60
+    },
+    "output_product_profile": {},
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": false,
+    "three_point_agreed": false,
+    "output_hard_failed_rules": [],
+    "client_vulnerability": "LOW",
+    "regulatory_basis": null,
+    "output_rule_explanations": {},
+    "pre_check_present": false,
+    "rule_details_present": false,
+    "conflict_present": false,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 2,
+      "liquid_assets": 1500.0,
+      "income": 47800.0,
+      "investment_amount": 1500.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 60
+    },
+    "expected_product_profile": {
+      "product_name": "Single-Stock Call Option",
+      "risk_class": 6,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": false
+    },
+    "scenario_id": "73_uci13_equity_derivative",
+    "run_number": 3,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R2",
+      "R4",
+      "R6",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R4",
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 2,
+      "liquid_assets": 11500.0,
+      "income": 24000.0,
+      "investment_amount": 1600.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 32
+    },
+    "output_product_profile": {
+      "product_name": "Single-stock Call Option",
+      "risk_class": 7,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": true
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": false,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R1",
+      "R4",
+      "R7"
+    ],
+    "client_vulnerability": "MEDIUM",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R1 (knowledge), R4 (affordability), R7 (complexity).",
+    "output_rule_explanations": {
+      "R1": "Knowledge check failed: the product requires 'advanced' knowledge (score 9) but your profile shows 'none' (score 1) \u2014 a gap of 8 points.",
+      "R2": "Risk alignment failed: the product's risk class is 7, but your risk tolerance score is 4; MiFID II permits a maximum gap of 2 (4 + 2 = 6), so the product exceeds your risk appetite by 1 class.",
+      "R3": "Your investment horizon of 2 years meets the product's 1-year minimum.",
+      "R4": "Affordability check failed: you indicated you cannot afford a total loss, but this product carries a 'total' potential loss rating.",
+      "R5": "Your financial vulnerability is rated MEDIUM, which is acceptable for this product's risk class of 7.",
+      "R6": "Leverage check failed: this product uses leverage, which requires a risk tolerance score of at least 7; your score is 4.",
+      "R7": "Complexity check failed: this product is rated COMPLEX but your financial knowledge level is 'none', below the required 'moderate' minimum."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 2,
+      "liquid_assets": 11500.0,
+      "income": 24000.0,
+      "investment_amount": 1600.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 32
+    },
+    "expected_product_profile": {
+      "product_name": "Single-Stock Call Option",
+      "risk_class": 6,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": false
+    },
+    "scenario_id": "74_uci15_equity_derivative",
+    "run_number": 1,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R2",
+      "R4",
+      "R6",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R4",
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 2,
+      "liquid_assets": 11500.0,
+      "income": 24000.0,
+      "investment_amount": 1600.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 32
+    },
+    "output_product_profile": {
+      "product_name": "Single-stock Call Option",
+      "risk_class": 7,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": true
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": false,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R1",
+      "R4",
+      "R7"
+    ],
+    "client_vulnerability": "MEDIUM",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R1 (knowledge), R4 (affordability), R7 (complexity).",
+    "output_rule_explanations": {
+      "R1": "Knowledge check failed: the product requires 'advanced' knowledge (score 9) but your profile shows 'none' (score 1) \u2014 a gap of 8 points.",
+      "R2": "Risk alignment failed: the product's risk class is 7, but your risk tolerance score is 4; MiFID II permits a maximum gap of 2 (4 + 2 = 6), so the product exceeds your risk appetite by 1 class.",
+      "R3": "Your investment horizon of 2 years meets the product's 1-year minimum.",
+      "R4": "Affordability check failed: you indicated you cannot afford a total loss, but this product carries a 'total' potential loss rating.",
+      "R5": "Your financial vulnerability is rated MEDIUM, which is acceptable for this product's risk class of 7.",
+      "R6": "Leverage check failed: this product uses leverage, which requires a risk tolerance score of at least 7; your score is 4.",
+      "R7": "Complexity check failed: this product is rated COMPLEX but your financial knowledge level is 'none', below the required 'moderate' minimum."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 2,
+      "liquid_assets": 11500.0,
+      "income": 24000.0,
+      "investment_amount": 1600.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 32
+    },
+    "expected_product_profile": {
+      "product_name": "Single-Stock Call Option",
+      "risk_class": 6,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": false
+    },
+    "scenario_id": "74_uci15_equity_derivative",
+    "run_number": 2,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R2",
+      "R4",
+      "R6",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R4",
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 2,
+      "liquid_assets": 11500.0,
+      "income": 24000.0,
+      "investment_amount": 1600.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 32
+    },
+    "output_product_profile": {
+      "product_name": "Single-stock Call Option",
+      "risk_class": 7,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": true
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": true,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R1",
+      "R4",
+      "R7"
+    ],
+    "client_vulnerability": "MEDIUM",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R1 (knowledge), R4 (affordability), R7 (complexity).",
+    "output_rule_explanations": {
+      "R1": "Knowledge check failed: the product requires 'advanced' knowledge (score 9) but your profile shows 'none' (score 1) \u2014 a gap of 8 points.",
+      "R2": "Risk alignment failed: the product's risk class is 7, but your risk tolerance score is 4; MiFID II permits a maximum gap of 2 (4 + 2 = 6), so the product exceeds your risk appetite by 1 class.",
+      "R3": "Your investment horizon of 2 years meets the product's 1-year minimum.",
+      "R4": "Affordability check failed: you indicated you cannot afford a total loss, but this product carries a 'total' potential loss rating.",
+      "R5": "Your financial vulnerability is rated MEDIUM, which is acceptable for this product's risk class of 7.",
+      "R6": "Leverage check failed: this product uses leverage, which requires a risk tolerance score of at least 7; your score is 4.",
+      "R7": "Complexity check failed: this product is rated COMPLEX but your financial knowledge level is 'none', below the required 'moderate' minimum."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 2,
+      "liquid_assets": 11500.0,
+      "income": 24000.0,
+      "investment_amount": 1600.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 32
+    },
+    "expected_product_profile": {
+      "product_name": "Single-Stock Call Option",
+      "risk_class": 6,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": false
+    },
+    "scenario_id": "74_uci15_equity_derivative",
+    "run_number": 3,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R2",
+      "R4",
+      "R6",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R2",
+      "R4",
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 4,
+      "liquid_assets": 1400.0,
+      "income": 48300.0,
+      "investment_amount": 1600.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 57
+    },
+    "output_product_profile": {
+      "product_name": "Single-stock Call Option",
+      "risk_class": 7,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": true
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": false,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R1",
+      "R4",
+      "R7"
+    ],
+    "client_vulnerability": "MEDIUM",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R1 (knowledge), R4 (affordability), R7 (complexity).",
+    "output_rule_explanations": {
+      "R1": "Knowledge check failed: the product requires 'advanced' knowledge (score 9) but your profile shows 'none' (score 1) \u2014 a gap of 8 points.",
+      "R2": "Risk alignment failed: the product's risk class is 7, but your risk tolerance score is 1; MiFID II permits a maximum gap of 2 (1 + 2 = 3), so the product exceeds your risk appetite by 4 classes.",
+      "R3": "Your investment horizon of 4 years meets the product's 1-year minimum.",
+      "R4": "Affordability check failed: you indicated you cannot afford a total loss, but this product carries a 'total' potential loss rating.",
+      "R5": "Your financial vulnerability is rated MEDIUM, which is acceptable for this product's risk class of 7.",
+      "R6": "Leverage check failed: this product uses leverage, which requires a risk tolerance score of at least 7; your score is 1.",
+      "R7": "Complexity check failed: this product is rated COMPLEX but your financial knowledge level is 'none', below the required 'moderate' minimum."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 4,
+      "liquid_assets": 1400.0,
+      "income": 48300.0,
+      "investment_amount": 1600.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 57
+    },
+    "expected_product_profile": {
+      "product_name": "Single-Stock Call Option",
+      "risk_class": 6,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": false
+    },
+    "scenario_id": "75_uci33_equity_derivative",
+    "run_number": 1,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R2",
+      "R4",
+      "R6",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R2",
+      "R4",
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 4,
+      "liquid_assets": 1400.0,
+      "income": 48300.0,
+      "investment_amount": 1600.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 57
+    },
+    "output_product_profile": {
+      "product_name": "Single-stock Call Option",
+      "risk_class": 7,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": true
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": false,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R1",
+      "R4",
+      "R7"
+    ],
+    "client_vulnerability": "MEDIUM",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R1 (knowledge), R4 (affordability), R7 (complexity).",
+    "output_rule_explanations": {
+      "R1": "Knowledge check failed: the product requires 'advanced' knowledge (score 9) but your profile shows 'none' (score 1) \u2014 a gap of 8 points.",
+      "R2": "Risk alignment failed: the product's risk class is 7, but your risk tolerance score is 1; MiFID II permits a maximum gap of 2 (1 + 2 = 3), so the product exceeds your risk appetite by 4 classes.",
+      "R3": "Your investment horizon of 4 years meets the product's 1-year minimum.",
+      "R4": "Affordability check failed: you indicated you cannot afford a total loss, but this product carries a 'total' potential loss rating.",
+      "R5": "Your financial vulnerability is rated MEDIUM, which is acceptable for the product's risk class of 7.",
+      "R6": "Leverage check failed: this product uses leverage, which requires a risk tolerance score of at least 7; your score is 1.",
+      "R7": "Complexity check failed: this product is rated COMPLEX but your financial knowledge level is 'none', below the required 'moderate' minimum."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 4,
+      "liquid_assets": 1400.0,
+      "income": 48300.0,
+      "investment_amount": 1600.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 57
+    },
+    "expected_product_profile": {
+      "product_name": "Single-Stock Call Option",
+      "risk_class": 6,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": false
+    },
+    "scenario_id": "75_uci33_equity_derivative",
+    "run_number": 2,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R2",
+      "R4",
+      "R6",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R2",
+      "R4",
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 4,
+      "liquid_assets": 1400.0,
+      "income": 48300.0,
+      "investment_amount": 1600.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 57
+    },
+    "output_product_profile": {
+      "product_name": "Single-stock call option",
+      "risk_class": 7,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": true
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": true,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R1",
+      "R4",
+      "R7"
+    ],
+    "client_vulnerability": "MEDIUM",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R1 (knowledge), R4 (affordability), R6 (leverage), R7 (complexity).",
+    "output_rule_explanations": {
+      "R1": "Knowledge check failed: the product requires 'advanced' knowledge (score 9) but your profile shows 'none' (score 1) \u2014 a gap of 8 points.",
+      "R2": "Risk alignment failed: the product's risk class is 7, but your risk tolerance score is 1; MiFID II permits a maximum gap of 2 (1 + 2 = 3), so the product exceeds your risk appetite by 4 classes.",
+      "R3": "Your investment horizon of 4 years meets the product's 1-year minimum.",
+      "R4": "Affordability check failed: you indicated you cannot afford a total loss, but this product carries a 'total' potential loss rating.",
+      "R5": "Your financial vulnerability is rated MEDIUM, which is acceptable for this product's risk class of 7.",
+      "R6": "Leverage check failed: this product uses leverage, which requires a risk tolerance score of at least 7; your score is 1.",
+      "R7": "Complexity check failed: this product is rated COMPLEX but your financial knowledge level is 'none', below the required 'moderate' minimum."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 4,
+      "liquid_assets": 1400.0,
+      "income": 48300.0,
+      "investment_amount": 1600.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 57
+    },
+    "expected_product_profile": {
+      "product_name": "Single-Stock Call Option",
+      "risk_class": 6,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": false
+    },
+    "scenario_id": "75_uci33_equity_derivative",
+    "run_number": 3,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R2",
+      "R4",
+      "R6",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R2",
+      "R4",
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 4,
+      "liquid_assets": 1200.0,
+      "income": 47400.0,
+      "investment_amount": 7800.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 58
+    },
+    "output_product_profile": {
+      "product_name": "Single-stock call option",
+      "risk_class": 7,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": true
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": true,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R1",
+      "R4",
+      "R7"
+    ],
+    "client_vulnerability": "MEDIUM",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R1 (knowledge), R4 (affordability), R7 (complexity).",
+    "output_rule_explanations": {
+      "R1": "Knowledge check failed: the product requires 'advanced' knowledge (score 9) but your profile shows 'none' (score 1) \u2014 a gap of 8 points.",
+      "R2": "Risk alignment failed: the product's risk class is 7, but your risk tolerance score is 1; MiFID II permits a maximum gap of 2 (1 + 2 = 3), so the product exceeds your risk appetite by 4 classes.",
+      "R3": "Your investment horizon of 4 years meets the product's 1-year minimum.",
+      "R4": "Affordability check failed: you indicated you cannot afford a total loss, but this product carries a 'total' potential loss rating.",
+      "R5": "Your financial vulnerability is rated MEDIUM, which is acceptable for this product's risk class of 7.",
+      "R6": "Leverage check failed: this product uses leverage, which requires a risk tolerance score of at least 7; your score is 1.",
+      "R7": "Complexity check failed: this product is rated COMPLEX but your financial knowledge level is 'none', below the required 'moderate' minimum."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 4,
+      "liquid_assets": 1200.0,
+      "income": 47400.0,
+      "investment_amount": 7800.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 58
+    },
+    "expected_product_profile": {
+      "product_name": "Single-Stock Call Option",
+      "risk_class": 6,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": false
+    },
+    "scenario_id": "76_uci44_equity_derivative",
+    "run_number": 1,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R2",
+      "R4",
+      "R6",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R2",
+      "R4",
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 4,
+      "liquid_assets": 1200.0,
+      "income": 47400.0,
+      "investment_amount": 7800.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 58
+    },
+    "output_product_profile": {
+      "product_name": "Single-stock call option",
+      "risk_class": 7,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": true
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": false,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R1",
+      "R4",
+      "R7"
+    ],
+    "client_vulnerability": "MEDIUM",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R1 (knowledge), R4 (affordability), R2 (risk alignment), R6 (leverage), R7 (complexity).",
+    "output_rule_explanations": {
+      "R1": "Knowledge check failed: the product requires 'advanced' knowledge (score 9) but your profile shows 'none' (score 1) \u2014 a gap of 8 points.",
+      "R2": "Risk alignment failed: the product's risk class is 7, but your risk tolerance score is 1; MiFID II permits a maximum gap of 2 (1 + 2 = 3), so the product exceeds your risk appetite by 4 classes.",
+      "R3": "Your investment horizon of 4 years meets the product's 1-year minimum.",
+      "R4": "Affordability check failed: you indicated you cannot afford a total loss, but this product carries a 'total' potential loss rating.",
+      "R5": "Your financial vulnerability is rated MEDIUM, which is acceptable for this product's risk class of 7.",
+      "R6": "Leverage check failed: this product uses leverage, which requires a risk tolerance score of at least 7; your score is 1.",
+      "R7": "Complexity check failed: this product is rated COMPLEX but your financial knowledge level is 'none', below the required 'moderate' minimum."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 4,
+      "liquid_assets": 1200.0,
+      "income": 47400.0,
+      "investment_amount": 7800.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 58
+    },
+    "expected_product_profile": {
+      "product_name": "Single-Stock Call Option",
+      "risk_class": 6,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": false
+    },
+    "scenario_id": "76_uci44_equity_derivative",
+    "run_number": 2,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R2",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R2",
+      "R4",
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": true,
+    "a1_correction": null,
+    "a2_correction": {
+      "original": {
+        "product_name": "Single-stock call option",
+        "risk_class": 7,
+        "complexity_tier": "COMPLEX",
+        "requires_knowledge_level": "advanced",
+        "minimum_horizon": 1,
+        "potential_loss": "total",
+        "leverage": true
+      },
+      "corrected": {
+        "product_name": "Single-stock call option",
+        "risk_class": 5,
+        "complexity_tier": "COMPLEX",
+        "requires_knowledge_level": "advanced",
+        "minimum_horizon": 1,
+        "potential_loss": "partial",
+        "leverage": false
+      },
+      "fields_fixed": [
+        "risk_class",
+        "potential_loss",
+        "leverage"
+      ]
+    },
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 4,
+      "liquid_assets": 1200.0,
+      "income": 47400.0,
+      "investment_amount": 7800.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 58
+    },
+    "output_product_profile": {
+      "product_name": "Single-stock call option",
+      "risk_class": 5,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": false,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R1",
+      "R7"
+    ],
+    "client_vulnerability": "MEDIUM",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R1 (knowledge), R2 (risk alignment), R7 (complexity).",
+    "output_rule_explanations": {
+      "R1": "Knowledge check failed: the product requires 'advanced' knowledge (score 9) but your profile shows 'none' knowledge (score 1) \u2014 a gap of 8 points.",
+      "R2": "Risk alignment failed: the product's risk class is 5, but your risk tolerance score is 1; MiFID II permits a maximum gap of 2 (1 + 2 = 3), so the product exceeds your risk appetite by 2 classes.",
+      "R3": "Your investment horizon of 4 years meets the product's 1-year minimum.",
+      "R4": "You indicated you cannot afford a total loss, but this product carries a 'partial' potential loss rating.",
+      "R5": "Your financial vulnerability is rated MEDIUM and the product's risk class is 5, which is suitable for your vulnerability level.",
+      "R6": "This product does not use leverage, and your risk tolerance score of 1 is below the required minimum of 7.",
+      "R7": "Complexity check failed: this product is rated COMPLEX but your financial knowledge level is 'none', below the required 'moderate' minimum."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 4,
+      "liquid_assets": 1200.0,
+      "income": 47400.0,
+      "investment_amount": 7800.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 58
+    },
+    "expected_product_profile": {
+      "product_name": "Single-Stock Call Option",
+      "risk_class": 6,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": false
+    },
+    "scenario_id": "76_uci44_equity_derivative",
+    "run_number": 3,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R6",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 6,
+      "investment_horizon": 3,
+      "liquid_assets": 43300.0,
+      "income": 65500.0,
+      "investment_amount": 3600.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "LOW",
+      "age": 53
+    },
+    "output_product_profile": {
+      "product_name": "Single-stock call option",
+      "risk_class": 7,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": true
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": false,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R1",
+      "R7"
+    ],
+    "client_vulnerability": "LOW",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R1 (knowledge) and R7 (complexity).",
+    "output_rule_explanations": {
+      "R1": "Knowledge check failed: the product requires 'advanced' knowledge (score 9) but your profile shows 'basic' knowledge (score 3) \u2014 a gap of 6 points.",
+      "R2": "Your risk tolerance score of 6 meets the product's risk class of 7, allowing for a maximum gap of 2.",
+      "R3": "Your investment horizon of 3 years meets the product's minimum requirement of 1 year.",
+      "R4": "You indicated you can afford a total loss, which is acceptable for this product.",
+      "R5": "Your financial vulnerability is rated LOW, which is suitable for a product with risk class 7.",
+      "R6": "Leverage check failed: this product uses leverage, which requires a risk tolerance score of at least 7; your score is 6.",
+      "R7": "Complexity check failed: this product is rated COMPLEX but your financial knowledge level is 'basic', below the required 'moderate' minimum."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 6,
+      "investment_horizon": 3,
+      "liquid_assets": 43300.0,
+      "income": 65500.0,
+      "investment_amount": 3600.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "LOW",
+      "age": 53
+    },
+    "expected_product_profile": {
+      "product_name": "Single-Stock Call Option",
+      "risk_class": 6,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": false
+    },
+    "scenario_id": "77_uci6_equity_derivative",
+    "run_number": 1,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R6",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 6,
+      "investment_horizon": 3,
+      "liquid_assets": 43300.0,
+      "income": 65500.0,
+      "investment_amount": 3600.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "LOW",
+      "age": 53
+    },
+    "output_product_profile": {
+      "product_name": "Single-stock call option",
+      "risk_class": 7,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": true
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": false,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R1",
+      "R7"
+    ],
+    "client_vulnerability": "LOW",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R1 (knowledge), R7 (complexity).",
+    "output_rule_explanations": {
+      "R1": "Knowledge check failed: the product requires 'advanced' knowledge (score 9) but your profile shows 'basic' knowledge (score 3) \u2014 a gap of 6 points.",
+      "R2": "Your risk tolerance score of 6 meets the product's risk class of 7, allowing for a maximum gap of 2.",
+      "R3": "Your investment horizon of 3 years meets the product's minimum requirement of 1 year.",
+      "R4": "You indicated you can afford a total loss, which is acceptable for this product.",
+      "R5": "Your financial vulnerability is rated LOW, which is suitable for a product with risk class 7.",
+      "R6": "Leverage check failed: this product uses leverage, which requires a risk tolerance score of at least 7; your score is 6.",
+      "R7": "Complexity check failed: this product is rated COMPLEX but your financial knowledge level is 'basic', below the required 'moderate' minimum."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 6,
+      "investment_horizon": 3,
+      "liquid_assets": 43300.0,
+      "income": 65500.0,
+      "investment_amount": 3600.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "LOW",
+      "age": 53
+    },
+    "expected_product_profile": {
+      "product_name": "Single-Stock Call Option",
+      "risk_class": 6,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": false
+    },
+    "scenario_id": "77_uci6_equity_derivative",
+    "run_number": 2,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R6",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 6,
+      "investment_horizon": 3,
+      "liquid_assets": 43300.0,
+      "income": 65500.0,
+      "investment_amount": 3600.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "LOW",
+      "age": 53
+    },
+    "output_product_profile": {
+      "product_name": "Single-stock call option",
+      "risk_class": 7,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": true
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": false,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R1",
+      "R7"
+    ],
+    "client_vulnerability": "LOW",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R1 (knowledge), R7 (complexity).",
+    "output_rule_explanations": {
+      "R1": "Knowledge check failed: the product requires 'advanced' knowledge (score 9) but your profile shows 'basic' knowledge (score 3) \u2014 a gap of 6 points.",
+      "R2": "Your risk tolerance score of 6 meets the product's risk class of 7, allowing for a maximum gap of 2.",
+      "R3": "Your investment horizon of 3 years meets the product's minimum requirement of 1 year.",
+      "R4": "You indicated you can afford a total loss, which is acceptable for this product.",
+      "R5": "Your financial vulnerability is rated LOW, which is suitable for this product's risk class of 7.",
+      "R6": "Leverage check failed: this product uses leverage, which requires a risk tolerance score of at least 7; your score is 6.",
+      "R7": "Complexity check failed: this product is rated COMPLEX but your financial knowledge level is 'basic', below the required 'moderate' minimum."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 6,
+      "investment_horizon": 3,
+      "liquid_assets": 43300.0,
+      "income": 65500.0,
+      "investment_amount": 3600.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "LOW",
+      "age": 53
+    },
+    "expected_product_profile": {
+      "product_name": "Single-Stock Call Option",
+      "risk_class": 6,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": false
+    },
+    "scenario_id": "77_uci6_equity_derivative",
+    "run_number": 3,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R2",
+      "R4",
+      "R6"
+    ],
+    "expected_rules_failed": [
+      "R4"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "advanced",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 2,
+      "liquid_assets": 18000.0,
+      "income": 120200.0,
+      "investment_amount": 11400.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 45
+    },
+    "output_product_profile": {
+      "product_name": "Single-stock call option",
+      "risk_class": 7,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": true
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": true,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R4"
+    ],
+    "client_vulnerability": "MEDIUM",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R2 (risk alignment) and R4 (affordability).",
+    "output_rule_explanations": {
+      "R1": "Your advanced financial knowledge meets the product's requirement for advanced knowledge.",
+      "R2": "Risk alignment failed: the product's risk class is 7, but your risk tolerance score is 4; MiFID II permits a maximum gap of 2 (4 + 2 = 6), so the product exceeds your risk appetite by 1 class.",
+      "R3": "Your investment horizon of 2 years meets the product's minimum requirement of 1 year.",
+      "R4": "Affordability check failed: you indicated you cannot afford a total loss, but this product carries a 'total' potential loss rating.",
+      "R5": "Your financial vulnerability is rated MEDIUM, which is acceptable for this product's risk class.",
+      "R6": "Leverage check failed: this product uses leverage, which requires a risk tolerance score of at least 7; your score is 4.",
+      "R7": "Your advanced financial knowledge meets the complexity requirement of the product."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "advanced",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 2,
+      "liquid_assets": 18000.0,
+      "income": 120200.0,
+      "investment_amount": 11400.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 45
+    },
+    "expected_product_profile": {
+      "product_name": "Single-Stock Call Option",
+      "risk_class": 6,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": false
+    },
+    "scenario_id": "78_uci268_equity_derivative",
+    "run_number": 1,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R2",
+      "R4",
+      "R6"
+    ],
+    "expected_rules_failed": [
+      "R4"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "advanced",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 2,
+      "liquid_assets": 18000.0,
+      "income": 120200.0,
+      "investment_amount": 11400.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 45
+    },
+    "output_product_profile": {
+      "product_name": "Single-stock call option",
+      "risk_class": 7,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": true
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": false,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R4"
+    ],
+    "client_vulnerability": "MEDIUM",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R2 (risk alignment) and R4 (affordability).",
+    "output_rule_explanations": {
+      "R1": "Your advanced financial knowledge meets the product's requirement for advanced knowledge.",
+      "R2": "Risk alignment failed: the product's risk class is 7, but your risk tolerance score is 4; MiFID II permits a maximum gap of 2 (4 + 2 = 6), so the product exceeds your risk appetite by 1 class.",
+      "R3": "Your investment horizon of 2 years meets the product's minimum requirement of 1 year.",
+      "R4": "Affordability check failed: you indicated you cannot afford a total loss, but this product carries a 'total' potential loss rating.",
+      "R5": "Your financial vulnerability is rated MEDIUM, which is acceptable for this product's risk class of 7.",
+      "R6": "Leverage check failed: this product uses leverage, which requires a risk tolerance score of at least 7; your score is 4.",
+      "R7": "Your advanced financial knowledge meets the complexity requirement of the product."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "advanced",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 2,
+      "liquid_assets": 18000.0,
+      "income": 120200.0,
+      "investment_amount": 11400.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 45
+    },
+    "expected_product_profile": {
+      "product_name": "Single-Stock Call Option",
+      "risk_class": 6,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": false
+    },
+    "scenario_id": "78_uci268_equity_derivative",
+    "run_number": 2,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R2",
+      "R4",
+      "R6"
+    ],
+    "expected_rules_failed": [
+      "R4"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "advanced",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 2,
+      "liquid_assets": 18000.0,
+      "income": 120200.0,
+      "investment_amount": 11400.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 45
+    },
+    "output_product_profile": {
+      "product_name": "Single-stock call option",
+      "risk_class": 7,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": true
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": true,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R4"
+    ],
+    "client_vulnerability": "MEDIUM",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R2 (risk alignment) and R4 (affordability).",
+    "output_rule_explanations": {
+      "R1": "Your advanced financial knowledge meets the product's requirement for advanced knowledge.",
+      "R2": "Risk alignment failed: the product's risk class is 7, but your risk tolerance score is 4; MiFID II permits a maximum gap of 2 (4 + 2 = 6), so the product exceeds your risk appetite by 1 class.",
+      "R3": "Your investment horizon of 2 years meets the product's minimum requirement of 1 year.",
+      "R4": "Affordability check failed: you indicated you cannot afford a total loss, but this product carries a 'total' potential loss rating.",
+      "R5": "Your financial vulnerability is rated MEDIUM, which is acceptable for this product's risk class.",
+      "R6": "Leverage check failed: this product uses leverage, which requires a risk tolerance score of at least 7; your score is 4.",
+      "R7": "Your advanced financial knowledge meets the complexity requirement of the product."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "advanced",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 2,
+      "liquid_assets": 18000.0,
+      "income": 120200.0,
+      "investment_amount": 11400.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 45
+    },
+    "expected_product_profile": {
+      "product_name": "Single-Stock Call Option",
+      "risk_class": 6,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": false
+    },
+    "scenario_id": "78_uci268_equity_derivative",
+    "run_number": 3,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R4",
+      "R6"
+    ],
+    "expected_rules_failed": [
+      "R4"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "advanced",
+      "risk_tolerance_score": 5,
+      "investment_horizon": 4,
+      "liquid_assets": 18000.0,
+      "income": 55200.0,
+      "investment_amount": 23500.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 32
+    },
+    "output_product_profile": {
+      "product_name": "Single-stock call option",
+      "risk_class": 7,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": true
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": true,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R4"
+    ],
+    "client_vulnerability": "MEDIUM",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R4 (affordability), R6 (leverage).",
+    "output_rule_explanations": {
+      "R1": "Your financial knowledge level of 'advanced' meets the product's requirement for 'advanced' knowledge.",
+      "R2": "The product's risk class of 7 is within the acceptable range of your risk tolerance score of 5 plus the allowed margin of 2.",
+      "R3": "Your investment horizon of 4 years exceeds the product's minimum requirement of 1 year.",
+      "R4": "Affordability check failed: you indicated you cannot afford a total loss, but this product carries a 'total' potential loss rating.",
+      "R5": "Your financial vulnerability is rated 'MEDIUM', which is acceptable given the product's risk class of 7.",
+      "R6": "Leverage check failed: this product uses leverage, which requires a risk tolerance score of at least 7; your score is 5.",
+      "R7": "Your financial knowledge level of 'advanced' meets the complexity requirement of the product, which is rated 'COMPLEX'."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "advanced",
+      "risk_tolerance_score": 5,
+      "investment_horizon": 4,
+      "liquid_assets": 18000.0,
+      "income": 55200.0,
+      "investment_amount": 23500.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 32
+    },
+    "expected_product_profile": {
+      "product_name": "Single-Stock Call Option",
+      "risk_class": 6,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": false
+    },
+    "scenario_id": "79_uci915_equity_derivative",
+    "run_number": 1,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R4",
+      "R6"
+    ],
+    "expected_rules_failed": [
+      "R4"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "advanced",
+      "risk_tolerance_score": 5,
+      "investment_horizon": 4,
+      "liquid_assets": 18000.0,
+      "income": 55200.0,
+      "investment_amount": 23500.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 32
+    },
+    "output_product_profile": {
+      "product_name": "Single-stock call option",
+      "risk_class": 7,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": true
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": true,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R4"
+    ],
+    "client_vulnerability": "MEDIUM",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R4 (affordability) and R6 (leverage).",
+    "output_rule_explanations": {
+      "R1": "Your financial knowledge level of 'advanced' meets the product's requirement for 'advanced' knowledge.",
+      "R2": "The product's risk class of 7 is within the acceptable range of your risk tolerance score of 5 plus the allowed margin of 2.",
+      "R3": "Your investment horizon of 4 years exceeds the product's minimum requirement of 1 year.",
+      "R4": "Affordability check failed: you indicated you cannot afford a total loss, but this product carries a 'total' potential loss rating.",
+      "R5": "Your financial vulnerability is rated 'MEDIUM', which is acceptable given the product's risk class of 7.",
+      "R6": "Leverage check failed: this product uses leverage, which requires a risk tolerance score of at least 7; your score is 5.",
+      "R7": "Your financial knowledge level of 'advanced' meets the complexity requirement for this product, which is rated 'COMPLEX'."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "advanced",
+      "risk_tolerance_score": 5,
+      "investment_horizon": 4,
+      "liquid_assets": 18000.0,
+      "income": 55200.0,
+      "investment_amount": 23500.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 32
+    },
+    "expected_product_profile": {
+      "product_name": "Single-Stock Call Option",
+      "risk_class": 6,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": false
+    },
+    "scenario_id": "79_uci915_equity_derivative",
+    "run_number": 2,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R4",
+      "R6"
+    ],
+    "expected_rules_failed": [
+      "R4"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "advanced",
+      "risk_tolerance_score": 5,
+      "investment_horizon": 4,
+      "liquid_assets": 18000.0,
+      "income": 55200.0,
+      "investment_amount": 23500.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 32
+    },
+    "output_product_profile": {
+      "product_name": "Single-stock call option",
+      "risk_class": 7,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": true
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": true,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R4"
+    ],
+    "client_vulnerability": "MEDIUM",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R4 (affordability) and R6 (leverage).",
+    "output_rule_explanations": {
+      "R1": "Your advanced financial knowledge meets the product's requirement for advanced knowledge.",
+      "R2": "The product's risk class of 7 is within your risk tolerance score of 5 plus the allowed margin of 2.",
+      "R3": "Your investment horizon of 4 years exceeds the product's minimum requirement of 1 year.",
+      "R4": "Affordability check failed: you indicated you cannot afford a total loss, but this product carries a 'total' potential loss rating.",
+      "R5": "Your financial vulnerability is rated MEDIUM, which is acceptable for this product's risk class of 7.",
+      "R6": "Leverage check failed: this product uses leverage, which requires a risk tolerance score of at least 7; your score is 5.",
+      "R7": "Your advanced financial knowledge meets the complexity requirement of the product."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "advanced",
+      "risk_tolerance_score": 5,
+      "investment_horizon": 4,
+      "liquid_assets": 18000.0,
+      "income": 55200.0,
+      "investment_amount": 23500.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 32
+    },
+    "expected_product_profile": {
+      "product_name": "Single-Stock Call Option",
+      "risk_class": 6,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": false
+    },
+    "scenario_id": "79_uci915_equity_derivative",
+    "run_number": 3,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R5"
+    ],
+    "expected_rules_failed": [
+      "R3",
+      "R5"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 7,
+      "investment_horizon": 4,
+      "liquid_assets": 56000.0,
+      "income": 33000.0,
+      "investment_amount": 7600.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 22
+    },
+    "output_product_profile": {
+      "product_name": "UCITS exchange-traded fund providing concentrated exposure to European technology and digitisation sector companies",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": true,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R5"
+    ],
+    "client_vulnerability": "HIGH",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R3 (horizon) and R5 (vulnerability).",
+    "output_rule_explanations": {
+      "R1": "Your financial knowledge level of 'basic' meets the product's requirement of 'basic'.",
+      "R2": "The product's risk class of 5 is within your risk tolerance score of 7, allowing for a maximum gap of 2.",
+      "R3": "Horizon check failed: the product requires a minimum investment horizon of 5 years but your stated horizon is 4 years \u2014 1 year short of the requirement.",
+      "R4": "You indicated you cannot afford a total loss, but this product carries a 'partial' potential loss rating.",
+      "R5": "Vulnerability check failed: your financial vulnerability is rated HIGH and the product's risk class is 5 (\u2265 5), making it unsuitable for vulnerable clients.",
+      "R6": "This product does not use leverage, and your risk tolerance score of 7 meets the requirement.",
+      "R7": "The product is rated NON-COMPLEX and your financial knowledge level of 'basic' meets the required threshold."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 7,
+      "investment_horizon": 4,
+      "liquid_assets": 56000.0,
+      "income": 33000.0,
+      "investment_amount": 7600.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 22
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Technology Sector Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "80_uci1_sector_equity_etf",
+    "run_number": 1,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R5"
+    ],
+    "expected_rules_failed": [
+      "R3",
+      "R5"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 7,
+      "investment_horizon": 4,
+      "liquid_assets": 56000.0,
+      "income": 33000.0,
+      "investment_amount": 7600.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 22
+    },
+    "output_product_profile": {
+      "product_name": "UCITS exchange-traded fund providing concentrated exposure to European technology and digitisation sector companies",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": true,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R5"
+    ],
+    "client_vulnerability": "HIGH",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R3 (horizon) and R5 (vulnerability).",
+    "output_rule_explanations": {
+      "R1": "Your financial knowledge level of 'basic' meets the product's requirement of 'basic'.",
+      "R2": "The product's risk class of 5 is within your risk tolerance score of 7, allowing for a maximum gap of 2.",
+      "R3": "Horizon check failed: the product requires a minimum investment horizon of 5 years but your stated horizon is 4 years \u2014 1 year short of the requirement.",
+      "R4": "You indicated you cannot afford a total loss, but this product carries a 'partial' potential loss rating.",
+      "R5": "Vulnerability check failed: your financial vulnerability is rated HIGH and the product's risk class is 5 (\u2265 5), making it unsuitable for vulnerable clients.",
+      "R6": "This product does not use leverage, and your risk tolerance score of 7 meets the requirement.",
+      "R7": "The product is rated NON-COMPLEX, which aligns with your financial knowledge level of 'basic'."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 7,
+      "investment_horizon": 4,
+      "liquid_assets": 56000.0,
+      "income": 33000.0,
+      "investment_amount": 7600.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 22
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Technology Sector Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "80_uci1_sector_equity_etf",
+    "run_number": 2,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R5"
+    ],
+    "expected_rules_failed": [
+      "R3",
+      "R5"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 7,
+      "investment_horizon": 4,
+      "liquid_assets": 56000.0,
+      "income": 33000.0,
+      "investment_amount": 7600.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 22
+    },
+    "output_product_profile": {
+      "product_name": "UCITS exchange-traded fund providing concentrated exposure to European technology and digitisation sector companies",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": true,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R5"
+    ],
+    "client_vulnerability": "HIGH",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R3 (horizon) and R5 (vulnerability).",
+    "output_rule_explanations": {
+      "R1": "Your financial knowledge level of 'basic' meets the product's requirement of 'basic'.",
+      "R2": "The product's risk class of 5 is within your risk tolerance score of 7, allowing for a maximum gap of 2.",
+      "R3": "Horizon check failed: the product requires a minimum investment horizon of 5 years but your stated horizon is 4 years \u2014 1 year short of the requirement.",
+      "R4": "You indicated you cannot afford a total loss, but this product carries a 'partial' potential loss rating.",
+      "R5": "Vulnerability check failed: your financial vulnerability is rated HIGH and the product's risk class is 5 (\u2265 5), making it unsuitable for vulnerable clients.",
+      "R6": "This product does not use leverage, and your risk tolerance score of 7 meets the requirement.",
+      "R7": "The product is rated NON-COMPLEX and your financial knowledge level of 'basic' meets the required threshold."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 7,
+      "investment_horizon": 4,
+      "liquid_assets": 56000.0,
+      "income": 33000.0,
+      "investment_amount": 7600.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 22
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Technology Sector Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "80_uci1_sector_equity_etf",
+    "run_number": 3,
+    "architecture": "pipeline"
+  }
+]

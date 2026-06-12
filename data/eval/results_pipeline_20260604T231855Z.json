@@ -1,0 +1,3185 @@
+[
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R2",
+      "R3",
+      "R5"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3",
+      "R5"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 2,
+      "liquid_assets": 2400.0,
+      "income": 32600.0,
+      "investment_amount": 6200.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 53
+    },
+    "output_product_profile": {
+      "product_name": "UCITS exchange-traded fund (European technology and digitisation sector)",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": true,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R5"
+    ],
+    "client_vulnerability": "HIGH",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R2 (risk alignment) and R5 (vulnerability).",
+    "output_rule_explanations": {
+      "R1": "Your financial knowledge level of 'basic' meets the product's requirement of 'basic'.",
+      "R2": "Risk alignment failed: the product's risk class is 5, but your risk tolerance score is only 1; MiFID II permits a maximum gap of 2 (1 + 2 = 3), so the product exceeds your risk appetite by 2 classes.",
+      "R3": "Horizon check failed: the product requires a minimum investment horizon of 5 years but your stated horizon is only 2 years \u2014 3 years short of the requirement.",
+      "R4": "You indicated you cannot afford a total loss, but this product carries a 'partial' potential loss rating.",
+      "R5": "Vulnerability check failed: your financial vulnerability is rated HIGH and the product's risk class is 5 (\u2265 5), making it unsuitable for vulnerable clients.",
+      "R6": "This product does not use leverage, which is appropriate given your risk tolerance score of 1.",
+      "R7": "The product is rated as NON-COMPLEX, which aligns with your financial knowledge level of 'basic'."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 2,
+      "liquid_assets": 2400.0,
+      "income": 32600.0,
+      "investment_amount": 6200.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 53
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Technology Sector Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "81_uci4_sector_equity_etf",
+    "run_number": 1,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R2",
+      "R3",
+      "R5"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3",
+      "R5"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 2,
+      "liquid_assets": 2400.0,
+      "income": 32600.0,
+      "investment_amount": 6200.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 53
+    },
+    "output_product_profile": {
+      "product_name": "UCITS exchange-traded fund providing concentrated exposure to European technology and digitisation sector companies",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": true,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R5"
+    ],
+    "client_vulnerability": "HIGH",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R2 (risk alignment) and R5 (vulnerability).",
+    "output_rule_explanations": {
+      "R1": "Your financial knowledge level of 'basic' meets the product's requirement of 'basic'.",
+      "R2": "Risk alignment failed: the product's risk class is 5, but your risk tolerance score is only 1; MiFID II permits a maximum gap of 2 (1 + 2 = 3), so the product exceeds your risk appetite by 2 classes.",
+      "R3": "Horizon check failed: the product requires a minimum investment horizon of 5 years but your stated horizon is only 2 years \u2014 3 years short of the requirement.",
+      "R4": "You indicated you cannot afford a total loss, but this product carries a 'partial' potential loss rating.",
+      "R5": "Vulnerability check failed: your financial vulnerability is rated HIGH and the product's risk class is 5 (\u2265 5), making it unsuitable for vulnerable clients.",
+      "R6": "This product does not use leverage, which is appropriate given your risk tolerance score of 1.",
+      "R7": "The product is rated as NON-COMPLEX, which aligns with your financial knowledge level of 'basic'."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 2,
+      "liquid_assets": 2400.0,
+      "income": 32600.0,
+      "investment_amount": 6200.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 53
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Technology Sector Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "81_uci4_sector_equity_etf",
+    "run_number": 2,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R2",
+      "R3",
+      "R5"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3",
+      "R5"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 2,
+      "liquid_assets": 2400.0,
+      "income": 32600.0,
+      "investment_amount": 6200.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 53
+    },
+    "output_product_profile": {
+      "product_name": "UCITS exchange-traded fund providing concentrated exposure to European technology and digitisation sector companies",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": true,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R5"
+    ],
+    "client_vulnerability": "HIGH",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R2 (risk alignment) and R5 (vulnerability).",
+    "output_rule_explanations": {
+      "R1": "Your financial knowledge level of 'basic' meets the product's requirement of 'basic'.",
+      "R2": "Risk alignment failed: the product's risk class is 5, but your risk tolerance score is only 1; MiFID II permits a maximum gap of 2 (1 + 2 = 3), so the product exceeds your risk appetite by 2 classes.",
+      "R3": "Horizon check failed: the product requires a minimum investment horizon of 5 years but your stated horizon is only 2 years \u2014 3 years short of the requirement.",
+      "R4": "You indicated you cannot afford a total loss, but this product carries a 'partial' potential loss rating.",
+      "R5": "Vulnerability check failed: your financial vulnerability is rated HIGH and the product's risk class is 5 (\u2265 5), making it unsuitable for vulnerable clients.",
+      "R6": "This product does not use leverage, which is appropriate given your risk tolerance score of 1.",
+      "R7": "The product is rated as NON-COMPLEX, which aligns with your financial knowledge level of 'basic'."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 2,
+      "liquid_assets": 2400.0,
+      "income": 32600.0,
+      "investment_amount": 6200.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 53
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Technology Sector Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "81_uci4_sector_equity_etf",
+    "run_number": 3,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R5"
+    ],
+    "expected_rules_failed": [
+      "R3",
+      "R5"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 5,
+      "investment_horizon": 2,
+      "liquid_assets": 2000.0,
+      "income": 17500.0,
+      "investment_amount": 1700.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 25
+    },
+    "output_product_profile": {
+      "product_name": "UCITS exchange-traded fund providing concentrated exposure to European technology and digitisation sector companies",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": true,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R5"
+    ],
+    "client_vulnerability": "HIGH",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R3 (horizon) and R5 (vulnerability).",
+    "output_rule_explanations": {
+      "R1": "Your financial knowledge level of 'basic' meets the product's requirement of 'basic'.",
+      "R2": "The product's risk class of 5 is within your risk tolerance score of 5 plus the allowed margin of 2.",
+      "R3": "Horizon check failed: the product requires a minimum investment horizon of 5 years but your stated horizon is 2 years \u2014 3 years short of the requirement.",
+      "R4": "You indicated you can afford a total loss, and this product does not carry a total loss risk.",
+      "R5": "Vulnerability check failed: your financial vulnerability is rated HIGH and the product's risk class is 5 (\u2265 5), making it unsuitable for vulnerable clients.",
+      "R6": "This product does not use leverage, and your risk tolerance score of 5 is sufficient.",
+      "R7": "The product is rated NON-COMPLEX, which aligns with your financial knowledge level of 'basic'."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 5,
+      "investment_horizon": 2,
+      "liquid_assets": 2000.0,
+      "income": 17500.0,
+      "investment_amount": 1700.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 25
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Technology Sector Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "82_uci10_sector_equity_etf",
+    "run_number": 1,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R5"
+    ],
+    "expected_rules_failed": [
+      "R3",
+      "R5"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 5,
+      "investment_horizon": 2,
+      "liquid_assets": 2000.0,
+      "income": 17500.0,
+      "investment_amount": 1700.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 25
+    },
+    "output_product_profile": {
+      "product_name": "UCITS exchange-traded fund providing concentrated exposure to European technology and digitisation sector companies",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": true,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R5"
+    ],
+    "client_vulnerability": "HIGH",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R3 (horizon) and R5 (vulnerability).",
+    "output_rule_explanations": {
+      "R1": "Your financial knowledge level of 'basic' meets the product's requirement of 'basic'.",
+      "R2": "The product's risk class of 5 is within your risk tolerance score of 5 plus the allowed margin of 2.",
+      "R3": "Horizon check failed: the product requires a minimum investment horizon of 5 years but your stated horizon is 2 years \u2014 3 years short of the requirement.",
+      "R4": "You indicated you can afford a total loss, and this product does not carry a total loss risk.",
+      "R5": "Vulnerability check failed: your financial vulnerability is rated HIGH and the product's risk class is 5 (\u2265 5), making it unsuitable for vulnerable clients.",
+      "R6": "This product does not use leverage, and your risk tolerance score of 5 is sufficient.",
+      "R7": "The product is rated NON-COMPLEX, which aligns with your financial knowledge level of 'basic'."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 5,
+      "investment_horizon": 2,
+      "liquid_assets": 2000.0,
+      "income": 17500.0,
+      "investment_amount": 1700.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 25
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Technology Sector Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "82_uci10_sector_equity_etf",
+    "run_number": 2,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R5"
+    ],
+    "expected_rules_failed": [
+      "R3",
+      "R5"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 5,
+      "investment_horizon": 2,
+      "liquid_assets": 2000.0,
+      "income": 17500.0,
+      "investment_amount": 1700.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 25
+    },
+    "output_product_profile": {
+      "product_name": "UCITS exchange-traded fund providing concentrated exposure to European technology and digitisation sector companies",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": true,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R5"
+    ],
+    "client_vulnerability": "HIGH",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R3 (horizon) and R5 (vulnerability).",
+    "output_rule_explanations": {
+      "R1": "Your financial knowledge level of 'basic' meets the product's requirement of 'basic'.",
+      "R2": "The product's risk class of 5 is within your risk tolerance score of 5 plus the allowed margin of 2.",
+      "R3": "Horizon check failed: the product requires a minimum investment horizon of 5 years but your stated horizon is 2 years \u2014 3 years short of the requirement.",
+      "R4": "You indicated you can afford a total loss, and this product does not carry a total loss risk.",
+      "R5": "Vulnerability check failed: your financial vulnerability is rated HIGH and the product's risk class is 5 (\u2265 5), making it unsuitable for vulnerable clients.",
+      "R6": "This product does not use leverage, and your risk tolerance score of 5 is sufficient.",
+      "R7": "The product is rated NON-COMPLEX, which aligns with your financial knowledge level of 'basic'."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 5,
+      "investment_horizon": 2,
+      "liquid_assets": 2000.0,
+      "income": 17500.0,
+      "investment_amount": 1700.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 25
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Technology Sector Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "82_uci10_sector_equity_etf",
+    "run_number": 3,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R5"
+    ],
+    "expected_rules_failed": [
+      "R3",
+      "R5"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 6,
+      "investment_horizon": 4,
+      "liquid_assets": 18000.0,
+      "income": 18800.0,
+      "investment_amount": 4900.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 22
+    },
+    "output_product_profile": {
+      "product_name": "UCITS exchange-traded fund providing concentrated exposure to European technology and digitisation sector companies",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": true,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R5"
+    ],
+    "client_vulnerability": "HIGH",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R3 (horizon) and R5 (vulnerability).",
+    "output_rule_explanations": {
+      "R1": "Your financial knowledge level of 'basic' meets the product's requirement of 'basic'.",
+      "R2": "The product's risk class of 5 is within your risk tolerance score of 6 plus the allowed margin of 2.",
+      "R3": "Horizon check failed: the product requires a minimum investment horizon of 5 years but your stated horizon is 4 years \u2014 1 year short of the requirement.",
+      "R4": "You indicated you cannot afford a total loss, but this product carries a 'partial' potential loss rating.",
+      "R5": "Vulnerability check failed: your financial vulnerability is rated HIGH and the product's risk class is 5 (\u2265 5), making it unsuitable for vulnerable clients.",
+      "R6": "This product does not use leverage, and your risk tolerance score of 6 is sufficient.",
+      "R7": "The product is rated NON-COMPLEX and your financial knowledge level of 'basic' meets the required threshold."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 6,
+      "investment_horizon": 4,
+      "liquid_assets": 18000.0,
+      "income": 18800.0,
+      "investment_amount": 4900.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 22
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Technology Sector Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "83_uci79_sector_equity_etf",
+    "run_number": 1,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R5"
+    ],
+    "expected_rules_failed": [
+      "R3",
+      "R5"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 6,
+      "investment_horizon": 4,
+      "liquid_assets": 18000.0,
+      "income": 18800.0,
+      "investment_amount": 4900.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 22
+    },
+    "output_product_profile": {
+      "product_name": "UCITS exchange-traded fund providing concentrated exposure to European technology and digitisation sector companies",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": true,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R5"
+    ],
+    "client_vulnerability": "HIGH",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R3 (horizon) and R5 (vulnerability).",
+    "output_rule_explanations": {
+      "R1": "Your financial knowledge level of 'basic' meets the product's requirement of 'basic'.",
+      "R2": "The product's risk class of 5 is within your risk tolerance score of 6 plus the allowed margin of 2.",
+      "R3": "Horizon check failed: the product requires a minimum investment horizon of 5 years but your stated horizon is 4 years \u2014 1 year short of the requirement.",
+      "R4": "You indicated you cannot afford a total loss, but this product carries a 'partial' potential loss rating.",
+      "R5": "Vulnerability check failed: your financial vulnerability is rated HIGH and the product's risk class is 5 (\u2265 5), making it unsuitable for vulnerable clients.",
+      "R6": "This product does not use leverage, and your risk tolerance score of 6 is sufficient.",
+      "R7": "The product is rated NON-COMPLEX and your financial knowledge level of 'basic' meets the required threshold."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 6,
+      "investment_horizon": 4,
+      "liquid_assets": 18000.0,
+      "income": 18800.0,
+      "investment_amount": 4900.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 22
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Technology Sector Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "83_uci79_sector_equity_etf",
+    "run_number": 2,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R5"
+    ],
+    "expected_rules_failed": [
+      "R3",
+      "R5"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 6,
+      "investment_horizon": 4,
+      "liquid_assets": 18000.0,
+      "income": 18800.0,
+      "investment_amount": 4900.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 22
+    },
+    "output_product_profile": {
+      "product_name": "UCITS exchange-traded fund (European technology and digitisation sector)",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": true,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R5"
+    ],
+    "client_vulnerability": "HIGH",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R3 (horizon) and R5 (vulnerability).",
+    "output_rule_explanations": {
+      "R1": "Your financial knowledge level of 'basic' meets the product's requirement of 'basic'.",
+      "R2": "The product's risk class of 5 is within your risk tolerance score of 6, which allows for a maximum gap of 2.",
+      "R3": "Horizon check failed: the product requires a minimum investment horizon of 5 years but your stated horizon is 4 years \u2014 1 year short of the requirement.",
+      "R4": "You indicated you can afford a total loss, and this product carries a 'partial' potential loss rating.",
+      "R5": "Vulnerability check failed: your financial vulnerability is rated HIGH and the product's risk class is 5 (\u2265 5), making it unsuitable for vulnerable clients.",
+      "R6": "This product does not use leverage, and your risk tolerance score of 6 meets the requirement.",
+      "R7": "The product is rated NON-COMPLEX, which aligns with your financial knowledge level of 'basic'."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 6,
+      "investment_horizon": 4,
+      "liquid_assets": 18000.0,
+      "income": 18800.0,
+      "investment_amount": 4900.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 22
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Technology Sector Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "83_uci79_sector_equity_etf",
+    "run_number": 3,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R3",
+      "R5"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R3",
+      "R5"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 5,
+      "investment_horizon": 2,
+      "liquid_assets": 2200.0,
+      "income": 19100.0,
+      "investment_amount": 7600.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 44
+    },
+    "output_product_profile": {
+      "product_name": "UCITS exchange-traded fund tracking the MSCI Emerging Markets Index",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": true,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R1",
+      "R5"
+    ],
+    "client_vulnerability": "HIGH",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R1 (knowledge), R5 (vulnerability).",
+    "output_rule_explanations": {
+      "R1": "Knowledge check failed: the product requires 'moderate' knowledge (score 6) but your profile shows 'basic' knowledge (score 3) \u2014 a gap of 3 points.",
+      "R2": "Your risk tolerance score of 5 meets the product's risk class of 5, which is within acceptable limits.",
+      "R3": "Horizon check failed: the product requires a minimum investment horizon of 7 years but your stated horizon is 2 years \u2014 5 years short of the requirement.",
+      "R4": "You indicated you cannot afford a total loss, but this product carries a 'partial' potential loss rating, which is acceptable.",
+      "R5": "Vulnerability check failed: your financial vulnerability is rated HIGH and the product's risk class is 5 (\u2265 5), making it unsuitable for vulnerable clients.",
+      "R6": "This product does not use leverage, which is appropriate given your risk tolerance score of 5.",
+      "R7": "The product is rated NON-COMPLEX, which aligns with your basic financial knowledge."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 5,
+      "investment_horizon": 2,
+      "liquid_assets": 2200.0,
+      "income": 19100.0,
+      "investment_amount": 7600.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 44
+    },
+    "expected_product_profile": {
+      "product_name": "MSCI Emerging Markets Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "84_uci80_em_equity_etf",
+    "run_number": 1,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R3",
+      "R5"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R3",
+      "R5"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 5,
+      "investment_horizon": 2,
+      "liquid_assets": 2200.0,
+      "income": 19100.0,
+      "investment_amount": 7600.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 44
+    },
+    "output_product_profile": {
+      "product_name": "UCITS ETF tracking MSCI Emerging Markets Index",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": true,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R1",
+      "R5"
+    ],
+    "client_vulnerability": "HIGH",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R1 (knowledge), R3 (investment horizon), R5 (vulnerability).",
+    "output_rule_explanations": {
+      "R1": "Knowledge check failed: the product requires 'moderate' knowledge (score 6) but your profile shows 'basic' knowledge (score 3) \u2014 a gap of 3 points.",
+      "R2": "Your risk tolerance score of 5 meets the product's risk class of 5, which is acceptable.",
+      "R3": "Horizon check failed: the product requires a minimum investment horizon of 7 years but your stated horizon is 2 years \u2014 5 years short of the requirement.",
+      "R4": "You indicated you cannot afford a total loss, but this product carries a 'partial' potential loss rating, which is acceptable.",
+      "R5": "Vulnerability check failed: your financial vulnerability is rated HIGH and the product's risk class is 5 (\u2265 5), making it unsuitable for vulnerable clients.",
+      "R6": "This product does not use leverage, and your risk tolerance score of 5 is acceptable.",
+      "R7": "The product is rated NON-COMPLEX, which is suitable for your basic knowledge level."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 5,
+      "investment_horizon": 2,
+      "liquid_assets": 2200.0,
+      "income": 19100.0,
+      "investment_amount": 7600.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 44
+    },
+    "expected_product_profile": {
+      "product_name": "MSCI Emerging Markets Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "84_uci80_em_equity_etf",
+    "run_number": 2,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R3",
+      "R5"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R3",
+      "R5"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 5,
+      "investment_horizon": 2,
+      "liquid_assets": 2200.0,
+      "income": 19100.0,
+      "investment_amount": 7600.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 44
+    },
+    "output_product_profile": {
+      "product_name": "UCITS ETF tracking MSCI Emerging Markets Index",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": true,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R1",
+      "R5"
+    ],
+    "client_vulnerability": "HIGH",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R1 (knowledge), R5 (vulnerability).",
+    "output_rule_explanations": {
+      "R1": "Knowledge check failed: the product requires 'moderate' knowledge (score 6) but your profile shows 'basic' knowledge (score 3) \u2014 a gap of 3 points.",
+      "R2": "Your risk tolerance score of 5 meets the product's risk class of 5, which is within acceptable limits.",
+      "R3": "Horizon check failed: the product requires a minimum investment horizon of 7 years but your stated horizon is 2 years \u2014 5 years short of the requirement.",
+      "R4": "You indicated you can afford a total loss, and this product carries a 'partial' potential loss rating.",
+      "R5": "Vulnerability check failed: your financial vulnerability is rated HIGH and the product's risk class is 5 (\u2265 5), making it unsuitable for vulnerable clients.",
+      "R6": "This product does not use leverage, and your risk tolerance score of 5 is sufficient.",
+      "R7": "The product is rated as NON-COMPLEX, which aligns with your basic financial knowledge."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 5,
+      "investment_horizon": 2,
+      "liquid_assets": 2200.0,
+      "income": 19100.0,
+      "investment_amount": 7600.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 44
+    },
+    "expected_product_profile": {
+      "product_name": "MSCI Emerging Markets Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "84_uci80_em_equity_etf",
+    "run_number": 3,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R3",
+      "R5"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R3",
+      "R5"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 5,
+      "investment_horizon": 2,
+      "liquid_assets": 44400.0,
+      "income": 2800.0,
+      "investment_amount": 1700.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 23
+    },
+    "output_product_profile": {
+      "product_name": "UCITS ETF tracking MSCI Emerging Markets Index",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": true,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R1",
+      "R5"
+    ],
+    "client_vulnerability": "HIGH",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R1 (knowledge), R5 (vulnerability).",
+    "output_rule_explanations": {
+      "R1": "Knowledge check failed: the product requires 'moderate' knowledge (score 6) but your profile shows 'basic' knowledge (score 3) \u2014 a gap of 3 points.",
+      "R2": "Your risk tolerance score of 5 meets the product's risk class of 5, which is within acceptable limits.",
+      "R3": "Horizon check failed: the product requires a minimum investment horizon of 7 years but your stated horizon is 2 years \u2014 5 years short of the requirement.",
+      "R4": "You indicated you cannot afford a total loss, but this product carries a 'partial' potential loss rating, which is acceptable.",
+      "R5": "Vulnerability check failed: your financial vulnerability is rated HIGH and the product's risk class is 5 (\u2265 5), making it unsuitable for vulnerable clients.",
+      "R6": "This product does not use leverage, which is appropriate given your risk tolerance score of 5.",
+      "R7": "The product is rated NON-COMPLEX, which aligns with your basic financial knowledge."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 5,
+      "investment_horizon": 2,
+      "liquid_assets": 44400.0,
+      "income": 2800.0,
+      "investment_amount": 1700.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 23
+    },
+    "expected_product_profile": {
+      "product_name": "MSCI Emerging Markets Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "85_uci47_em_equity_etf",
+    "run_number": 1,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R3",
+      "R5"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R3",
+      "R5"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 5,
+      "investment_horizon": 2,
+      "liquid_assets": 44400.0,
+      "income": 2800.0,
+      "investment_amount": 1700.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 23
+    },
+    "output_product_profile": {
+      "product_name": "UCITS ETF tracking MSCI Emerging Markets Index",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": true,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R1",
+      "R5"
+    ],
+    "client_vulnerability": "HIGH",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R1 (knowledge), R5 (vulnerability).",
+    "output_rule_explanations": {
+      "R1": "Knowledge check failed: the product requires 'moderate' knowledge (score 6) but your profile shows 'basic' knowledge (score 3) \u2014 a gap of 3 points.",
+      "R2": "Your risk tolerance score of 5 meets the product's risk class of 5, allowing for a maximum gap of 2.",
+      "R3": "Horizon check failed: the product requires a minimum investment horizon of 7 years but your stated horizon is 2 years \u2014 5 years short of the requirement.",
+      "R4": "You indicated you cannot afford a total loss, but this product carries a 'partial' potential loss rating.",
+      "R5": "Vulnerability check failed: your financial vulnerability is rated HIGH and the product's risk class is 5 (\u2265 5), making it unsuitable for vulnerable clients.",
+      "R6": "This product does not use leverage, and your risk tolerance score of 5 is sufficient.",
+      "R7": "The product is rated NON-COMPLEX, which aligns with your basic financial knowledge."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 5,
+      "investment_horizon": 2,
+      "liquid_assets": 44400.0,
+      "income": 2800.0,
+      "investment_amount": 1700.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 23
+    },
+    "expected_product_profile": {
+      "product_name": "MSCI Emerging Markets Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "85_uci47_em_equity_etf",
+    "run_number": 2,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R3",
+      "R5"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R3",
+      "R5"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 5,
+      "investment_horizon": 2,
+      "liquid_assets": 44400.0,
+      "income": 2800.0,
+      "investment_amount": 1700.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 23
+    },
+    "output_product_profile": {
+      "product_name": "UCITS ETF tracking MSCI Emerging Markets Index",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": true,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R1",
+      "R5"
+    ],
+    "client_vulnerability": "HIGH",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R1 (knowledge), R5 (vulnerability).",
+    "output_rule_explanations": {
+      "R1": "Knowledge check failed: the product requires 'moderate' knowledge (score 6) but your profile shows 'basic' knowledge (score 3) \u2014 a gap of 3 points.",
+      "R2": "Your risk tolerance score of 5 meets the product's risk class of 5, allowing for a maximum gap of 2.",
+      "R3": "Horizon check failed: the product requires a minimum investment horizon of 7 years but your stated horizon is 2 years \u2014 5 years short of the requirement.",
+      "R4": "You indicated you cannot afford a total loss, but this product carries a 'partial' potential loss rating.",
+      "R5": "Vulnerability check failed: your financial vulnerability is rated HIGH and the product's risk class is 5 (\u2265 5), making it unsuitable for vulnerable clients.",
+      "R6": "This product does not use leverage, and your risk tolerance score of 5 is sufficient.",
+      "R7": "The product is rated NON-COMPLEX, which is appropriate for your basic financial knowledge."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 5,
+      "investment_horizon": 2,
+      "liquid_assets": 44400.0,
+      "income": 2800.0,
+      "investment_amount": 1700.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "HIGH",
+      "age": 23
+    },
+    "expected_product_profile": {
+      "product_name": "MSCI Emerging Markets Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "85_uci47_em_equity_etf",
+    "run_number": 3,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R3",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 2,
+      "liquid_assets": 56000.0,
+      "income": 59500.0,
+      "investment_amount": 1500.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "MEDIUM",
+      "age": 67
+    },
+    "output_product_profile": {
+      "product_name": "Euro-denominated capital-protected structured note with Euro Stoxx 50 participation",
+      "risk_class": 2,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": true,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R1",
+      "R7"
+    ],
+    "client_vulnerability": "MEDIUM",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R1 (knowledge), R3 (investment horizon), R7 (complexity).",
+    "output_rule_explanations": {
+      "R1": "Knowledge check failed: the product requires 'moderate' knowledge (score 6) but your profile shows 'basic' knowledge (score 3) \u2014 a gap of 3 points.",
+      "R2": "Your risk tolerance score of 1 meets the product's risk class of 2, which is within the acceptable range.",
+      "R3": "Horizon check failed: the product requires a minimum investment horizon of 5 years but your stated horizon is 2 years \u2014 3 years short of the requirement.",
+      "R4": "You indicated you can afford a total loss, and this product does not carry a total loss risk.",
+      "R5": "Your financial vulnerability is rated MEDIUM, and the product's risk class is 2, which is suitable for your vulnerability level.",
+      "R6": "This product does not use leverage, and your risk tolerance score of 1 is acceptable for non-leveraged products.",
+      "R7": "Complexity check failed: this product is rated COMPLEX but your financial knowledge level is 'basic', below the required 'moderate' minimum."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 2,
+      "liquid_assets": 56000.0,
+      "income": 59500.0,
+      "investment_amount": 1500.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "MEDIUM",
+      "age": 67
+    },
+    "expected_product_profile": {
+      "product_name": "Capital-Protected Structured Note",
+      "risk_class": 3,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "none",
+      "minimum_horizon": 2,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "86_uci0_structured_note",
+    "run_number": 1,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R3",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 2,
+      "liquid_assets": 56000.0,
+      "income": 59500.0,
+      "investment_amount": 1500.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "MEDIUM",
+      "age": 67
+    },
+    "output_product_profile": {
+      "product_name": "Euro-denominated capital-protected structured note with Euro Stoxx 50 participation",
+      "risk_class": 2,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": true,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R1",
+      "R7"
+    ],
+    "client_vulnerability": "MEDIUM",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R1 (knowledge), R3 (investment horizon), R7 (complexity).",
+    "output_rule_explanations": {
+      "R1": "Knowledge check failed: the product requires 'moderate' knowledge (score 6) but your profile shows 'basic' knowledge (score 3) \u2014 a gap of 3 points.",
+      "R2": "Your risk tolerance score of 1 meets the product's risk class of 2, which is within the acceptable range.",
+      "R3": "Horizon check failed: the product requires a minimum investment horizon of 5 years but your stated horizon is 2 years \u2014 3 years short of the requirement.",
+      "R4": "You indicated you can afford a total loss, and this product does not carry a total loss risk.",
+      "R5": "Your financial vulnerability is rated MEDIUM, and the product's risk class is 2, which is below the threshold for HIGH vulnerability.",
+      "R6": "This product does not use leverage, and your risk tolerance score of 1 is not below the required minimum.",
+      "R7": "Complexity check failed: this product is rated COMPLEX but your financial knowledge level is 'basic', below the required 'moderate' minimum."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 2,
+      "liquid_assets": 56000.0,
+      "income": 59500.0,
+      "investment_amount": 1500.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "MEDIUM",
+      "age": 67
+    },
+    "expected_product_profile": {
+      "product_name": "Capital-Protected Structured Note",
+      "risk_class": 3,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "none",
+      "minimum_horizon": 2,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "86_uci0_structured_note",
+    "run_number": 2,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R3",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 2,
+      "liquid_assets": 56000.0,
+      "income": 59500.0,
+      "investment_amount": 1500.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "MEDIUM",
+      "age": 67
+    },
+    "output_product_profile": {
+      "product_name": "Euro-denominated capital-protected structured note with Euro Stoxx 50 participation",
+      "risk_class": 2,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": true,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R1",
+      "R7"
+    ],
+    "client_vulnerability": "MEDIUM",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R1 (knowledge), R3 (investment horizon), R7 (complexity).",
+    "output_rule_explanations": {
+      "R1": "Knowledge check failed: the product requires 'moderate' knowledge (score 6) but your profile shows 'basic' knowledge (score 3) \u2014 a gap of 3 points.",
+      "R2": "Your risk tolerance score of 1 is sufficient for the product's risk class of 2, which is within the acceptable range.",
+      "R3": "Horizon check failed: the product requires a minimum investment horizon of 5 years but your stated horizon is 2 years \u2014 3 years short of the requirement.",
+      "R4": "You indicated you can afford a total loss, and this product does not carry a total loss risk.",
+      "R5": "Your financial vulnerability is rated MEDIUM, which is acceptable for the product's risk class of 2.",
+      "R6": "This product does not use leverage, and your risk tolerance score of 1 is below the required minimum of 7.",
+      "R7": "Complexity check failed: this product is rated COMPLEX but your financial knowledge level is 'basic', below the required 'moderate' minimum."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 2,
+      "liquid_assets": 56000.0,
+      "income": 59500.0,
+      "investment_amount": 1500.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "MEDIUM",
+      "age": 67
+    },
+    "expected_product_profile": {
+      "product_name": "Capital-Protected Structured Note",
+      "risk_class": 3,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "none",
+      "minimum_horizon": 2,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "86_uci0_structured_note",
+    "run_number": 3,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R3",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 6,
+      "investment_horizon": 3,
+      "liquid_assets": 43300.0,
+      "income": 65500.0,
+      "investment_amount": 3600.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "LOW",
+      "age": 53
+    },
+    "output_product_profile": {
+      "product_name": "Euro-denominated capital-protected structured note with Euro Stoxx 50 participation",
+      "risk_class": 2,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": false,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R1",
+      "R7"
+    ],
+    "client_vulnerability": "LOW",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R1 (knowledge), R3 (investment horizon), R7 (complexity).",
+    "output_rule_explanations": {
+      "R1": "Knowledge check failed: the product requires 'moderate' knowledge (score 6) but your profile shows 'basic' knowledge (score 3) \u2014 a gap of 3 points.",
+      "R2": "Your risk tolerance score of 6 exceeds the product's risk class of 2, which is compliant.",
+      "R3": "Horizon check failed: the product requires a minimum investment horizon of 5 years but your stated horizon is 3 years \u2014 2 years short of the requirement.",
+      "R4": "You indicated you can afford a total loss, and this product does not carry a total loss risk.",
+      "R5": "Your financial vulnerability is rated LOW, and the product's risk class is 2, making it suitable for your vulnerability level.",
+      "R6": "The product does not use leverage, and your risk tolerance score of 6 is sufficient.",
+      "R7": "Complexity check failed: this product is rated COMPLEX but your financial knowledge level is 'basic', below the required 'moderate' minimum."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 6,
+      "investment_horizon": 3,
+      "liquid_assets": 43300.0,
+      "income": 65500.0,
+      "investment_amount": 3600.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "LOW",
+      "age": 53
+    },
+    "expected_product_profile": {
+      "product_name": "Capital-Protected Structured Note",
+      "risk_class": 3,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "none",
+      "minimum_horizon": 2,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "87_uci6_structured_note",
+    "run_number": 1,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R3",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 6,
+      "investment_horizon": 3,
+      "liquid_assets": 43300.0,
+      "income": 65500.0,
+      "investment_amount": 3600.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "LOW",
+      "age": 53
+    },
+    "output_product_profile": {
+      "product_name": "Euro-denominated capital-protected structured note with Euro Stoxx 50 participation",
+      "risk_class": 2,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": false,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R1",
+      "R7"
+    ],
+    "client_vulnerability": "LOW",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R1 (knowledge), R3 (investment horizon), R7 (complexity).",
+    "output_rule_explanations": {
+      "R1": "Knowledge check failed: the product requires 'moderate' knowledge (score 6) but your profile shows 'basic' knowledge (score 3) \u2014 a gap of 3 points.",
+      "R2": "Your risk tolerance score of 6 exceeds the product's risk class of 2, which is compliant.",
+      "R3": "Horizon check failed: the product requires a minimum investment horizon of 5 years but your stated horizon is 3 years \u2014 2 years short of the requirement.",
+      "R4": "You indicated you can afford a total loss, and this product does not carry a total loss risk.",
+      "R5": "Your financial vulnerability is rated LOW and the product's risk class is 2, making it suitable for your vulnerability level.",
+      "R6": "This product does not use leverage, and your risk tolerance score of 6 meets the requirement.",
+      "R7": "Complexity check failed: this product is rated COMPLEX but your financial knowledge level is 'basic', below the required 'moderate' minimum."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 6,
+      "investment_horizon": 3,
+      "liquid_assets": 43300.0,
+      "income": 65500.0,
+      "investment_amount": 3600.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "LOW",
+      "age": 53
+    },
+    "expected_product_profile": {
+      "product_name": "Capital-Protected Structured Note",
+      "risk_class": 3,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "none",
+      "minimum_horizon": 2,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "87_uci6_structured_note",
+    "run_number": 2,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R3",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 6,
+      "investment_horizon": 3,
+      "liquid_assets": 43300.0,
+      "income": 65500.0,
+      "investment_amount": 3600.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "LOW",
+      "age": 53
+    },
+    "output_product_profile": {
+      "product_name": "Euro-denominated capital-protected structured note with Euro Stoxx 50 participation",
+      "risk_class": 2,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": false,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R1",
+      "R7"
+    ],
+    "client_vulnerability": "LOW",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R1 (knowledge), R3 (investment horizon), R7 (complexity).",
+    "output_rule_explanations": {
+      "R1": "Knowledge check failed: the product requires 'moderate' knowledge (score 6) but your profile shows 'basic' knowledge (score 3) \u2014 a gap of 3 points.",
+      "R2": "Your risk tolerance score of 6 exceeds the product's risk class of 2, which is compliant.",
+      "R3": "Horizon check failed: the product requires a minimum investment horizon of 5 years but your stated horizon is 3 years \u2014 2 years short of the requirement.",
+      "R4": "You indicated you can afford a total loss, and this product does not carry a total loss risk.",
+      "R5": "Your financial vulnerability is rated LOW and the product's risk class is 2, making it suitable for your vulnerability level.",
+      "R6": "This product does not use leverage, and your risk tolerance score of 6 is sufficient.",
+      "R7": "Complexity check failed: this product is rated COMPLEX but your financial knowledge level is 'basic', below the required 'moderate' minimum."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 6,
+      "investment_horizon": 3,
+      "liquid_assets": 43300.0,
+      "income": 65500.0,
+      "investment_amount": 3600.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "LOW",
+      "age": 53
+    },
+    "expected_product_profile": {
+      "product_name": "Capital-Protected Structured Note",
+      "risk_class": 3,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "none",
+      "minimum_horizon": 2,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "87_uci6_structured_note",
+    "run_number": 3,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R3",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 2,
+      "liquid_assets": 2500.0,
+      "income": 30600.0,
+      "investment_amount": 1800.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 28
+    },
+    "output_product_profile": {
+      "product_name": "Euro-denominated capital-protected structured note with Euro Stoxx 50 participation",
+      "risk_class": 2,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": false,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R1",
+      "R7"
+    ],
+    "client_vulnerability": "MEDIUM",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R1 (knowledge), R3 (investment horizon), R7 (complexity).",
+    "output_rule_explanations": {
+      "R1": "Knowledge check failed: the product requires 'moderate' knowledge (score 6) but your profile shows 'basic' knowledge (score 3) \u2014 a gap of 3 points.",
+      "R2": "Your risk tolerance score of 4 meets the product's risk class of 2, which is within acceptable limits.",
+      "R3": "Horizon check failed: the product requires a minimum investment horizon of 5 years but your stated horizon is 2 years \u2014 3 years short of the requirement.",
+      "R4": "You indicated you cannot afford a total loss, but this product carries a 'partial' potential loss rating, which is acceptable.",
+      "R5": "Your financial vulnerability is rated MEDIUM and the product's risk class is 2, making it suitable for your vulnerability level.",
+      "R6": "This product does not use leverage, and your risk tolerance score of 4 is sufficient for non-leveraged products.",
+      "R7": "Complexity check failed: this product is rated COMPLEX but your financial knowledge level is 'basic', below the required 'moderate' minimum."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 2,
+      "liquid_assets": 2500.0,
+      "income": 30600.0,
+      "investment_amount": 1800.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 28
+    },
+    "expected_product_profile": {
+      "product_name": "Capital-Protected Structured Note",
+      "risk_class": 3,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "none",
+      "minimum_horizon": 2,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "88_uci14_structured_note",
+    "run_number": 1,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R3",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 2,
+      "liquid_assets": 2500.0,
+      "income": 30600.0,
+      "investment_amount": 1800.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 28
+    },
+    "output_product_profile": {
+      "product_name": "Euro-denominated capital-protected structured note with Euro Stoxx 50 participation",
+      "risk_class": 2,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": false,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R1",
+      "R7"
+    ],
+    "client_vulnerability": "MEDIUM",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R1 (knowledge), R3 (investment horizon), R7 (complexity).",
+    "output_rule_explanations": {
+      "R1": "Knowledge check failed: the product requires 'moderate' knowledge (score 6) but your profile shows 'basic' knowledge (score 3) \u2014 a gap of 3 points.",
+      "R2": "Your risk tolerance score of 4 meets the product's risk class of 2, which is within acceptable limits.",
+      "R3": "Horizon check failed: the product requires a minimum investment horizon of 5 years but your stated horizon is 2 years \u2014 3 years short of the requirement.",
+      "R4": "You indicated you cannot afford a total loss, but this product carries a 'partial' potential loss rating, which is acceptable.",
+      "R5": "Your financial vulnerability is rated MEDIUM and the product's risk class is 2 (less than 5), making it suitable for your vulnerability level.",
+      "R6": "This product does not use leverage, and your risk tolerance score of 4 is sufficient for non-leveraged products.",
+      "R7": "Complexity check failed: this product is rated COMPLEX but your financial knowledge level is 'basic', below the required 'moderate' minimum."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 2,
+      "liquid_assets": 2500.0,
+      "income": 30600.0,
+      "investment_amount": 1800.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 28
+    },
+    "expected_product_profile": {
+      "product_name": "Capital-Protected Structured Note",
+      "risk_class": 3,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "none",
+      "minimum_horizon": 2,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "88_uci14_structured_note",
+    "run_number": 2,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R3",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 2,
+      "liquid_assets": 2500.0,
+      "income": 30600.0,
+      "investment_amount": 1800.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 28
+    },
+    "output_product_profile": {
+      "product_name": "Euro-denominated capital-protected structured note with Euro Stoxx 50 participation",
+      "risk_class": 2,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": false,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R1",
+      "R7"
+    ],
+    "client_vulnerability": "MEDIUM",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R1 (knowledge), R3 (investment horizon), R7 (complexity).",
+    "output_rule_explanations": {
+      "R1": "Knowledge check failed: the product requires 'moderate' knowledge (score 6) but your profile shows 'basic' knowledge (score 3) \u2014 a gap of 3 points.",
+      "R2": "Your risk tolerance score of 4 meets the product's risk class of 2, which is within acceptable limits.",
+      "R3": "Horizon check failed: the product requires a minimum investment horizon of 5 years but your stated horizon is 2 years \u2014 3 years short of the requirement.",
+      "R4": "You indicated you can afford a total loss, and this product carries a 'partial' potential loss rating.",
+      "R5": "Your financial vulnerability is rated MEDIUM, which is acceptable for this product's risk class of 2.",
+      "R6": "This product does not use leverage, and your risk tolerance score of 4 is sufficient.",
+      "R7": "Complexity check failed: this product is rated COMPLEX but your financial knowledge level is 'basic', below the required 'moderate' minimum."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 2,
+      "liquid_assets": 2500.0,
+      "income": 30600.0,
+      "investment_amount": 1800.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 28
+    },
+    "expected_product_profile": {
+      "product_name": "Capital-Protected Structured Note",
+      "risk_class": 3,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "none",
+      "minimum_horizon": 2,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "88_uci14_structured_note",
+    "run_number": 3,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R2",
+      "R6",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R2",
+      "R6",
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "FAIL"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 4,
+      "liquid_assets": 56000.0,
+      "income": 23800.0,
+      "investment_amount": 7900.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "MEDIUM",
+      "age": 44
+    },
+    "output_product_profile": {
+      "product_name": "Leveraged 3x S&P 500 ETF",
+      "risk_class": 7,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": true
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": true,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R1",
+      "R7"
+    ],
+    "client_vulnerability": "MEDIUM",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R1 (knowledge), R2 (risk alignment), R6 (leverage), R7 (complexity).",
+    "output_rule_explanations": {
+      "R1": "Knowledge check failed: the product requires 'advanced' knowledge (score 9) but your profile shows 'basic' knowledge (score 3) \u2014 a gap of 6 points.",
+      "R2": "Risk alignment failed: the product's risk class is 7, but your risk tolerance score is 4; MiFID II permits a maximum gap of 2 (4 + 2 = 6), so the product exceeds your risk appetite by 1 class.",
+      "R3": "Your investment horizon of 4 years meets the product's 1-year minimum.",
+      "R4": "You indicated you can afford a total loss, which aligns with the product's potential loss rating.",
+      "R5": "Your financial vulnerability is rated MEDIUM, which is acceptable for the product's risk class of 7.",
+      "R6": "Leverage check failed: this product uses leverage, which requires a risk tolerance score of at least 7; your score is 4.",
+      "R7": "Complexity check failed: this product is rated COMPLEX but your financial knowledge level is 'basic', below the required 'moderate' minimum."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 4,
+      "liquid_assets": 56000.0,
+      "income": 23800.0,
+      "investment_amount": 7900.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "MEDIUM",
+      "age": 44
+    },
+    "expected_product_profile": {
+      "product_name": "3x Leveraged S&P500 ETF",
+      "risk_class": 7,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": true
+    },
+    "scenario_id": "89_uci42_leveraged_etf_3x",
+    "run_number": 1,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R2",
+      "R6",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R2",
+      "R6",
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "FAIL"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 4,
+      "liquid_assets": 56000.0,
+      "income": 23800.0,
+      "investment_amount": 7900.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "MEDIUM",
+      "age": 44
+    },
+    "output_product_profile": {
+      "product_name": "Leveraged 3x S&P 500 ETF",
+      "risk_class": 7,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": true
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": false,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R1",
+      "R7"
+    ],
+    "client_vulnerability": "MEDIUM",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R1 (knowledge), R2 (risk alignment), R6 (leverage), R7 (complexity).",
+    "output_rule_explanations": {
+      "R1": "Knowledge check failed: the product requires 'advanced' knowledge (score 9) but your profile shows 'basic' knowledge (score 3) \u2014 a gap of 6 points.",
+      "R2": "Risk alignment failed: the product's risk class is 7, but your risk tolerance score is 4; MiFID II permits a maximum gap of 2 (4 + 2 = 6), so the product exceeds your risk appetite by 1 class.",
+      "R3": "Your investment horizon of 4 years meets the product's 1-year minimum.",
+      "R4": "You indicated you can afford a total loss, which is acceptable for this product.",
+      "R5": "Your financial vulnerability is rated MEDIUM, which is acceptable for this product's risk class.",
+      "R6": "Leverage check failed: this product uses leverage, which requires a risk tolerance score of at least 7; your score is 4.",
+      "R7": "Complexity check failed: this product is rated COMPLEX but your financial knowledge level is 'basic', below the required 'moderate' minimum."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 4,
+      "liquid_assets": 56000.0,
+      "income": 23800.0,
+      "investment_amount": 7900.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "MEDIUM",
+      "age": 44
+    },
+    "expected_product_profile": {
+      "product_name": "3x Leveraged S&P500 ETF",
+      "risk_class": 7,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": true
+    },
+    "scenario_id": "89_uci42_leveraged_etf_3x",
+    "run_number": 2,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R2",
+      "R6",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R2",
+      "R6",
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "FAIL"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 4,
+      "liquid_assets": 56000.0,
+      "income": 23800.0,
+      "investment_amount": 7900.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "MEDIUM",
+      "age": 44
+    },
+    "output_product_profile": {
+      "product_name": "Leveraged 3x S&P 500 ETF",
+      "risk_class": 7,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": true
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": false,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R1",
+      "R7"
+    ],
+    "client_vulnerability": "MEDIUM",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R1 (knowledge), R2 (risk alignment), R6 (leverage), R7 (complexity).",
+    "output_rule_explanations": {
+      "R1": "Knowledge check failed: the product requires 'advanced' knowledge (score 9) but your profile shows 'basic' knowledge (score 3) \u2014 a gap of 6 points.",
+      "R2": "Risk alignment failed: the product's risk class is 7, but your risk tolerance score is 4; MiFID II permits a maximum gap of 2 (4 + 2 = 6), so the product exceeds your risk appetite by 1 class.",
+      "R3": "Your investment horizon of 4 years meets the product's 1-year minimum.",
+      "R4": "You indicated you can afford a total loss, which is acceptable for this product.",
+      "R5": "Your financial vulnerability is rated MEDIUM, which is acceptable for this product's risk class of 7.",
+      "R6": "Leverage check failed: this product uses leverage, which requires a risk tolerance score of at least 7; your score is 4.",
+      "R7": "Complexity check failed: this product is rated COMPLEX but your financial knowledge level is 'basic', below the required 'moderate' minimum."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 4,
+      "liquid_assets": 56000.0,
+      "income": 23800.0,
+      "investment_amount": 7900.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "MEDIUM",
+      "age": 44
+    },
+    "expected_product_profile": {
+      "product_name": "3x Leveraged S&P500 ETF",
+      "risk_class": 7,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": true
+    },
+    "scenario_id": "89_uci42_leveraged_etf_3x",
+    "run_number": 3,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R2",
+      "R6",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R2",
+      "R6",
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "FAIL"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 2,
+      "liquid_assets": 18000.0,
+      "income": 23800.0,
+      "investment_amount": 9200.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "MEDIUM",
+      "age": 39
+    },
+    "output_product_profile": {
+      "product_name": "Leveraged 3x S&P 500 ETF",
+      "risk_class": 7,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": true
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": false,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R1",
+      "R7"
+    ],
+    "client_vulnerability": "MEDIUM",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R1 (knowledge), R2 (risk alignment), R6 (leverage), R7 (complexity).",
+    "output_rule_explanations": {
+      "R1": "Knowledge check failed: the product requires 'advanced' knowledge (score 9) but your profile shows 'none' (score 1) \u2014 a gap of 8 points.",
+      "R2": "Risk alignment failed: the product's risk class is 7, but your risk tolerance score is 4; MiFID II permits a maximum gap of 2 (4 + 2 = 6), so the product exceeds your risk appetite by 1 class.",
+      "R3": "Your investment horizon of 2 years meets the product's 1-year minimum.",
+      "R4": "You indicated you can afford a total loss, which aligns with the product's potential loss rating.",
+      "R5": "Your financial vulnerability is rated MEDIUM, which is acceptable for the product's risk class of 7.",
+      "R6": "Leverage check failed: this product uses leverage, which requires a risk tolerance score of at least 7; your score is 4.",
+      "R7": "Complexity check failed: this product is rated COMPLEX but your financial knowledge level is 'none', below the required 'moderate' minimum."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 2,
+      "liquid_assets": 18000.0,
+      "income": 23800.0,
+      "investment_amount": 9200.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "MEDIUM",
+      "age": 39
+    },
+    "expected_product_profile": {
+      "product_name": "3x Leveraged S&P500 ETF",
+      "risk_class": 7,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": true
+    },
+    "scenario_id": "90_uci48_leveraged_etf_3x",
+    "run_number": 1,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R2",
+      "R6",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R2",
+      "R6",
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "FAIL"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 2,
+      "liquid_assets": 18000.0,
+      "income": 23800.0,
+      "investment_amount": 9200.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "MEDIUM",
+      "age": 39
+    },
+    "output_product_profile": {
+      "product_name": "Leveraged 3x S&P 500 ETF",
+      "risk_class": 7,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": true
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": false,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R1",
+      "R7"
+    ],
+    "client_vulnerability": "MEDIUM",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R1 (knowledge), R2 (risk alignment), R6 (leverage), R7 (complexity).",
+    "output_rule_explanations": {
+      "R1": "Knowledge check failed: the product requires 'advanced' knowledge (score 9) but your profile shows 'none' (score 1) \u2014 a gap of 8 points.",
+      "R2": "Risk alignment failed: the product's risk class is 7, but your risk tolerance score is 4; MiFID II permits a maximum gap of 2 (4 + 2 = 6), so the product exceeds your risk appetite by 1 class.",
+      "R3": "Your investment horizon of 2 years meets the product's 1-year minimum.",
+      "R4": "You indicated you can afford a total loss, which aligns with the product's potential loss rating.",
+      "R5": "Your financial vulnerability is rated MEDIUM, which is acceptable for the product's risk class of 7.",
+      "R6": "Leverage check failed: this product uses leverage, which requires a risk tolerance score of at least 7; your score is 4.",
+      "R7": "Complexity check failed: this product is rated COMPLEX but your financial knowledge level is 'none', below the required 'moderate' minimum."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 2,
+      "liquid_assets": 18000.0,
+      "income": 23800.0,
+      "investment_amount": 9200.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "MEDIUM",
+      "age": 39
+    },
+    "expected_product_profile": {
+      "product_name": "3x Leveraged S&P500 ETF",
+      "risk_class": 7,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": true
+    },
+    "scenario_id": "90_uci48_leveraged_etf_3x",
+    "run_number": 2,
+    "architecture": "pipeline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R2",
+      "R6",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R1",
+      "R2",
+      "R6",
+      "R7"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "FAIL",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "FAIL",
+      "R7": "FAIL"
+    },
+    "a1_verified": true,
+    "a2_verified": true,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "a1_correction": null,
+    "a2_correction": null,
+    "halted": false,
+    "halt_reason": null,
+    "output_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 2,
+      "liquid_assets": 18000.0,
+      "income": 23800.0,
+      "investment_amount": 9200.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "MEDIUM",
+      "age": 39
+    },
+    "output_product_profile": {
+      "product_name": "Leveraged 3x S&P 500 ETF",
+      "risk_class": 7,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": true
+    },
+    "a1_overrides_applied": false,
+    "a2_overrides_applied": false,
+    "a4_overrides_applied": true,
+    "three_point_agreed": true,
+    "output_hard_failed_rules": [
+      "R1",
+      "R7"
+    ],
+    "client_vulnerability": "MEDIUM",
+    "regulatory_basis": "MiFID II Article 25(2) \u2014 suitability assessed under R1 (knowledge), R2 (risk alignment), R6 (leverage), R7 (complexity).",
+    "output_rule_explanations": {
+      "R1": "Knowledge check failed: the product requires 'advanced' knowledge (score 9) but your profile shows 'basic' knowledge (score 3) \u2014 a gap of 6 points.",
+      "R2": "Risk alignment failed: the product's risk class is 7, but your risk tolerance score is 4; MiFID II permits a maximum gap of 2 (4 + 2 = 6), so the product exceeds your risk appetite by 1 class.",
+      "R3": "Your investment horizon of 2 years meets the product's 1-year minimum.",
+      "R4": "You indicated you can afford a total loss, which aligns with the product's potential loss rating of 'total'.",
+      "R5": "Your financial vulnerability is rated MEDIUM, which is acceptable for the product's risk class of 7.",
+      "R6": "Leverage check failed: this product uses leverage, which requires a risk tolerance score of at least 7; your score is 4.",
+      "R7": "Complexity check failed: this product is rated COMPLEX but your financial knowledge level is 'basic', below the required 'moderate' minimum."
+    },
+    "pre_check_present": true,
+    "rule_details_present": true,
+    "conflict_present": true,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 4,
+      "investment_horizon": 2,
+      "liquid_assets": 18000.0,
+      "income": 23800.0,
+      "investment_amount": 9200.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "MEDIUM",
+      "age": 39
+    },
+    "expected_product_profile": {
+      "product_name": "3x Leveraged S&P500 ETF",
+      "risk_class": 7,
+      "complexity_tier": "COMPLEX",
+      "requires_knowledge_level": "advanced",
+      "minimum_horizon": 1,
+      "potential_loss": "total",
+      "leverage": true
+    },
+    "scenario_id": "90_uci48_leveraged_etf_3x",
+    "run_number": 3,
+    "architecture": "pipeline"
+  }
+]

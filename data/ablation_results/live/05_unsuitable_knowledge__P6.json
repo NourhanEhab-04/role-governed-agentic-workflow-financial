@@ -1,0 +1,48 @@
+{
+  "scenario_id": "05_unsuitable_knowledge",
+  "scenario_file": "data\\scenarios\\05_unsuitable_knowledge.json",
+  "category": "UNSUITABLE",
+  "config_id": "P6",
+  "config_label": "Single LLM Baseline",
+  "pipeline_variant": "single_llm",
+  "final_decision": "UNSUITABLE",
+  "expected_decision": "UNSUITABLE",
+  "expected_escalate": false,
+  "output_escalate": false,
+  "decision_correct": true,
+  "escalation_correct": true,
+  "score": 60,
+  "rules_failed": [
+    "R1",
+    "R4",
+    "R7"
+  ],
+  "rule_decision": "UNSUITABLE",
+  "conflict_flags": [],
+  "verifier": {
+    "a1_verifier_ran": false,
+    "a1_verifier_passed": null,
+    "a1_correction_applied": false,
+    "a1_fields_fixed": [],
+    "a2_verifier_ran": false,
+    "a2_verifier_passed": null,
+    "a2_correction_applied": false,
+    "a2_fields_fixed": [],
+    "any_correction": false
+  },
+  "consistency": {
+    "a1_overrides": [],
+    "a2_overrides": [],
+    "any_override": false
+  },
+  "llm_only_a3": {},
+  "halted": false,
+  "halt_reason": null,
+  "warnings": [],
+  "audit_summary": {
+    "assessment_id": null,
+    "model_version": null,
+    "rule_engine_version": "1.0.0"
+  },
+  "error": null
+}

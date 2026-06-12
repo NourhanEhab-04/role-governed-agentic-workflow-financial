@@ -1,0 +1,12 @@
+{
+  "P4": {
+    "n": 50,
+    "llm_precheck_disagreement_rate": 0.56,
+    "disagreements": 28
+  },
+  "P7": {
+    "n": 50,
+    "llm_precheck_disagreement_rate": 0.0,
+    "disagreements": 0
+  }
+}

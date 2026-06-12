@@ -1,0 +1,114 @@
+{
+  "scenario_id": "99_uci95_ig_corporate_bond_etf",
+  "scenario_file": "data\\scenarios\\99_uci95_ig_corporate_bond_etf.json",
+  "category": "ESCALATED",
+  "config_id": "A4",
+  "config_label": "No CONTRADICTION Flag",
+  "config_axis": "architecture",
+  "rule_verdict": {
+    "score": 100,
+    "decision": "SUITABLE",
+    "hard_failed_rules": [],
+    "rules": [
+      {
+        "rule": "R1",
+        "pass": true,
+        "hard_fail": true,
+        "penalty": 0,
+        "pillar": 1,
+        "detail": "client knowledge 'basic' (3) >= product requirement 'basic' (3)"
+      },
+      {
+        "rule": "R2",
+        "pass": true,
+        "hard_fail": false,
+        "penalty": 0,
+        "pillar": 3,
+        "detail": "risk_class 3 <= risk_tolerance_score 1 + 2 (3)"
+      },
+      {
+        "rule": "R3",
+        "pass": true,
+        "hard_fail": false,
+        "penalty": 0,
+        "pillar": 2,
+        "detail": "investment_horizon 7 >= minimum_horizon 3"
+      },
+      {
+        "rule": "R4",
+        "pass": true,
+        "hard_fail": true,
+        "penalty": 0,
+        "pillar": 2,
+        "detail": "client can afford total loss or product does not carry total loss risk"
+      },
+      {
+        "rule": "R5",
+        "pass": true,
+        "hard_fail": true,
+        "penalty": 0,
+        "pillar": 3,
+        "detail": "client is not HIGH-vulnerability or product risk_class 3 < 5"
+      },
+      {
+        "rule": "R6",
+        "pass": true,
+        "hard_fail": false,
+        "penalty": 0,
+        "pillar": 3,
+        "detail": "product is not leveraged or risk_tolerance_score 1 >= 7"
+      },
+      {
+        "rule": "R7",
+        "pass": true,
+        "hard_fail": true,
+        "penalty": 0,
+        "pillar": 1,
+        "detail": "product complexity_tier='NON-COMPLEX' or client knowledge 'basic' meets COMPLEX threshold"
+      }
+    ],
+    "rule_engine_version": "1.0.0",
+    "ablation_disabled_rules": [],
+    "ablation_suitable_threshold": 70,
+    "ablation_conditional_threshold": 40
+  },
+  "conflict_report": {
+    "flags": [
+      {
+        "rule_id": "BORDERLINE",
+        "triggered": false,
+        "severity": "LOW",
+        "message": "Score 100 is outside borderline zone."
+      },
+      {
+        "rule_id": "CONCENTRATION",
+        "triggered": true,
+        "severity": "HIGH",
+        "message": "Concentration 45% exceeds 40% for a HIGH-vulnerability client in a risk_class=3 product (ESMA \u00a753-56)."
+      },
+      {
+        "rule_id": "CONTRADICTION",
+        "triggered": false,
+        "severity": "HIGH",
+        "message": "[ABLATION: CONTRADICTION flag disabled]"
+      },
+      {
+        "rule_id": "ESCALATION",
+        "triggered": true,
+        "severity": "HIGH",
+        "message": "ESCALATION triggered: at least one HIGH-severity flag is active."
+      }
+    ],
+    "escalate": true,
+    "summary": "Conflict detection complete. Active flags: ['CONCENTRATION', 'ESCALATION']. Escalate: True."
+  },
+  "final_decision": "ESCALATED",
+  "expected_decision": "ESCALATED",
+  "expected_escalate": true,
+  "output_escalate": true,
+  "decision_correct": true,
+  "escalation_correct": true,
+  "score": 100,
+  "rules_failed": [],
+  "error": null
+}

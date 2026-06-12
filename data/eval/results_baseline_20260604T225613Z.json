@@ -1,0 +1,1788 @@
+[
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "CONDITIONAL",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 2,
+      "liquid_assets": 36300.0,
+      "income": 61000.0,
+      "investment_amount": 1000.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "LOW",
+      "age": 52
+    },
+    "expected_product_profile": {
+      "product_name": "Global Equity ETF",
+      "risk_class": 4,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "61_uci177_global_equity_etf",
+    "run_number": 1,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "CONDITIONAL",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 2,
+      "liquid_assets": 36300.0,
+      "income": 61000.0,
+      "investment_amount": 1000.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "LOW",
+      "age": 52
+    },
+    "expected_product_profile": {
+      "product_name": "Global Equity ETF",
+      "risk_class": 4,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "61_uci177_global_equity_etf",
+    "run_number": 2,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "CONDITIONAL",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 2,
+      "liquid_assets": 36300.0,
+      "income": 61000.0,
+      "investment_amount": 1000.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "LOW",
+      "age": 52
+    },
+    "expected_product_profile": {
+      "product_name": "Global Equity ETF",
+      "risk_class": 4,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "61_uci177_global_equity_etf",
+    "run_number": 3,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "CONDITIONAL",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R4"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 2,
+      "liquid_assets": 9500.0,
+      "income": 17300.0,
+      "investment_amount": 1600.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 38
+    },
+    "expected_product_profile": {
+      "product_name": "Global Equity ETF",
+      "risk_class": 4,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "62_uci503_global_equity_etf",
+    "run_number": 1,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "CONDITIONAL",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R4"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 2,
+      "liquid_assets": 9500.0,
+      "income": 17300.0,
+      "investment_amount": 1600.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 38
+    },
+    "expected_product_profile": {
+      "product_name": "Global Equity ETF",
+      "risk_class": 4,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "62_uci503_global_equity_etf",
+    "run_number": 2,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "CONDITIONAL",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R4"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 2,
+      "liquid_assets": 9500.0,
+      "income": 17300.0,
+      "investment_amount": 1600.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 38
+    },
+    "expected_product_profile": {
+      "product_name": "Global Equity ETF",
+      "risk_class": 4,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "62_uci503_global_equity_etf",
+    "run_number": 3,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "CONDITIONAL",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R4"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 3,
+      "liquid_assets": 2300.0,
+      "income": 61200.0,
+      "investment_amount": 8100.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 41
+    },
+    "expected_product_profile": {
+      "product_name": "Global Equity ETF",
+      "risk_class": 4,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "63_uci659_global_equity_etf",
+    "run_number": 1,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "CONDITIONAL",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R4"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 3,
+      "liquid_assets": 2300.0,
+      "income": 61200.0,
+      "investment_amount": 8100.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 41
+    },
+    "expected_product_profile": {
+      "product_name": "Global Equity ETF",
+      "risk_class": 4,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "63_uci659_global_equity_etf",
+    "run_number": 2,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "CONDITIONAL",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R4"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 3,
+      "liquid_assets": 2300.0,
+      "income": 61200.0,
+      "investment_amount": 8100.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 41
+    },
+    "expected_product_profile": {
+      "product_name": "Global Equity ETF",
+      "risk_class": 4,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "63_uci659_global_equity_etf",
+    "run_number": 3,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "CONDITIONAL",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 2,
+      "liquid_assets": 56000.0,
+      "income": 59500.0,
+      "investment_amount": 1500.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "MEDIUM",
+      "age": 67
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Technology Sector Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "64_uci0_sector_equity_etf",
+    "run_number": 1,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "CONDITIONAL",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 2,
+      "liquid_assets": 56000.0,
+      "income": 59500.0,
+      "investment_amount": 1500.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "MEDIUM",
+      "age": 67
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Technology Sector Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "64_uci0_sector_equity_etf",
+    "run_number": 2,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "CONDITIONAL",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R4",
+      "R5",
+      "R7"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "FAIL",
+      "R6": "PASS",
+      "R7": "FAIL"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 2,
+      "liquid_assets": 56000.0,
+      "income": 59500.0,
+      "investment_amount": 1500.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "MEDIUM",
+      "age": 67
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Technology Sector Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "64_uci0_sector_equity_etf",
+    "run_number": 3,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "CONDITIONAL",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R4"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 3,
+      "liquid_assets": 1600.0,
+      "income": 60000.0,
+      "investment_amount": 2800.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 57
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Technology Sector Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "65_uci54_sector_equity_etf",
+    "run_number": 1,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "CONDITIONAL",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R4"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 3,
+      "liquid_assets": 1600.0,
+      "income": 60000.0,
+      "investment_amount": 2800.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 57
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Technology Sector Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "65_uci54_sector_equity_etf",
+    "run_number": 2,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "CONDITIONAL",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R4"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 3,
+      "liquid_assets": 1600.0,
+      "income": 60000.0,
+      "investment_amount": 2800.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 57
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Technology Sector Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "65_uci54_sector_equity_etf",
+    "run_number": 3,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "CONDITIONAL",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R4"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 3,
+      "liquid_assets": 2900.0,
+      "income": 62300.0,
+      "investment_amount": 1900.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 44
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Technology Sector Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "66_uci479_sector_equity_etf",
+    "run_number": 1,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "CONDITIONAL",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R4"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 3,
+      "liquid_assets": 2900.0,
+      "income": 62300.0,
+      "investment_amount": 1900.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 44
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Technology Sector Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "66_uci479_sector_equity_etf",
+    "run_number": 2,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "CONDITIONAL",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R4"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "basic",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 3,
+      "liquid_assets": 2900.0,
+      "income": 62300.0,
+      "investment_amount": 1900.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 44
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Technology Sector Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "66_uci479_sector_equity_etf",
+    "run_number": 3,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "CONDITIONAL",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R4"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "moderate",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 5,
+      "liquid_assets": 1300.0,
+      "income": 116600.0,
+      "investment_amount": 17500.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 63
+    },
+    "expected_product_profile": {
+      "product_name": "MSCI Emerging Markets Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "67_uci373_em_equity_etf",
+    "run_number": 1,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "CONDITIONAL",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R4"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "moderate",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 5,
+      "liquid_assets": 1300.0,
+      "income": 116600.0,
+      "investment_amount": 17500.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 63
+    },
+    "expected_product_profile": {
+      "product_name": "MSCI Emerging Markets Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "67_uci373_em_equity_etf",
+    "run_number": 2,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "CONDITIONAL",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R4"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "moderate",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 5,
+      "liquid_assets": 1300.0,
+      "income": 116600.0,
+      "investment_amount": 17500.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 63
+    },
+    "expected_product_profile": {
+      "product_name": "MSCI Emerging Markets Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "67_uci373_em_equity_etf",
+    "run_number": 3,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "CONDITIONAL",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R4"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "moderate",
+      "risk_tolerance_score": 2,
+      "investment_horizon": 4,
+      "liquid_assets": 5500.0,
+      "income": 10200.0,
+      "investment_amount": 9700.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 31
+    },
+    "expected_product_profile": {
+      "product_name": "MSCI Emerging Markets Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "68_uci287_em_equity_etf",
+    "run_number": 1,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "CONDITIONAL",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R4"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "moderate",
+      "risk_tolerance_score": 2,
+      "investment_horizon": 4,
+      "liquid_assets": 5500.0,
+      "income": 10200.0,
+      "investment_amount": 9700.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 31
+    },
+    "expected_product_profile": {
+      "product_name": "MSCI Emerging Markets Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "68_uci287_em_equity_etf",
+    "run_number": 2,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "CONDITIONAL",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R4"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "moderate",
+      "risk_tolerance_score": 2,
+      "investment_horizon": 4,
+      "liquid_assets": 5500.0,
+      "income": 10200.0,
+      "investment_amount": 9700.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 31
+    },
+    "expected_product_profile": {
+      "product_name": "MSCI Emerging Markets Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "68_uci287_em_equity_etf",
+    "run_number": 3,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "CONDITIONAL",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R4"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "moderate",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 3,
+      "liquid_assets": 1100.0,
+      "income": 114500.0,
+      "investment_amount": 13500.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 38
+    },
+    "expected_product_profile": {
+      "product_name": "MSCI Emerging Markets Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "69_uci205_em_equity_etf",
+    "run_number": 1,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "CONDITIONAL",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R4"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "moderate",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 3,
+      "liquid_assets": 1100.0,
+      "income": 114500.0,
+      "investment_amount": 13500.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 38
+    },
+    "expected_product_profile": {
+      "product_name": "MSCI Emerging Markets Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "69_uci205_em_equity_etf",
+    "run_number": 2,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "CONDITIONAL",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R3",
+      "R4"
+    ],
+    "expected_rules_failed": [
+      "R2",
+      "R3"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "FAIL",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "PASS",
+      "R2": "FAIL",
+      "R3": "FAIL",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "moderate",
+      "risk_tolerance_score": 1,
+      "investment_horizon": 3,
+      "liquid_assets": 1100.0,
+      "income": 114500.0,
+      "investment_amount": 13500.0,
+      "can_afford_total_loss": false,
+      "financial_vulnerability": "MEDIUM",
+      "age": 38
+    },
+    "expected_product_profile": {
+      "product_name": "MSCI Emerging Markets Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "moderate",
+      "minimum_horizon": 7,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "69_uci205_em_equity_etf",
+    "run_number": 3,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "SUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [],
+    "expected_rules_failed": [
+      "R1"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 5,
+      "investment_horizon": 7,
+      "liquid_assets": 56000.0,
+      "income": 34100.0,
+      "investment_amount": 2700.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "MEDIUM",
+      "age": 49
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Technology Sector Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "70_uci2_sector_equity_etf",
+    "run_number": 1,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "SUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [],
+    "expected_rules_failed": [
+      "R1"
+    ],
+    "output_rules": {
+      "R1": "PASS",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 5,
+      "investment_horizon": 7,
+      "liquid_assets": 56000.0,
+      "income": 34100.0,
+      "investment_amount": 2700.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "MEDIUM",
+      "age": 49
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Technology Sector Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "70_uci2_sector_equity_etf",
+    "run_number": 2,
+    "architecture": "baseline"
+  },
+  {
+    "output_decision": "UNSUITABLE",
+    "expected_decision": "UNSUITABLE",
+    "output_escalated": false,
+    "expected_escalate": false,
+    "output_failed_rules": [
+      "R1",
+      "R4"
+    ],
+    "expected_rules_failed": [
+      "R1"
+    ],
+    "output_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "FAIL",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "expected_rules": {
+      "R1": "FAIL",
+      "R2": "PASS",
+      "R3": "PASS",
+      "R4": "PASS",
+      "R5": "PASS",
+      "R6": "PASS",
+      "R7": "PASS"
+    },
+    "a1_verified": false,
+    "a2_verified": false,
+    "a1_corrected": false,
+    "a2_corrected": false,
+    "halted": false,
+    "expected_client_profile": {
+      "financial_knowledge": "none",
+      "risk_tolerance_score": 5,
+      "investment_horizon": 7,
+      "liquid_assets": 56000.0,
+      "income": 34100.0,
+      "investment_amount": 2700.0,
+      "can_afford_total_loss": true,
+      "financial_vulnerability": "MEDIUM",
+      "age": 49
+    },
+    "expected_product_profile": {
+      "product_name": "Euro Technology Sector Equity ETF",
+      "risk_class": 5,
+      "complexity_tier": "NON-COMPLEX",
+      "requires_knowledge_level": "basic",
+      "minimum_horizon": 5,
+      "potential_loss": "partial",
+      "leverage": false
+    },
+    "scenario_id": "70_uci2_sector_equity_etf",
+    "run_number": 3,
+    "architecture": "baseline"
+  }
+]
