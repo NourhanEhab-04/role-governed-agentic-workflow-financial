@@ -3,7 +3,7 @@
 # Loaded once at startup; all agents import from here.
 #
 # Specialist agents (A1-A4) and the baseline use OpenAI gpt-4.1-nano.
-# The verifier (AV) uses Google Gemini via the OpenAI-compatible endpoint --
+# The verifier (AV) uses Groq via the OpenAI-compatible endpoint --
 # a completely different model family so its failure modes are statistically
 # independent from the OpenAI specialist agents it checks.
 # The disclosure agent (A5) uses OpenAI gpt-4o-mini.
@@ -15,25 +15,25 @@ from autogen_ext.models.openai import OpenAIChatCompletionClient
 load_dotenv()
 
 OPENAI_API_KEY  = os.getenv("OPENAI_KEY")
-GEMINI_API_KEY  = os.getenv("GEMINI_API_KEY")
+GROQ_API_KEY    = os.getenv("GROQ_API_KEY")
 
-# Gemini OpenAI-compatible base URL
-GEMINI_BASE_URL = "https://generativelanguage.googleapis.com/v1beta/openai/"
+# Groq OpenAI-compatible base URL
+GROQ_BASE_URL = "https://api.groq.com/openai/v1"
 
 # gpt-4.1-nano -- used by all profiling/classification/rule agents and baseline.
 OPENAI_MODEL = "gpt-4.1-nano"
 
-# gemini-2.0-flash -- used exclusively by the verifier (AV).
-# Google Gemini family via OpenAI-compatible endpoint is a completely different
-# provider and model family from the OpenAI specialist agents, ensuring
-# statistically independent failure modes.
-GEMINI_VERIFIER_MODEL = "gemini-2.0-flash"
+# llama-3.3-70b-versatile via Groq -- used exclusively by the verifier (AV).
+# Groq/Llama family is a completely different provider and model family
+# from the OpenAI specialist agents, ensuring statistically independent
+# failure modes.
+GROQ_VERIFIER_MODEL = "llama-3.3-70b-versatile"
 
 # gpt-4o-mini -- used by the disclosure agent (A5).
 OPENAI_DISCLOSURE_MODEL = "gpt-4o-mini"
 
 # Keep this alias so graph.py imports still resolve without any changes.
-OPENAI_VERIFIER_MODEL = GEMINI_VERIFIER_MODEL
+OPENAI_VERIFIER_MODEL = GROQ_VERIFIER_MODEL
 
 _NANO_MODEL_INFO = {
     "vision": False,
@@ -43,7 +43,7 @@ _NANO_MODEL_INFO = {
     "structured_output": False,
 }
 
-_GEMINI_MODEL_INFO = {
+_GROQ_MODEL_INFO = {
     "vision": False,
     "function_calling": True,
     "json_output": True,
@@ -75,19 +75,19 @@ def get_model_client() -> OpenAIChatCompletionClient:
 
 
 def get_verifier_client() -> OpenAIChatCompletionClient:
-    """gemini-2.0-flash client via Google's OpenAI-compatible endpoint.
+    """llama-3.3-70b-versatile client via Groq's OpenAI-compatible endpoint.
     Used exclusively by AV (verifier agent).
-    Google Gemini family is a completely different provider and model family
+    Groq/Llama family is a completely different provider and model family
     from the OpenAI specialist agents, ensuring statistically independent
     failure modes. temperature=0 for deterministic verification decisions."""
-    if not GEMINI_API_KEY:
-        raise RuntimeError("GEMINI_API_KEY is not set in .env")
+    if not GROQ_API_KEY:
+        raise RuntimeError("GROQ_API_KEY is not set in .env")
     return OpenAIChatCompletionClient(
-        model=GEMINI_VERIFIER_MODEL,
-        api_key=GEMINI_API_KEY,
-        base_url=GEMINI_BASE_URL,
+        model=GROQ_VERIFIER_MODEL,
+        api_key=GROQ_API_KEY,
+        base_url=GROQ_BASE_URL,
         temperature=0,
-        model_info=_GEMINI_MODEL_INFO,
+        model_info=_GROQ_MODEL_INFO,
     )
 
 
